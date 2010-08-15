@@ -246,6 +246,8 @@ namespace <%=DALNameSpace%>.SqlClient
 						if (innerSql<%=providerName%> == null)
 						{
 							this.innerSql<%=providerName%> = new Sql<%=providerName%>(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSql<%=providerName%>.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSql<%=providerName%>.DataRequesting += HandlerStatisticsDataRequesting;
 						}
 					}
 				}
