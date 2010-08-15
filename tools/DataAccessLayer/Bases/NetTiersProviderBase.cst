@@ -459,14 +459,14 @@ namespace <%=DALNameSpace%>.Bases
 
         private Stopwatch stopwatch = new Stopwatch();
         
-        protected virtual void HandlerStatisticsDataRequested(object sender, CommandEventArgs e) {
+        protected virtual void HandlerStatisticsDataRequesting(object sender, CommandEventArgs e) {
             if (!GenerateStastics)
                 return;
             stopwatch.Reset();
             stopwatch.Start();
         }
 
-        protected virtual void HandlerStatisticsDataRequesting(object sender, CommandEventArgs e) {
+        protected virtual void HandlerStatisticsDataRequested(object sender, CommandEventArgs e) {
             if (!GenerateStastics)
                 return;
             stopwatch.Stop();
