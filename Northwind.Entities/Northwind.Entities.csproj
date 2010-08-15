@@ -1,0 +1,564 @@
+﻿
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20E43088-4618-4F4A-B8AD-FC31B50D94CD}</ProjectGuid>
+    <ProjectType>Local</ProjectType>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OutputType>Library</OutputType>
+    <ApplicationIcon>
+	</ApplicationIcon>
+    <AssemblyKeyContainerName>
+	</AssemblyKeyContainerName>
+    <AssemblyName>Northwind.Entities</AssemblyName>
+    <AssemblyOriginatorKeyFile>..\Northwind.snk</AssemblyOriginatorKeyFile>
+	<SignAssembly>false</SignAssembly>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <RootNamespace>Northwind.Entities</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject></StartupObject>
+    <FileUpgradeFlags></FileUpgradeFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Northwind.Entities.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Northwind.Entities.xml</DocumentationFile>
+	 <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'GenerateDebug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Northwind.Entities.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System"/>
+	<Reference Include="System.Core">
+		<RequiredTargetFramework>3.5</RequiredTargetFramework>
+	</Reference>
+    <Reference Include="System.Web"/>
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Design"/>
+    <Reference Include="System.Xml"/>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>    
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>    
+     
+	
+	
+	
+	
+    
+    	
+	
+	
+	
+	</ItemGroup>
+	
+		
+	<!-- Custom code folder: C:\src\nettiers-poc\Northwind.Entities\App_Code -->
+	<ItemGroup>	
+		<Folder Include="App_Code\" />
+        <Compile Include="App_Code\**\*.cs">
+          <SubType>Code</SubType>
+        </Compile>		
+	</ItemGroup>
+
+	<!-- Include any user files -->
+	<ItemGroup>	
+		<Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**" >
+          <SubType>Code</SubType>
+        </Compile>		
+	</ItemGroup>
+	
+	<ItemGroup>
+			<Compile Include="Views\AlphabeticalListOfProducts.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\AlphabeticalListOfProductsBase.generated.cs">
+			  <DependentUpon>AlphabeticalListOfProducts.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\CategorySalesFor1997.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\CategorySalesFor1997Base.generated.cs">
+			  <DependentUpon>CategorySalesFor1997.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\CurrentProductList.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\CurrentProductListBase.generated.cs">
+			  <DependentUpon>CurrentProductList.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\CustomerAndSuppliersByCity.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\CustomerAndSuppliersByCityBase.generated.cs">
+			  <DependentUpon>CustomerAndSuppliersByCity.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\Invoices.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\InvoicesBase.generated.cs">
+			  <DependentUpon>Invoices.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\OrderDetailsExtended.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\OrderDetailsExtendedBase.generated.cs">
+			  <DependentUpon>OrderDetailsExtended.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\OrderSubtotals.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\OrderSubtotalsBase.generated.cs">
+			  <DependentUpon>OrderSubtotals.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\OrdersQry.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\OrdersQryBase.generated.cs">
+			  <DependentUpon>OrdersQry.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\ProductSalesFor1997.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\ProductSalesFor1997Base.generated.cs">
+			  <DependentUpon>ProductSalesFor1997.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\ProductsAboveAveragePrice.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\ProductsAboveAveragePriceBase.generated.cs">
+			  <DependentUpon>ProductsAboveAveragePrice.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\ProductsByCategory.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\ProductsByCategoryBase.generated.cs">
+			  <DependentUpon>ProductsByCategory.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\QuarterlyOrders.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\QuarterlyOrdersBase.generated.cs">
+			  <DependentUpon>QuarterlyOrders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\SalesByCategory.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SalesByCategoryBase.generated.cs">
+			  <DependentUpon>SalesByCategory.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\SalesTotalsByAmount.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SalesTotalsByAmountBase.generated.cs">
+			  <DependentUpon>SalesTotalsByAmount.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\SummaryOfSalesByQuarter.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SummaryOfSalesByQuarterBase.generated.cs">
+			  <DependentUpon>SummaryOfSalesByQuarter.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Views\SummaryOfSalesByYear.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SummaryOfSalesByYearBase.generated.cs">
+			  <DependentUpon>SummaryOfSalesByYear.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+						
+			<Compile Include="Orders.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="OrdersBase.generated.cs">
+			  <DependentUpon>Orders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IOrders.cs">
+			  <DependentUpon>Orders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Suppliers.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SuppliersBase.generated.cs">
+			  <DependentUpon>Suppliers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ISuppliers.cs">
+			  <DependentUpon>Suppliers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Region.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="RegionBase.generated.cs">
+			  <DependentUpon>Region.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IRegion.cs">
+			  <DependentUpon>Region.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Categories.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="CategoriesBase.generated.cs">
+			  <DependentUpon>Categories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ICategories.cs">
+			  <DependentUpon>Categories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Shippers.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ShippersBase.generated.cs">
+			  <DependentUpon>Shippers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IShippers.cs">
+			  <DependentUpon>Shippers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="EmployeeTerritories.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EmployeeTerritoriesBase.generated.cs">
+			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEmployeeTerritories.cs">
+			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Employees.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EmployeesBase.generated.cs">
+			  <DependentUpon>Employees.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEmployees.cs">
+			  <DependentUpon>Employees.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Territories.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="TerritoriesBase.generated.cs">
+			  <DependentUpon>Territories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ITerritories.cs">
+			  <DependentUpon>Territories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="CustomerDemographics.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="CustomerDemographicsBase.generated.cs">
+			  <DependentUpon>CustomerDemographics.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ICustomerDemographics.cs">
+			  <DependentUpon>CustomerDemographics.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Customers.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="CustomersBase.generated.cs">
+			  <DependentUpon>Customers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ICustomers.cs">
+			  <DependentUpon>Customers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Products.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ProductsBase.generated.cs">
+			  <DependentUpon>Products.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IProducts.cs">
+			  <DependentUpon>Products.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="OrderDetails.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="OrderDetailsBase.generated.cs">
+			  <DependentUpon>OrderDetails.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IOrderDetails.cs">
+			  <DependentUpon>OrderDetails.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="CustomerCustomerDemo.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="CustomerCustomerDemoBase.generated.cs">
+			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ICustomerCustomerDemo.cs">
+			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+		<Compile Include="..\AssemblyInfo.cs">
+		  <SubType>Code</SubType>
+		</Compile>
+			
+			<Compile Include="IEntity.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEntityId.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEntityKey.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityBaseCore.generated.cs">
+			  <SubType>Code</SubType>
+			  <DependentUpon>EntityBase.cs</DependentUpon>
+			</Compile>
+			<Compile Include="EntityKeyBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityKeyBaseCore.generated.cs">
+			  <SubType>Code</SubType>
+			  <DependentUpon>EntityKeyBase.cs</DependentUpon>
+			</Compile>
+			<Compile Include="ListBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="TList.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+            <Compile Include="WeakRefDictionary.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\VList.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityFilter.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityPropertyComparer.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityHelper.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityUtil.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEntityFactory.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityFactoryBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>			
+			<Compile Include="EntityFactory.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EntityLocator.cs">
+			  <SubType>Code</SubType>
+			</Compile>		
+			<Compile Include="EntityManager.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEntityCacheItem.cs">
+			  <SubType>Code</SubType>
+			</Compile>		
+			<Compile Include="EntityCache.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="GenericTypeConverter.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\BrokenRule.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\BrokenRulesList.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\CommonRules.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\ValidationRuleArgs.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\ValidationRuleHandler.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\ValidationRuleInfo.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Validation\ValidationRules.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+
+		
+		
+
+		
+		
+		
+		
+		 <AppDesigner Include="Properties\" />
+	</ItemGroup>
+	
+	
+	
+	
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+	<PostBuildEvent>
+	</PostBuildEvent>
+  </PropertyGroup>
+
+</Project>

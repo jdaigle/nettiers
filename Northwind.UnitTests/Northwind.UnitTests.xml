@@ -1,0 +1,4076 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Northwind.UnitTests</name>
+    </assembly>
+    <members>
+        <member name="T:Northwind.UnitTests.OrderDetailsTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.OrderDetails"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.OrderDetails"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all OrderDetails objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all OrderDetails children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock OrderDetails entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock OrderDetails entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a OrderDetails collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a OrderDetails collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed OrderDetails Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.OrderDetails)">
+            <summary>
+              Update the Typed OrderDetails Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.OrderDetailsTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  OrderDetails objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all OrderDetails children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock OrderDetails entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock OrderDetails entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a OrderDetails collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a OrderDetails collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed OrderDetails Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.OrderDetails)">
+            <summary>
+              Update the Typed OrderDetails Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsTest.SetSpecialTestData(Northwind.Entities.OrderDetails)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="T:Northwind.UnitTests.CustomerCustomerDemoTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CustomerCustomerDemoTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  CustomerCustomerDemo objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all CustomerCustomerDemo children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock CustomerCustomerDemo entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock CustomerCustomerDemo entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a CustomerCustomerDemo collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a CustomerCustomerDemo collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed CustomerCustomerDemo Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.CustomerCustomerDemo)">
+            <summary>
+              Update the Typed CustomerCustomerDemo Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.SetSpecialTestData(Northwind.Entities.CustomerCustomerDemo)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all CustomerCustomerDemo objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all CustomerCustomerDemo children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock CustomerCustomerDemo entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock CustomerCustomerDemo entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a CustomerCustomerDemo collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a CustomerCustomerDemo collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed CustomerCustomerDemo Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerCustomerDemoTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.CustomerCustomerDemo)">
+            <summary>
+              Update the Typed CustomerCustomerDemo Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.OrdersTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Orders"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Orders"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Orders entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Orders objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Orders children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Orders entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Orders entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Orders entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Orders entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Orders collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Orders collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Orders Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Orders)">
+            <summary>
+              Update the Typed Orders Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.OrdersTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Orders entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Orders objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Orders children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_04_Update">
+            <summary>
+            Updates a mock Orders entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_05_Delete">
+            <summary>
+            Delete the mock Orders entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Orders entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Orders entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Orders collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Orders collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Orders Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Orders)">
+            <summary>
+              Update the Typed Orders Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersTest.SetSpecialTestData(Northwind.Entities.Orders)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="T:Northwind.UnitTests.ProductsAboveAveragePriceTest">
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.ProductsAboveAveragePrice"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.ProductsAboveAveragePrice"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.ProductsAboveAveragePriceTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_1_SelectAll">
+            <summary>
+            Selects all ProductsAboveAveragePrice objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_2_Search">
+            <summary>
+            Selects all ProductsAboveAveragePrice objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock ProductsAboveAveragePrice entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock ProductsAboveAveragePrice entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a ProductsAboveAveragePrice collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a ProductsAboveAveragePrice collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of ProductsAboveAveragePrice objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_2_Search_Generated">
+            <summary>
+            Searches some ProductsAboveAveragePrice objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock ProductsAboveAveragePrice entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock ProductsAboveAveragePrice entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a ProductsAboveAveragePrice collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a ProductsAboveAveragePrice collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsAboveAveragePriceTest.CreateMockInstance">
+            <summary>
+              Returns a Typed ProductsAboveAveragePrice Entity with mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.AlphabeticalListOfProductsTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.AlphabeticalListOfProducts"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.AlphabeticalListOfProducts"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of AlphabeticalListOfProducts objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_2_Search_Generated">
+            <summary>
+            Searches some AlphabeticalListOfProducts objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock AlphabeticalListOfProducts entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock AlphabeticalListOfProducts entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a AlphabeticalListOfProducts collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a AlphabeticalListOfProducts collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.CreateMockInstance">
+            <summary>
+              Returns a Typed AlphabeticalListOfProducts Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.AlphabeticalListOfProductsTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_1_SelectAll">
+            <summary>
+            Selects all AlphabeticalListOfProducts objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_2_Search">
+            <summary>
+            Selects all AlphabeticalListOfProducts objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock AlphabeticalListOfProducts entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock AlphabeticalListOfProducts entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a AlphabeticalListOfProducts collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.AlphabeticalListOfProductsTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a AlphabeticalListOfProducts collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.SalesTotalsByAmountTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.SalesTotalsByAmount"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.SalesTotalsByAmount"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of SalesTotalsByAmount objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_2_Search_Generated">
+            <summary>
+            Searches some SalesTotalsByAmount objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock SalesTotalsByAmount entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock SalesTotalsByAmount entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a SalesTotalsByAmount collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a SalesTotalsByAmount collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.CreateMockInstance">
+            <summary>
+              Returns a Typed SalesTotalsByAmount Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.SalesTotalsByAmountTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_1_SelectAll">
+            <summary>
+            Selects all SalesTotalsByAmount objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_2_Search">
+            <summary>
+            Selects all SalesTotalsByAmount objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock SalesTotalsByAmount entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock SalesTotalsByAmount entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a SalesTotalsByAmount collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesTotalsByAmountTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a SalesTotalsByAmount collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.QuarterlyOrdersTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.QuarterlyOrders"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.QuarterlyOrders"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of QuarterlyOrders objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_2_Search_Generated">
+            <summary>
+            Searches some QuarterlyOrders objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock QuarterlyOrders entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock QuarterlyOrders entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a QuarterlyOrders collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a QuarterlyOrders collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.CreateMockInstance">
+            <summary>
+              Returns a Typed QuarterlyOrders Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.QuarterlyOrdersTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_1_SelectAll">
+            <summary>
+            Selects all QuarterlyOrders objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_2_Search">
+            <summary>
+            Selects all QuarterlyOrders objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock QuarterlyOrders entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock QuarterlyOrders entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a QuarterlyOrders collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.QuarterlyOrdersTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a QuarterlyOrders collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.CategorySalesFor1997Test">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CategorySalesFor1997"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.CategorySalesFor1997"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of CategorySalesFor1997 objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_2_Search_Generated">
+            <summary>
+            Searches some CategorySalesFor1997 objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock CategorySalesFor1997 entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock CategorySalesFor1997 entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a CategorySalesFor1997 collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a CategorySalesFor1997 collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.CreateMockInstance">
+            <summary>
+              Returns a Typed CategorySalesFor1997 Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CategorySalesFor1997Test"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_1_SelectAll">
+            <summary>
+            Selects all CategorySalesFor1997 objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_2_Search">
+            <summary>
+            Selects all CategorySalesFor1997 objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock CategorySalesFor1997 entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock CategorySalesFor1997 entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_8_SerializeCollection">
+            <summary>
+            Serialize a CategorySalesFor1997 collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategorySalesFor1997Test.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a CategorySalesFor1997 collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.CustomerDemographicsTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CustomerDemographics"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CustomerDemographics"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock CustomerDemographics entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all CustomerDemographics objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all CustomerDemographics children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock CustomerDemographics entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock CustomerDemographics entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock CustomerDemographics entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock CustomerDemographics entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a CustomerDemographics collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a CustomerDemographics collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed CustomerDemographics Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.CustomerDemographics)">
+            <summary>
+              Update the Typed CustomerDemographics Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CustomerDemographicsTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_01_Insert">
+            <summary>
+            Inserts a mock CustomerDemographics entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  CustomerDemographics objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all CustomerDemographics children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_04_Update">
+            <summary>
+            Updates a mock CustomerDemographics entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_05_Delete">
+            <summary>
+            Delete the mock CustomerDemographics entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock CustomerDemographics entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock CustomerDemographics entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a CustomerDemographics collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a CustomerDemographics collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed CustomerDemographics Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.CustomerDemographics)">
+            <summary>
+              Update the Typed CustomerDemographics Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerDemographicsTest.SetSpecialTestData(Northwind.Entities.CustomerDemographics)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="T:Northwind.UnitTests.TerritoriesTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Territories"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Territories"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Territories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Territories objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Territories children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Territories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Territories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Territories entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Territories entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Territories collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Territories collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Territories Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Territories)">
+            <summary>
+              Update the Typed Territories Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.TerritoriesTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Territories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Territories objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Territories children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_04_Update">
+            <summary>
+            Updates a mock Territories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_05_Delete">
+            <summary>
+            Delete the mock Territories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Territories entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Territories entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Territories collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Territories collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Territories Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Territories)">
+            <summary>
+              Update the Typed Territories Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TerritoriesTest.SetSpecialTestData(Northwind.Entities.Territories)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="T:Northwind.UnitTests.EmployeesTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Employees"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Employees"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.EmployeesTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Employees entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Employees objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Employees children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_04_Update">
+            <summary>
+            Updates a mock Employees entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_05_Delete">
+            <summary>
+            Delete the mock Employees entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Employees entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Employees entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Employees collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Employees collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Employees Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Employees)">
+            <summary>
+              Update the Typed Employees Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.SetSpecialTestData(Northwind.Entities.Employees)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Employees entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Employees objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Employees children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Employees entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Employees entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Employees entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Employees entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Employees collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Employees collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Employees Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeesTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Employees)">
+            <summary>
+              Update the Typed Employees Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.RegionTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Region"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Region"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.RegionTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Region entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Region objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Region children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_04_Update">
+            <summary>
+            Updates a mock Region entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_05_Delete">
+            <summary>
+            Delete the mock Region entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Region entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Region entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Region collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Region collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Region Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Region)">
+            <summary>
+              Update the Typed Region Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.SetSpecialTestData(Northwind.Entities.Region)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Region entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Region objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Region children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Region entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Region entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Region entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Region entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Region collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Region collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Region Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.RegionTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Region)">
+            <summary>
+              Update the Typed Region Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.ProductsTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Products"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Products"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.ProductsTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Products entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Products objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Products children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_04_Update">
+            <summary>
+            Updates a mock Products entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_05_Delete">
+            <summary>
+            Delete the mock Products entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Products entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Products entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Products collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Products collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Products Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Products)">
+            <summary>
+              Update the Typed Products Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.SetSpecialTestData(Northwind.Entities.Products)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Products entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Products objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Products children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Products entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Products entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Products entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Products entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Products collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Products collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Products Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Products)">
+            <summary>
+              Update the Typed Products Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.OrdersQryTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.OrdersQry"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.OrdersQry"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of OrdersQry objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_2_Search_Generated">
+            <summary>
+            Searches some OrdersQry objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock OrdersQry entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock OrdersQry entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a OrdersQry collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a OrdersQry collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.CreateMockInstance">
+            <summary>
+              Returns a Typed OrdersQry Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.OrdersQryTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_1_SelectAll">
+            <summary>
+            Selects all OrdersQry objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_2_Search">
+            <summary>
+            Selects all OrdersQry objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock OrdersQry entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock OrdersQry entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a OrdersQry collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrdersQryTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a OrdersQry collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.ShippersTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Shippers"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Shippers"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Shippers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Shippers objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Shippers children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Shippers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Shippers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Shippers entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Shippers entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Shippers collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Shippers collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Shippers Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Shippers)">
+            <summary>
+              Update the Typed Shippers Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.ShippersTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Shippers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Shippers objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Shippers children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_04_Update">
+            <summary>
+            Updates a mock Shippers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_05_Delete">
+            <summary>
+            Delete the mock Shippers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Shippers entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Shippers entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Shippers collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Shippers collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Shippers Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Shippers)">
+            <summary>
+              Update the Typed Shippers Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ShippersTest.SetSpecialTestData(Northwind.Entities.Shippers)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="T:Northwind.UnitTests.SalesByCategoryTest">
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.SalesByCategory"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.SalesByCategory"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.SalesByCategoryTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_1_SelectAll">
+            <summary>
+            Selects all SalesByCategory objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_2_Search">
+            <summary>
+            Selects all SalesByCategory objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock SalesByCategory entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock SalesByCategory entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a SalesByCategory collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a SalesByCategory collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of SalesByCategory objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_2_Search_Generated">
+            <summary>
+            Searches some SalesByCategory objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock SalesByCategory entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock SalesByCategory entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a SalesByCategory collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a SalesByCategory collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SalesByCategoryTest.CreateMockInstance">
+            <summary>
+              Returns a Typed SalesByCategory Entity with mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.OrderDetailsExtendedTest">
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.OrderDetailsExtended"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.OrderDetailsExtended"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.OrderDetailsExtendedTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_1_SelectAll">
+            <summary>
+            Selects all OrderDetailsExtended objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_2_Search">
+            <summary>
+            Selects all OrderDetailsExtended objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock OrderDetailsExtended entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock OrderDetailsExtended entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a OrderDetailsExtended collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a OrderDetailsExtended collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of OrderDetailsExtended objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_2_Search_Generated">
+            <summary>
+            Searches some OrderDetailsExtended objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock OrderDetailsExtended entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock OrderDetailsExtended entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a OrderDetailsExtended collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a OrderDetailsExtended collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderDetailsExtendedTest.CreateMockInstance">
+            <summary>
+              Returns a Typed OrderDetailsExtended Entity with mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.ProductsByCategoryTest">
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.ProductsByCategory"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.ProductsByCategory"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.ProductsByCategoryTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_1_SelectAll">
+            <summary>
+            Selects all ProductsByCategory objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_2_Search">
+            <summary>
+            Selects all ProductsByCategory objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock ProductsByCategory entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock ProductsByCategory entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a ProductsByCategory collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a ProductsByCategory collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of ProductsByCategory objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_2_Search_Generated">
+            <summary>
+            Searches some ProductsByCategory objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock ProductsByCategory entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock ProductsByCategory entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a ProductsByCategory collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a ProductsByCategory collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductsByCategoryTest.CreateMockInstance">
+            <summary>
+              Returns a Typed ProductsByCategory Entity with mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.SuppliersTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Suppliers"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Suppliers"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.SuppliersTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Suppliers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Suppliers objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Suppliers children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_04_Update">
+            <summary>
+            Updates a mock Suppliers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_05_Delete">
+            <summary>
+            Delete the mock Suppliers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Suppliers entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Suppliers entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Suppliers collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Suppliers collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Suppliers Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Suppliers)">
+            <summary>
+              Update the Typed Suppliers Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.SetSpecialTestData(Northwind.Entities.Suppliers)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Suppliers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Suppliers objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Suppliers children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Suppliers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Suppliers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Suppliers entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Suppliers entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Suppliers collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Suppliers collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Suppliers Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SuppliersTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Suppliers)">
+            <summary>
+              Update the Typed Suppliers Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.ProductSalesFor1997Test">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.ProductSalesFor1997"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.ProductSalesFor1997"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of ProductSalesFor1997 objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_2_Search_Generated">
+            <summary>
+            Searches some ProductSalesFor1997 objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock ProductSalesFor1997 entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock ProductSalesFor1997 entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a ProductSalesFor1997 collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a ProductSalesFor1997 collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.CreateMockInstance">
+            <summary>
+              Returns a Typed ProductSalesFor1997 Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.ProductSalesFor1997Test"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_1_SelectAll">
+            <summary>
+            Selects all ProductSalesFor1997 objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_2_Search">
+            <summary>
+            Selects all ProductSalesFor1997 objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock ProductSalesFor1997 entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock ProductSalesFor1997 entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_8_SerializeCollection">
+            <summary>
+            Serialize a ProductSalesFor1997 collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.ProductSalesFor1997Test.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a ProductSalesFor1997 collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.TestUtility">
+            <summary>
+             Singleton class for Helper functions for UnitTesting
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.#ctor">
+            <summary>
+            Private constructor for Singleton
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomNumber">
+            <summary>
+            Generates a random number between 0 and int.MaxValue.
+            </summary>
+            <returns>Random Number</returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomNumber(System.Int32,System.Int32)">
+            <summary>
+            Generates a random number between the given bounds.
+            </summary>
+            <param name="min">lowest bound</param>
+            <param name="max">highest bound</param>
+            <returns>Random Number</returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomString(System.Int32,System.Boolean)">
+            <summary>
+            Generates a random string with the given length
+            </summary>
+            <param name="size">Size of the string</param>
+            <param name="lowerCase">If true, generate lowercase string</param>
+            <returns>Random string</returns>
+            <remarks>Mahesh Chand  - http://www.c-sharpcorner.com/Code/2004/Oct/RandomNumber.asp</remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomDate">
+            <summary>
+            Returns a random date between the default min and max dates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomDate(System.DateTime,System.DateTime)">
+            <summary>
+            Returns a random date between the dates you pass in
+            </summary>
+            <param name="minDate">Min date to return</param>
+            <param name="maxDate">Max date to return</param>
+            <returns></returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomDateTime">
+            <summary>
+            Returns a random date and time between the default datess
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomDateTime(System.DateTime,System.DateTime)">
+            <summary>
+            Get a random DateTime with a random Time
+            </summary>
+            <param name="minDate">Min datetime to return</param>
+            <param name="maxDate">Max datetime to return</param>
+            <returns></returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomBoolean">
+            <summary>
+            Returns a random boolean value
+            </summary>
+            <returns>Random Boolean</returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomChar">
+            <summary>
+            Returns a random character
+            </summary>
+            <returns>Random Character</returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomByte">
+            <summary>
+            Return a random byte between 0 and byte.MaxValue;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomByte(System.Byte,System.Byte)">
+            <summary>
+            Return a random byte between the values specified
+            </summary>
+            <param name="min">Min value</param>
+            <param name="max">Max value</param>
+            <returns>Random Byte</returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomShort">
+            <summary>
+            Return a random short between 0 and byte.MaxValue;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Northwind.UnitTests.TestUtility.RandomShort(System.Int16,System.Int16)">
+            <summary>
+            Return a random short between the values specified
+            </summary>
+            <param name="min">Min value</param>
+            <param name="max">Max value</param>
+            <returns>Random short</returns>
+        </member>
+        <member name="P:Northwind.UnitTests.TestUtility.Instance">
+            <summary>
+            Get the instance of the TestUtility class
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.EmployeeTerritoriesTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.EmployeeTerritories"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.EmployeeTerritories"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all EmployeeTerritories objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all EmployeeTerritories children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock EmployeeTerritories entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock EmployeeTerritories entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a EmployeeTerritories collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a EmployeeTerritories collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed EmployeeTerritories Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.EmployeeTerritories)">
+            <summary>
+              Update the Typed EmployeeTerritories Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.EmployeeTerritoriesTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  EmployeeTerritories objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all EmployeeTerritories children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock EmployeeTerritories entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock EmployeeTerritories entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a EmployeeTerritories collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a EmployeeTerritories collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed EmployeeTerritories Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.EmployeeTerritories)">
+            <summary>
+              Update the Typed EmployeeTerritories Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.EmployeeTerritoriesTest.SetSpecialTestData(Northwind.Entities.EmployeeTerritories)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="T:Northwind.UnitTests.CustomerAndSuppliersByCityTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CustomerAndSuppliersByCity"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.CustomerAndSuppliersByCity"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of CustomerAndSuppliersByCity objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_2_Search_Generated">
+            <summary>
+            Searches some CustomerAndSuppliersByCity objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock CustomerAndSuppliersByCity entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock CustomerAndSuppliersByCity entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a CustomerAndSuppliersByCity collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a CustomerAndSuppliersByCity collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.CreateMockInstance">
+            <summary>
+              Returns a Typed CustomerAndSuppliersByCity Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CustomerAndSuppliersByCityTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_1_SelectAll">
+            <summary>
+            Selects all CustomerAndSuppliersByCity objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_2_Search">
+            <summary>
+            Selects all CustomerAndSuppliersByCity objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock CustomerAndSuppliersByCity entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock CustomerAndSuppliersByCity entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a CustomerAndSuppliersByCity collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomerAndSuppliersByCityTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a CustomerAndSuppliersByCity collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.CurrentProductListTest">
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.CurrentProductList"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.CurrentProductList"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CurrentProductListTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_1_SelectAll">
+            <summary>
+            Selects all CurrentProductList objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_2_Search">
+            <summary>
+            Selects all CurrentProductList objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock CurrentProductList entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock CurrentProductList entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a CurrentProductList collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a CurrentProductList collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of CurrentProductList objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_2_Search_Generated">
+            <summary>
+            Searches some CurrentProductList objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock CurrentProductList entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock CurrentProductList entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a CurrentProductList collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a CurrentProductList collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CurrentProductListTest.CreateMockInstance">
+            <summary>
+              Returns a Typed CurrentProductList Entity with mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.CategoriesTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Categories"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Categories"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CategoriesTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Categories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Categories objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Categories children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_04_Update">
+            <summary>
+            Updates a mock Categories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_05_Delete">
+            <summary>
+            Delete the mock Categories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Categories entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Categories entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Categories collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Categories collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Categories Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Categories)">
+            <summary>
+              Update the Typed Categories Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.SetSpecialTestData(Northwind.Entities.Categories)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Categories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Categories objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Categories children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Categories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Categories entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Categories entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Categories entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Categories collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Categories collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Categories Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CategoriesTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Categories)">
+            <summary>
+              Update the Typed Categories Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.SummaryOfSalesByQuarterTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.SummaryOfSalesByQuarter"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.SummaryOfSalesByQuarter"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of SummaryOfSalesByQuarter objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_2_Search_Generated">
+            <summary>
+            Searches some SummaryOfSalesByQuarter objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock SummaryOfSalesByQuarter entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock SummaryOfSalesByQuarter entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a SummaryOfSalesByQuarter collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a SummaryOfSalesByQuarter collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.CreateMockInstance">
+            <summary>
+              Returns a Typed SummaryOfSalesByQuarter Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.SummaryOfSalesByQuarterTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_1_SelectAll">
+            <summary>
+            Selects all SummaryOfSalesByQuarter objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_2_Search">
+            <summary>
+            Selects all SummaryOfSalesByQuarter objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock SummaryOfSalesByQuarter entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock SummaryOfSalesByQuarter entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a SummaryOfSalesByQuarter collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByQuarterTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a SummaryOfSalesByQuarter collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.InvoicesTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Invoices"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.Invoices"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of Invoices objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_2_Search_Generated">
+            <summary>
+            Searches some Invoices objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Invoices entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Invoices entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a Invoices collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Invoices collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.CreateMockInstance">
+            <summary>
+              Returns a Typed Invoices Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.InvoicesTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_1_SelectAll">
+            <summary>
+            Selects all Invoices objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_2_Search">
+            <summary>
+            Selects all Invoices objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock Invoices entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock Invoices entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a Invoices collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.InvoicesTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a Invoices collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.CustomersTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Customers"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.Customers"/> objects (entity, collection and repository).
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.CustomersTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_01_Insert">
+            <summary>
+            Inserts a mock Customers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_02_SelectAll">
+            <summary>
+            Selects a sample of  Customers objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_03_DeepLoad">
+            <summary>
+            Deep load all Customers children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_04_Update">
+            <summary>
+            Updates a mock Customers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_05_Delete">
+            <summary>
+            Delete the mock Customers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_06_SerializeEntity">
+            <summary>
+            Serialize the mock Customers entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_07_DeserializeEntity">
+            <summary>
+            Deserialize the mock Customers entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_08_SerializeCollection">
+            <summary>
+            Serialize a Customers collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_09_DeserializeCollection">
+            <summary>
+            Deserialize a Customers collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_10_FK">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_11_IX">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_20_TestEntityHelper">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_30_TestFindByQuery">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.CreateMockInstance(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Customers Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.UpdateMockInstance(Northwind.Data.TransactionManager,Northwind.Entities.Customers)">
+            <summary>
+              Update the Typed Customers Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.SetSpecialTestData(Northwind.Entities.Customers)">
+            <summary>
+            Make any alterations necessary (i.e. for DB check constraints, special test cases, etc.)
+            </summary>
+            <param name="mock">Object to be modified</param>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>        
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_01_Insert_Generated">
+            <summary>
+            Inserts a mock Customers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_02_SelectAll_Generated">
+            <summary>
+            Selects all Customers objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_03_DeepLoad_Generated">
+            <summary>
+            Deep load all Customers children.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_04_Update_Generated">
+            <summary>
+            Updates a mock Customers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_05_Delete_Generated">
+            <summary>
+            Delete the mock Customers entity into the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_06_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock Customers entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_07_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock Customers entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_08_SerializeCollection_Generated">
+            <summary>
+            Serialize a Customers collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_09_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a Customers collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_10_FK_Generated">
+            <summary>
+            Check the foreign key dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_11_IX_Generated">
+            <summary>
+            Check the indexes dal methods.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_20_TestEntityHelper_Generated">
+            <summary>
+            Test methods exposed by the EntityHelper class.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.Step_30_TestFindByQuery_Generated">
+            <summary>
+            Test Find using the Query class
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.CreateMockInstance_Generated(Northwind.Data.TransactionManager)">
+            <summary>
+              Returns a Typed Customers Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.CustomersTest.UpdateMockInstance_Generated(Northwind.Data.TransactionManager,Northwind.Entities.Customers)">
+            <summary>
+              Update the Typed Customers Entity with modified mock values.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.SummaryOfSalesByYearTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.SummaryOfSalesByYear"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.SummaryOfSalesByYear"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of SummaryOfSalesByYear objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_2_Search_Generated">
+            <summary>
+            Searches some SummaryOfSalesByYear objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock SummaryOfSalesByYear entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock SummaryOfSalesByYear entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a SummaryOfSalesByYear collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a SummaryOfSalesByYear collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.CreateMockInstance">
+            <summary>
+              Returns a Typed SummaryOfSalesByYear Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.SummaryOfSalesByYearTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_1_SelectAll">
+            <summary>
+            Selects all SummaryOfSalesByYear objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_2_Search">
+            <summary>
+            Selects all SummaryOfSalesByYear objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock SummaryOfSalesByYear entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock SummaryOfSalesByYear entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a SummaryOfSalesByYear collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.SummaryOfSalesByYearTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a SummaryOfSalesByYear collection from a temporary file.
+            </summary>
+        </member>
+        <member name="T:Northwind.UnitTests.OrderSubtotalsTest">
+            <summary>
+            Provides tests for the and <see cref="T:Northwind.Entities.OrderSubtotals"/> objects (entity, collection and repository).
+            </summary>
+            <summary>
+            Provides tests for the <see cref="T:Northwind.Entities.OrderSubtotals"/> objects (entity, collection and repository).
+            </summary>
+            <remarks>
+            This file is generated once and will never be overwritten.
+            </remarks>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Init_Generated">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.CleanUp_Generated">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_1_SelectAll_Generated">
+            <summary>
+            Selects a page of OrderSubtotals objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_2_Search_Generated">
+            <summary>
+            Searches some OrderSubtotals objects from the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_6_SerializeEntity_Generated">
+            <summary>
+            Serialize the mock OrderSubtotals entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_7_DeserializeEntity_Generated">
+            <summary>
+            Deserialize the mock OrderSubtotals entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_8_SerializeCollection_Generated">
+            <summary>
+            Serialize a OrderSubtotals collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_9_DeserializeCollection_Generated">
+            <summary>
+            Deserialize a OrderSubtotals collection from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.CreateMockInstance">
+            <summary>
+              Returns a Typed OrderSubtotals Entity with mock values.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.UnitTests.OrderSubtotalsTest"/> instance.
+            </summary>	
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Init">
+            <summary>
+            This method is used to construct the test environment prior to running the tests.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Dispose">
+            <summary>
+            This method is used to restore the environment after the tests are completed.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_1_SelectAll">
+            <summary>
+            Selects all OrderSubtotals objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_2_Search">
+            <summary>
+            Selects all OrderSubtotals objects of the database.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_6_SerializeEntity">
+            <summary>
+            Serialize the mock OrderSubtotals entity into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_7_DeserializeEntity">
+            <summary>
+            Deserialize the mock OrderSubtotals entity from a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_8_SerializeCollection">
+            <summary>
+            Serialize a OrderSubtotals collection into a temporary file.
+            </summary>
+        </member>
+        <member name="M:Northwind.UnitTests.OrderSubtotalsTest.Step_9_DeserializeCollection">
+            <summary>
+            Deserialize a OrderSubtotals collection from a temporary file.
+            </summary>
+        </member>
+    </members>
+</doc>

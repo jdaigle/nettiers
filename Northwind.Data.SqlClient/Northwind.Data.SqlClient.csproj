@@ -1,0 +1,413 @@
+﻿
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8996A7B4-57D3-440B-A545-A701844B8C4A}</ProjectGuid>
+    <ProjectType>Local</ProjectType>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OutputType>Library</OutputType>
+    <ApplicationIcon>
+	</ApplicationIcon>
+    <AssemblyKeyContainerName>
+	</AssemblyKeyContainerName>
+    <AssemblyName>Northwind.Data.SqlClient</AssemblyName>
+    <AssemblyOriginatorKeyFile>..\Northwind.snk</AssemblyOriginatorKeyFile>
+	<SignAssembly>false</SignAssembly>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <RootNamespace>Northwind.Data.SqlClient</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject></StartupObject>
+    <FileUpgradeFlags></FileUpgradeFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Northwind.Data.SqlClient.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Northwind.Data.SqlClient.xml</DocumentationFile>
+	 <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'GenerateDebug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Northwind.Data.SqlClient.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System"/>
+	<Reference Include="System.Core">
+		<RequiredTargetFramework>3.5</RequiredTargetFramework>
+	</Reference>
+    <Reference Include="System.Web"/>
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Design"/>
+    <Reference Include="System.Xml"/>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>    
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>      
+    
+     
+	<ProjectReference Include="..\Northwind.Entities\Northwind.Entities.csproj">
+      <Name>Northwind.Entities</Name>
+      <Project>{20E43088-4618-4F4A-B8AD-FC31B50D94CD}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+	
+    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
+        <Name>Northwind.Data</Name>
+        <Project>{041C1BBE-0BFB-4D45-8125-9AB0BBC09A92}</Project>
+        <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+	
+	
+	
+    
+    	
+	
+	
+	
+	</ItemGroup>
+	
+		
+	<!-- Custom code folder: C:\src\nettiers-poc\Northwind.Data.SqlClient\App_Code -->
+	<ItemGroup>	
+		<Folder Include="App_Code\" />
+        <Compile Include="App_Code\**\*.cs">
+          <SubType>Code</SubType>
+        </Compile>		
+	</ItemGroup>
+
+	<!-- Include any user files -->
+	<ItemGroup>	
+		<Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**" >
+          <SubType>Code</SubType>
+        </Compile>		
+	</ItemGroup>
+	
+	<ItemGroup>
+			<Compile Include="Views\SqlAlphabeticalListOfProductsProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlAlphabeticalListOfProductsProviderBase.generated.cs">
+			   <DependentUpon>SqlAlphabeticalListOfProductsProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlCategorySalesFor1997Provider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlCategorySalesFor1997ProviderBase.generated.cs">
+			   <DependentUpon>SqlCategorySalesFor1997Provider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlCurrentProductListProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlCurrentProductListProviderBase.generated.cs">
+			   <DependentUpon>SqlCurrentProductListProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlCustomerAndSuppliersByCityProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlCustomerAndSuppliersByCityProviderBase.generated.cs">
+			   <DependentUpon>SqlCustomerAndSuppliersByCityProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlInvoicesProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlInvoicesProviderBase.generated.cs">
+			   <DependentUpon>SqlInvoicesProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlOrderDetailsExtendedProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlOrderDetailsExtendedProviderBase.generated.cs">
+			   <DependentUpon>SqlOrderDetailsExtendedProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlOrderSubtotalsProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlOrderSubtotalsProviderBase.generated.cs">
+			   <DependentUpon>SqlOrderSubtotalsProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlOrdersQryProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlOrdersQryProviderBase.generated.cs">
+			   <DependentUpon>SqlOrdersQryProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlProductSalesFor1997Provider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlProductSalesFor1997ProviderBase.generated.cs">
+			   <DependentUpon>SqlProductSalesFor1997Provider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlProductsAboveAveragePriceProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlProductsAboveAveragePriceProviderBase.generated.cs">
+			   <DependentUpon>SqlProductsAboveAveragePriceProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlProductsByCategoryProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlProductsByCategoryProviderBase.generated.cs">
+			   <DependentUpon>SqlProductsByCategoryProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlQuarterlyOrdersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlQuarterlyOrdersProviderBase.generated.cs">
+			   <DependentUpon>SqlQuarterlyOrdersProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSalesByCategoryProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSalesByCategoryProviderBase.generated.cs">
+			   <DependentUpon>SqlSalesByCategoryProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSalesTotalsByAmountProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSalesTotalsByAmountProviderBase.generated.cs">
+			   <DependentUpon>SqlSalesTotalsByAmountProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSummaryOfSalesByQuarterProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSummaryOfSalesByQuarterProviderBase.generated.cs">
+			   <DependentUpon>SqlSummaryOfSalesByQuarterProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSummaryOfSalesByYearProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Views\SqlSummaryOfSalesByYearProviderBase.generated.cs">
+			   <DependentUpon>SqlSummaryOfSalesByYearProvider.cs</DependentUpon>
+			   <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlOrdersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlOrdersProviderBase.generated.cs">
+			  <DependentUpon>SqlOrdersProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlSuppliersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlSuppliersProviderBase.generated.cs">
+			  <DependentUpon>SqlSuppliersProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlRegionProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlRegionProviderBase.generated.cs">
+			  <DependentUpon>SqlRegionProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlCategoriesProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlCategoriesProviderBase.generated.cs">
+			  <DependentUpon>SqlCategoriesProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlShippersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlShippersProviderBase.generated.cs">
+			  <DependentUpon>SqlShippersProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlEmployeeTerritoriesProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlEmployeeTerritoriesProviderBase.generated.cs">
+			  <DependentUpon>SqlEmployeeTerritoriesProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlEmployeesProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlEmployeesProviderBase.generated.cs">
+			  <DependentUpon>SqlEmployeesProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlTerritoriesProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlTerritoriesProviderBase.generated.cs">
+			  <DependentUpon>SqlTerritoriesProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlCustomerDemographicsProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlCustomerDemographicsProviderBase.generated.cs">
+			  <DependentUpon>SqlCustomerDemographicsProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlCustomersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlCustomersProviderBase.generated.cs">
+			  <DependentUpon>SqlCustomersProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlProductsProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlProductsProviderBase.generated.cs">
+			  <DependentUpon>SqlProductsProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlOrderDetailsProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlOrderDetailsProviderBase.generated.cs">
+			  <DependentUpon>SqlOrderDetailsProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlCustomerCustomerDemoProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlCustomerCustomerDemoProviderBase.generated.cs">
+			  <DependentUpon>SqlCustomerCustomerDemoProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		<Compile Include="..\AssemblyInfo.cs">
+		  <SubType>Code</SubType>
+		</Compile>
+			
+
+			<Compile Include="SqlNetTiersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<!--<Compile Include="SqlDataRepository.cs">
+			  <SubType>Code</SubType>
+			</Compile>-->
+						
+			<EmbeddedResource Include="Procedures.xml">
+		      <SubType>EmbeddedResource</SubType>
+		    </EmbeddedResource>
+			
+			<Compile Include="StoredProcedureProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>			
+		
+		
+
+		
+		
+		
+		
+		 <AppDesigner Include="Properties\" />
+	</ItemGroup>
+	
+	
+	
+	
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+	<PostBuildEvent>
+	</PostBuildEvent>
+  </PropertyGroup>
+
+</Project>

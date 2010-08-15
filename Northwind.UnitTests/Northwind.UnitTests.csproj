@@ -1,0 +1,392 @@
+﻿
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{031D5BAE-0BFB-4D45-8125-9AB0BBC09A92}</ProjectGuid>
+    <ProjectType>Local</ProjectType>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OutputType>Library</OutputType>
+    <ApplicationIcon>
+	</ApplicationIcon>
+    <AssemblyKeyContainerName>
+	</AssemblyKeyContainerName>
+    <AssemblyName>Northwind.UnitTests</AssemblyName>
+    <AssemblyOriginatorKeyFile>..\Northwind.snk</AssemblyOriginatorKeyFile>
+	<SignAssembly>false</SignAssembly>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <RootNamespace>Northwind.UnitTests</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject></StartupObject>
+    <FileUpgradeFlags></FileUpgradeFlags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Northwind.UnitTests.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>Northwind.UnitTests.xml</DocumentationFile>
+	 <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'GenerateDebug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Northwind.UnitTests.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System"/>
+	<Reference Include="System.Core">
+		<RequiredTargetFramework>3.5</RequiredTargetFramework>
+	</Reference>
+    <Reference Include="System.Web"/>
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Design"/>
+    <Reference Include="System.Xml"/>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+     
+	<ProjectReference Include="..\Northwind.Entities\Northwind.Entities.csproj">
+      <Name>Northwind.Entities</Name>
+      <Project>{20E43088-4618-4F4A-B8AD-FC31B50D94CD}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+	
+	
+	
+	
+    
+    
+    <!-- check the GAC ? -->
+    <Reference Include="nunit.framework, PublicKeyToken=96d09a1eb7f44a77">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nunit.framework.dll</HintPath>
+    </Reference>
+
+    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
+        <Name>Northwind.Data</Name>
+        <Project>{041C1BBE-0BFB-4D45-8125-9AB0BBC09A92}</Project>
+        <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"</Package>
+    </ProjectReference>
+	<ProjectReference Include="..\Northwind.Data.SqlClient\Northwind.Data.SqlClient.csproj">
+        <Name>Northwind.Data.SqlClient</Name>
+        <Project>{8996A7B4-57D3-440B-A545-A701844B8C4A}</Project>
+        <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+	     
+    	
+	
+	
+	
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="Northwind.UnitTests.dll.config">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="entlib.config">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+		
+	<!-- Custom code folder: C:\src\nettiers-poc\Northwind.UnitTests\App_Code -->
+	<ItemGroup>	
+		<Folder Include="App_Code\" />
+        <Compile Include="App_Code\**\*.cs">
+          <SubType>Code</SubType>
+        </Compile>		
+	</ItemGroup>
+
+	<!-- Include any user files -->
+	<ItemGroup>	
+		<Compile Include="**\*.user.*" Exclude="**\*.csproj.user;**\.svn\**" >
+          <SubType>Code</SubType>
+        </Compile>		
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Compile Include="Views\AlphabeticalListOfProductsTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\AlphabeticalListOfProductsTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>AlphabeticalListOfProductsTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\CategorySalesFor1997Test.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\CategorySalesFor1997Test.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>CategorySalesFor1997Test.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\CurrentProductListTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\CurrentProductListTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>CurrentProductListTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\CustomerAndSuppliersByCityTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\CustomerAndSuppliersByCityTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>CustomerAndSuppliersByCityTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\InvoicesTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\InvoicesTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>InvoicesTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\OrderDetailsExtendedTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\OrderDetailsExtendedTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>OrderDetailsExtendedTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\OrderSubtotalsTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\OrderSubtotalsTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>OrderSubtotalsTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\OrdersQryTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\OrdersQryTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>OrdersQryTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\ProductSalesFor1997Test.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\ProductSalesFor1997Test.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>ProductSalesFor1997Test.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\ProductsAboveAveragePriceTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\ProductsAboveAveragePriceTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>ProductsAboveAveragePriceTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\ProductsByCategoryTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\ProductsByCategoryTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>ProductsByCategoryTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\QuarterlyOrdersTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\QuarterlyOrdersTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>QuarterlyOrdersTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\SalesByCategoryTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\SalesByCategoryTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>SalesByCategoryTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\SalesTotalsByAmountTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\SalesTotalsByAmountTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>SalesTotalsByAmountTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\SummaryOfSalesByQuarterTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\SummaryOfSalesByQuarterTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>SummaryOfSalesByQuarterTest.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Views\SummaryOfSalesByYearTest.cs">
+			<SubType>Code</SubType>
+		</Compile>					
+		<Compile Include="Views\SummaryOfSalesByYearTest.generated.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>SummaryOfSalesByYearTest.cs</DependentUpon>
+		</Compile>
+			<Compile Include="OrdersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="OrdersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>OrdersTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="SuppliersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="SuppliersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>SuppliersTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="RegionTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="RegionTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>RegionTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="CategoriesTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="CategoriesTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>CategoriesTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="ShippersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="ShippersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>ShippersTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="EmployeeTerritoriesTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="EmployeeTerritoriesTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>EmployeeTerritoriesTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="EmployeesTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="EmployeesTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>EmployeesTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="TerritoriesTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="TerritoriesTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>TerritoriesTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="CustomerDemographicsTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="CustomerDemographicsTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>CustomerDemographicsTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="CustomersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="CustomersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>CustomersTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="ProductsTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="ProductsTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>ProductsTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="OrderDetailsTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="OrderDetailsTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>OrderDetailsTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="CustomerCustomerDemoTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="CustomerCustomerDemoTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>CustomerCustomerDemoTest.cs</DependentUpon>
+			</Compile>
+		<Compile Include="..\AssemblyInfo.cs">
+		  <SubType>Code</SubType>
+		</Compile>
+			
+
+		
+		
+
+			<Compile Include="TestUtility.cs">
+			  <SubType>Code</SubType>
+			</Compile>			
+		
+		
+		
+		
+		 <AppDesigner Include="Properties\" />
+	</ItemGroup>
+	
+	
+	
+	
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+	<PostBuildEvent>
+	</PostBuildEvent>
+  </PropertyGroup>
+
+</Project>

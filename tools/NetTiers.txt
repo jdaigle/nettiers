@@ -1,0 +1,4 @@
+﻿Generation complete. Execution time: 00:00:11.8556781
+You can view current documentation @ http://docs.netTiers.com
+Generated solution can be found here: 
+file:\\\C:\src\nettiers-poc\Northwind.sln
