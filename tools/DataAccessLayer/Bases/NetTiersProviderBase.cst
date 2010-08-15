@@ -457,11 +457,13 @@ namespace <%=DALNameSpace%>.Bases
             set { this.generateStatistics = value; }
         }
 
-        private Stopwatch stopwatch = new Stopwatch();
+        private Stopwatch stopwatch;
         
         protected virtual void HandlerStatisticsDataRequesting(object sender, CommandEventArgs e) {
             if (!GenerateStastics)
                 return;
+            if (stopwatch == null)
+                stopwatch = new Stopwatch();
             stopwatch.Reset();
             stopwatch.Start();
         }
