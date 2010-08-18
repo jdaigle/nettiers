@@ -31,9 +31,9 @@ namespace <%=DALNameSpace%>.Bases
 	{
 		private Type entityCreationalFactoryType = null;
         private static object syncObject = new object();
-        private bool enableEntityTracking = true;
+        private bool enableEntityTracking = false;
         private bool enableListTracking = false;
-        private bool useEntityFactory = true;
+        private bool useEntityFactory = false;
 		private bool enableMethodAuthorization = false;
         private int defaultCommandTimeout = 30;
         private bool generateStatistics = false;

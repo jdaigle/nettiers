@@ -49,7 +49,6 @@ namespace <%=NameSpace%>
 	<% } %>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("<%=abstractClassName%>")]
 	public abstract partial class <%=abstractClassName%> : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		
