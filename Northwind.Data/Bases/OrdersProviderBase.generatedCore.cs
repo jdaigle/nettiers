@@ -792,20 +792,20 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.OrderId = (System.Int32)reader[((int)OrdersColumn.OrderId - 1)];
-					c.CustomerId = (reader.IsDBNull(((int)OrdersColumn.CustomerId - 1)))?null:(System.String)reader[((int)OrdersColumn.CustomerId - 1)];
-					c.EmployeeId = (reader.IsDBNull(((int)OrdersColumn.EmployeeId - 1)))?null:(System.Int32?)reader[((int)OrdersColumn.EmployeeId - 1)];
-					c.OrderDate = (reader.IsDBNull(((int)OrdersColumn.OrderDate - 1)))?null:(System.DateTime?)reader[((int)OrdersColumn.OrderDate - 1)];
-					c.RequiredDate = (reader.IsDBNull(((int)OrdersColumn.RequiredDate - 1)))?null:(System.DateTime?)reader[((int)OrdersColumn.RequiredDate - 1)];
-					c.ShippedDate = (reader.IsDBNull(((int)OrdersColumn.ShippedDate - 1)))?null:(System.DateTime?)reader[((int)OrdersColumn.ShippedDate - 1)];
-					c.ShipVia = (reader.IsDBNull(((int)OrdersColumn.ShipVia - 1)))?null:(System.Int32?)reader[((int)OrdersColumn.ShipVia - 1)];
-					c.Freight = (reader.IsDBNull(((int)OrdersColumn.Freight - 1)))?null:(System.Decimal?)reader[((int)OrdersColumn.Freight - 1)];
-					c.ShipName = (reader.IsDBNull(((int)OrdersColumn.ShipName - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipName - 1)];
-					c.ShipAddress = (reader.IsDBNull(((int)OrdersColumn.ShipAddress - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipAddress - 1)];
-					c.ShipCity = (reader.IsDBNull(((int)OrdersColumn.ShipCity - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipCity - 1)];
-					c.ShipRegion = (reader.IsDBNull(((int)OrdersColumn.ShipRegion - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipRegion - 1)];
-					c.ShipPostalCode = (reader.IsDBNull(((int)OrdersColumn.ShipPostalCode - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipPostalCode - 1)];
-					c.ShipCountry = (reader.IsDBNull(((int)OrdersColumn.ShipCountry - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipCountry - 1)];
+					c.OrderId = (System.Int32)reader["OrderID"];
+					c.CustomerId = reader.IsDBNull(reader.GetOrdinal("CustomerID")) ? null : (System.String)reader["CustomerID"];
+					c.EmployeeId = reader.IsDBNull(reader.GetOrdinal("EmployeeID")) ? null : (System.Int32?)reader["EmployeeID"];
+					c.OrderDate = reader.IsDBNull(reader.GetOrdinal("OrderDate")) ? null : (System.DateTime?)reader["OrderDate"];
+					c.RequiredDate = reader.IsDBNull(reader.GetOrdinal("RequiredDate")) ? null : (System.DateTime?)reader["RequiredDate"];
+					c.ShippedDate = reader.IsDBNull(reader.GetOrdinal("ShippedDate")) ? null : (System.DateTime?)reader["ShippedDate"];
+					c.ShipVia = reader.IsDBNull(reader.GetOrdinal("ShipVia")) ? null : (System.Int32?)reader["ShipVia"];
+					c.Freight = reader.IsDBNull(reader.GetOrdinal("Freight")) ? null : (System.Decimal?)reader["Freight"];
+					c.ShipName = reader.IsDBNull(reader.GetOrdinal("ShipName")) ? null : (System.String)reader["ShipName"];
+					c.ShipAddress = reader.IsDBNull(reader.GetOrdinal("ShipAddress")) ? null : (System.String)reader["ShipAddress"];
+					c.ShipCity = reader.IsDBNull(reader.GetOrdinal("ShipCity")) ? null : (System.String)reader["ShipCity"];
+					c.ShipRegion = reader.IsDBNull(reader.GetOrdinal("ShipRegion")) ? null : (System.String)reader["ShipRegion"];
+					c.ShipPostalCode = reader.IsDBNull(reader.GetOrdinal("ShipPostalCode")) ? null : (System.String)reader["ShipPostalCode"];
+					c.ShipCountry = reader.IsDBNull(reader.GetOrdinal("ShipCountry")) ? null : (System.String)reader["ShipCountry"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -823,20 +823,20 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.OrderId = (System.Int32)reader[((int)OrdersColumn.OrderId - 1)];
-			entity.CustomerId = (reader.IsDBNull(((int)OrdersColumn.CustomerId - 1)))?null:(System.String)reader[((int)OrdersColumn.CustomerId - 1)];
-			entity.EmployeeId = (reader.IsDBNull(((int)OrdersColumn.EmployeeId - 1)))?null:(System.Int32?)reader[((int)OrdersColumn.EmployeeId - 1)];
-			entity.OrderDate = (reader.IsDBNull(((int)OrdersColumn.OrderDate - 1)))?null:(System.DateTime?)reader[((int)OrdersColumn.OrderDate - 1)];
-			entity.RequiredDate = (reader.IsDBNull(((int)OrdersColumn.RequiredDate - 1)))?null:(System.DateTime?)reader[((int)OrdersColumn.RequiredDate - 1)];
-			entity.ShippedDate = (reader.IsDBNull(((int)OrdersColumn.ShippedDate - 1)))?null:(System.DateTime?)reader[((int)OrdersColumn.ShippedDate - 1)];
-			entity.ShipVia = (reader.IsDBNull(((int)OrdersColumn.ShipVia - 1)))?null:(System.Int32?)reader[((int)OrdersColumn.ShipVia - 1)];
-			entity.Freight = (reader.IsDBNull(((int)OrdersColumn.Freight - 1)))?null:(System.Decimal?)reader[((int)OrdersColumn.Freight - 1)];
-			entity.ShipName = (reader.IsDBNull(((int)OrdersColumn.ShipName - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipName - 1)];
-			entity.ShipAddress = (reader.IsDBNull(((int)OrdersColumn.ShipAddress - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipAddress - 1)];
-			entity.ShipCity = (reader.IsDBNull(((int)OrdersColumn.ShipCity - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipCity - 1)];
-			entity.ShipRegion = (reader.IsDBNull(((int)OrdersColumn.ShipRegion - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipRegion - 1)];
-			entity.ShipPostalCode = (reader.IsDBNull(((int)OrdersColumn.ShipPostalCode - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipPostalCode - 1)];
-			entity.ShipCountry = (reader.IsDBNull(((int)OrdersColumn.ShipCountry - 1)))?null:(System.String)reader[((int)OrdersColumn.ShipCountry - 1)];
+			entity.OrderId = (System.Int32)reader["OrderID"];
+			entity.CustomerId = reader.IsDBNull(reader.GetOrdinal("CustomerID")) ? null : (System.String)reader["CustomerID"];
+			entity.EmployeeId = reader.IsDBNull(reader.GetOrdinal("EmployeeID")) ? null : (System.Int32?)reader["EmployeeID"];
+			entity.OrderDate = reader.IsDBNull(reader.GetOrdinal("OrderDate")) ? null : (System.DateTime?)reader["OrderDate"];
+			entity.RequiredDate = reader.IsDBNull(reader.GetOrdinal("RequiredDate")) ? null : (System.DateTime?)reader["RequiredDate"];
+			entity.ShippedDate = reader.IsDBNull(reader.GetOrdinal("ShippedDate")) ? null : (System.DateTime?)reader["ShippedDate"];
+			entity.ShipVia = reader.IsDBNull(reader.GetOrdinal("ShipVia")) ? null : (System.Int32?)reader["ShipVia"];
+			entity.Freight = reader.IsDBNull(reader.GetOrdinal("Freight")) ? null : (System.Decimal?)reader["Freight"];
+			entity.ShipName = reader.IsDBNull(reader.GetOrdinal("ShipName")) ? null : (System.String)reader["ShipName"];
+			entity.ShipAddress = reader.IsDBNull(reader.GetOrdinal("ShipAddress")) ? null : (System.String)reader["ShipAddress"];
+			entity.ShipCity = reader.IsDBNull(reader.GetOrdinal("ShipCity")) ? null : (System.String)reader["ShipCity"];
+			entity.ShipRegion = reader.IsDBNull(reader.GetOrdinal("ShipRegion")) ? null : (System.String)reader["ShipRegion"];
+			entity.ShipPostalCode = reader.IsDBNull(reader.GetOrdinal("ShipPostalCode")) ? null : (System.String)reader["ShipPostalCode"];
+			entity.ShipCountry = reader.IsDBNull(reader.GetOrdinal("ShipCountry")) ? null : (System.String)reader["ShipCountry"];
 			entity.AcceptChanges();
 		}
 		

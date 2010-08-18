@@ -561,24 +561,24 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.EmployeeId = (System.Int32)reader[((int)EmployeesColumn.EmployeeId - 1)];
-					c.LastName = (System.String)reader[((int)EmployeesColumn.LastName - 1)];
-					c.FirstName = (System.String)reader[((int)EmployeesColumn.FirstName - 1)];
-					c.Title = (reader.IsDBNull(((int)EmployeesColumn.Title - 1)))?null:(System.String)reader[((int)EmployeesColumn.Title - 1)];
-					c.TitleOfCourtesy = (reader.IsDBNull(((int)EmployeesColumn.TitleOfCourtesy - 1)))?null:(System.String)reader[((int)EmployeesColumn.TitleOfCourtesy - 1)];
-					c.BirthDate = (reader.IsDBNull(((int)EmployeesColumn.BirthDate - 1)))?null:(System.DateTime?)reader[((int)EmployeesColumn.BirthDate - 1)];
-					c.HireDate = (reader.IsDBNull(((int)EmployeesColumn.HireDate - 1)))?null:(System.DateTime?)reader[((int)EmployeesColumn.HireDate - 1)];
-					c.Address = (reader.IsDBNull(((int)EmployeesColumn.Address - 1)))?null:(System.String)reader[((int)EmployeesColumn.Address - 1)];
-					c.City = (reader.IsDBNull(((int)EmployeesColumn.City - 1)))?null:(System.String)reader[((int)EmployeesColumn.City - 1)];
-					c.Region = (reader.IsDBNull(((int)EmployeesColumn.Region - 1)))?null:(System.String)reader[((int)EmployeesColumn.Region - 1)];
-					c.PostalCode = (reader.IsDBNull(((int)EmployeesColumn.PostalCode - 1)))?null:(System.String)reader[((int)EmployeesColumn.PostalCode - 1)];
-					c.Country = (reader.IsDBNull(((int)EmployeesColumn.Country - 1)))?null:(System.String)reader[((int)EmployeesColumn.Country - 1)];
-					c.HomePhone = (reader.IsDBNull(((int)EmployeesColumn.HomePhone - 1)))?null:(System.String)reader[((int)EmployeesColumn.HomePhone - 1)];
-					c.Extension = (reader.IsDBNull(((int)EmployeesColumn.Extension - 1)))?null:(System.String)reader[((int)EmployeesColumn.Extension - 1)];
-					c.Photo = (reader.IsDBNull(((int)EmployeesColumn.Photo - 1)))?null:(System.Byte[])reader[((int)EmployeesColumn.Photo - 1)];
-					c.Notes = (reader.IsDBNull(((int)EmployeesColumn.Notes - 1)))?null:(System.String)reader[((int)EmployeesColumn.Notes - 1)];
-					c.ReportsTo = (reader.IsDBNull(((int)EmployeesColumn.ReportsTo - 1)))?null:(System.Int32?)reader[((int)EmployeesColumn.ReportsTo - 1)];
-					c.PhotoPath = (reader.IsDBNull(((int)EmployeesColumn.PhotoPath - 1)))?null:(System.String)reader[((int)EmployeesColumn.PhotoPath - 1)];
+					c.EmployeeId = (System.Int32)reader["EmployeeID"];
+					c.LastName = (System.String)reader["LastName"];
+					c.FirstName = (System.String)reader["FirstName"];
+					c.Title = reader.IsDBNull(reader.GetOrdinal("Title")) ? null : (System.String)reader["Title"];
+					c.TitleOfCourtesy = reader.IsDBNull(reader.GetOrdinal("TitleOfCourtesy")) ? null : (System.String)reader["TitleOfCourtesy"];
+					c.BirthDate = reader.IsDBNull(reader.GetOrdinal("BirthDate")) ? null : (System.DateTime?)reader["BirthDate"];
+					c.HireDate = reader.IsDBNull(reader.GetOrdinal("HireDate")) ? null : (System.DateTime?)reader["HireDate"];
+					c.Address = reader.IsDBNull(reader.GetOrdinal("Address")) ? null : (System.String)reader["Address"];
+					c.City = reader.IsDBNull(reader.GetOrdinal("City")) ? null : (System.String)reader["City"];
+					c.Region = reader.IsDBNull(reader.GetOrdinal("Region")) ? null : (System.String)reader["Region"];
+					c.PostalCode = reader.IsDBNull(reader.GetOrdinal("PostalCode")) ? null : (System.String)reader["PostalCode"];
+					c.Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : (System.String)reader["Country"];
+					c.HomePhone = reader.IsDBNull(reader.GetOrdinal("HomePhone")) ? null : (System.String)reader["HomePhone"];
+					c.Extension = reader.IsDBNull(reader.GetOrdinal("Extension")) ? null : (System.String)reader["Extension"];
+					c.Photo = reader.IsDBNull(reader.GetOrdinal("Photo")) ? null : (System.Byte[])reader["Photo"];
+					c.Notes = reader.IsDBNull(reader.GetOrdinal("Notes")) ? null : (System.String)reader["Notes"];
+					c.ReportsTo = reader.IsDBNull(reader.GetOrdinal("ReportsTo")) ? null : (System.Int32?)reader["ReportsTo"];
+					c.PhotoPath = reader.IsDBNull(reader.GetOrdinal("PhotoPath")) ? null : (System.String)reader["PhotoPath"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -596,24 +596,24 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.EmployeeId = (System.Int32)reader[((int)EmployeesColumn.EmployeeId - 1)];
-			entity.LastName = (System.String)reader[((int)EmployeesColumn.LastName - 1)];
-			entity.FirstName = (System.String)reader[((int)EmployeesColumn.FirstName - 1)];
-			entity.Title = (reader.IsDBNull(((int)EmployeesColumn.Title - 1)))?null:(System.String)reader[((int)EmployeesColumn.Title - 1)];
-			entity.TitleOfCourtesy = (reader.IsDBNull(((int)EmployeesColumn.TitleOfCourtesy - 1)))?null:(System.String)reader[((int)EmployeesColumn.TitleOfCourtesy - 1)];
-			entity.BirthDate = (reader.IsDBNull(((int)EmployeesColumn.BirthDate - 1)))?null:(System.DateTime?)reader[((int)EmployeesColumn.BirthDate - 1)];
-			entity.HireDate = (reader.IsDBNull(((int)EmployeesColumn.HireDate - 1)))?null:(System.DateTime?)reader[((int)EmployeesColumn.HireDate - 1)];
-			entity.Address = (reader.IsDBNull(((int)EmployeesColumn.Address - 1)))?null:(System.String)reader[((int)EmployeesColumn.Address - 1)];
-			entity.City = (reader.IsDBNull(((int)EmployeesColumn.City - 1)))?null:(System.String)reader[((int)EmployeesColumn.City - 1)];
-			entity.Region = (reader.IsDBNull(((int)EmployeesColumn.Region - 1)))?null:(System.String)reader[((int)EmployeesColumn.Region - 1)];
-			entity.PostalCode = (reader.IsDBNull(((int)EmployeesColumn.PostalCode - 1)))?null:(System.String)reader[((int)EmployeesColumn.PostalCode - 1)];
-			entity.Country = (reader.IsDBNull(((int)EmployeesColumn.Country - 1)))?null:(System.String)reader[((int)EmployeesColumn.Country - 1)];
-			entity.HomePhone = (reader.IsDBNull(((int)EmployeesColumn.HomePhone - 1)))?null:(System.String)reader[((int)EmployeesColumn.HomePhone - 1)];
-			entity.Extension = (reader.IsDBNull(((int)EmployeesColumn.Extension - 1)))?null:(System.String)reader[((int)EmployeesColumn.Extension - 1)];
-			entity.Photo = (reader.IsDBNull(((int)EmployeesColumn.Photo - 1)))?null:(System.Byte[])reader[((int)EmployeesColumn.Photo - 1)];
-			entity.Notes = (reader.IsDBNull(((int)EmployeesColumn.Notes - 1)))?null:(System.String)reader[((int)EmployeesColumn.Notes - 1)];
-			entity.ReportsTo = (reader.IsDBNull(((int)EmployeesColumn.ReportsTo - 1)))?null:(System.Int32?)reader[((int)EmployeesColumn.ReportsTo - 1)];
-			entity.PhotoPath = (reader.IsDBNull(((int)EmployeesColumn.PhotoPath - 1)))?null:(System.String)reader[((int)EmployeesColumn.PhotoPath - 1)];
+			entity.EmployeeId = (System.Int32)reader["EmployeeID"];
+			entity.LastName = (System.String)reader["LastName"];
+			entity.FirstName = (System.String)reader["FirstName"];
+			entity.Title = reader.IsDBNull(reader.GetOrdinal("Title")) ? null : (System.String)reader["Title"];
+			entity.TitleOfCourtesy = reader.IsDBNull(reader.GetOrdinal("TitleOfCourtesy")) ? null : (System.String)reader["TitleOfCourtesy"];
+			entity.BirthDate = reader.IsDBNull(reader.GetOrdinal("BirthDate")) ? null : (System.DateTime?)reader["BirthDate"];
+			entity.HireDate = reader.IsDBNull(reader.GetOrdinal("HireDate")) ? null : (System.DateTime?)reader["HireDate"];
+			entity.Address = reader.IsDBNull(reader.GetOrdinal("Address")) ? null : (System.String)reader["Address"];
+			entity.City = reader.IsDBNull(reader.GetOrdinal("City")) ? null : (System.String)reader["City"];
+			entity.Region = reader.IsDBNull(reader.GetOrdinal("Region")) ? null : (System.String)reader["Region"];
+			entity.PostalCode = reader.IsDBNull(reader.GetOrdinal("PostalCode")) ? null : (System.String)reader["PostalCode"];
+			entity.Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : (System.String)reader["Country"];
+			entity.HomePhone = reader.IsDBNull(reader.GetOrdinal("HomePhone")) ? null : (System.String)reader["HomePhone"];
+			entity.Extension = reader.IsDBNull(reader.GetOrdinal("Extension")) ? null : (System.String)reader["Extension"];
+			entity.Photo = reader.IsDBNull(reader.GetOrdinal("Photo")) ? null : (System.Byte[])reader["Photo"];
+			entity.Notes = reader.IsDBNull(reader.GetOrdinal("Notes")) ? null : (System.String)reader["Notes"];
+			entity.ReportsTo = reader.IsDBNull(reader.GetOrdinal("ReportsTo")) ? null : (System.Int32?)reader["ReportsTo"];
+			entity.PhotoPath = reader.IsDBNull(reader.GetOrdinal("PhotoPath")) ? null : (System.String)reader["PhotoPath"];
 			entity.AcceptChanges();
 		}
 		

@@ -105,7 +105,7 @@ public abstract partial class SqlOrderDetailsExtendedProviderBase : OrderDetails
 	public override VList<OrderDetailsExtended> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 	{
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.OrderDetailsExtended_Get_List", _useStoredProcedure);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_OrderDetailsExtended_Get_List", _useStoredProcedure);
 		
 		IDataReader reader = null;
 		//Create Collection
@@ -159,7 +159,7 @@ public abstract partial class SqlOrderDetailsExtendedProviderBase : OrderDetails
 	public override VList<OrderDetailsExtended> Get(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 	{
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.OrderDetailsExtended_Get", _useStoredProcedure);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_OrderDetailsExtended_Get", _useStoredProcedure);
 
 		database.AddInParameter(commandWrapper, "@WhereClause", DbType.String, whereClause);
 		database.AddInParameter(commandWrapper, "@OrderBy", DbType.String, orderBy);
@@ -226,7 +226,7 @@ public abstract partial class SqlOrderDetailsExtendedProviderBase : OrderDetails
 			filter = parameters.GetParameters();
 			
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.OrderDetailsExtended_Find_Dynamic", typeof(OrderDetailsExtendedColumn), filter, orderBy, start, pageLength);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_OrderDetailsExtended_Find_Dynamic", typeof(OrderDetailsExtendedColumn), filter, orderBy, start, pageLength);
 		
 		SqlFilterParameter param;
 

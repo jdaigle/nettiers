@@ -17,7 +17,6 @@ namespace Northwind.Entities
 	///</summary>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("QuarterlyOrdersBase")]
 	public abstract partial class QuarterlyOrdersBase : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		

@@ -17,7 +17,6 @@ namespace Northwind.Entities
 	///</summary>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("ProductsAboveAveragePriceBase")]
 	public abstract partial class ProductsAboveAveragePriceBase : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		

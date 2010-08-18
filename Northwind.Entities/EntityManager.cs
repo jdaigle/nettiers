@@ -87,12 +87,12 @@ namespace Northwind.Entities
 			{
 				//Generated Table Entities Type
                 Type defaultType = typeof(TEntity);
-				bool isCacheable = defaultType.GetInterface("IEntityCacheItem") != null;
-	
-				//see if entity is cachable, if IEntityCacheItem
-				//retrieve from cache.
-				if (isCacheable)
-                    entity = EntityCache.GetItem<TEntity>(key.ToString());
+				//bool isCacheable = defaultType.GetInterface("IEntityCacheItem") != null;
+	      //
+				////see if entity is cachable, if IEntityCacheItem
+				////retrieve from cache.
+				//if (isCacheable)
+        //            entity = EntityCache.GetItem<TEntity>(key.ToString());
 	
 				if (entity != null)
 					return entity;
@@ -127,9 +127,9 @@ namespace Northwind.Entities
 				if (!entity.IsEntityTracked)
 					StartTracking(key, entity, isLocatorEnabled);
 	
-				//add entity to Cache if IEntityCacheItem
-				if (entity.GetType().GetInterface("IEntityCacheItem") != null)
-					EntityCache.AddCache(key, entity);
+				////add entity to Cache if IEntityCacheItem
+				//if (entity.GetType().GetInterface("IEntityCacheItem") != null)
+				//	EntityCache.AddCache(key, entity);
 			}
 
             return entity;

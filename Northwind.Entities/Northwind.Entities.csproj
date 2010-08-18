@@ -97,26 +97,6 @@
     <Reference Include="System.Xml"/>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
-	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>    
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>    
      
 	
 	
@@ -130,7 +110,7 @@
 	</ItemGroup>
 	
 		
-	<!-- Custom code folder: C:\src\nettiers-poc\Northwind.Entities\App_Code -->
+	<!-- Custom code folder: C:\src\nettiers\Northwind.Entities\App_Code -->
 	<ItemGroup>	
 		<Folder Include="App_Code\" />
         <Compile Include="App_Code\**\*.cs">
@@ -274,32 +254,6 @@
 			  <SubType>Code</SubType>
 			</Compile>
 						
-			<Compile Include="Orders.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="OrdersBase.generated.cs">
-			  <DependentUpon>Orders.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IOrders.cs">
-			  <DependentUpon>Orders.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Suppliers.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SuppliersBase.generated.cs">
-			  <DependentUpon>Suppliers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ISuppliers.cs">
-			  <DependentUpon>Suppliers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
 			<Compile Include="Region.cs">
 			  <SubType>Code</SubType>
 			</Compile>
@@ -309,58 +263,6 @@
 			</Compile>
 			<Compile Include="IRegion.cs">
 			  <DependentUpon>Region.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Categories.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="CategoriesBase.generated.cs">
-			  <DependentUpon>Categories.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ICategories.cs">
-			  <DependentUpon>Categories.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Shippers.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ShippersBase.generated.cs">
-			  <DependentUpon>Shippers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IShippers.cs">
-			  <DependentUpon>Shippers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="EmployeeTerritories.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="EmployeeTerritoriesBase.generated.cs">
-			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IEmployeeTerritories.cs">
-			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Employees.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="EmployeesBase.generated.cs">
-			  <DependentUpon>Employees.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IEmployees.cs">
-			  <DependentUpon>Employees.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -378,15 +280,28 @@
 			</Compile>
 		
 		
-			<Compile Include="CustomerDemographics.cs">
+			<Compile Include="Employees.cs">
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="CustomerDemographicsBase.generated.cs">
-			  <DependentUpon>CustomerDemographics.cs</DependentUpon>
+			<Compile Include="EmployeesBase.generated.cs">
+			  <DependentUpon>Employees.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="ICustomerDemographics.cs">
-			  <DependentUpon>CustomerDemographics.cs</DependentUpon>
+			<Compile Include="IEmployees.cs">
+			  <DependentUpon>Employees.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Suppliers.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SuppliersBase.generated.cs">
+			  <DependentUpon>Suppliers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ISuppliers.cs">
+			  <DependentUpon>Suppliers.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -404,28 +319,28 @@
 			</Compile>
 		
 		
-			<Compile Include="Products.cs">
+			<Compile Include="Categories.cs">
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="ProductsBase.generated.cs">
-			  <DependentUpon>Products.cs</DependentUpon>
+			<Compile Include="CategoriesBase.generated.cs">
+			  <DependentUpon>Categories.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="IProducts.cs">
-			  <DependentUpon>Products.cs</DependentUpon>
+			<Compile Include="ICategories.cs">
+			  <DependentUpon>Categories.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
 		
-			<Compile Include="OrderDetails.cs">
+			<Compile Include="CustomerDemographics.cs">
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="OrderDetailsBase.generated.cs">
-			  <DependentUpon>OrderDetails.cs</DependentUpon>
+			<Compile Include="CustomerDemographicsBase.generated.cs">
+			  <DependentUpon>CustomerDemographics.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="IOrderDetails.cs">
-			  <DependentUpon>OrderDetails.cs</DependentUpon>
+			<Compile Include="ICustomerDemographics.cs">
+			  <DependentUpon>CustomerDemographics.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -439,6 +354,71 @@
 			</Compile>
 			<Compile Include="ICustomerCustomerDemo.cs">
 			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Shippers.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ShippersBase.generated.cs">
+			  <DependentUpon>Shippers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IShippers.cs">
+			  <DependentUpon>Shippers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Products.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ProductsBase.generated.cs">
+			  <DependentUpon>Products.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IProducts.cs">
+			  <DependentUpon>Products.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Orders.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="OrdersBase.generated.cs">
+			  <DependentUpon>Orders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IOrders.cs">
+			  <DependentUpon>Orders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="EmployeeTerritories.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EmployeeTerritoriesBase.generated.cs">
+			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEmployeeTerritories.cs">
+			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="OrderDetails.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="OrderDetailsBase.generated.cs">
+			  <DependentUpon>OrderDetails.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IOrderDetails.cs">
+			  <DependentUpon>OrderDetails.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -508,13 +488,7 @@
 			</Compile>		
 			<Compile Include="EntityManager.cs">
 			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IEntityCacheItem.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="EntityCache.cs">
-			  <SubType>Code</SubType>
-			</Compile>
+			</Compile>	
 			<Compile Include="GenericTypeConverter.cs">
 			  <SubType>Code</SubType>
 			</Compile>

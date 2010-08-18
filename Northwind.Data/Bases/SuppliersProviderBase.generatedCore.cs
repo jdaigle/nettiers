@@ -377,18 +377,18 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.SupplierId = (System.Int32)reader[((int)SuppliersColumn.SupplierId - 1)];
-					c.CompanyName = (System.String)reader[((int)SuppliersColumn.CompanyName - 1)];
-					c.ContactName = (reader.IsDBNull(((int)SuppliersColumn.ContactName - 1)))?null:(System.String)reader[((int)SuppliersColumn.ContactName - 1)];
-					c.ContactTitle = (reader.IsDBNull(((int)SuppliersColumn.ContactTitle - 1)))?null:(System.String)reader[((int)SuppliersColumn.ContactTitle - 1)];
-					c.Address = (reader.IsDBNull(((int)SuppliersColumn.Address - 1)))?null:(System.String)reader[((int)SuppliersColumn.Address - 1)];
-					c.City = (reader.IsDBNull(((int)SuppliersColumn.City - 1)))?null:(System.String)reader[((int)SuppliersColumn.City - 1)];
-					c.Region = (reader.IsDBNull(((int)SuppliersColumn.Region - 1)))?null:(System.String)reader[((int)SuppliersColumn.Region - 1)];
-					c.PostalCode = (reader.IsDBNull(((int)SuppliersColumn.PostalCode - 1)))?null:(System.String)reader[((int)SuppliersColumn.PostalCode - 1)];
-					c.Country = (reader.IsDBNull(((int)SuppliersColumn.Country - 1)))?null:(System.String)reader[((int)SuppliersColumn.Country - 1)];
-					c.Phone = (reader.IsDBNull(((int)SuppliersColumn.Phone - 1)))?null:(System.String)reader[((int)SuppliersColumn.Phone - 1)];
-					c.Fax = (reader.IsDBNull(((int)SuppliersColumn.Fax - 1)))?null:(System.String)reader[((int)SuppliersColumn.Fax - 1)];
-					c.HomePage = (reader.IsDBNull(((int)SuppliersColumn.HomePage - 1)))?null:(System.String)reader[((int)SuppliersColumn.HomePage - 1)];
+					c.SupplierId = (System.Int32)reader["SupplierID"];
+					c.CompanyName = (System.String)reader["CompanyName"];
+					c.ContactName = reader.IsDBNull(reader.GetOrdinal("ContactName")) ? null : (System.String)reader["ContactName"];
+					c.ContactTitle = reader.IsDBNull(reader.GetOrdinal("ContactTitle")) ? null : (System.String)reader["ContactTitle"];
+					c.Address = reader.IsDBNull(reader.GetOrdinal("Address")) ? null : (System.String)reader["Address"];
+					c.City = reader.IsDBNull(reader.GetOrdinal("City")) ? null : (System.String)reader["City"];
+					c.Region = reader.IsDBNull(reader.GetOrdinal("Region")) ? null : (System.String)reader["Region"];
+					c.PostalCode = reader.IsDBNull(reader.GetOrdinal("PostalCode")) ? null : (System.String)reader["PostalCode"];
+					c.Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : (System.String)reader["Country"];
+					c.Phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : (System.String)reader["Phone"];
+					c.Fax = reader.IsDBNull(reader.GetOrdinal("Fax")) ? null : (System.String)reader["Fax"];
+					c.HomePage = reader.IsDBNull(reader.GetOrdinal("HomePage")) ? null : (System.String)reader["HomePage"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -406,18 +406,18 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.SupplierId = (System.Int32)reader[((int)SuppliersColumn.SupplierId - 1)];
-			entity.CompanyName = (System.String)reader[((int)SuppliersColumn.CompanyName - 1)];
-			entity.ContactName = (reader.IsDBNull(((int)SuppliersColumn.ContactName - 1)))?null:(System.String)reader[((int)SuppliersColumn.ContactName - 1)];
-			entity.ContactTitle = (reader.IsDBNull(((int)SuppliersColumn.ContactTitle - 1)))?null:(System.String)reader[((int)SuppliersColumn.ContactTitle - 1)];
-			entity.Address = (reader.IsDBNull(((int)SuppliersColumn.Address - 1)))?null:(System.String)reader[((int)SuppliersColumn.Address - 1)];
-			entity.City = (reader.IsDBNull(((int)SuppliersColumn.City - 1)))?null:(System.String)reader[((int)SuppliersColumn.City - 1)];
-			entity.Region = (reader.IsDBNull(((int)SuppliersColumn.Region - 1)))?null:(System.String)reader[((int)SuppliersColumn.Region - 1)];
-			entity.PostalCode = (reader.IsDBNull(((int)SuppliersColumn.PostalCode - 1)))?null:(System.String)reader[((int)SuppliersColumn.PostalCode - 1)];
-			entity.Country = (reader.IsDBNull(((int)SuppliersColumn.Country - 1)))?null:(System.String)reader[((int)SuppliersColumn.Country - 1)];
-			entity.Phone = (reader.IsDBNull(((int)SuppliersColumn.Phone - 1)))?null:(System.String)reader[((int)SuppliersColumn.Phone - 1)];
-			entity.Fax = (reader.IsDBNull(((int)SuppliersColumn.Fax - 1)))?null:(System.String)reader[((int)SuppliersColumn.Fax - 1)];
-			entity.HomePage = (reader.IsDBNull(((int)SuppliersColumn.HomePage - 1)))?null:(System.String)reader[((int)SuppliersColumn.HomePage - 1)];
+			entity.SupplierId = (System.Int32)reader["SupplierID"];
+			entity.CompanyName = (System.String)reader["CompanyName"];
+			entity.ContactName = reader.IsDBNull(reader.GetOrdinal("ContactName")) ? null : (System.String)reader["ContactName"];
+			entity.ContactTitle = reader.IsDBNull(reader.GetOrdinal("ContactTitle")) ? null : (System.String)reader["ContactTitle"];
+			entity.Address = reader.IsDBNull(reader.GetOrdinal("Address")) ? null : (System.String)reader["Address"];
+			entity.City = reader.IsDBNull(reader.GetOrdinal("City")) ? null : (System.String)reader["City"];
+			entity.Region = reader.IsDBNull(reader.GetOrdinal("Region")) ? null : (System.String)reader["Region"];
+			entity.PostalCode = reader.IsDBNull(reader.GetOrdinal("PostalCode")) ? null : (System.String)reader["PostalCode"];
+			entity.Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : (System.String)reader["Country"];
+			entity.Phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : (System.String)reader["Phone"];
+			entity.Fax = reader.IsDBNull(reader.GetOrdinal("Fax")) ? null : (System.String)reader["Fax"];
+			entity.HomePage = reader.IsDBNull(reader.GetOrdinal("HomePage")) ? null : (System.String)reader["HomePage"];
 			entity.AcceptChanges();
 		}
 		

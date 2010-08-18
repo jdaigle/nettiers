@@ -398,9 +398,9 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.CustomerId = (System.String)reader[((int)CustomerCustomerDemoColumn.CustomerId - 1)];
+					c.CustomerId = (System.String)reader["CustomerID"];
 					c.OriginalCustomerId = c.CustomerId;
-					c.CustomerTypeId = (System.String)reader[((int)CustomerCustomerDemoColumn.CustomerTypeId - 1)];
+					c.CustomerTypeId = (System.String)reader["CustomerTypeID"];
 					c.OriginalCustomerTypeId = c.CustomerTypeId;
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
@@ -419,9 +419,9 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.CustomerId = (System.String)reader[((int)CustomerCustomerDemoColumn.CustomerId - 1)];
+			entity.CustomerId = (System.String)reader["CustomerID"];
 			entity.OriginalCustomerId = (System.String)reader["CustomerID"];
-			entity.CustomerTypeId = (System.String)reader[((int)CustomerCustomerDemoColumn.CustomerTypeId - 1)];
+			entity.CustomerTypeId = (System.String)reader["CustomerTypeID"];
 			entity.OriginalCustomerTypeId = (System.String)reader["CustomerTypeID"];
 			entity.AcceptChanges();
 		}

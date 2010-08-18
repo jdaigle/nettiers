@@ -17,7 +17,6 @@ namespace Northwind.Entities
 	///</summary>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("InvoicesBase")]
 	public abstract partial class InvoicesBase : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		

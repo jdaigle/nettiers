@@ -17,7 +17,6 @@ namespace Northwind.Entities
 	///</summary>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("SummaryOfSalesByYearBase")]
 	public abstract partial class SummaryOfSalesByYearBase : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		

@@ -105,7 +105,7 @@ public abstract partial class SqlInvoicesProviderBase : InvoicesProviderBase
 	public override VList<Invoices> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 	{
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Invoices_Get_List", _useStoredProcedure);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Invoices_Get_List", _useStoredProcedure);
 		
 		IDataReader reader = null;
 		//Create Collection
@@ -159,7 +159,7 @@ public abstract partial class SqlInvoicesProviderBase : InvoicesProviderBase
 	public override VList<Invoices> Get(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 	{
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Invoices_Get", _useStoredProcedure);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Invoices_Get", _useStoredProcedure);
 
 		database.AddInParameter(commandWrapper, "@WhereClause", DbType.String, whereClause);
 		database.AddInParameter(commandWrapper, "@OrderBy", DbType.String, orderBy);
@@ -226,7 +226,7 @@ public abstract partial class SqlInvoicesProviderBase : InvoicesProviderBase
 			filter = parameters.GetParameters();
 			
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Invoices_Find_Dynamic", typeof(InvoicesColumn), filter, orderBy, start, pageLength);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Invoices_Find_Dynamic", typeof(InvoicesColumn), filter, orderBy, start, pageLength);
 		
 		SqlFilterParameter param;
 

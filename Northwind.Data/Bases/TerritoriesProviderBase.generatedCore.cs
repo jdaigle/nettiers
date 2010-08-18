@@ -403,10 +403,10 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.TerritoryId = (System.String)reader[((int)TerritoriesColumn.TerritoryId - 1)];
+					c.TerritoryId = (System.String)reader["TerritoryID"];
 					c.OriginalTerritoryId = c.TerritoryId;
-					c.TerritoryDescription = (System.String)reader[((int)TerritoriesColumn.TerritoryDescription - 1)];
-					c.RegionId = (System.Int32)reader[((int)TerritoriesColumn.RegionId - 1)];
+					c.TerritoryDescription = (System.String)reader["TerritoryDescription"];
+					c.RegionId = (System.Int32)reader["RegionID"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -424,10 +424,10 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.TerritoryId = (System.String)reader[((int)TerritoriesColumn.TerritoryId - 1)];
+			entity.TerritoryId = (System.String)reader["TerritoryID"];
 			entity.OriginalTerritoryId = (System.String)reader["TerritoryID"];
-			entity.TerritoryDescription = (System.String)reader[((int)TerritoriesColumn.TerritoryDescription - 1)];
-			entity.RegionId = (System.Int32)reader[((int)TerritoriesColumn.RegionId - 1)];
+			entity.TerritoryDescription = (System.String)reader["TerritoryDescription"];
+			entity.RegionId = (System.Int32)reader["RegionID"];
 			entity.AcceptChanges();
 		}
 		

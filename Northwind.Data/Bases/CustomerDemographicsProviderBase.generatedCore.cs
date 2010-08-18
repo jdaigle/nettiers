@@ -318,9 +318,9 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.CustomerTypeId = (System.String)reader[((int)CustomerDemographicsColumn.CustomerTypeId - 1)];
+					c.CustomerTypeId = (System.String)reader["CustomerTypeID"];
 					c.OriginalCustomerTypeId = c.CustomerTypeId;
-					c.CustomerDesc = (reader.IsDBNull(((int)CustomerDemographicsColumn.CustomerDesc - 1)))?null:(System.String)reader[((int)CustomerDemographicsColumn.CustomerDesc - 1)];
+					c.CustomerDesc = reader.IsDBNull(reader.GetOrdinal("CustomerDesc")) ? null : (System.String)reader["CustomerDesc"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -338,9 +338,9 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.CustomerTypeId = (System.String)reader[((int)CustomerDemographicsColumn.CustomerTypeId - 1)];
+			entity.CustomerTypeId = (System.String)reader["CustomerTypeID"];
 			entity.OriginalCustomerTypeId = (System.String)reader["CustomerTypeID"];
-			entity.CustomerDesc = (reader.IsDBNull(((int)CustomerDemographicsColumn.CustomerDesc - 1)))?null:(System.String)reader[((int)CustomerDemographicsColumn.CustomerDesc - 1)];
+			entity.CustomerDesc = reader.IsDBNull(reader.GetOrdinal("CustomerDesc")) ? null : (System.String)reader["CustomerDesc"];
 			entity.AcceptChanges();
 		}
 		

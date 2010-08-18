@@ -17,7 +17,6 @@ namespace Northwind.Entities
 	///</summary>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("CustomerAndSuppliersByCityBase")]
 	public abstract partial class CustomerAndSuppliersByCityBase : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		

@@ -105,7 +105,7 @@ public abstract partial class SqlSummaryOfSalesByYearProviderBase : SummaryOfSal
 	public override VList<SummaryOfSalesByYear> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 	{
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.SummaryofSalesbyYear_Get_List", _useStoredProcedure);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_SummaryofSalesbyYear_Get_List", _useStoredProcedure);
 		
 		IDataReader reader = null;
 		//Create Collection
@@ -159,7 +159,7 @@ public abstract partial class SqlSummaryOfSalesByYearProviderBase : SummaryOfSal
 	public override VList<SummaryOfSalesByYear> Get(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 	{
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.SummaryofSalesbyYear_Get", _useStoredProcedure);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_SummaryofSalesbyYear_Get", _useStoredProcedure);
 
 		database.AddInParameter(commandWrapper, "@WhereClause", DbType.String, whereClause);
 		database.AddInParameter(commandWrapper, "@OrderBy", DbType.String, orderBy);
@@ -226,7 +226,7 @@ public abstract partial class SqlSummaryOfSalesByYearProviderBase : SummaryOfSal
 			filter = parameters.GetParameters();
 			
 		SqlDatabase database = new SqlDatabase(this._connectionString);
-		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.SummaryofSalesbyYear_Find_Dynamic", typeof(SummaryOfSalesByYearColumn), filter, orderBy, start, pageLength);
+		DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_SummaryofSalesbyYear_Find_Dynamic", typeof(SummaryOfSalesByYearColumn), filter, orderBy, start, pageLength);
 		
 		SqlFilterParameter param;
 

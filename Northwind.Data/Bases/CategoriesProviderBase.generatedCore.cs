@@ -298,10 +298,10 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.CategoryId = (System.Int32)reader[((int)CategoriesColumn.CategoryId - 1)];
-					c.CategoryName = (System.String)reader[((int)CategoriesColumn.CategoryName - 1)];
-					c.Description = (reader.IsDBNull(((int)CategoriesColumn.Description - 1)))?null:(System.String)reader[((int)CategoriesColumn.Description - 1)];
-					c.Picture = (reader.IsDBNull(((int)CategoriesColumn.Picture - 1)))?null:(System.Byte[])reader[((int)CategoriesColumn.Picture - 1)];
+					c.CategoryId = (System.Int32)reader["CategoryID"];
+					c.CategoryName = (System.String)reader["CategoryName"];
+					c.Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : (System.String)reader["Description"];
+					c.Picture = reader.IsDBNull(reader.GetOrdinal("Picture")) ? null : (System.Byte[])reader["Picture"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -319,10 +319,10 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.CategoryId = (System.Int32)reader[((int)CategoriesColumn.CategoryId - 1)];
-			entity.CategoryName = (System.String)reader[((int)CategoriesColumn.CategoryName - 1)];
-			entity.Description = (reader.IsDBNull(((int)CategoriesColumn.Description - 1)))?null:(System.String)reader[((int)CategoriesColumn.Description - 1)];
-			entity.Picture = (reader.IsDBNull(((int)CategoriesColumn.Picture - 1)))?null:(System.Byte[])reader[((int)CategoriesColumn.Picture - 1)];
+			entity.CategoryId = (System.Int32)reader["CategoryID"];
+			entity.CategoryName = (System.String)reader["CategoryName"];
+			entity.Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : (System.String)reader["Description"];
+			entity.Picture = reader.IsDBNull(reader.GetOrdinal("Picture")) ? null : (System.Byte[])reader["Picture"];
 			entity.AcceptChanges();
 		}
 		

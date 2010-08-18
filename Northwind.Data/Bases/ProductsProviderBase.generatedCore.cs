@@ -555,16 +555,16 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.ProductId = (System.Int32)reader[((int)ProductsColumn.ProductId - 1)];
-					c.ProductName = (System.String)reader[((int)ProductsColumn.ProductName - 1)];
-					c.SupplierId = (reader.IsDBNull(((int)ProductsColumn.SupplierId - 1)))?null:(System.Int32?)reader[((int)ProductsColumn.SupplierId - 1)];
-					c.CategoryId = (reader.IsDBNull(((int)ProductsColumn.CategoryId - 1)))?null:(System.Int32?)reader[((int)ProductsColumn.CategoryId - 1)];
-					c.QuantityPerUnit = (reader.IsDBNull(((int)ProductsColumn.QuantityPerUnit - 1)))?null:(System.String)reader[((int)ProductsColumn.QuantityPerUnit - 1)];
-					c.UnitPrice = (reader.IsDBNull(((int)ProductsColumn.UnitPrice - 1)))?null:(System.Decimal?)reader[((int)ProductsColumn.UnitPrice - 1)];
-					c.UnitsInStock = (reader.IsDBNull(((int)ProductsColumn.UnitsInStock - 1)))?null:(System.Int16?)reader[((int)ProductsColumn.UnitsInStock - 1)];
-					c.UnitsOnOrder = (reader.IsDBNull(((int)ProductsColumn.UnitsOnOrder - 1)))?null:(System.Int16?)reader[((int)ProductsColumn.UnitsOnOrder - 1)];
-					c.ReorderLevel = (reader.IsDBNull(((int)ProductsColumn.ReorderLevel - 1)))?null:(System.Int16?)reader[((int)ProductsColumn.ReorderLevel - 1)];
-					c.Discontinued = (System.Boolean)reader[((int)ProductsColumn.Discontinued - 1)];
+					c.ProductId = (System.Int32)reader["ProductID"];
+					c.ProductName = (System.String)reader["ProductName"];
+					c.SupplierId = reader.IsDBNull(reader.GetOrdinal("SupplierID")) ? null : (System.Int32?)reader["SupplierID"];
+					c.CategoryId = reader.IsDBNull(reader.GetOrdinal("CategoryID")) ? null : (System.Int32?)reader["CategoryID"];
+					c.QuantityPerUnit = reader.IsDBNull(reader.GetOrdinal("QuantityPerUnit")) ? null : (System.String)reader["QuantityPerUnit"];
+					c.UnitPrice = reader.IsDBNull(reader.GetOrdinal("UnitPrice")) ? null : (System.Decimal?)reader["UnitPrice"];
+					c.UnitsInStock = reader.IsDBNull(reader.GetOrdinal("UnitsInStock")) ? null : (System.Int16?)reader["UnitsInStock"];
+					c.UnitsOnOrder = reader.IsDBNull(reader.GetOrdinal("UnitsOnOrder")) ? null : (System.Int16?)reader["UnitsOnOrder"];
+					c.ReorderLevel = reader.IsDBNull(reader.GetOrdinal("ReorderLevel")) ? null : (System.Int16?)reader["ReorderLevel"];
+					c.Discontinued = (System.Boolean)reader["Discontinued"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -582,16 +582,16 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.ProductId = (System.Int32)reader[((int)ProductsColumn.ProductId - 1)];
-			entity.ProductName = (System.String)reader[((int)ProductsColumn.ProductName - 1)];
-			entity.SupplierId = (reader.IsDBNull(((int)ProductsColumn.SupplierId - 1)))?null:(System.Int32?)reader[((int)ProductsColumn.SupplierId - 1)];
-			entity.CategoryId = (reader.IsDBNull(((int)ProductsColumn.CategoryId - 1)))?null:(System.Int32?)reader[((int)ProductsColumn.CategoryId - 1)];
-			entity.QuantityPerUnit = (reader.IsDBNull(((int)ProductsColumn.QuantityPerUnit - 1)))?null:(System.String)reader[((int)ProductsColumn.QuantityPerUnit - 1)];
-			entity.UnitPrice = (reader.IsDBNull(((int)ProductsColumn.UnitPrice - 1)))?null:(System.Decimal?)reader[((int)ProductsColumn.UnitPrice - 1)];
-			entity.UnitsInStock = (reader.IsDBNull(((int)ProductsColumn.UnitsInStock - 1)))?null:(System.Int16?)reader[((int)ProductsColumn.UnitsInStock - 1)];
-			entity.UnitsOnOrder = (reader.IsDBNull(((int)ProductsColumn.UnitsOnOrder - 1)))?null:(System.Int16?)reader[((int)ProductsColumn.UnitsOnOrder - 1)];
-			entity.ReorderLevel = (reader.IsDBNull(((int)ProductsColumn.ReorderLevel - 1)))?null:(System.Int16?)reader[((int)ProductsColumn.ReorderLevel - 1)];
-			entity.Discontinued = (System.Boolean)reader[((int)ProductsColumn.Discontinued - 1)];
+			entity.ProductId = (System.Int32)reader["ProductID"];
+			entity.ProductName = (System.String)reader["ProductName"];
+			entity.SupplierId = reader.IsDBNull(reader.GetOrdinal("SupplierID")) ? null : (System.Int32?)reader["SupplierID"];
+			entity.CategoryId = reader.IsDBNull(reader.GetOrdinal("CategoryID")) ? null : (System.Int32?)reader["CategoryID"];
+			entity.QuantityPerUnit = reader.IsDBNull(reader.GetOrdinal("QuantityPerUnit")) ? null : (System.String)reader["QuantityPerUnit"];
+			entity.UnitPrice = reader.IsDBNull(reader.GetOrdinal("UnitPrice")) ? null : (System.Decimal?)reader["UnitPrice"];
+			entity.UnitsInStock = reader.IsDBNull(reader.GetOrdinal("UnitsInStock")) ? null : (System.Int16?)reader["UnitsInStock"];
+			entity.UnitsOnOrder = reader.IsDBNull(reader.GetOrdinal("UnitsOnOrder")) ? null : (System.Int16?)reader["UnitsOnOrder"];
+			entity.ReorderLevel = reader.IsDBNull(reader.GetOrdinal("ReorderLevel")) ? null : (System.Int16?)reader["ReorderLevel"];
+			entity.Discontinued = (System.Boolean)reader["Discontinued"];
 			entity.AcceptChanges();
 		}
 		

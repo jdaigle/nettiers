@@ -135,13 +135,10 @@
 	<ItemGroup>
 		<None Include="Northwind.UnitTests.dll.config">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Include="entlib.config">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		</None>		
 	</ItemGroup>
 		
-	<!-- Custom code folder: C:\src\nettiers-poc\Northwind.UnitTests\App_Code -->
+	<!-- Custom code folder: C:\src\nettiers\Northwind.UnitTests\App_Code -->
 	<ItemGroup>	
 		<Folder Include="App_Code\" />
         <Compile Include="App_Code\**\*.cs">
@@ -269,54 +266,12 @@
 			<SubType>Code</SubType>
 			<DependentUpon>SummaryOfSalesByYearTest.cs</DependentUpon>
 		</Compile>
-			<Compile Include="OrdersTest.cs">
-			  	<SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="OrdersTest.generated.cs">
-			  	<SubType>Code</SubType>
-				<DependentUpon>OrdersTest.cs</DependentUpon>
-			</Compile>
-			<Compile Include="SuppliersTest.cs">
-			  	<SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="SuppliersTest.generated.cs">
-			  	<SubType>Code</SubType>
-				<DependentUpon>SuppliersTest.cs</DependentUpon>
-			</Compile>
 			<Compile Include="RegionTest.cs">
 			  	<SubType>Code</SubType>
 			</Compile>	
 			<Compile Include="RegionTest.generated.cs">
 			  	<SubType>Code</SubType>
 				<DependentUpon>RegionTest.cs</DependentUpon>
-			</Compile>
-			<Compile Include="CategoriesTest.cs">
-			  	<SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="CategoriesTest.generated.cs">
-			  	<SubType>Code</SubType>
-				<DependentUpon>CategoriesTest.cs</DependentUpon>
-			</Compile>
-			<Compile Include="ShippersTest.cs">
-			  	<SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="ShippersTest.generated.cs">
-			  	<SubType>Code</SubType>
-				<DependentUpon>ShippersTest.cs</DependentUpon>
-			</Compile>
-			<Compile Include="EmployeeTerritoriesTest.cs">
-			  	<SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="EmployeeTerritoriesTest.generated.cs">
-			  	<SubType>Code</SubType>
-				<DependentUpon>EmployeeTerritoriesTest.cs</DependentUpon>
-			</Compile>
-			<Compile Include="EmployeesTest.cs">
-			  	<SubType>Code</SubType>
-			</Compile>	
-			<Compile Include="EmployeesTest.generated.cs">
-			  	<SubType>Code</SubType>
-				<DependentUpon>EmployeesTest.cs</DependentUpon>
 			</Compile>
 			<Compile Include="TerritoriesTest.cs">
 			  	<SubType>Code</SubType>
@@ -325,12 +280,19 @@
 			  	<SubType>Code</SubType>
 				<DependentUpon>TerritoriesTest.cs</DependentUpon>
 			</Compile>
-			<Compile Include="CustomerDemographicsTest.cs">
+			<Compile Include="EmployeesTest.cs">
 			  	<SubType>Code</SubType>
 			</Compile>	
-			<Compile Include="CustomerDemographicsTest.generated.cs">
+			<Compile Include="EmployeesTest.generated.cs">
 			  	<SubType>Code</SubType>
-				<DependentUpon>CustomerDemographicsTest.cs</DependentUpon>
+				<DependentUpon>EmployeesTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="SuppliersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="SuppliersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>SuppliersTest.cs</DependentUpon>
 			</Compile>
 			<Compile Include="CustomersTest.cs">
 			  	<SubType>Code</SubType>
@@ -339,19 +301,19 @@
 			  	<SubType>Code</SubType>
 				<DependentUpon>CustomersTest.cs</DependentUpon>
 			</Compile>
-			<Compile Include="ProductsTest.cs">
+			<Compile Include="CategoriesTest.cs">
 			  	<SubType>Code</SubType>
 			</Compile>	
-			<Compile Include="ProductsTest.generated.cs">
+			<Compile Include="CategoriesTest.generated.cs">
 			  	<SubType>Code</SubType>
-				<DependentUpon>ProductsTest.cs</DependentUpon>
+				<DependentUpon>CategoriesTest.cs</DependentUpon>
 			</Compile>
-			<Compile Include="OrderDetailsTest.cs">
+			<Compile Include="CustomerDemographicsTest.cs">
 			  	<SubType>Code</SubType>
 			</Compile>	
-			<Compile Include="OrderDetailsTest.generated.cs">
+			<Compile Include="CustomerDemographicsTest.generated.cs">
 			  	<SubType>Code</SubType>
-				<DependentUpon>OrderDetailsTest.cs</DependentUpon>
+				<DependentUpon>CustomerDemographicsTest.cs</DependentUpon>
 			</Compile>
 			<Compile Include="CustomerCustomerDemoTest.cs">
 			  	<SubType>Code</SubType>
@@ -359,6 +321,41 @@
 			<Compile Include="CustomerCustomerDemoTest.generated.cs">
 			  	<SubType>Code</SubType>
 				<DependentUpon>CustomerCustomerDemoTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="ShippersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="ShippersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>ShippersTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="ProductsTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="ProductsTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>ProductsTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="OrdersTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="OrdersTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>OrdersTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="EmployeeTerritoriesTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="EmployeeTerritoriesTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>EmployeeTerritoriesTest.cs</DependentUpon>
+			</Compile>
+			<Compile Include="OrderDetailsTest.cs">
+			  	<SubType>Code</SubType>
+			</Compile>	
+			<Compile Include="OrderDetailsTest.generated.cs">
+			  	<SubType>Code</SubType>
+				<DependentUpon>OrderDetailsTest.cs</DependentUpon>
 			</Compile>
 		<Compile Include="..\AssemblyInfo.cs">
 		  <SubType>Code</SubType>

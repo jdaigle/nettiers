@@ -386,13 +386,13 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.OrderId = (System.Int32)reader[((int)OrderDetailsColumn.OrderId - 1)];
+					c.OrderId = (System.Int32)reader["OrderID"];
 					c.OriginalOrderId = c.OrderId;
-					c.ProductId = (System.Int32)reader[((int)OrderDetailsColumn.ProductId - 1)];
+					c.ProductId = (System.Int32)reader["ProductID"];
 					c.OriginalProductId = c.ProductId;
-					c.UnitPrice = (System.Decimal)reader[((int)OrderDetailsColumn.UnitPrice - 1)];
-					c.Quantity = (System.Int16)reader[((int)OrderDetailsColumn.Quantity - 1)];
-					c.Discount = (System.Single)reader[((int)OrderDetailsColumn.Discount - 1)];
+					c.UnitPrice = (System.Decimal)reader["UnitPrice"];
+					c.Quantity = (System.Int16)reader["Quantity"];
+					c.Discount = (System.Single)reader["Discount"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -410,13 +410,13 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.OrderId = (System.Int32)reader[((int)OrderDetailsColumn.OrderId - 1)];
+			entity.OrderId = (System.Int32)reader["OrderID"];
 			entity.OriginalOrderId = (System.Int32)reader["OrderID"];
-			entity.ProductId = (System.Int32)reader[((int)OrderDetailsColumn.ProductId - 1)];
+			entity.ProductId = (System.Int32)reader["ProductID"];
 			entity.OriginalProductId = (System.Int32)reader["ProductID"];
-			entity.UnitPrice = (System.Decimal)reader[((int)OrderDetailsColumn.UnitPrice - 1)];
-			entity.Quantity = (System.Int16)reader[((int)OrderDetailsColumn.Quantity - 1)];
-			entity.Discount = (System.Single)reader[((int)OrderDetailsColumn.Discount - 1)];
+			entity.UnitPrice = (System.Decimal)reader["UnitPrice"];
+			entity.Quantity = (System.Int16)reader["Quantity"];
+			entity.Discount = (System.Single)reader["Discount"];
 			entity.AcceptChanges();
 		}
 		

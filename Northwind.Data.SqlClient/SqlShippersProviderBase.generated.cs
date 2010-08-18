@@ -113,7 +113,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Delete(TransactionManager transactionManager, System.Int32 _shipperId)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_Delete", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_Delete", _useStoredProcedure);
 			database.AddInParameter(commandWrapper, "@ShipperId", DbType.Int32, _shipperId);
 			
 			//Provider Data Requesting Command Event
@@ -168,7 +168,7 @@ namespace Northwind.Data.SqlClient
 				return new TList<Shippers>();
 	
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_Find", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_Find", _useStoredProcedure);
 
 		bool searchUsingOR = false;
 		if (whereClause.IndexOf(" OR ") > 0) // did they want to do "a=b OR c=d OR..."?
@@ -281,7 +281,7 @@ namespace Northwind.Data.SqlClient
 				filter = parameters.GetParameters();
 				
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_Find_Dynamic", typeof(ShippersColumn), filter, orderBy, start, pageLength);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_Find_Dynamic", typeof(ShippersColumn), filter, orderBy, start, pageLength);
 		
 			SqlFilterParameter param;
 
@@ -354,7 +354,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Shippers> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_Get_List", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_Get_List", _useStoredProcedure);
 			
 			IDataReader reader = null;
 		
@@ -416,7 +416,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Shippers> GetPaged(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_GetPaged", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_GetPaged", _useStoredProcedure);
 		
 			
             if (commandWrapper.CommandType == CommandType.Text
@@ -503,7 +503,7 @@ namespace Northwind.Data.SqlClient
 		public override Northwind.Entities.Shippers GetByShipperId(TransactionManager transactionManager, System.Int32 _shipperId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_GetByShipperId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_GetByShipperId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@ShipperId", DbType.Int32, _shipperId);
 			
@@ -655,7 +655,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Insert(TransactionManager transactionManager, Northwind.Entities.Shippers entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_Insert", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_Insert", _useStoredProcedure);
 			
 			database.AddOutParameter(commandWrapper, "@ShipperId", DbType.Int32, 4);
 			database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, entity.CompanyName );
@@ -706,7 +706,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Update(TransactionManager transactionManager, Northwind.Entities.Shippers entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Shippers_Update", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Shippers_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@ShipperId", DbType.Int32, entity.ShipperId );
 			database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, entity.CompanyName );

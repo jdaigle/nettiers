@@ -219,9 +219,9 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.RegionId = (System.Int32)reader[((int)RegionColumn.RegionId - 1)];
+					c.RegionId = (System.Int32)reader["RegionID"];
 					c.OriginalRegionId = c.RegionId;
-					c.RegionDescription = (System.String)reader[((int)RegionColumn.RegionDescription - 1)];
+					c.RegionDescription = (System.String)reader["RegionDescription"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -239,9 +239,9 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.RegionId = (System.Int32)reader[((int)RegionColumn.RegionId - 1)];
+			entity.RegionId = (System.Int32)reader["RegionID"];
 			entity.OriginalRegionId = (System.Int32)reader["RegionID"];
-			entity.RegionDescription = (System.String)reader[((int)RegionColumn.RegionDescription - 1)];
+			entity.RegionDescription = (System.String)reader["RegionDescription"];
 			entity.AcceptChanges();
 		}
 		

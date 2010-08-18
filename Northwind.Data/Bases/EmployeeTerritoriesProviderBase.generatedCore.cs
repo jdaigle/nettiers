@@ -398,9 +398,9 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.EmployeeId = (System.Int32)reader[((int)EmployeeTerritoriesColumn.EmployeeId - 1)];
+					c.EmployeeId = (System.Int32)reader["EmployeeID"];
 					c.OriginalEmployeeId = c.EmployeeId;
-					c.TerritoryId = (System.String)reader[((int)EmployeeTerritoriesColumn.TerritoryId - 1)];
+					c.TerritoryId = (System.String)reader["TerritoryID"];
 					c.OriginalTerritoryId = c.TerritoryId;
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
@@ -419,9 +419,9 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.EmployeeId = (System.Int32)reader[((int)EmployeeTerritoriesColumn.EmployeeId - 1)];
+			entity.EmployeeId = (System.Int32)reader["EmployeeID"];
 			entity.OriginalEmployeeId = (System.Int32)reader["EmployeeID"];
-			entity.TerritoryId = (System.String)reader[((int)EmployeeTerritoriesColumn.TerritoryId - 1)];
+			entity.TerritoryId = (System.String)reader["TerritoryID"];
 			entity.OriginalTerritoryId = (System.String)reader["TerritoryID"];
 			entity.AcceptChanges();
 		}

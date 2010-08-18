@@ -113,7 +113,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetByCustomerTypeIdFromCustomerCustomerDemo(TransactionManager transactionManager, System.String _customerTypeId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetByCustomerTypeIdFromCustomerCustomerDemo", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@CustomerTypeId", DbType.StringFixedLength, _customerTypeId);
 			
@@ -176,7 +176,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Delete(TransactionManager transactionManager, System.String _customerId)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_Delete", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_Delete", _useStoredProcedure);
 			database.AddInParameter(commandWrapper, "@CustomerId", DbType.StringFixedLength, _customerId);
 			
 			//Provider Data Requesting Command Event
@@ -231,7 +231,7 @@ namespace Northwind.Data.SqlClient
 				return new TList<Customers>();
 	
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_Find", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_Find", _useStoredProcedure);
 
 		bool searchUsingOR = false;
 		if (whereClause.IndexOf(" OR ") > 0) // did they want to do "a=b OR c=d OR..."?
@@ -400,7 +400,7 @@ namespace Northwind.Data.SqlClient
 				filter = parameters.GetParameters();
 				
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_Find_Dynamic", typeof(CustomersColumn), filter, orderBy, start, pageLength);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_Find_Dynamic", typeof(CustomersColumn), filter, orderBy, start, pageLength);
 		
 			SqlFilterParameter param;
 
@@ -473,7 +473,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_Get_List", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_Get_List", _useStoredProcedure);
 			
 			IDataReader reader = null;
 		
@@ -535,7 +535,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetPaged(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetPaged", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetPaged", _useStoredProcedure);
 		
 			
             if (commandWrapper.CommandType == CommandType.Text
@@ -622,7 +622,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetByCity(TransactionManager transactionManager, System.String _city, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetByCity", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetByCity", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@City", DbType.String, _city);
 			
@@ -690,7 +690,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetByCompanyName(TransactionManager transactionManager, System.String _companyName, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetByCompanyName", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetByCompanyName", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, _companyName);
 			
@@ -758,7 +758,7 @@ namespace Northwind.Data.SqlClient
 		public override Northwind.Entities.Customers GetByCustomerId(TransactionManager transactionManager, System.String _customerId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetByCustomerId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetByCustomerId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@CustomerId", DbType.StringFixedLength, _customerId);
 			
@@ -837,7 +837,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetByPostalCode(TransactionManager transactionManager, System.String _postalCode, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetByPostalCode", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetByPostalCode", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@PostalCode", DbType.String, _postalCode);
 			
@@ -905,7 +905,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Customers> GetByRegion(TransactionManager transactionManager, System.String _region, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_GetByRegion", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_GetByRegion", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@Region", DbType.String, _region);
 			
@@ -1094,7 +1094,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Insert(TransactionManager transactionManager, Northwind.Entities.Customers entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_Insert", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@CustomerId", DbType.StringFixedLength, entity.CustomerId );
 			database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, entity.CompanyName );
@@ -1152,7 +1152,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Update(TransactionManager transactionManager, Northwind.Entities.Customers entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Customers_Update", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Customers_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@CustomerId", DbType.StringFixedLength, entity.CustomerId );
 			database.AddInParameter(commandWrapper, "@OriginalCustomerId", DbType.StringFixedLength, entity.OriginalCustomerId);

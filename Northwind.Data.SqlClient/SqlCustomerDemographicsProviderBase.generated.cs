@@ -113,7 +113,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<CustomerDemographics> GetByCustomerIdFromCustomerCustomerDemo(TransactionManager transactionManager, System.String _customerId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@CustomerId", DbType.StringFixedLength, _customerId);
 			
@@ -176,7 +176,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Delete(TransactionManager transactionManager, System.String _customerTypeId)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_Delete", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_Delete", _useStoredProcedure);
 			database.AddInParameter(commandWrapper, "@CustomerTypeId", DbType.StringFixedLength, _customerTypeId);
 			
 			//Provider Data Requesting Command Event
@@ -231,7 +231,7 @@ namespace Northwind.Data.SqlClient
 				return new TList<CustomerDemographics>();
 	
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_Find", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_Find", _useStoredProcedure);
 
 		bool searchUsingOR = false;
 		if (whereClause.IndexOf(" OR ") > 0) // did they want to do "a=b OR c=d OR..."?
@@ -337,7 +337,7 @@ namespace Northwind.Data.SqlClient
 				filter = parameters.GetParameters();
 				
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_Find_Dynamic", typeof(CustomerDemographicsColumn), filter, orderBy, start, pageLength);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_Find_Dynamic", typeof(CustomerDemographicsColumn), filter, orderBy, start, pageLength);
 		
 			SqlFilterParameter param;
 
@@ -410,7 +410,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<CustomerDemographics> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_Get_List", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_Get_List", _useStoredProcedure);
 			
 			IDataReader reader = null;
 		
@@ -472,7 +472,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<CustomerDemographics> GetPaged(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_GetPaged", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_GetPaged", _useStoredProcedure);
 		
 			
             if (commandWrapper.CommandType == CommandType.Text
@@ -559,7 +559,7 @@ namespace Northwind.Data.SqlClient
 		public override Northwind.Entities.CustomerDemographics GetByCustomerTypeId(TransactionManager transactionManager, System.String _customerTypeId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_GetByCustomerTypeId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@CustomerTypeId", DbType.StringFixedLength, _customerTypeId);
 			
@@ -705,7 +705,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Insert(TransactionManager transactionManager, Northwind.Entities.CustomerDemographics entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_Insert", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@CustomerTypeId", DbType.StringFixedLength, entity.CustomerTypeId );
 			database.AddInParameter(commandWrapper, "@CustomerDesc", DbType.String, entity.CustomerDesc );
@@ -754,7 +754,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Update(TransactionManager transactionManager, Northwind.Entities.CustomerDemographics entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.CustomerDemographics_Update", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_CustomerDemographics_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@CustomerTypeId", DbType.StringFixedLength, entity.CustomerTypeId );
 			database.AddInParameter(commandWrapper, "@OriginalCustomerTypeId", DbType.StringFixedLength, entity.OriginalCustomerTypeId);

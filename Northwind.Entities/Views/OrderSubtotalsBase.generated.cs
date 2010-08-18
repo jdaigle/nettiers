@@ -17,7 +17,6 @@ namespace Northwind.Entities
 	///</summary>
 	[Serializable]
 	[CLSCompliant(true)]
-	[ToolboxItem("OrderSubtotalsBase")]
 	public abstract partial class OrderSubtotalsBase : System.IComparable, System.ICloneable, INotifyPropertyChanged
 	{
 		

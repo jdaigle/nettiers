@@ -113,7 +113,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Territories> GetByEmployeeIdFromEmployeeTerritories(TransactionManager transactionManager, System.Int32 _employeeId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_GetByEmployeeIdFromEmployeeTerritories", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@EmployeeId", DbType.Int32, _employeeId);
 			
@@ -176,7 +176,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Delete(TransactionManager transactionManager, System.String _territoryId)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_Delete", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_Delete", _useStoredProcedure);
 			database.AddInParameter(commandWrapper, "@TerritoryId", DbType.String, _territoryId);
 			
 			//Provider Data Requesting Command Event
@@ -231,7 +231,7 @@ namespace Northwind.Data.SqlClient
 				return new TList<Territories>();
 	
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_Find", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_Find", _useStoredProcedure);
 
 		bool searchUsingOR = false;
 		if (whereClause.IndexOf(" OR ") > 0) // did they want to do "a=b OR c=d OR..."?
@@ -344,7 +344,7 @@ namespace Northwind.Data.SqlClient
 				filter = parameters.GetParameters();
 				
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_Find_Dynamic", typeof(TerritoriesColumn), filter, orderBy, start, pageLength);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_Find_Dynamic", typeof(TerritoriesColumn), filter, orderBy, start, pageLength);
 		
 			SqlFilterParameter param;
 
@@ -417,7 +417,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Territories> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_Get_List", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_Get_List", _useStoredProcedure);
 			
 			IDataReader reader = null;
 		
@@ -479,7 +479,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Territories> GetPaged(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_GetPaged", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_GetPaged", _useStoredProcedure);
 		
 			
             if (commandWrapper.CommandType == CommandType.Text
@@ -563,7 +563,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Territories> GetByRegionId(TransactionManager transactionManager, System.Int32 _regionId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_GetByRegionId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_GetByRegionId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@RegionId", DbType.Int32, _regionId);
 			
@@ -630,7 +630,7 @@ namespace Northwind.Data.SqlClient
 		public override Northwind.Entities.Territories GetByTerritoryId(TransactionManager transactionManager, System.String _territoryId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_GetByTerritoryId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_GetByTerritoryId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@TerritoryId", DbType.String, _territoryId);
 			
@@ -782,7 +782,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Insert(TransactionManager transactionManager, Northwind.Entities.Territories entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_Insert", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_Insert", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@TerritoryId", DbType.String, entity.TerritoryId );
 			database.AddInParameter(commandWrapper, "@TerritoryDescription", DbType.StringFixedLength, entity.TerritoryDescription );
@@ -832,7 +832,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Update(TransactionManager transactionManager, Northwind.Entities.Territories entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Territories_Update", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Territories_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@TerritoryId", DbType.String, entity.TerritoryId );
 			database.AddInParameter(commandWrapper, "@OriginalTerritoryId", DbType.String, entity.OriginalTerritoryId);

@@ -219,9 +219,9 @@ namespace Northwind.Data.Bases
 					))
 				{
 					c.SuppressEntityEvents = true;
-					c.ShipperId = (System.Int32)reader[((int)ShippersColumn.ShipperId - 1)];
-					c.CompanyName = (System.String)reader[((int)ShippersColumn.CompanyName - 1)];
-					c.Phone = (reader.IsDBNull(((int)ShippersColumn.Phone - 1)))?null:(System.String)reader[((int)ShippersColumn.Phone - 1)];
+					c.ShipperId = (System.Int32)reader["ShipperID"];
+					c.CompanyName = (System.String)reader["CompanyName"];
+					c.Phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : (System.String)reader["Phone"];
 					c.EntityTrackingKey = key;
 					c.AcceptChanges();
 					c.SuppressEntityEvents = false;
@@ -239,9 +239,9 @@ namespace Northwind.Data.Bases
 		{
 			if (!reader.Read()) return;
 			
-			entity.ShipperId = (System.Int32)reader[((int)ShippersColumn.ShipperId - 1)];
-			entity.CompanyName = (System.String)reader[((int)ShippersColumn.CompanyName - 1)];
-			entity.Phone = (reader.IsDBNull(((int)ShippersColumn.Phone - 1)))?null:(System.String)reader[((int)ShippersColumn.Phone - 1)];
+			entity.ShipperId = (System.Int32)reader["ShipperID"];
+			entity.CompanyName = (System.String)reader["CompanyName"];
+			entity.Phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : (System.String)reader["Phone"];
 			entity.AcceptChanges();
 		}
 		

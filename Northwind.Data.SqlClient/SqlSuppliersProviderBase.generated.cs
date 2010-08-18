@@ -113,7 +113,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Delete(TransactionManager transactionManager, System.Int32 _supplierId)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_Delete", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_Delete", _useStoredProcedure);
 			database.AddInParameter(commandWrapper, "@SupplierId", DbType.Int32, _supplierId);
 			
 			//Provider Data Requesting Command Event
@@ -168,7 +168,7 @@ namespace Northwind.Data.SqlClient
 				return new TList<Suppliers>();
 	
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_Find", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_Find", _useStoredProcedure);
 
 		bool searchUsingOR = false;
 		if (whereClause.IndexOf(" OR ") > 0) // did they want to do "a=b OR c=d OR..."?
@@ -344,7 +344,7 @@ namespace Northwind.Data.SqlClient
 				filter = parameters.GetParameters();
 				
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_Find_Dynamic", typeof(SuppliersColumn), filter, orderBy, start, pageLength);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_Find_Dynamic", typeof(SuppliersColumn), filter, orderBy, start, pageLength);
 		
 			SqlFilterParameter param;
 
@@ -417,7 +417,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Suppliers> GetAll(TransactionManager transactionManager, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_Get_List", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_Get_List", _useStoredProcedure);
 			
 			IDataReader reader = null;
 		
@@ -479,7 +479,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Suppliers> GetPaged(TransactionManager transactionManager, string whereClause, string orderBy, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_GetPaged", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_GetPaged", _useStoredProcedure);
 		
 			
             if (commandWrapper.CommandType == CommandType.Text
@@ -566,7 +566,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Suppliers> GetByCompanyName(TransactionManager transactionManager, System.String _companyName, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_GetByCompanyName", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_GetByCompanyName", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, _companyName);
 			
@@ -634,7 +634,7 @@ namespace Northwind.Data.SqlClient
 		public override Northwind.Entities.Suppliers GetBySupplierId(TransactionManager transactionManager, System.Int32 _supplierId, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_GetBySupplierId", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_GetBySupplierId", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@SupplierId", DbType.Int32, _supplierId);
 			
@@ -713,7 +713,7 @@ namespace Northwind.Data.SqlClient
 		public override TList<Suppliers> GetByPostalCode(TransactionManager transactionManager, System.String _postalCode, int start, int pageLength, out int count)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_GetByPostalCode", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_GetByPostalCode", _useStoredProcedure);
 			
 				database.AddInParameter(commandWrapper, "@PostalCode", DbType.String, _postalCode);
 			
@@ -908,7 +908,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Insert(TransactionManager transactionManager, Northwind.Entities.Suppliers entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_Insert", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_Insert", _useStoredProcedure);
 			
 			database.AddOutParameter(commandWrapper, "@SupplierId", DbType.Int32, 4);
 			database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, entity.CompanyName );
@@ -968,7 +968,7 @@ namespace Northwind.Data.SqlClient
 		public override bool Update(TransactionManager transactionManager, Northwind.Entities.Suppliers entity)
 		{
 			SqlDatabase database = new SqlDatabase(this._connectionString);
-			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.Suppliers_Update", _useStoredProcedure);
+			DbCommand commandWrapper = StoredProcedureProvider.GetCommandWrapper(database, "dbo.sp_nt_Suppliers_Update", _useStoredProcedure);
 			
 			database.AddInParameter(commandWrapper, "@SupplierId", DbType.Int32, entity.SupplierId );
 			database.AddInParameter(commandWrapper, "@CompanyName", DbType.String, entity.CompanyName );

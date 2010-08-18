@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Configuration.Provider;
 
 using Northwind.Entities;
@@ -21,11 +22,12 @@ namespace Northwind.Data.Bases
 	{
 		private Type entityCreationalFactoryType = null;
         private static object syncObject = new object();
-        private bool enableEntityTracking = true;
+        private bool enableEntityTracking = false;
         private bool enableListTracking = false;
-        private bool useEntityFactory = true;
+        private bool useEntityFactory = false;
 		private bool enableMethodAuthorization = false;
         private int defaultCommandTimeout = 30;
+        private bool generateStatistics = false;
 		
 		[ThreadStatic] // Allow the LoadPolicy to be controlled on a per thread basis
 		private LoadPolicy loadPolicy = LoadPolicy.DiscardChanges;
@@ -118,7 +120,11 @@ namespace Northwind.Data.Bases
                 if (String.Compare(config["currentLoadPolicy"], LoadPolicy.PreserveChanges.ToString()) == 0)
                 {
                     loadPolicy = LoadPolicy.PreserveChanges;
-                }				
+                }	
+                
+                if (config["generateStatistics"] != null) {
+                    bool.TryParse(config["generateStatistics"], out this.generateStatistics);
+                }			
 			}   
          }
 	    
@@ -436,6 +442,28 @@ namespace Northwind.Data.Bases
 		#endregion
 		
 		#endregion
+
+        public virtual bool GenerateStastics {
+            get { return this.generateStatistics; }
+            set { this.generateStatistics = value; }
+        }
+
+        private Stopwatch stopwatch;
+        
+        protected virtual void HandlerStatisticsDataRequesting(object sender, CommandEventArgs e) {
+            if (!GenerateStastics)
+                return;
+            if (stopwatch == null)
+                stopwatch = new Stopwatch();
+            stopwatch.Reset();
+            stopwatch.Start();
+        }
+
+        protected virtual void HandlerStatisticsDataRequested(object sender, CommandEventArgs e) {
+            if (!GenerateStastics)
+                return;
+            stopwatch.Stop();
+        }
 	}
 	
 	/// <summary>
