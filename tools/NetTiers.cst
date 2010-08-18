@@ -1434,16 +1434,16 @@
 		//----------------------------------------------------------------------------------------------------------------------------------------------
 		//-- Entity IEntityCacheItem file
 		//----------------------------------------------------------------------------------------------------------------------------------------------
-		XmlElement iEntityCacheItemNode = AddFileNode(commonNode, "IEntityCacheItem.cs");
-		this.GetTemplate("IEntityCacheItem.cst").SetProperty("NameSpace", BLLNameSpace);
-		this.RenderToFile("IEntityCacheItem.cst", rootPathBLL + "\\IEntityCacheItem.cs", true);
+//		XmlElement iEntityCacheItemNode = AddFileNode(commonNode, "IEntityCacheItem.cs");
+//		this.GetTemplate("IEntityCacheItem.cst").SetProperty("NameSpace", BLLNameSpace);
+//		this.RenderToFile("IEntityCacheItem.cst", rootPathBLL + "\\IEntityCacheItem.cs", true);
 	
 		//----------------------------------------------------------------------------------------------------------------------------------------------
 		//-- Entity EntityCache file
 		//----------------------------------------------------------------------------------------------------------------------------------------------
-		XmlElement iEntityCacheNode = AddFileNode(commonNode, "EntityCache.cs");
-		this.GetTemplate("EntityCache.cst").SetProperty("NameSpace", BLLNameSpace);
-		this.RenderToFile("EntityCache.cst", rootPathBLL + "\\EntityCache.cs", true);
+//		XmlElement iEntityCacheNode = AddFileNode(commonNode, "EntityCache.cs");
+//		this.GetTemplate("EntityCache.cst").SetProperty("NameSpace", BLLNameSpace);
+//		this.RenderToFile("EntityCache.cst", rootPathBLL + "\\EntityCache.cs", true);
 		
 		//----------------------------------------------------------------------------------------------------------------------------------------------
 		//-- Entity IEntityLocator file

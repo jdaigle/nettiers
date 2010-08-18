@@ -307,7 +307,7 @@
 	<Reference Include="System.Windows.Forms" />
 	<% } %>
     <% 
-	if (IncludeBll || IncludeComponents || IncludeWebsite)
+	if (IncludeComponents || IncludeWebsite)
 	{
 	%>
 	<Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, <%= entlibVersionText %>">
@@ -871,13 +871,7 @@
 			</Compile>		
 			<Compile Include="<%=BLLSubFolder%>EntityManager.cs">
 			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="<%=BLLSubFolder%>IEntityCacheItem.cs">
-			  <SubType>Code</SubType>
-			</Compile>		
-			<Compile Include="<%=BLLSubFolder%>EntityCache.cs">
-			  <SubType>Code</SubType>
-			</Compile>
+			</Compile>	
 			<Compile Include="<%=BLLSubFolder%>GenericTypeConverter.cs">
 			  <SubType>Code</SubType>
 			</Compile>
