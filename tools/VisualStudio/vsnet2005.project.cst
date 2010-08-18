@@ -524,10 +524,7 @@
 	<ItemGroup>
 		<None Include="<%=UTNameSpace%>.dll.config">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Include="entlib.config">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		</None>		
 	</ItemGroup>
 	<% } %>
 		
@@ -1272,7 +1269,7 @@
 			  <SubType>Code</SubType>
 			</Compile>			
 			
-		<% } %>
+		<% } %> 
 		
 		<% if (IncludeWinLibrary) { %>
 			<!--<Compile Include="Data\BindingSources.cs">
