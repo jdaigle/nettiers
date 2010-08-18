@@ -1934,12 +1934,12 @@
 				// these config files are very similar today,
 				// but may not be in the future, so here's a way
 				// for them to live side-by-side going forward.
-				string ver = EntLibVersion.ToString().Substring(EntLibVersion.ToString().LastIndexOf(".") + 1);
-				string entLibConfigTemplateName = string.Format("entlib.{0}.config.cst", ver);
-				AddFileNode(commonNode, string.Format("Enterprise Library {0} unit test configuration files", ver));
-				this.GetTemplate(entLibConfigTemplateName).SetProperty("NameSpace", NameSpace);
-				this.GetTemplate(entLibConfigTemplateName).SetProperty("BLLNameSpace", BLLNameSpace);
-				this.RenderToFile(entLibConfigTemplateName, specialPath + "\\entlib.config", true);
+				//string ver = EntLibVersion.ToString().Substring(EntLibVersion.ToString().LastIndexOf(".") + 1);
+				//string entLibConfigTemplateName = string.Format("entlib.{0}.config.cst", ver);
+				//AddFileNode(commonNode, string.Format("Enterprise Library {0} unit test configuration files", ver));
+				//this.GetTemplate(entLibConfigTemplateName).SetProperty("NameSpace", NameSpace);
+				//this.GetTemplate(entLibConfigTemplateName).SetProperty("BLLNameSpace", BLLNameSpace);
+				//this.RenderToFile(entLibConfigTemplateName, specialPath + "\\entlib.config", true);
 			}	
 			
 			// Configuration files for the webservice

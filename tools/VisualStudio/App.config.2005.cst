@@ -19,8 +19,7 @@ string entlibVersionText = GetEntLibVersionSignature(EntLibVersion);
        <section name="netTiersService"
         type="<%=DALNameSpace%>.Bases.NetTiersServiceSection, <%=DALNameSpace%>"
         allowDefinition="MachineToApplication"
-        restartOnExternalChanges="true" />
-		<section name="enterpriseLibrary.ConfigurationSource" type="Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ConfigurationSourceSection, Microsoft.Practices.EnterpriseLibrary.Common, <%= entlibVersionText %>" />
+        restartOnExternalChanges="true" />		
   </configSections>
   
   <connectionStrings>
@@ -119,13 +118,7 @@ string entlibVersionText = GetEntLibVersionSignature(EntLibVersion);
         />
      -->
     </providers>
-  </netTiersService>
-  	<enterpriseLibrary.ConfigurationSource selectedSource="File Configuration Source">
-	  <sources>
-		<add name="File Configuration Source" type="Microsoft.Practices.EnterpriseLibrary.Common.Configuration.FileConfigurationSource, Microsoft.Practices.EnterpriseLibrary.Common, <%=entlibVersionText%>"
-			filePath="entlib.config" />
-	  </sources>
-    </enterpriseLibrary.ConfigurationSource>
+  </netTiersService>  	
    <% if (IsWebConfig) { %>
 	<system.web>
 		<compilation defaultLanguage="c#" debug="true"/>
