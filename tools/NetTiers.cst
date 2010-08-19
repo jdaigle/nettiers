@@ -1324,7 +1324,7 @@
 		//}		
 	
 		// NUnit file
-		//SafeCopyFile(this.CodeTemplateInfo.DirectoryName + "\\References\\nunit.framework.dll", libPath + "\\nunit.framework.dll");
+		SafeCopyFile(this.CodeTemplateInfo.DirectoryName + "\\References\\nunit.framework.dll", libPath + "\\nunit.framework.dll");
 		
 		//if(IsConnectionStringAzure)
 		//{
