@@ -1087,17 +1087,17 @@ namespace Northwind.Entities
 		/// <summary>
 		/// UnitPrice : 
 		/// </summary>
-		public System.Decimal UnitPrice = 0;
+		public System.Decimal UnitPrice = 0m;
 		
 		/// <summary>
 		/// Quantity : 
 		/// </summary>
-		public System.Int16 Quantity = (short)0;
+		public System.Int16 Quantity = (short)1;
 		
 		/// <summary>
 		/// Discount : 
 		/// </summary>
-		public System.Single Discount = 0.0F;
+		public System.Single Discount = 0F;
 		#endregion
 			
 		#region Source Foreign Key Property

@@ -21,6 +21,31 @@ namespace Northwind.Data.Bases
 	{
 		
 		///<summary>
+		/// Current OrdersProviderBase instance.
+		///</summary>
+		public virtual OrdersProviderBase OrdersProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current SuppliersProviderBase instance.
+		///</summary>
+		public virtual SuppliersProviderBase SuppliersProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current EmployeesProviderBase instance.
+		///</summary>
+		public virtual EmployeesProviderBase EmployeesProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current CustomerCustomerDemoProviderBase instance.
+		///</summary>
+		public virtual CustomerCustomerDemoProviderBase CustomerCustomerDemoProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
+		/// Current ProductsProviderBase instance.
+		///</summary>
+		public virtual ProductsProviderBase ProductsProvider{get {throw new NotImplementedException();}}
+		
+		///<summary>
 		/// Current RegionProviderBase instance.
 		///</summary>
 		public virtual RegionProviderBase RegionProvider{get {throw new NotImplementedException();}}
@@ -29,21 +54,6 @@ namespace Northwind.Data.Bases
 		/// Current TerritoriesProviderBase instance.
 		///</summary>
 		public virtual TerritoriesProviderBase TerritoriesProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
-		/// Current EmployeesProviderBase instance.
-		///</summary>
-		public virtual EmployeesProviderBase EmployeesProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
-		/// Current SuppliersProviderBase instance.
-		///</summary>
-		public virtual SuppliersProviderBase SuppliersProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
-		/// Current CustomersProviderBase instance.
-		///</summary>
-		public virtual CustomersProviderBase CustomersProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current CategoriesProviderBase instance.
@@ -56,9 +66,9 @@ namespace Northwind.Data.Bases
 		public virtual CustomerDemographicsProviderBase CustomerDemographicsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current CustomerCustomerDemoProviderBase instance.
+		/// Current CustomersProviderBase instance.
 		///</summary>
-		public virtual CustomerCustomerDemoProviderBase CustomerCustomerDemoProvider{get {throw new NotImplementedException();}}
+		public virtual CustomersProviderBase CustomersProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current ShippersProviderBase instance.
@@ -66,24 +76,14 @@ namespace Northwind.Data.Bases
 		public virtual ShippersProviderBase ShippersProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
-		/// Current ProductsProviderBase instance.
+		/// Current OrderDetailsProviderBase instance.
 		///</summary>
-		public virtual ProductsProviderBase ProductsProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
-		/// Current OrdersProviderBase instance.
-		///</summary>
-		public virtual OrdersProviderBase OrdersProvider{get {throw new NotImplementedException();}}
+		public virtual OrderDetailsProviderBase OrderDetailsProvider{get {throw new NotImplementedException();}}
 		
 		///<summary>
 		/// Current EmployeeTerritoriesProviderBase instance.
 		///</summary>
 		public virtual EmployeeTerritoriesProviderBase EmployeeTerritoriesProvider{get {throw new NotImplementedException();}}
-		
-		///<summary>
-		/// Current OrderDetailsProviderBase instance.
-		///</summary>
-		public virtual OrderDetailsProviderBase OrderDetailsProvider{get {throw new NotImplementedException();}}
 		
 		
 		///<summary>

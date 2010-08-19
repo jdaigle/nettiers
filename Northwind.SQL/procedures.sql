@@ -8,5606 +8,38 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_Region_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_Get_List
+-- Drop the dbo.sp_nt_DropAllProcedures procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_DropAllProcedures') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_DropAllProcedures
 GO
 
-/*
-----------------------------------------------------------------------------------------------------
+-- Drops all existing netTiers stored procedures
 
--- Created By:  ()
--- Purpose: Gets all records from the Region table
-----------------------------------------------------------------------------------------------------
-*/
+CREATE PROCEDURE dbo.sp_nt_DropAllProcedures
 
-
-CREATE PROCEDURE dbo.sp_nt_Region_Get_List
-
-AS
-
-
-				
-				SELECT
-					[RegionID],
-					[RegionDescription]
-				FROM
-					[dbo].[Region]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Region_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Region table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Region_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[RegionID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [RegionID]'
-				SET @SQL = @SQL + ', [RegionDescription]'
-				SET @SQL = @SQL + ' FROM [dbo].[Region]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [RegionID],'
-				SET @SQL = @SQL + ' [RegionDescription]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Region]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Region_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Region table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Region_Insert
-(
-
-	@RegionId int   ,
-
-	@RegionDescription nchar (50)  
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Region]
-					(
-					[RegionID]
-					,[RegionDescription]
-					)
-				VALUES
-					(
-					@RegionId
-					,@RegionDescription
-					)
-				
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Region_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Region table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Region_Update
-(
-
-	@RegionId int   ,
-
-	@OriginalRegionId int   ,
-
-	@RegionDescription nchar (50)  
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Region]
-				SET
-					[RegionID] = @RegionId
-					,[RegionDescription] = @RegionDescription
-				WHERE
-[RegionID] = @OriginalRegionId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Region_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Region table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Region_Delete
-(
-
-	@RegionId int   
-)
-AS
-
-
-				DELETE FROM [dbo].[Region] WITH (ROWLOCK) 
-				WHERE
-					[RegionID] = @RegionId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Region_GetByRegionId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_GetByRegionId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_GetByRegionId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Region table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Region_GetByRegionId
-(
-
-	@RegionId int   
-)
-AS
-
-
-				SELECT
-					[RegionID],
-					[RegionDescription]
-				FROM
-					[dbo].[Region]
-				WHERE
-					[RegionID] = @RegionId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Region_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Region_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Region table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Region_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@RegionId int   = null ,
-
-	@RegionDescription nchar (50)  = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [RegionID]
-	, [RegionDescription]
-    FROM
-	[dbo].[Region]
-    WHERE 
-	 ([RegionID] = @RegionId OR @RegionId IS NULL)
-	AND ([RegionDescription] = @RegionDescription OR @RegionDescription IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [RegionID]
-	, [RegionDescription]
-    FROM
-	[dbo].[Region]
-    WHERE 
-	 ([RegionID] = @RegionId AND @RegionId is not null)
-	OR ([RegionDescription] = @RegionDescription AND @RegionDescription is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Territories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_Get_List
-
-AS
-
-
-				
-				SELECT
-					[TerritoryID],
-					[TerritoryDescription],
-					[RegionID]
-				FROM
-					[dbo].[Territories]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Territories table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[TerritoryID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [TerritoryID]'
-				SET @SQL = @SQL + ', [TerritoryDescription]'
-				SET @SQL = @SQL + ', [RegionID]'
-				SET @SQL = @SQL + ' FROM [dbo].[Territories]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [TerritoryID],'
-				SET @SQL = @SQL + ' [TerritoryDescription],'
-				SET @SQL = @SQL + ' [RegionID]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Territories]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Territories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_Insert
-(
-
-	@TerritoryId nvarchar (20)  ,
-
-	@TerritoryDescription nchar (50)  ,
-
-	@RegionId int   
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Territories]
-					(
-					[TerritoryID]
-					,[TerritoryDescription]
-					,[RegionID]
-					)
-				VALUES
-					(
-					@TerritoryId
-					,@TerritoryDescription
-					,@RegionId
-					)
-				
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Territories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_Update
-(
-
-	@TerritoryId nvarchar (20)  ,
-
-	@OriginalTerritoryId nvarchar (20)  ,
-
-	@TerritoryDescription nchar (50)  ,
-
-	@RegionId int   
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Territories]
-				SET
-					[TerritoryID] = @TerritoryId
-					,[TerritoryDescription] = @TerritoryDescription
-					,[RegionID] = @RegionId
-				WHERE
-[TerritoryID] = @OriginalTerritoryId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Territories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_Delete
-(
-
-	@TerritoryId nvarchar (20)  
-)
-AS
-
-
-				DELETE FROM [dbo].[Territories] WITH (ROWLOCK) 
-				WHERE
-					[TerritoryID] = @TerritoryId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_GetByRegionId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetByRegionId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_GetByRegionId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Territories table through a foreign key
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_GetByRegionId
-(
-
-	@RegionId int   
-)
-AS
-
-
-				SET ANSI_NULLS OFF
-				
-				SELECT
-					[TerritoryID],
-					[TerritoryDescription],
-					[RegionID]
-				FROM
-					[dbo].[Territories]
-				WHERE
-					[RegionID] = @RegionId
-				
-				SELECT @@ROWCOUNT
-				SET ANSI_NULLS ON
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_GetByTerritoryId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetByTerritoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_GetByTerritoryId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Territories table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_GetByTerritoryId
-(
-
-	@TerritoryId nvarchar (20)  
-)
-AS
-
-
-				SELECT
-					[TerritoryID],
-					[TerritoryDescription],
-					[RegionID]
-				FROM
-					[dbo].[Territories]
-				WHERE
-					[TerritoryID] = @TerritoryId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records through a junction table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories
-(
-
-	@EmployeeId int   
-)
-AS
-
-
-SELECT dbo.[Territories].[TerritoryID]
-       ,dbo.[Territories].[TerritoryDescription]
-       ,dbo.[Territories].[RegionID]
-  FROM dbo.[Territories]
- WHERE EXISTS (SELECT 1
-                 FROM dbo.[EmployeeTerritories] 
-                WHERE dbo.[EmployeeTerritories].[EmployeeID] = @EmployeeId
-                  AND dbo.[EmployeeTerritories].[TerritoryID] = dbo.[Territories].[TerritoryID]
-                  )
-				SELECT @@ROWCOUNT			
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Territories_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Territories_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Territories table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Territories_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@TerritoryId nvarchar (20)  = null ,
-
-	@TerritoryDescription nchar (50)  = null ,
-
-	@RegionId int   = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [TerritoryID]
-	, [TerritoryDescription]
-	, [RegionID]
-    FROM
-	[dbo].[Territories]
-    WHERE 
-	 ([TerritoryID] = @TerritoryId OR @TerritoryId IS NULL)
-	AND ([TerritoryDescription] = @TerritoryDescription OR @TerritoryDescription IS NULL)
-	AND ([RegionID] = @RegionId OR @RegionId IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [TerritoryID]
-	, [TerritoryDescription]
-	, [RegionID]
-    FROM
-	[dbo].[Territories]
-    WHERE 
-	 ([TerritoryID] = @TerritoryId AND @TerritoryId is not null)
-	OR ([TerritoryDescription] = @TerritoryDescription AND @TerritoryDescription is not null)
-	OR ([RegionID] = @RegionId AND @RegionId is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Employees table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_Get_List
-
-AS
-
-
-				
-				SELECT
-					[EmployeeID],
-					[LastName],
-					[FirstName],
-					[Title],
-					[TitleOfCourtesy],
-					[BirthDate],
-					[HireDate],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[HomePhone],
-					[Extension],
-					[Photo],
-					[Notes],
-					[ReportsTo],
-					[PhotoPath]
-				FROM
-					[dbo].[Employees]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Employees table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[EmployeeID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [EmployeeID]'
-				SET @SQL = @SQL + ', [LastName]'
-				SET @SQL = @SQL + ', [FirstName]'
-				SET @SQL = @SQL + ', [Title]'
-				SET @SQL = @SQL + ', [TitleOfCourtesy]'
-				SET @SQL = @SQL + ', [BirthDate]'
-				SET @SQL = @SQL + ', [HireDate]'
-				SET @SQL = @SQL + ', [Address]'
-				SET @SQL = @SQL + ', [City]'
-				SET @SQL = @SQL + ', [Region]'
-				SET @SQL = @SQL + ', [PostalCode]'
-				SET @SQL = @SQL + ', [Country]'
-				SET @SQL = @SQL + ', [HomePhone]'
-				SET @SQL = @SQL + ', [Extension]'
-				SET @SQL = @SQL + ', [Photo]'
-				SET @SQL = @SQL + ', [Notes]'
-				SET @SQL = @SQL + ', [ReportsTo]'
-				SET @SQL = @SQL + ', [PhotoPath]'
-				SET @SQL = @SQL + ' FROM [dbo].[Employees]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [EmployeeID],'
-				SET @SQL = @SQL + ' [LastName],'
-				SET @SQL = @SQL + ' [FirstName],'
-				SET @SQL = @SQL + ' [Title],'
-				SET @SQL = @SQL + ' [TitleOfCourtesy],'
-				SET @SQL = @SQL + ' [BirthDate],'
-				SET @SQL = @SQL + ' [HireDate],'
-				SET @SQL = @SQL + ' [Address],'
-				SET @SQL = @SQL + ' [City],'
-				SET @SQL = @SQL + ' [Region],'
-				SET @SQL = @SQL + ' [PostalCode],'
-				SET @SQL = @SQL + ' [Country],'
-				SET @SQL = @SQL + ' [HomePhone],'
-				SET @SQL = @SQL + ' [Extension],'
-				SET @SQL = @SQL + ' [Photo],'
-				SET @SQL = @SQL + ' [Notes],'
-				SET @SQL = @SQL + ' [ReportsTo],'
-				SET @SQL = @SQL + ' [PhotoPath]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Employees]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Employees table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_Insert
-(
-
-	@EmployeeId int    OUTPUT,
-
-	@LastName nvarchar (20)  ,
-
-	@FirstName nvarchar (10)  ,
-
-	@Title nvarchar (30)  ,
-
-	@TitleOfCourtesy nvarchar (25)  ,
-
-	@BirthDate datetime   ,
-
-	@HireDate datetime   ,
-
-	@Address nvarchar (60)  ,
-
-	@City nvarchar (15)  ,
-
-	@Region nvarchar (15)  ,
-
-	@PostalCode nvarchar (10)  ,
-
-	@Country nvarchar (15)  ,
-
-	@HomePhone nvarchar (24)  ,
-
-	@Extension nvarchar (4)  ,
-
-	@Photo image   ,
-
-	@Notes ntext   ,
-
-	@ReportsTo int   ,
-
-	@PhotoPath nvarchar (255)  
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Employees]
-					(
-					[LastName]
-					,[FirstName]
-					,[Title]
-					,[TitleOfCourtesy]
-					,[BirthDate]
-					,[HireDate]
-					,[Address]
-					,[City]
-					,[Region]
-					,[PostalCode]
-					,[Country]
-					,[HomePhone]
-					,[Extension]
-					,[Photo]
-					,[Notes]
-					,[ReportsTo]
-					,[PhotoPath]
-					)
-				VALUES
-					(
-					@LastName
-					,@FirstName
-					,@Title
-					,@TitleOfCourtesy
-					,@BirthDate
-					,@HireDate
-					,@Address
-					,@City
-					,@Region
-					,@PostalCode
-					,@Country
-					,@HomePhone
-					,@Extension
-					,@Photo
-					,@Notes
-					,@ReportsTo
-					,@PhotoPath
-					)
-				
-				-- Get the identity value
-				SET @EmployeeId = SCOPE_IDENTITY()
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Employees table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_Update
-(
-
-	@EmployeeId int   ,
-
-	@LastName nvarchar (20)  ,
-
-	@FirstName nvarchar (10)  ,
-
-	@Title nvarchar (30)  ,
-
-	@TitleOfCourtesy nvarchar (25)  ,
-
-	@BirthDate datetime   ,
-
-	@HireDate datetime   ,
-
-	@Address nvarchar (60)  ,
-
-	@City nvarchar (15)  ,
-
-	@Region nvarchar (15)  ,
-
-	@PostalCode nvarchar (10)  ,
-
-	@Country nvarchar (15)  ,
-
-	@HomePhone nvarchar (24)  ,
-
-	@Extension nvarchar (4)  ,
-
-	@Photo image   ,
-
-	@Notes ntext   ,
-
-	@ReportsTo int   ,
-
-	@PhotoPath nvarchar (255)  
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Employees]
-				SET
-					[LastName] = @LastName
-					,[FirstName] = @FirstName
-					,[Title] = @Title
-					,[TitleOfCourtesy] = @TitleOfCourtesy
-					,[BirthDate] = @BirthDate
-					,[HireDate] = @HireDate
-					,[Address] = @Address
-					,[City] = @City
-					,[Region] = @Region
-					,[PostalCode] = @PostalCode
-					,[Country] = @Country
-					,[HomePhone] = @HomePhone
-					,[Extension] = @Extension
-					,[Photo] = @Photo
-					,[Notes] = @Notes
-					,[ReportsTo] = @ReportsTo
-					,[PhotoPath] = @PhotoPath
-				WHERE
-[EmployeeID] = @EmployeeId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Employees table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_Delete
-(
-
-	@EmployeeId int   
-)
-AS
-
-
-				DELETE FROM [dbo].[Employees] WITH (ROWLOCK) 
-				WHERE
-					[EmployeeID] = @EmployeeId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_GetByReportsTo procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByReportsTo') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_GetByReportsTo
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Employees table through a foreign key
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_GetByReportsTo
-(
-
-	@ReportsTo int   
-)
-AS
-
-
-				SET ANSI_NULLS OFF
-				
-				SELECT
-					[EmployeeID],
-					[LastName],
-					[FirstName],
-					[Title],
-					[TitleOfCourtesy],
-					[BirthDate],
-					[HireDate],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[HomePhone],
-					[Extension],
-					[Photo],
-					[Notes],
-					[ReportsTo],
-					[PhotoPath]
-				FROM
-					[dbo].[Employees]
-				WHERE
-					[ReportsTo] = @ReportsTo
-				
-				SELECT @@ROWCOUNT
-				SET ANSI_NULLS ON
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_GetByLastName procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByLastName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_GetByLastName
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Employees table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_GetByLastName
-(
-
-	@LastName nvarchar (20)  
-)
-AS
-
-
-				SELECT
-					[EmployeeID],
-					[LastName],
-					[FirstName],
-					[Title],
-					[TitleOfCourtesy],
-					[BirthDate],
-					[HireDate],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[HomePhone],
-					[Extension],
-					[Photo],
-					[Notes],
-					[ReportsTo],
-					[PhotoPath]
-				FROM
-					[dbo].[Employees]
-				WHERE
-					[LastName] = @LastName
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_GetByEmployeeId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByEmployeeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_GetByEmployeeId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Employees table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_GetByEmployeeId
-(
-
-	@EmployeeId int   
-)
-AS
-
-
-				SELECT
-					[EmployeeID],
-					[LastName],
-					[FirstName],
-					[Title],
-					[TitleOfCourtesy],
-					[BirthDate],
-					[HireDate],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[HomePhone],
-					[Extension],
-					[Photo],
-					[Notes],
-					[ReportsTo],
-					[PhotoPath]
-				FROM
-					[dbo].[Employees]
-				WHERE
-					[EmployeeID] = @EmployeeId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_GetByPostalCode procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByPostalCode') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_GetByPostalCode
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Employees table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_GetByPostalCode
-(
-
-	@PostalCode nvarchar (10)  
-)
-AS
-
-
-				SELECT
-					[EmployeeID],
-					[LastName],
-					[FirstName],
-					[Title],
-					[TitleOfCourtesy],
-					[BirthDate],
-					[HireDate],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[HomePhone],
-					[Extension],
-					[Photo],
-					[Notes],
-					[ReportsTo],
-					[PhotoPath]
-				FROM
-					[dbo].[Employees]
-				WHERE
-					[PostalCode] = @PostalCode
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records through a junction table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories
-(
-
-	@TerritoryId nvarchar (20)  
-)
-AS
-
-
-SELECT dbo.[Employees].[EmployeeID]
-       ,dbo.[Employees].[LastName]
-       ,dbo.[Employees].[FirstName]
-       ,dbo.[Employees].[Title]
-       ,dbo.[Employees].[TitleOfCourtesy]
-       ,dbo.[Employees].[BirthDate]
-       ,dbo.[Employees].[HireDate]
-       ,dbo.[Employees].[Address]
-       ,dbo.[Employees].[City]
-       ,dbo.[Employees].[Region]
-       ,dbo.[Employees].[PostalCode]
-       ,dbo.[Employees].[Country]
-       ,dbo.[Employees].[HomePhone]
-       ,dbo.[Employees].[Extension]
-       ,dbo.[Employees].[Photo]
-       ,dbo.[Employees].[Notes]
-       ,dbo.[Employees].[ReportsTo]
-       ,dbo.[Employees].[PhotoPath]
-  FROM dbo.[Employees]
- WHERE EXISTS (SELECT 1
-                 FROM dbo.[EmployeeTerritories] 
-                WHERE dbo.[EmployeeTerritories].[TerritoryID] = @TerritoryId
-                  AND dbo.[EmployeeTerritories].[EmployeeID] = dbo.[Employees].[EmployeeID]
-                  )
-				SELECT @@ROWCOUNT			
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Employees_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Employees_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Employees table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Employees_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@EmployeeId int   = null ,
-
-	@LastName nvarchar (20)  = null ,
-
-	@FirstName nvarchar (10)  = null ,
-
-	@Title nvarchar (30)  = null ,
-
-	@TitleOfCourtesy nvarchar (25)  = null ,
-
-	@BirthDate datetime   = null ,
-
-	@HireDate datetime   = null ,
-
-	@Address nvarchar (60)  = null ,
-
-	@City nvarchar (15)  = null ,
-
-	@Region nvarchar (15)  = null ,
-
-	@PostalCode nvarchar (10)  = null ,
-
-	@Country nvarchar (15)  = null ,
-
-	@HomePhone nvarchar (24)  = null ,
-
-	@Extension nvarchar (4)  = null ,
-
-	@Photo image   = null ,
-
-	@Notes ntext   = null ,
-
-	@ReportsTo int   = null ,
-
-	@PhotoPath nvarchar (255)  = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [EmployeeID]
-	, [LastName]
-	, [FirstName]
-	, [Title]
-	, [TitleOfCourtesy]
-	, [BirthDate]
-	, [HireDate]
-	, [Address]
-	, [City]
-	, [Region]
-	, [PostalCode]
-	, [Country]
-	, [HomePhone]
-	, [Extension]
-	, [Photo]
-	, [Notes]
-	, [ReportsTo]
-	, [PhotoPath]
-    FROM
-	[dbo].[Employees]
-    WHERE 
-	 ([EmployeeID] = @EmployeeId OR @EmployeeId IS NULL)
-	AND ([LastName] = @LastName OR @LastName IS NULL)
-	AND ([FirstName] = @FirstName OR @FirstName IS NULL)
-	AND ([Title] = @Title OR @Title IS NULL)
-	AND ([TitleOfCourtesy] = @TitleOfCourtesy OR @TitleOfCourtesy IS NULL)
-	AND ([BirthDate] = @BirthDate OR @BirthDate IS NULL)
-	AND ([HireDate] = @HireDate OR @HireDate IS NULL)
-	AND ([Address] = @Address OR @Address IS NULL)
-	AND ([City] = @City OR @City IS NULL)
-	AND ([Region] = @Region OR @Region IS NULL)
-	AND ([PostalCode] = @PostalCode OR @PostalCode IS NULL)
-	AND ([Country] = @Country OR @Country IS NULL)
-	AND ([HomePhone] = @HomePhone OR @HomePhone IS NULL)
-	AND ([Extension] = @Extension OR @Extension IS NULL)
-	AND ([ReportsTo] = @ReportsTo OR @ReportsTo IS NULL)
-	AND ([PhotoPath] = @PhotoPath OR @PhotoPath IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [EmployeeID]
-	, [LastName]
-	, [FirstName]
-	, [Title]
-	, [TitleOfCourtesy]
-	, [BirthDate]
-	, [HireDate]
-	, [Address]
-	, [City]
-	, [Region]
-	, [PostalCode]
-	, [Country]
-	, [HomePhone]
-	, [Extension]
-	, [Photo]
-	, [Notes]
-	, [ReportsTo]
-	, [PhotoPath]
-    FROM
-	[dbo].[Employees]
-    WHERE 
-	 ([EmployeeID] = @EmployeeId AND @EmployeeId is not null)
-	OR ([LastName] = @LastName AND @LastName is not null)
-	OR ([FirstName] = @FirstName AND @FirstName is not null)
-	OR ([Title] = @Title AND @Title is not null)
-	OR ([TitleOfCourtesy] = @TitleOfCourtesy AND @TitleOfCourtesy is not null)
-	OR ([BirthDate] = @BirthDate AND @BirthDate is not null)
-	OR ([HireDate] = @HireDate AND @HireDate is not null)
-	OR ([Address] = @Address AND @Address is not null)
-	OR ([City] = @City AND @City is not null)
-	OR ([Region] = @Region AND @Region is not null)
-	OR ([PostalCode] = @PostalCode AND @PostalCode is not null)
-	OR ([Country] = @Country AND @Country is not null)
-	OR ([HomePhone] = @HomePhone AND @HomePhone is not null)
-	OR ([Extension] = @Extension AND @Extension is not null)
-	OR ([ReportsTo] = @ReportsTo AND @ReportsTo is not null)
-	OR ([PhotoPath] = @PhotoPath AND @PhotoPath is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Suppliers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_Get_List
-
-AS
-
-
-				
-				SELECT
-					[SupplierID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax],
-					[HomePage]
-				FROM
-					[dbo].[Suppliers]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Suppliers table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[SupplierID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [SupplierID]'
-				SET @SQL = @SQL + ', [CompanyName]'
-				SET @SQL = @SQL + ', [ContactName]'
-				SET @SQL = @SQL + ', [ContactTitle]'
-				SET @SQL = @SQL + ', [Address]'
-				SET @SQL = @SQL + ', [City]'
-				SET @SQL = @SQL + ', [Region]'
-				SET @SQL = @SQL + ', [PostalCode]'
-				SET @SQL = @SQL + ', [Country]'
-				SET @SQL = @SQL + ', [Phone]'
-				SET @SQL = @SQL + ', [Fax]'
-				SET @SQL = @SQL + ', [HomePage]'
-				SET @SQL = @SQL + ' FROM [dbo].[Suppliers]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [SupplierID],'
-				SET @SQL = @SQL + ' [CompanyName],'
-				SET @SQL = @SQL + ' [ContactName],'
-				SET @SQL = @SQL + ' [ContactTitle],'
-				SET @SQL = @SQL + ' [Address],'
-				SET @SQL = @SQL + ' [City],'
-				SET @SQL = @SQL + ' [Region],'
-				SET @SQL = @SQL + ' [PostalCode],'
-				SET @SQL = @SQL + ' [Country],'
-				SET @SQL = @SQL + ' [Phone],'
-				SET @SQL = @SQL + ' [Fax],'
-				SET @SQL = @SQL + ' [HomePage]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Suppliers]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Suppliers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_Insert
-(
-
-	@SupplierId int    OUTPUT,
-
-	@CompanyName nvarchar (40)  ,
-
-	@ContactName nvarchar (30)  ,
-
-	@ContactTitle nvarchar (30)  ,
-
-	@Address nvarchar (60)  ,
-
-	@City nvarchar (15)  ,
-
-	@Region nvarchar (15)  ,
-
-	@PostalCode nvarchar (10)  ,
-
-	@Country nvarchar (15)  ,
-
-	@Phone nvarchar (24)  ,
-
-	@Fax nvarchar (24)  ,
-
-	@HomePage ntext   
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Suppliers]
-					(
-					[CompanyName]
-					,[ContactName]
-					,[ContactTitle]
-					,[Address]
-					,[City]
-					,[Region]
-					,[PostalCode]
-					,[Country]
-					,[Phone]
-					,[Fax]
-					,[HomePage]
-					)
-				VALUES
-					(
-					@CompanyName
-					,@ContactName
-					,@ContactTitle
-					,@Address
-					,@City
-					,@Region
-					,@PostalCode
-					,@Country
-					,@Phone
-					,@Fax
-					,@HomePage
-					)
-				
-				-- Get the identity value
-				SET @SupplierId = SCOPE_IDENTITY()
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Suppliers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_Update
-(
-
-	@SupplierId int   ,
-
-	@CompanyName nvarchar (40)  ,
-
-	@ContactName nvarchar (30)  ,
-
-	@ContactTitle nvarchar (30)  ,
-
-	@Address nvarchar (60)  ,
-
-	@City nvarchar (15)  ,
-
-	@Region nvarchar (15)  ,
-
-	@PostalCode nvarchar (10)  ,
-
-	@Country nvarchar (15)  ,
-
-	@Phone nvarchar (24)  ,
-
-	@Fax nvarchar (24)  ,
-
-	@HomePage ntext   
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Suppliers]
-				SET
-					[CompanyName] = @CompanyName
-					,[ContactName] = @ContactName
-					,[ContactTitle] = @ContactTitle
-					,[Address] = @Address
-					,[City] = @City
-					,[Region] = @Region
-					,[PostalCode] = @PostalCode
-					,[Country] = @Country
-					,[Phone] = @Phone
-					,[Fax] = @Fax
-					,[HomePage] = @HomePage
-				WHERE
-[SupplierID] = @SupplierId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Suppliers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_Delete
-(
-
-	@SupplierId int   
-)
-AS
-
-
-				DELETE FROM [dbo].[Suppliers] WITH (ROWLOCK) 
-				WHERE
-					[SupplierID] = @SupplierId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_GetByCompanyName procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetByCompanyName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_GetByCompanyName
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Suppliers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_GetByCompanyName
-(
-
-	@CompanyName nvarchar (40)  
-)
-AS
-
-
-				SELECT
-					[SupplierID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax],
-					[HomePage]
-				FROM
-					[dbo].[Suppliers]
-				WHERE
-					[CompanyName] = @CompanyName
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_GetBySupplierId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetBySupplierId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_GetBySupplierId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Suppliers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_GetBySupplierId
-(
-
-	@SupplierId int   
-)
-AS
-
-
-				SELECT
-					[SupplierID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax],
-					[HomePage]
-				FROM
-					[dbo].[Suppliers]
-				WHERE
-					[SupplierID] = @SupplierId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_GetByPostalCode procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetByPostalCode') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_GetByPostalCode
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Suppliers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_GetByPostalCode
-(
-
-	@PostalCode nvarchar (10)  
-)
-AS
-
-
-				SELECT
-					[SupplierID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax],
-					[HomePage]
-				FROM
-					[dbo].[Suppliers]
-				WHERE
-					[PostalCode] = @PostalCode
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Suppliers_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Suppliers_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Suppliers table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Suppliers_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@SupplierId int   = null ,
-
-	@CompanyName nvarchar (40)  = null ,
-
-	@ContactName nvarchar (30)  = null ,
-
-	@ContactTitle nvarchar (30)  = null ,
-
-	@Address nvarchar (60)  = null ,
-
-	@City nvarchar (15)  = null ,
-
-	@Region nvarchar (15)  = null ,
-
-	@PostalCode nvarchar (10)  = null ,
-
-	@Country nvarchar (15)  = null ,
-
-	@Phone nvarchar (24)  = null ,
-
-	@Fax nvarchar (24)  = null ,
-
-	@HomePage ntext   = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [SupplierID]
-	, [CompanyName]
-	, [ContactName]
-	, [ContactTitle]
-	, [Address]
-	, [City]
-	, [Region]
-	, [PostalCode]
-	, [Country]
-	, [Phone]
-	, [Fax]
-	, [HomePage]
-    FROM
-	[dbo].[Suppliers]
-    WHERE 
-	 ([SupplierID] = @SupplierId OR @SupplierId IS NULL)
-	AND ([CompanyName] = @CompanyName OR @CompanyName IS NULL)
-	AND ([ContactName] = @ContactName OR @ContactName IS NULL)
-	AND ([ContactTitle] = @ContactTitle OR @ContactTitle IS NULL)
-	AND ([Address] = @Address OR @Address IS NULL)
-	AND ([City] = @City OR @City IS NULL)
-	AND ([Region] = @Region OR @Region IS NULL)
-	AND ([PostalCode] = @PostalCode OR @PostalCode IS NULL)
-	AND ([Country] = @Country OR @Country IS NULL)
-	AND ([Phone] = @Phone OR @Phone IS NULL)
-	AND ([Fax] = @Fax OR @Fax IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [SupplierID]
-	, [CompanyName]
-	, [ContactName]
-	, [ContactTitle]
-	, [Address]
-	, [City]
-	, [Region]
-	, [PostalCode]
-	, [Country]
-	, [Phone]
-	, [Fax]
-	, [HomePage]
-    FROM
-	[dbo].[Suppliers]
-    WHERE 
-	 ([SupplierID] = @SupplierId AND @SupplierId is not null)
-	OR ([CompanyName] = @CompanyName AND @CompanyName is not null)
-	OR ([ContactName] = @ContactName AND @ContactName is not null)
-	OR ([ContactTitle] = @ContactTitle AND @ContactTitle is not null)
-	OR ([Address] = @Address AND @Address is not null)
-	OR ([City] = @City AND @City is not null)
-	OR ([Region] = @Region AND @Region is not null)
-	OR ([PostalCode] = @PostalCode AND @PostalCode is not null)
-	OR ([Country] = @Country AND @Country is not null)
-	OR ([Phone] = @Phone AND @Phone is not null)
-	OR ([Fax] = @Fax AND @Fax is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Customers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_Get_List
-
-AS
-
-
-				
-				SELECT
-					[CustomerID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax]
-				FROM
-					[dbo].[Customers]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Customers table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[CustomerID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [CustomerID]'
-				SET @SQL = @SQL + ', [CompanyName]'
-				SET @SQL = @SQL + ', [ContactName]'
-				SET @SQL = @SQL + ', [ContactTitle]'
-				SET @SQL = @SQL + ', [Address]'
-				SET @SQL = @SQL + ', [City]'
-				SET @SQL = @SQL + ', [Region]'
-				SET @SQL = @SQL + ', [PostalCode]'
-				SET @SQL = @SQL + ', [Country]'
-				SET @SQL = @SQL + ', [Phone]'
-				SET @SQL = @SQL + ', [Fax]'
-				SET @SQL = @SQL + ' FROM [dbo].[Customers]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [CustomerID],'
-				SET @SQL = @SQL + ' [CompanyName],'
-				SET @SQL = @SQL + ' [ContactName],'
-				SET @SQL = @SQL + ' [ContactTitle],'
-				SET @SQL = @SQL + ' [Address],'
-				SET @SQL = @SQL + ' [City],'
-				SET @SQL = @SQL + ' [Region],'
-				SET @SQL = @SQL + ' [PostalCode],'
-				SET @SQL = @SQL + ' [Country],'
-				SET @SQL = @SQL + ' [Phone],'
-				SET @SQL = @SQL + ' [Fax]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Customers]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Customers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_Insert
-(
-
-	@CustomerId nchar (5)  ,
-
-	@CompanyName nvarchar (40)  ,
-
-	@ContactName nvarchar (30)  ,
-
-	@ContactTitle nvarchar (30)  ,
-
-	@Address nvarchar (60)  ,
-
-	@City nvarchar (15)  ,
-
-	@Region nvarchar (15)  ,
-
-	@PostalCode nvarchar (10)  ,
-
-	@Country nvarchar (15)  ,
-
-	@Phone nvarchar (24)  ,
-
-	@Fax nvarchar (24)  
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Customers]
-					(
-					[CustomerID]
-					,[CompanyName]
-					,[ContactName]
-					,[ContactTitle]
-					,[Address]
-					,[City]
-					,[Region]
-					,[PostalCode]
-					,[Country]
-					,[Phone]
-					,[Fax]
-					)
-				VALUES
-					(
-					@CustomerId
-					,@CompanyName
-					,@ContactName
-					,@ContactTitle
-					,@Address
-					,@City
-					,@Region
-					,@PostalCode
-					,@Country
-					,@Phone
-					,@Fax
-					)
-				
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Customers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_Update
-(
-
-	@CustomerId nchar (5)  ,
-
-	@OriginalCustomerId nchar (5)  ,
-
-	@CompanyName nvarchar (40)  ,
-
-	@ContactName nvarchar (30)  ,
-
-	@ContactTitle nvarchar (30)  ,
-
-	@Address nvarchar (60)  ,
-
-	@City nvarchar (15)  ,
-
-	@Region nvarchar (15)  ,
-
-	@PostalCode nvarchar (10)  ,
-
-	@Country nvarchar (15)  ,
-
-	@Phone nvarchar (24)  ,
-
-	@Fax nvarchar (24)  
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Customers]
-				SET
-					[CustomerID] = @CustomerId
-					,[CompanyName] = @CompanyName
-					,[ContactName] = @ContactName
-					,[ContactTitle] = @ContactTitle
-					,[Address] = @Address
-					,[City] = @City
-					,[Region] = @Region
-					,[PostalCode] = @PostalCode
-					,[Country] = @Country
-					,[Phone] = @Phone
-					,[Fax] = @Fax
-				WHERE
-[CustomerID] = @OriginalCustomerId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Customers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_Delete
-(
-
-	@CustomerId nchar (5)  
-)
-AS
-
-
-				DELETE FROM [dbo].[Customers] WITH (ROWLOCK) 
-				WHERE
-					[CustomerID] = @CustomerId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetByCity procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCity') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetByCity
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Customers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetByCity
-(
-
-	@City nvarchar (15)  
-)
-AS
-
-
-				SELECT
-					[CustomerID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax]
-				FROM
-					[dbo].[Customers]
-				WHERE
-					[City] = @City
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetByCompanyName procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCompanyName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetByCompanyName
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Customers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetByCompanyName
-(
-
-	@CompanyName nvarchar (40)  
-)
-AS
-
-
-				SELECT
-					[CustomerID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax]
-				FROM
-					[dbo].[Customers]
-				WHERE
-					[CompanyName] = @CompanyName
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetByCustomerId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCustomerId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetByCustomerId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Customers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetByCustomerId
-(
-
-	@CustomerId nchar (5)  
-)
-AS
-
-
-				SELECT
-					[CustomerID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax]
-				FROM
-					[dbo].[Customers]
-				WHERE
-					[CustomerID] = @CustomerId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetByPostalCode procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByPostalCode') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetByPostalCode
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Customers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetByPostalCode
-(
-
-	@PostalCode nvarchar (10)  
-)
-AS
-
-
-				SELECT
-					[CustomerID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax]
-				FROM
-					[dbo].[Customers]
-				WHERE
-					[PostalCode] = @PostalCode
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetByRegion procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByRegion') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetByRegion
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Customers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetByRegion
-(
-
-	@Region nvarchar (15)  
-)
-AS
-
-
-				SELECT
-					[CustomerID],
-					[CompanyName],
-					[ContactName],
-					[ContactTitle],
-					[Address],
-					[City],
-					[Region],
-					[PostalCode],
-					[Country],
-					[Phone],
-					[Fax]
-				FROM
-					[dbo].[Customers]
-				WHERE
-					[Region] = @Region
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records through a junction table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo
-(
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-SELECT dbo.[Customers].[CustomerID]
-       ,dbo.[Customers].[CompanyName]
-       ,dbo.[Customers].[ContactName]
-       ,dbo.[Customers].[ContactTitle]
-       ,dbo.[Customers].[Address]
-       ,dbo.[Customers].[City]
-       ,dbo.[Customers].[Region]
-       ,dbo.[Customers].[PostalCode]
-       ,dbo.[Customers].[Country]
-       ,dbo.[Customers].[Phone]
-       ,dbo.[Customers].[Fax]
-  FROM dbo.[Customers]
- WHERE EXISTS (SELECT 1
-                 FROM dbo.[CustomerCustomerDemo] 
-                WHERE dbo.[CustomerCustomerDemo].[CustomerTypeID] = @CustomerTypeId
-                  AND dbo.[CustomerCustomerDemo].[CustomerID] = dbo.[Customers].[CustomerID]
-                  )
-				SELECT @@ROWCOUNT			
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Customers_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Customers_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Customers table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Customers_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@CustomerId nchar (5)  = null ,
-
-	@CompanyName nvarchar (40)  = null ,
-
-	@ContactName nvarchar (30)  = null ,
-
-	@ContactTitle nvarchar (30)  = null ,
-
-	@Address nvarchar (60)  = null ,
-
-	@City nvarchar (15)  = null ,
-
-	@Region nvarchar (15)  = null ,
-
-	@PostalCode nvarchar (10)  = null ,
-
-	@Country nvarchar (15)  = null ,
-
-	@Phone nvarchar (24)  = null ,
-
-	@Fax nvarchar (24)  = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [CustomerID]
-	, [CompanyName]
-	, [ContactName]
-	, [ContactTitle]
-	, [Address]
-	, [City]
-	, [Region]
-	, [PostalCode]
-	, [Country]
-	, [Phone]
-	, [Fax]
-    FROM
-	[dbo].[Customers]
-    WHERE 
-	 ([CustomerID] = @CustomerId OR @CustomerId IS NULL)
-	AND ([CompanyName] = @CompanyName OR @CompanyName IS NULL)
-	AND ([ContactName] = @ContactName OR @ContactName IS NULL)
-	AND ([ContactTitle] = @ContactTitle OR @ContactTitle IS NULL)
-	AND ([Address] = @Address OR @Address IS NULL)
-	AND ([City] = @City OR @City IS NULL)
-	AND ([Region] = @Region OR @Region IS NULL)
-	AND ([PostalCode] = @PostalCode OR @PostalCode IS NULL)
-	AND ([Country] = @Country OR @Country IS NULL)
-	AND ([Phone] = @Phone OR @Phone IS NULL)
-	AND ([Fax] = @Fax OR @Fax IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [CustomerID]
-	, [CompanyName]
-	, [ContactName]
-	, [ContactTitle]
-	, [Address]
-	, [City]
-	, [Region]
-	, [PostalCode]
-	, [Country]
-	, [Phone]
-	, [Fax]
-    FROM
-	[dbo].[Customers]
-    WHERE 
-	 ([CustomerID] = @CustomerId AND @CustomerId is not null)
-	OR ([CompanyName] = @CompanyName AND @CompanyName is not null)
-	OR ([ContactName] = @ContactName AND @ContactName is not null)
-	OR ([ContactTitle] = @ContactTitle AND @ContactTitle is not null)
-	OR ([Address] = @Address AND @Address is not null)
-	OR ([City] = @City AND @City is not null)
-	OR ([Region] = @Region AND @Region is not null)
-	OR ([PostalCode] = @PostalCode AND @PostalCode is not null)
-	OR ([Country] = @Country AND @Country is not null)
-	OR ([Phone] = @Phone AND @Phone is not null)
-	OR ([Fax] = @Fax AND @Fax is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Categories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_Get_List
-
-AS
-
-
-				
-				SELECT
-					[CategoryID],
-					[CategoryName],
-					[Description],
-					[Picture]
-				FROM
-					[dbo].[Categories]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Categories table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[CategoryID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [CategoryID]'
-				SET @SQL = @SQL + ', [CategoryName]'
-				SET @SQL = @SQL + ', [Description]'
-				SET @SQL = @SQL + ', [Picture]'
-				SET @SQL = @SQL + ' FROM [dbo].[Categories]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [CategoryID],'
-				SET @SQL = @SQL + ' [CategoryName],'
-				SET @SQL = @SQL + ' [Description],'
-				SET @SQL = @SQL + ' [Picture]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Categories]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Categories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_Insert
-(
-
-	@CategoryId int    OUTPUT,
-
-	@CategoryName nvarchar (15)  ,
-
-	@Description ntext   ,
-
-	@Picture image   
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Categories]
-					(
-					[CategoryName]
-					,[Description]
-					,[Picture]
-					)
-				VALUES
-					(
-					@CategoryName
-					,@Description
-					,@Picture
-					)
-				
-				-- Get the identity value
-				SET @CategoryId = SCOPE_IDENTITY()
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Categories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_Update
-(
-
-	@CategoryId int   ,
-
-	@CategoryName nvarchar (15)  ,
-
-	@Description ntext   ,
-
-	@Picture image   
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Categories]
-				SET
-					[CategoryName] = @CategoryName
-					,[Description] = @Description
-					,[Picture] = @Picture
-				WHERE
-[CategoryID] = @CategoryId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Categories table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_Delete
-(
-
-	@CategoryId int   
-)
-AS
-
-
-				DELETE FROM [dbo].[Categories] WITH (ROWLOCK) 
-				WHERE
-					[CategoryID] = @CategoryId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_GetByCategoryName procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_GetByCategoryName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_GetByCategoryName
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Categories table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_GetByCategoryName
-(
-
-	@CategoryName nvarchar (15)  
-)
-AS
-
-
-				SELECT
-					[CategoryID],
-					[CategoryName],
-					[Description],
-					[Picture]
-				FROM
-					[dbo].[Categories]
-				WHERE
-					[CategoryName] = @CategoryName
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_GetByCategoryId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_GetByCategoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_GetByCategoryId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Categories table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_GetByCategoryId
-(
-
-	@CategoryId int   
-)
-AS
-
-
-				SELECT
-					[CategoryID],
-					[CategoryName],
-					[Description],
-					[Picture]
-				FROM
-					[dbo].[Categories]
-				WHERE
-					[CategoryID] = @CategoryId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Categories_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Categories_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Categories table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Categories_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@CategoryId int   = null ,
-
-	@CategoryName nvarchar (15)  = null ,
-
-	@Description ntext   = null ,
-
-	@Picture image   = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [CategoryID]
-	, [CategoryName]
-	, [Description]
-	, [Picture]
-    FROM
-	[dbo].[Categories]
-    WHERE 
-	 ([CategoryID] = @CategoryId OR @CategoryId IS NULL)
-	AND ([CategoryName] = @CategoryName OR @CategoryName IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [CategoryID]
-	, [CategoryName]
-	, [Description]
-	, [Picture]
-    FROM
-	[dbo].[Categories]
-    WHERE 
-	 ([CategoryID] = @CategoryId AND @CategoryId is not null)
-	OR ([CategoryName] = @CategoryName AND @CategoryName is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the CustomerDemographics table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Get_List
-
-AS
-
-
-				
-				SELECT
-					[CustomerTypeID],
-					[CustomerDesc]
-				FROM
-					[dbo].[CustomerDemographics]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the CustomerDemographics table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[CustomerTypeID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [CustomerTypeID]'
-				SET @SQL = @SQL + ', [CustomerDesc]'
-				SET @SQL = @SQL + ' FROM [dbo].[CustomerDemographics]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [CustomerTypeID],'
-				SET @SQL = @SQL + ' [CustomerDesc]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[CustomerDemographics]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the CustomerDemographics table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Insert
-(
-
-	@CustomerTypeId nchar (10)  ,
-
-	@CustomerDesc ntext   
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[CustomerDemographics]
-					(
-					[CustomerTypeID]
-					,[CustomerDesc]
-					)
-				VALUES
-					(
-					@CustomerTypeId
-					,@CustomerDesc
-					)
-				
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the CustomerDemographics table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Update
-(
-
-	@CustomerTypeId nchar (10)  ,
-
-	@OriginalCustomerTypeId nchar (10)  ,
-
-	@CustomerDesc ntext   
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[CustomerDemographics]
-				SET
-					[CustomerTypeID] = @CustomerTypeId
-					,[CustomerDesc] = @CustomerDesc
-				WHERE
-[CustomerTypeID] = @OriginalCustomerTypeId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the CustomerDemographics table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Delete
-(
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-				DELETE FROM [dbo].[CustomerDemographics] WITH (ROWLOCK) 
-				WHERE
-					[CustomerTypeID] = @CustomerTypeId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the CustomerDemographics table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId
-(
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-				SELECT
-					[CustomerTypeID],
-					[CustomerDesc]
-				FROM
-					[dbo].[CustomerDemographics]
-				WHERE
-					[CustomerTypeID] = @CustomerTypeId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records through a junction table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo
-(
-
-	@CustomerId nchar (5)  
-)
-AS
-
-
-SELECT dbo.[CustomerDemographics].[CustomerTypeID]
-       ,dbo.[CustomerDemographics].[CustomerDesc]
-  FROM dbo.[CustomerDemographics]
- WHERE EXISTS (SELECT 1
-                 FROM dbo.[CustomerCustomerDemo] 
-                WHERE dbo.[CustomerCustomerDemo].[CustomerID] = @CustomerId
-                  AND dbo.[CustomerCustomerDemo].[CustomerTypeID] = dbo.[CustomerDemographics].[CustomerTypeID]
-                  )
-				SELECT @@ROWCOUNT			
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerDemographics_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the CustomerDemographics table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@CustomerTypeId nchar (10)  = null ,
-
-	@CustomerDesc ntext   = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [CustomerTypeID]
-	, [CustomerDesc]
-    FROM
-	[dbo].[CustomerDemographics]
-    WHERE 
-	 ([CustomerTypeID] = @CustomerTypeId OR @CustomerTypeId IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [CustomerTypeID]
-	, [CustomerDesc]
-    FROM
-	[dbo].[CustomerDemographics]
-    WHERE 
-	 ([CustomerTypeID] = @CustomerTypeId AND @CustomerTypeId is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the CustomerCustomerDemo table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Get_List
-
-AS
-
-
-				
-				SELECT
-					[CustomerID],
-					[CustomerTypeID]
-				FROM
-					[dbo].[CustomerCustomerDemo]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the CustomerCustomerDemo table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[CustomerID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [CustomerID]'
-				SET @SQL = @SQL + ', [CustomerTypeID]'
-				SET @SQL = @SQL + ' FROM [dbo].[CustomerCustomerDemo]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [CustomerID],'
-				SET @SQL = @SQL + ' [CustomerTypeID]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[CustomerCustomerDemo]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the CustomerCustomerDemo table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Insert
-(
-
-	@CustomerId nchar (5)  ,
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[CustomerCustomerDemo]
-					(
-					[CustomerID]
-					,[CustomerTypeID]
-					)
-				VALUES
-					(
-					@CustomerId
-					,@CustomerTypeId
-					)
-				
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the CustomerCustomerDemo table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Update
-(
-
-	@CustomerId nchar (5)  ,
-
-	@OriginalCustomerId nchar (5)  ,
-
-	@CustomerTypeId nchar (10)  ,
-
-	@OriginalCustomerTypeId nchar (10)  
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[CustomerCustomerDemo]
-				SET
-					[CustomerID] = @CustomerId
-					,[CustomerTypeID] = @CustomerTypeId
-				WHERE
-[CustomerID] = @OriginalCustomerId 
-AND [CustomerTypeID] = @OriginalCustomerTypeId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the CustomerCustomerDemo table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Delete
-(
-
-	@CustomerId nchar (5)  ,
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-				DELETE FROM [dbo].[CustomerCustomerDemo] WITH (ROWLOCK) 
-				WHERE
-					[CustomerID] = @CustomerId
-					AND [CustomerTypeID] = @CustomerTypeId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the CustomerCustomerDemo table through a foreign key
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId
-(
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-				SET ANSI_NULLS OFF
-				
-				SELECT
-					[CustomerID],
-					[CustomerTypeID]
-				FROM
-					[dbo].[CustomerCustomerDemo]
-				WHERE
-					[CustomerTypeID] = @CustomerTypeId
-				
-				SELECT @@ROWCOUNT
-				SET ANSI_NULLS ON
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the CustomerCustomerDemo table through a foreign key
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId
-(
-
-	@CustomerId nchar (5)  
-)
-AS
-
-
-				SET ANSI_NULLS OFF
-				
-				SELECT
-					[CustomerID],
-					[CustomerTypeID]
-				FROM
-					[dbo].[CustomerCustomerDemo]
-				WHERE
-					[CustomerID] = @CustomerId
-				
-				SELECT @@ROWCOUNT
-				SET ANSI_NULLS ON
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the CustomerCustomerDemo table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId
-(
-
-	@CustomerId nchar (5)  ,
-
-	@CustomerTypeId nchar (10)  
-)
-AS
-
-
-				SELECT
-					[CustomerID],
-					[CustomerTypeID]
-				FROM
-					[dbo].[CustomerCustomerDemo]
-				WHERE
-					[CustomerID] = @CustomerId
-					AND [CustomerTypeID] = @CustomerTypeId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_CustomerCustomerDemo_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the CustomerCustomerDemo table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@CustomerId nchar (5)  = null ,
-
-	@CustomerTypeId nchar (10)  = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [CustomerID]
-	, [CustomerTypeID]
-    FROM
-	[dbo].[CustomerCustomerDemo]
-    WHERE 
-	 ([CustomerID] = @CustomerId OR @CustomerId IS NULL)
-	AND ([CustomerTypeID] = @CustomerTypeId OR @CustomerTypeId IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [CustomerID]
-	, [CustomerTypeID]
-    FROM
-	[dbo].[CustomerCustomerDemo]
-    WHERE 
-	 ([CustomerID] = @CustomerId AND @CustomerId is not null)
-	OR ([CustomerTypeID] = @CustomerTypeId AND @CustomerTypeId is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Shippers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_Get_List
-
-AS
-
-
-				
-				SELECT
-					[ShipperID],
-					[CompanyName],
-					[Phone]
-				FROM
-					[dbo].[Shippers]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Shippers table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[ShipperID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [ShipperID]'
-				SET @SQL = @SQL + ', [CompanyName]'
-				SET @SQL = @SQL + ', [Phone]'
-				SET @SQL = @SQL + ' FROM [dbo].[Shippers]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [ShipperID],'
-				SET @SQL = @SQL + ' [CompanyName],'
-				SET @SQL = @SQL + ' [Phone]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Shippers]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Shippers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_Insert
-(
-
-	@ShipperId int    OUTPUT,
-
-	@CompanyName nvarchar (40)  ,
-
-	@Phone nvarchar (24)  
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Shippers]
-					(
-					[CompanyName]
-					,[Phone]
-					)
-				VALUES
-					(
-					@CompanyName
-					,@Phone
-					)
-				
-				-- Get the identity value
-				SET @ShipperId = SCOPE_IDENTITY()
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Shippers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_Update
-(
-
-	@ShipperId int   ,
-
-	@CompanyName nvarchar (40)  ,
-
-	@Phone nvarchar (24)  
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Shippers]
-				SET
-					[CompanyName] = @CompanyName
-					,[Phone] = @Phone
-				WHERE
-[ShipperID] = @ShipperId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Shippers table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_Delete
-(
-
-	@ShipperId int   
-)
-AS
-
-
-				DELETE FROM [dbo].[Shippers] WITH (ROWLOCK) 
-				WHERE
-					[ShipperID] = @ShipperId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_GetByShipperId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_GetByShipperId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_GetByShipperId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Shippers table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_GetByShipperId
-(
-
-	@ShipperId int   
-)
-AS
-
-
-				SELECT
-					[ShipperID],
-					[CompanyName],
-					[Phone]
-				FROM
-					[dbo].[Shippers]
-				WHERE
-					[ShipperID] = @ShipperId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Shippers_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Shippers_Find
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Shippers table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Shippers_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@ShipperId int   = null ,
-
-	@CompanyName nvarchar (40)  = null ,
-
-	@Phone nvarchar (24)  = null 
-)
-AS
-
-
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [ShipperID]
-	, [CompanyName]
-	, [Phone]
-    FROM
-	[dbo].[Shippers]
-    WHERE 
-	 ([ShipperID] = @ShipperId OR @ShipperId IS NULL)
-	AND ([CompanyName] = @CompanyName OR @CompanyName IS NULL)
-	AND ([Phone] = @Phone OR @Phone IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [ShipperID]
-	, [CompanyName]
-	, [Phone]
-    FROM
-	[dbo].[Shippers]
-    WHERE 
-	 ([ShipperID] = @ShipperId AND @ShipperId is not null)
-	OR ([CompanyName] = @CompanyName AND @CompanyName is not null)
-	OR ([Phone] = @Phone AND @Phone is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_Get_List
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets all records from the Products table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_Get_List
-
-AS
-
-
-				
-				SELECT
-					[ProductID],
-					[ProductName],
-					[SupplierID],
-					[CategoryID],
-					[QuantityPerUnit],
-					[UnitPrice],
-					[UnitsInStock],
-					[UnitsOnOrder],
-					[ReorderLevel],
-					[Discontinued]
-				FROM
-					[dbo].[Products]
-					
-				SELECT @@ROWCOUNT
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_GetPaged
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records from the Products table passing page index and page count parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_GetPaged
-(
-
-	@WhereClause varchar (2000)  ,
-
-	@OrderBy varchar (2000)  ,
-
-	@PageIndex int   ,
-
-	@PageSize int   
-)
-AS
-
-
-				
-				BEGIN
-				DECLARE @PageLowerBound int
-				DECLARE @PageUpperBound int
-				
-				-- Set the page bounds
-				SET @PageLowerBound = @PageSize * @PageIndex
-				SET @PageUpperBound = @PageLowerBound + @PageSize
-
-				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
-				BEGIN
-					-- default order by to first column
-					SET @OrderBy = '[ProductID]'
-				END
-
-				-- SQL Server 2005 Paging
-				DECLARE @SQL AS nvarchar(MAX)
-				SET @SQL = 'WITH PageIndex AS ('
-				SET @SQL = @SQL + ' SELECT'
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
-				SET @SQL = @SQL + ', [ProductID]'
-				SET @SQL = @SQL + ', [ProductName]'
-				SET @SQL = @SQL + ', [SupplierID]'
-				SET @SQL = @SQL + ', [CategoryID]'
-				SET @SQL = @SQL + ', [QuantityPerUnit]'
-				SET @SQL = @SQL + ', [UnitPrice]'
-				SET @SQL = @SQL + ', [UnitsInStock]'
-				SET @SQL = @SQL + ', [UnitsOnOrder]'
-				SET @SQL = @SQL + ', [ReorderLevel]'
-				SET @SQL = @SQL + ', [Discontinued]'
-				SET @SQL = @SQL + ' FROM [dbo].[Products]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				SET @SQL = @SQL + ' ) SELECT'
-				SET @SQL = @SQL + ' [ProductID],'
-				SET @SQL = @SQL + ' [ProductName],'
-				SET @SQL = @SQL + ' [SupplierID],'
-				SET @SQL = @SQL + ' [CategoryID],'
-				SET @SQL = @SQL + ' [QuantityPerUnit],'
-				SET @SQL = @SQL + ' [UnitPrice],'
-				SET @SQL = @SQL + ' [UnitsInStock],'
-				SET @SQL = @SQL + ' [UnitsOnOrder],'
-				SET @SQL = @SQL + ' [ReorderLevel],'
-				SET @SQL = @SQL + ' [Discontinued]'
-				SET @SQL = @SQL + ' FROM PageIndex'
-				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
-				IF @PageSize > 0
-				BEGIN
-					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
-				END
-				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
-				EXEC sp_executesql @SQL
-				
-				-- get row count
-				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[Products]'
-				IF LEN(@WhereClause) > 0
-				BEGIN
-					SET @SQL = @SQL + ' WHERE ' + @WhereClause
-				END
-				EXEC sp_executesql @SQL
-			
-				END
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_Insert
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Inserts a record into the Products table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_Insert
-(
-
-	@ProductId int    OUTPUT,
-
-	@ProductName nvarchar (40)  ,
-
-	@SupplierId int   ,
-
-	@CategoryId int   ,
-
-	@QuantityPerUnit nvarchar (20)  ,
-
-	@UnitPrice money   ,
-
-	@UnitsInStock smallint   ,
-
-	@UnitsOnOrder smallint   ,
-
-	@ReorderLevel smallint   ,
-
-	@Discontinued bit   
-)
-AS
-
-
-				
-				INSERT INTO [dbo].[Products]
-					(
-					[ProductName]
-					,[SupplierID]
-					,[CategoryID]
-					,[QuantityPerUnit]
-					,[UnitPrice]
-					,[UnitsInStock]
-					,[UnitsOnOrder]
-					,[ReorderLevel]
-					,[Discontinued]
-					)
-				VALUES
-					(
-					@ProductName
-					,@SupplierId
-					,@CategoryId
-					,@QuantityPerUnit
-					,@UnitPrice
-					,@UnitsInStock
-					,@UnitsOnOrder
-					,@ReorderLevel
-					,@Discontinued
-					)
-				
-				-- Get the identity value
-				SET @ProductId = SCOPE_IDENTITY()
-									
-							
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_Update
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Updates a record in the Products table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_Update
-(
-
-	@ProductId int   ,
-
-	@ProductName nvarchar (40)  ,
-
-	@SupplierId int   ,
-
-	@CategoryId int   ,
-
-	@QuantityPerUnit nvarchar (20)  ,
-
-	@UnitPrice money   ,
-
-	@UnitsInStock smallint   ,
-
-	@UnitsOnOrder smallint   ,
-
-	@ReorderLevel smallint   ,
-
-	@Discontinued bit   
-)
-AS
-
-
-				
-				
-				-- Modify the updatable columns
-				UPDATE
-					[dbo].[Products]
-				SET
-					[ProductName] = @ProductName
-					,[SupplierID] = @SupplierId
-					,[CategoryID] = @CategoryId
-					,[QuantityPerUnit] = @QuantityPerUnit
-					,[UnitPrice] = @UnitPrice
-					,[UnitsInStock] = @UnitsInStock
-					,[UnitsOnOrder] = @UnitsOnOrder
-					,[ReorderLevel] = @ReorderLevel
-					,[Discontinued] = @Discontinued
-				WHERE
-[ProductID] = @ProductId 
-				
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_Delete
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Deletes a record in the Products table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_Delete
-(
-
-	@ProductId int   
-)
-AS
-
-
-				DELETE FROM [dbo].[Products] WITH (ROWLOCK) 
-				WHERE
-					[ProductID] = @ProductId
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_GetByCategoryId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByCategoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_GetByCategoryId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Products table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_GetByCategoryId
-(
-
-	@CategoryId int   
-)
-AS
-
-
-				SELECT
-					[ProductID],
-					[ProductName],
-					[SupplierID],
-					[CategoryID],
-					[QuantityPerUnit],
-					[UnitPrice],
-					[UnitsInStock],
-					[UnitsOnOrder],
-					[ReorderLevel],
-					[Discontinued]
-				FROM
-					[dbo].[Products]
-				WHERE
-					[CategoryID] = @CategoryId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_GetByProductId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByProductId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_GetByProductId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Products table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_GetByProductId
-(
-
-	@ProductId int   
-)
-AS
-
-
-				SELECT
-					[ProductID],
-					[ProductName],
-					[SupplierID],
-					[CategoryID],
-					[QuantityPerUnit],
-					[UnitPrice],
-					[UnitsInStock],
-					[UnitsOnOrder],
-					[ReorderLevel],
-					[Discontinued]
-				FROM
-					[dbo].[Products]
-				WHERE
-					[ProductID] = @ProductId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_GetByProductName procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByProductName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_GetByProductName
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Products table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_GetByProductName
-(
-
-	@ProductName nvarchar (40)  
-)
-AS
-
-
-				SELECT
-					[ProductID],
-					[ProductName],
-					[SupplierID],
-					[CategoryID],
-					[QuantityPerUnit],
-					[UnitPrice],
-					[UnitsInStock],
-					[UnitsOnOrder],
-					[ReorderLevel],
-					[Discontinued]
-				FROM
-					[dbo].[Products]
-				WHERE
-					[ProductName] = @ProductName
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_GetBySupplierId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetBySupplierId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_GetBySupplierId
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Select records from the Products table through an index
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_GetBySupplierId
-(
-
-	@SupplierId int   
-)
-AS
-
-
-				SELECT
-					[ProductID],
-					[ProductName],
-					[SupplierID],
-					[CategoryID],
-					[QuantityPerUnit],
-					[UnitPrice],
-					[UnitsInStock],
-					[UnitsOnOrder],
-					[ReorderLevel],
-					[Discontinued]
-				FROM
-					[dbo].[Products]
-				WHERE
-					[SupplierID] = @SupplierId
-				SELECT @@ROWCOUNT
-					
-			
-
-GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
-
--- Drop the dbo.sp_nt_Products_GetByOrderIdFromOrderDetails procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByOrderIdFromOrderDetails') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_GetByOrderIdFromOrderDetails
-GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Gets records through a junction table
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_GetByOrderIdFromOrderDetails
-(
-
-	@OrderId int   
-)
 AS
-
 
-SELECT dbo.[Products].[ProductID]
-       ,dbo.[Products].[ProductName]
-       ,dbo.[Products].[SupplierID]
-       ,dbo.[Products].[CategoryID]
-       ,dbo.[Products].[QuantityPerUnit]
-       ,dbo.[Products].[UnitPrice]
-       ,dbo.[Products].[UnitsInStock]
-       ,dbo.[Products].[UnitsOnOrder]
-       ,dbo.[Products].[ReorderLevel]
-       ,dbo.[Products].[Discontinued]
-  FROM dbo.[Products]
- WHERE EXISTS (SELECT 1
-                 FROM dbo.[Order Details] 
-                WHERE dbo.[Order Details].[OrderID] = @OrderId
-                  AND dbo.[Order Details].[ProductID] = dbo.[Products].[ProductID]
-                  )
-				SELECT @@ROWCOUNT			
-				
 
+BEGIN
+DECLARE @procedureName SYSNAME
+DECLARE c CURSOR FOR
+SELECT '[' + sc.name + '].[' + so.name + ']' FROM sysobjects so INNER JOIN sys.schemas sc ON sc.schema_id = so.uid WHERE type = 'P' AND objectproperty(id, 'IsMSShipped') = 0
+AND so.name LIKE 'sp_nt_%' 
+OPEN c
+FETCH NEXT FROM c INTO @procedureName
+WHILE @@FETCH_STATUS = 0
+BEGIN
+EXEC('DROP PROC ' + @procedureName)
+FETCH NEXT FROM c INTO @procedureName
+END
+CLOSE c
+DEALLOCATE c
+END
 GO
-SET QUOTED_IDENTIFIER ON 
-GO
-SET NOCOUNT ON
-GO
-SET ANSI_NULLS OFF 
-GO
-
-	
 
--- Drop the dbo.sp_nt_Products_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_Products_Find
+EXEC dbo.sp_nt_DropAllProcedures
 GO
-
-/*
-----------------------------------------------------------------------------------------------------
-
--- Created By:  ()
--- Purpose: Finds records in the Products table passing nullable parameters
-----------------------------------------------------------------------------------------------------
-*/
-
-
-CREATE PROCEDURE dbo.sp_nt_Products_Find
-(
-
-	@SearchUsingOR bit   = null ,
-
-	@ProductId int   = null ,
-
-	@ProductName nvarchar (40)  = null ,
-
-	@SupplierId int   = null ,
-
-	@CategoryId int   = null ,
-
-	@QuantityPerUnit nvarchar (20)  = null ,
-
-	@UnitPrice money   = null ,
-
-	@UnitsInStock smallint   = null ,
-
-	@UnitsOnOrder smallint   = null ,
-
-	@ReorderLevel smallint   = null ,
-
-	@Discontinued bit   = null 
-)
-AS
-
 
-				
-  IF ISNULL(@SearchUsingOR, 0) <> 1
-  BEGIN
-    SELECT
-	  [ProductID]
-	, [ProductName]
-	, [SupplierID]
-	, [CategoryID]
-	, [QuantityPerUnit]
-	, [UnitPrice]
-	, [UnitsInStock]
-	, [UnitsOnOrder]
-	, [ReorderLevel]
-	, [Discontinued]
-    FROM
-	[dbo].[Products]
-    WHERE 
-	 ([ProductID] = @ProductId OR @ProductId IS NULL)
-	AND ([ProductName] = @ProductName OR @ProductName IS NULL)
-	AND ([SupplierID] = @SupplierId OR @SupplierId IS NULL)
-	AND ([CategoryID] = @CategoryId OR @CategoryId IS NULL)
-	AND ([QuantityPerUnit] = @QuantityPerUnit OR @QuantityPerUnit IS NULL)
-	AND ([UnitPrice] = @UnitPrice OR @UnitPrice IS NULL)
-	AND ([UnitsInStock] = @UnitsInStock OR @UnitsInStock IS NULL)
-	AND ([UnitsOnOrder] = @UnitsOnOrder OR @UnitsOnOrder IS NULL)
-	AND ([ReorderLevel] = @ReorderLevel OR @ReorderLevel IS NULL)
-	AND ([Discontinued] = @Discontinued OR @Discontinued IS NULL)
-						
-  END
-  ELSE
-  BEGIN
-    SELECT
-	  [ProductID]
-	, [ProductName]
-	, [SupplierID]
-	, [CategoryID]
-	, [QuantityPerUnit]
-	, [UnitPrice]
-	, [UnitsInStock]
-	, [UnitsOnOrder]
-	, [ReorderLevel]
-	, [Discontinued]
-    FROM
-	[dbo].[Products]
-    WHERE 
-	 ([ProductID] = @ProductId AND @ProductId is not null)
-	OR ([ProductName] = @ProductName AND @ProductName is not null)
-	OR ([SupplierID] = @SupplierId AND @SupplierId is not null)
-	OR ([CategoryID] = @CategoryId AND @CategoryId is not null)
-	OR ([QuantityPerUnit] = @QuantityPerUnit AND @QuantityPerUnit is not null)
-	OR ([UnitPrice] = @UnitPrice AND @UnitPrice is not null)
-	OR ([UnitsInStock] = @UnitsInStock AND @UnitsInStock is not null)
-	OR ([UnitsOnOrder] = @UnitsOnOrder AND @UnitsOnOrder is not null)
-	OR ([ReorderLevel] = @ReorderLevel AND @ReorderLevel is not null)
-	OR ([Discontinued] = @Discontinued AND @Discontinued is not null)
-	SELECT @@ROWCOUNT			
-  END
-				
 
 GO
 SET QUOTED_IDENTIFIER ON 
@@ -6580,31 +1012,41 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_Get_List procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Get_List
+-- Drop the dbo.sp_nt_Suppliers_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_Get_List
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Gets all records from the EmployeeTerritories table
+-- Purpose: Gets all records from the Suppliers table
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Get_List
+CREATE PROCEDURE dbo.sp_nt_Suppliers_Get_List
 
 AS
 
 
 				
 				SELECT
-					[EmployeeID],
-					[TerritoryID]
+					[SupplierID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax],
+					[HomePage]
 				FROM
-					[dbo].[EmployeeTerritories]
+					[dbo].[Suppliers]
 					
 				SELECT @@ROWCOUNT
 			
@@ -6619,21 +1061,673 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_GetPaged procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetPaged
+-- Drop the dbo.sp_nt_Suppliers_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_GetPaged
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Gets records from the EmployeeTerritories table passing page index and page count parameters
+-- Purpose: Gets records from the Suppliers table passing page index and page count parameters
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetPaged
+CREATE PROCEDURE dbo.sp_nt_Suppliers_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[SupplierID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [SupplierID]'
+				SET @SQL = @SQL + ', [CompanyName]'
+				SET @SQL = @SQL + ', [ContactName]'
+				SET @SQL = @SQL + ', [ContactTitle]'
+				SET @SQL = @SQL + ', [Address]'
+				SET @SQL = @SQL + ', [City]'
+				SET @SQL = @SQL + ', [Region]'
+				SET @SQL = @SQL + ', [PostalCode]'
+				SET @SQL = @SQL + ', [Country]'
+				SET @SQL = @SQL + ', [Phone]'
+				SET @SQL = @SQL + ', [Fax]'
+				SET @SQL = @SQL + ', [HomePage]'
+				SET @SQL = @SQL + ' FROM [dbo].[Suppliers]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [SupplierID],'
+				SET @SQL = @SQL + ' [CompanyName],'
+				SET @SQL = @SQL + ' [ContactName],'
+				SET @SQL = @SQL + ' [ContactTitle],'
+				SET @SQL = @SQL + ' [Address],'
+				SET @SQL = @SQL + ' [City],'
+				SET @SQL = @SQL + ' [Region],'
+				SET @SQL = @SQL + ' [PostalCode],'
+				SET @SQL = @SQL + ' [Country],'
+				SET @SQL = @SQL + ' [Phone],'
+				SET @SQL = @SQL + ' [Fax],'
+				SET @SQL = @SQL + ' [HomePage]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Suppliers]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Suppliers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_Insert
+(
+
+	@SupplierId int    OUTPUT,
+
+	@CompanyName nvarchar (40)  ,
+
+	@ContactName nvarchar (30)  ,
+
+	@ContactTitle nvarchar (30)  ,
+
+	@Address nvarchar (60)  ,
+
+	@City nvarchar (15)  ,
+
+	@Region nvarchar (15)  ,
+
+	@PostalCode nvarchar (10)  ,
+
+	@Country nvarchar (15)  ,
+
+	@Phone nvarchar (24)  ,
+
+	@Fax nvarchar (24)  ,
+
+	@HomePage ntext   
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Suppliers]
+					(
+					[CompanyName]
+					,[ContactName]
+					,[ContactTitle]
+					,[Address]
+					,[City]
+					,[Region]
+					,[PostalCode]
+					,[Country]
+					,[Phone]
+					,[Fax]
+					,[HomePage]
+					)
+				VALUES
+					(
+					@CompanyName
+					,@ContactName
+					,@ContactTitle
+					,@Address
+					,@City
+					,@Region
+					,@PostalCode
+					,@Country
+					,@Phone
+					,@Fax
+					,@HomePage
+					)
+				
+				-- Get the identity value
+				SET @SupplierId = SCOPE_IDENTITY()
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Suppliers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_Update
+(
+
+	@SupplierId int   ,
+
+	@CompanyName nvarchar (40)  ,
+
+	@ContactName nvarchar (30)  ,
+
+	@ContactTitle nvarchar (30)  ,
+
+	@Address nvarchar (60)  ,
+
+	@City nvarchar (15)  ,
+
+	@Region nvarchar (15)  ,
+
+	@PostalCode nvarchar (10)  ,
+
+	@Country nvarchar (15)  ,
+
+	@Phone nvarchar (24)  ,
+
+	@Fax nvarchar (24)  ,
+
+	@HomePage ntext   
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Suppliers]
+				SET
+					[CompanyName] = @CompanyName
+					,[ContactName] = @ContactName
+					,[ContactTitle] = @ContactTitle
+					,[Address] = @Address
+					,[City] = @City
+					,[Region] = @Region
+					,[PostalCode] = @PostalCode
+					,[Country] = @Country
+					,[Phone] = @Phone
+					,[Fax] = @Fax
+					,[HomePage] = @HomePage
+				WHERE
+[SupplierID] = @SupplierId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Suppliers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_Delete
+(
+
+	@SupplierId int   
+)
+AS
+
+
+				DELETE FROM [dbo].[Suppliers] WITH (ROWLOCK) 
+				WHERE
+					[SupplierID] = @SupplierId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_GetByCompanyName procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetByCompanyName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_GetByCompanyName
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Suppliers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_GetByCompanyName
+(
+
+	@CompanyName nvarchar (40)  
+)
+AS
+
+
+				SELECT
+					[SupplierID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax],
+					[HomePage]
+				FROM
+					[dbo].[Suppliers]
+				WHERE
+					[CompanyName] = @CompanyName
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_GetBySupplierId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetBySupplierId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_GetBySupplierId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Suppliers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_GetBySupplierId
+(
+
+	@SupplierId int   
+)
+AS
+
+
+				SELECT
+					[SupplierID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax],
+					[HomePage]
+				FROM
+					[dbo].[Suppliers]
+				WHERE
+					[SupplierID] = @SupplierId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_GetByPostalCode procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_GetByPostalCode') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_GetByPostalCode
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Suppliers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_GetByPostalCode
+(
+
+	@PostalCode nvarchar (10)  
+)
+AS
+
+
+				SELECT
+					[SupplierID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax],
+					[HomePage]
+				FROM
+					[dbo].[Suppliers]
+				WHERE
+					[PostalCode] = @PostalCode
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Suppliers_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Suppliers_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Suppliers_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Suppliers table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Suppliers_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@SupplierId int   = null ,
+
+	@CompanyName nvarchar (40)  = null ,
+
+	@ContactName nvarchar (30)  = null ,
+
+	@ContactTitle nvarchar (30)  = null ,
+
+	@Address nvarchar (60)  = null ,
+
+	@City nvarchar (15)  = null ,
+
+	@Region nvarchar (15)  = null ,
+
+	@PostalCode nvarchar (10)  = null ,
+
+	@Country nvarchar (15)  = null ,
+
+	@Phone nvarchar (24)  = null ,
+
+	@Fax nvarchar (24)  = null ,
+
+	@HomePage ntext   = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [SupplierID]
+	, [CompanyName]
+	, [ContactName]
+	, [ContactTitle]
+	, [Address]
+	, [City]
+	, [Region]
+	, [PostalCode]
+	, [Country]
+	, [Phone]
+	, [Fax]
+	, [HomePage]
+    FROM
+	[dbo].[Suppliers]
+    WHERE 
+	 ([SupplierID] = @SupplierId OR @SupplierId IS NULL)
+	AND ([CompanyName] = @CompanyName OR @CompanyName IS NULL)
+	AND ([ContactName] = @ContactName OR @ContactName IS NULL)
+	AND ([ContactTitle] = @ContactTitle OR @ContactTitle IS NULL)
+	AND ([Address] = @Address OR @Address IS NULL)
+	AND ([City] = @City OR @City IS NULL)
+	AND ([Region] = @Region OR @Region IS NULL)
+	AND ([PostalCode] = @PostalCode OR @PostalCode IS NULL)
+	AND ([Country] = @Country OR @Country IS NULL)
+	AND ([Phone] = @Phone OR @Phone IS NULL)
+	AND ([Fax] = @Fax OR @Fax IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [SupplierID]
+	, [CompanyName]
+	, [ContactName]
+	, [ContactTitle]
+	, [Address]
+	, [City]
+	, [Region]
+	, [PostalCode]
+	, [Country]
+	, [Phone]
+	, [Fax]
+	, [HomePage]
+    FROM
+	[dbo].[Suppliers]
+    WHERE 
+	 ([SupplierID] = @SupplierId AND @SupplierId is not null)
+	OR ([CompanyName] = @CompanyName AND @CompanyName is not null)
+	OR ([ContactName] = @ContactName AND @ContactName is not null)
+	OR ([ContactTitle] = @ContactTitle AND @ContactTitle is not null)
+	OR ([Address] = @Address AND @Address is not null)
+	OR ([City] = @City AND @City is not null)
+	OR ([Region] = @Region AND @Region is not null)
+	OR ([PostalCode] = @PostalCode AND @PostalCode is not null)
+	OR ([Country] = @Country AND @Country is not null)
+	OR ([Phone] = @Phone AND @Phone is not null)
+	OR ([Fax] = @Fax AND @Fax is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Employees table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_Get_List
+
+AS
+
+
+				
+				SELECT
+					[EmployeeID],
+					[LastName],
+					[FirstName],
+					[Title],
+					[TitleOfCourtesy],
+					[BirthDate],
+					[HireDate],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[HomePhone],
+					[Extension],
+					[Photo],
+					[Notes],
+					[ReportsTo],
+					[PhotoPath]
+				FROM
+					[dbo].[Employees]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Employees table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_GetPaged
 (
 
 	@WhereClause varchar (2000)  ,
@@ -6672,15 +1766,47 @@ AS
 				END
 				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
 				SET @SQL = @SQL + ', [EmployeeID]'
-				SET @SQL = @SQL + ', [TerritoryID]'
-				SET @SQL = @SQL + ' FROM [dbo].[EmployeeTerritories]'
+				SET @SQL = @SQL + ', [LastName]'
+				SET @SQL = @SQL + ', [FirstName]'
+				SET @SQL = @SQL + ', [Title]'
+				SET @SQL = @SQL + ', [TitleOfCourtesy]'
+				SET @SQL = @SQL + ', [BirthDate]'
+				SET @SQL = @SQL + ', [HireDate]'
+				SET @SQL = @SQL + ', [Address]'
+				SET @SQL = @SQL + ', [City]'
+				SET @SQL = @SQL + ', [Region]'
+				SET @SQL = @SQL + ', [PostalCode]'
+				SET @SQL = @SQL + ', [Country]'
+				SET @SQL = @SQL + ', [HomePhone]'
+				SET @SQL = @SQL + ', [Extension]'
+				SET @SQL = @SQL + ', [Photo]'
+				SET @SQL = @SQL + ', [Notes]'
+				SET @SQL = @SQL + ', [ReportsTo]'
+				SET @SQL = @SQL + ', [PhotoPath]'
+				SET @SQL = @SQL + ' FROM [dbo].[Employees]'
 				IF LEN(@WhereClause) > 0
 				BEGIN
 					SET @SQL = @SQL + ' WHERE ' + @WhereClause
 				END
 				SET @SQL = @SQL + ' ) SELECT'
 				SET @SQL = @SQL + ' [EmployeeID],'
-				SET @SQL = @SQL + ' [TerritoryID]'
+				SET @SQL = @SQL + ' [LastName],'
+				SET @SQL = @SQL + ' [FirstName],'
+				SET @SQL = @SQL + ' [Title],'
+				SET @SQL = @SQL + ' [TitleOfCourtesy],'
+				SET @SQL = @SQL + ' [BirthDate],'
+				SET @SQL = @SQL + ' [HireDate],'
+				SET @SQL = @SQL + ' [Address],'
+				SET @SQL = @SQL + ' [City],'
+				SET @SQL = @SQL + ' [Region],'
+				SET @SQL = @SQL + ' [PostalCode],'
+				SET @SQL = @SQL + ' [Country],'
+				SET @SQL = @SQL + ' [HomePhone],'
+				SET @SQL = @SQL + ' [Extension],'
+				SET @SQL = @SQL + ' [Photo],'
+				SET @SQL = @SQL + ' [Notes],'
+				SET @SQL = @SQL + ' [ReportsTo],'
+				SET @SQL = @SQL + ' [PhotoPath]'
 				SET @SQL = @SQL + ' FROM PageIndex'
 				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
 				IF @PageSize > 0
@@ -6692,7 +1818,7 @@ AS
 				
 				-- get row count
 				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
-				SET @SQL = @SQL + ' FROM [dbo].[EmployeeTerritories]'
+				SET @SQL = @SQL + ' FROM [dbo].[Employees]'
 				IF LEN(@WhereClause) > 0
 				BEGIN
 					SET @SQL = @SQL + ' WHERE ' + @WhereClause
@@ -6712,40 +1838,871 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_Insert procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Insert
+-- Drop the dbo.sp_nt_Employees_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_Insert
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Inserts a record into the EmployeeTerritories table
+-- Purpose: Inserts a record into the Employees table
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Insert
+CREATE PROCEDURE dbo.sp_nt_Employees_Insert
+(
+
+	@EmployeeId int    OUTPUT,
+
+	@LastName nvarchar (20)  ,
+
+	@FirstName nvarchar (10)  ,
+
+	@Title nvarchar (30)  ,
+
+	@TitleOfCourtesy nvarchar (25)  ,
+
+	@BirthDate datetime   ,
+
+	@HireDate datetime   ,
+
+	@Address nvarchar (60)  ,
+
+	@City nvarchar (15)  ,
+
+	@Region nvarchar (15)  ,
+
+	@PostalCode nvarchar (10)  ,
+
+	@Country nvarchar (15)  ,
+
+	@HomePhone nvarchar (24)  ,
+
+	@Extension nvarchar (4)  ,
+
+	@Photo image   ,
+
+	@Notes ntext   ,
+
+	@ReportsTo int   ,
+
+	@PhotoPath nvarchar (255)  
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Employees]
+					(
+					[LastName]
+					,[FirstName]
+					,[Title]
+					,[TitleOfCourtesy]
+					,[BirthDate]
+					,[HireDate]
+					,[Address]
+					,[City]
+					,[Region]
+					,[PostalCode]
+					,[Country]
+					,[HomePhone]
+					,[Extension]
+					,[Photo]
+					,[Notes]
+					,[ReportsTo]
+					,[PhotoPath]
+					)
+				VALUES
+					(
+					@LastName
+					,@FirstName
+					,@Title
+					,@TitleOfCourtesy
+					,@BirthDate
+					,@HireDate
+					,@Address
+					,@City
+					,@Region
+					,@PostalCode
+					,@Country
+					,@HomePhone
+					,@Extension
+					,@Photo
+					,@Notes
+					,@ReportsTo
+					,@PhotoPath
+					)
+				
+				-- Get the identity value
+				SET @EmployeeId = SCOPE_IDENTITY()
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Employees table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_Update
 (
 
 	@EmployeeId int   ,
+
+	@LastName nvarchar (20)  ,
+
+	@FirstName nvarchar (10)  ,
+
+	@Title nvarchar (30)  ,
+
+	@TitleOfCourtesy nvarchar (25)  ,
+
+	@BirthDate datetime   ,
+
+	@HireDate datetime   ,
+
+	@Address nvarchar (60)  ,
+
+	@City nvarchar (15)  ,
+
+	@Region nvarchar (15)  ,
+
+	@PostalCode nvarchar (10)  ,
+
+	@Country nvarchar (15)  ,
+
+	@HomePhone nvarchar (24)  ,
+
+	@Extension nvarchar (4)  ,
+
+	@Photo image   ,
+
+	@Notes ntext   ,
+
+	@ReportsTo int   ,
+
+	@PhotoPath nvarchar (255)  
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Employees]
+				SET
+					[LastName] = @LastName
+					,[FirstName] = @FirstName
+					,[Title] = @Title
+					,[TitleOfCourtesy] = @TitleOfCourtesy
+					,[BirthDate] = @BirthDate
+					,[HireDate] = @HireDate
+					,[Address] = @Address
+					,[City] = @City
+					,[Region] = @Region
+					,[PostalCode] = @PostalCode
+					,[Country] = @Country
+					,[HomePhone] = @HomePhone
+					,[Extension] = @Extension
+					,[Photo] = @Photo
+					,[Notes] = @Notes
+					,[ReportsTo] = @ReportsTo
+					,[PhotoPath] = @PhotoPath
+				WHERE
+[EmployeeID] = @EmployeeId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Employees table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_Delete
+(
+
+	@EmployeeId int   
+)
+AS
+
+
+				DELETE FROM [dbo].[Employees] WITH (ROWLOCK) 
+				WHERE
+					[EmployeeID] = @EmployeeId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_GetByReportsTo procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByReportsTo') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_GetByReportsTo
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Employees table through a foreign key
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_GetByReportsTo
+(
+
+	@ReportsTo int   
+)
+AS
+
+
+				SET ANSI_NULLS OFF
+				
+				SELECT
+					[EmployeeID],
+					[LastName],
+					[FirstName],
+					[Title],
+					[TitleOfCourtesy],
+					[BirthDate],
+					[HireDate],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[HomePhone],
+					[Extension],
+					[Photo],
+					[Notes],
+					[ReportsTo],
+					[PhotoPath]
+				FROM
+					[dbo].[Employees]
+				WHERE
+					[ReportsTo] = @ReportsTo
+				
+				SELECT @@ROWCOUNT
+				SET ANSI_NULLS ON
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_GetByLastName procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByLastName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_GetByLastName
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Employees table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_GetByLastName
+(
+
+	@LastName nvarchar (20)  
+)
+AS
+
+
+				SELECT
+					[EmployeeID],
+					[LastName],
+					[FirstName],
+					[Title],
+					[TitleOfCourtesy],
+					[BirthDate],
+					[HireDate],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[HomePhone],
+					[Extension],
+					[Photo],
+					[Notes],
+					[ReportsTo],
+					[PhotoPath]
+				FROM
+					[dbo].[Employees]
+				WHERE
+					[LastName] = @LastName
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_GetByEmployeeId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByEmployeeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_GetByEmployeeId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Employees table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_GetByEmployeeId
+(
+
+	@EmployeeId int   
+)
+AS
+
+
+				SELECT
+					[EmployeeID],
+					[LastName],
+					[FirstName],
+					[Title],
+					[TitleOfCourtesy],
+					[BirthDate],
+					[HireDate],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[HomePhone],
+					[Extension],
+					[Photo],
+					[Notes],
+					[ReportsTo],
+					[PhotoPath]
+				FROM
+					[dbo].[Employees]
+				WHERE
+					[EmployeeID] = @EmployeeId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_GetByPostalCode procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByPostalCode') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_GetByPostalCode
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Employees table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_GetByPostalCode
+(
+
+	@PostalCode nvarchar (10)  
+)
+AS
+
+
+				SELECT
+					[EmployeeID],
+					[LastName],
+					[FirstName],
+					[Title],
+					[TitleOfCourtesy],
+					[BirthDate],
+					[HireDate],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[HomePhone],
+					[Extension],
+					[Photo],
+					[Notes],
+					[ReportsTo],
+					[PhotoPath]
+				FROM
+					[dbo].[Employees]
+				WHERE
+					[PostalCode] = @PostalCode
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records through a junction table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_GetByTerritoryIdFromEmployeeTerritories
+(
 
 	@TerritoryId nvarchar (20)  
 )
 AS
 
 
+SELECT dbo.[Employees].[EmployeeID]
+       ,dbo.[Employees].[LastName]
+       ,dbo.[Employees].[FirstName]
+       ,dbo.[Employees].[Title]
+       ,dbo.[Employees].[TitleOfCourtesy]
+       ,dbo.[Employees].[BirthDate]
+       ,dbo.[Employees].[HireDate]
+       ,dbo.[Employees].[Address]
+       ,dbo.[Employees].[City]
+       ,dbo.[Employees].[Region]
+       ,dbo.[Employees].[PostalCode]
+       ,dbo.[Employees].[Country]
+       ,dbo.[Employees].[HomePhone]
+       ,dbo.[Employees].[Extension]
+       ,dbo.[Employees].[Photo]
+       ,dbo.[Employees].[Notes]
+       ,dbo.[Employees].[ReportsTo]
+       ,dbo.[Employees].[PhotoPath]
+  FROM dbo.[Employees]
+ WHERE EXISTS (SELECT 1
+                 FROM dbo.[EmployeeTerritories] 
+                WHERE dbo.[EmployeeTerritories].[TerritoryID] = @TerritoryId
+                  AND dbo.[EmployeeTerritories].[EmployeeID] = dbo.[Employees].[EmployeeID]
+                  )
+				SELECT @@ROWCOUNT			
 				
-				INSERT INTO [dbo].[EmployeeTerritories]
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Employees_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Employees_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Employees_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Employees table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Employees_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@EmployeeId int   = null ,
+
+	@LastName nvarchar (20)  = null ,
+
+	@FirstName nvarchar (10)  = null ,
+
+	@Title nvarchar (30)  = null ,
+
+	@TitleOfCourtesy nvarchar (25)  = null ,
+
+	@BirthDate datetime   = null ,
+
+	@HireDate datetime   = null ,
+
+	@Address nvarchar (60)  = null ,
+
+	@City nvarchar (15)  = null ,
+
+	@Region nvarchar (15)  = null ,
+
+	@PostalCode nvarchar (10)  = null ,
+
+	@Country nvarchar (15)  = null ,
+
+	@HomePhone nvarchar (24)  = null ,
+
+	@Extension nvarchar (4)  = null ,
+
+	@Photo image   = null ,
+
+	@Notes ntext   = null ,
+
+	@ReportsTo int   = null ,
+
+	@PhotoPath nvarchar (255)  = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [EmployeeID]
+	, [LastName]
+	, [FirstName]
+	, [Title]
+	, [TitleOfCourtesy]
+	, [BirthDate]
+	, [HireDate]
+	, [Address]
+	, [City]
+	, [Region]
+	, [PostalCode]
+	, [Country]
+	, [HomePhone]
+	, [Extension]
+	, [Photo]
+	, [Notes]
+	, [ReportsTo]
+	, [PhotoPath]
+    FROM
+	[dbo].[Employees]
+    WHERE 
+	 ([EmployeeID] = @EmployeeId OR @EmployeeId IS NULL)
+	AND ([LastName] = @LastName OR @LastName IS NULL)
+	AND ([FirstName] = @FirstName OR @FirstName IS NULL)
+	AND ([Title] = @Title OR @Title IS NULL)
+	AND ([TitleOfCourtesy] = @TitleOfCourtesy OR @TitleOfCourtesy IS NULL)
+	AND ([BirthDate] = @BirthDate OR @BirthDate IS NULL)
+	AND ([HireDate] = @HireDate OR @HireDate IS NULL)
+	AND ([Address] = @Address OR @Address IS NULL)
+	AND ([City] = @City OR @City IS NULL)
+	AND ([Region] = @Region OR @Region IS NULL)
+	AND ([PostalCode] = @PostalCode OR @PostalCode IS NULL)
+	AND ([Country] = @Country OR @Country IS NULL)
+	AND ([HomePhone] = @HomePhone OR @HomePhone IS NULL)
+	AND ([Extension] = @Extension OR @Extension IS NULL)
+	AND ([ReportsTo] = @ReportsTo OR @ReportsTo IS NULL)
+	AND ([PhotoPath] = @PhotoPath OR @PhotoPath IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [EmployeeID]
+	, [LastName]
+	, [FirstName]
+	, [Title]
+	, [TitleOfCourtesy]
+	, [BirthDate]
+	, [HireDate]
+	, [Address]
+	, [City]
+	, [Region]
+	, [PostalCode]
+	, [Country]
+	, [HomePhone]
+	, [Extension]
+	, [Photo]
+	, [Notes]
+	, [ReportsTo]
+	, [PhotoPath]
+    FROM
+	[dbo].[Employees]
+    WHERE 
+	 ([EmployeeID] = @EmployeeId AND @EmployeeId is not null)
+	OR ([LastName] = @LastName AND @LastName is not null)
+	OR ([FirstName] = @FirstName AND @FirstName is not null)
+	OR ([Title] = @Title AND @Title is not null)
+	OR ([TitleOfCourtesy] = @TitleOfCourtesy AND @TitleOfCourtesy is not null)
+	OR ([BirthDate] = @BirthDate AND @BirthDate is not null)
+	OR ([HireDate] = @HireDate AND @HireDate is not null)
+	OR ([Address] = @Address AND @Address is not null)
+	OR ([City] = @City AND @City is not null)
+	OR ([Region] = @Region AND @Region is not null)
+	OR ([PostalCode] = @PostalCode AND @PostalCode is not null)
+	OR ([Country] = @Country AND @Country is not null)
+	OR ([HomePhone] = @HomePhone AND @HomePhone is not null)
+	OR ([Extension] = @Extension AND @Extension is not null)
+	OR ([ReportsTo] = @ReportsTo AND @ReportsTo is not null)
+	OR ([PhotoPath] = @PhotoPath AND @PhotoPath is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the CustomerCustomerDemo table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Get_List
+
+AS
+
+
+				
+				SELECT
+					[CustomerID],
+					[CustomerTypeID]
+				FROM
+					[dbo].[CustomerCustomerDemo]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the CustomerCustomerDemo table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[CustomerID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [CustomerID]'
+				SET @SQL = @SQL + ', [CustomerTypeID]'
+				SET @SQL = @SQL + ' FROM [dbo].[CustomerCustomerDemo]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [CustomerID],'
+				SET @SQL = @SQL + ' [CustomerTypeID]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[CustomerCustomerDemo]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the CustomerCustomerDemo table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Insert
+(
+
+	@CustomerId nchar (5)  ,
+
+	@CustomerTypeId nchar (10)  
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[CustomerCustomerDemo]
 					(
-					[EmployeeID]
-					,[TerritoryID]
+					[CustomerID]
+					,[CustomerTypeID]
 					)
 				VALUES
 					(
-					@EmployeeId
-					,@TerritoryId
+					@CustomerId
+					,@CustomerTypeId
 					)
 				
 									
@@ -6762,30 +2719,30 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_Update procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Update
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Update
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Updates a record in the EmployeeTerritories table
+-- Purpose: Updates a record in the CustomerCustomerDemo table
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Update
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Update
 (
 
-	@EmployeeId int   ,
+	@CustomerId nchar (5)  ,
 
-	@OriginalEmployeeId int   ,
+	@OriginalCustomerId nchar (5)  ,
 
-	@TerritoryId nvarchar (20)  ,
+	@CustomerTypeId nchar (10)  ,
 
-	@OriginalTerritoryId nvarchar (20)  
+	@OriginalCustomerTypeId nchar (10)  
 )
 AS
 
@@ -6794,13 +2751,13 @@ AS
 				
 				-- Modify the updatable columns
 				UPDATE
-					[dbo].[EmployeeTerritories]
+					[dbo].[CustomerCustomerDemo]
 				SET
-					[EmployeeID] = @EmployeeId
-					,[TerritoryID] = @TerritoryId
+					[CustomerID] = @CustomerId
+					,[CustomerTypeID] = @CustomerTypeId
 				WHERE
-[EmployeeID] = @OriginalEmployeeId 
-AND [TerritoryID] = @OriginalTerritoryId 
+[CustomerID] = @OriginalCustomerId 
+AND [CustomerTypeID] = @OriginalCustomerTypeId 
 				
 			
 
@@ -6814,34 +2771,34 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_Delete procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Delete
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Delete
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Deletes a record in the EmployeeTerritories table
+-- Purpose: Deletes a record in the CustomerCustomerDemo table
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Delete
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Delete
 (
 
-	@EmployeeId int   ,
+	@CustomerId nchar (5)  ,
 
-	@TerritoryId nvarchar (20)  
+	@CustomerTypeId nchar (10)  
 )
 AS
 
 
-				DELETE FROM [dbo].[EmployeeTerritories] WITH (ROWLOCK) 
+				DELETE FROM [dbo].[CustomerCustomerDemo] WITH (ROWLOCK) 
 				WHERE
-					[EmployeeID] = @EmployeeId
-					AND [TerritoryID] = @TerritoryId
+					[CustomerID] = @CustomerId
+					AND [CustomerTypeID] = @CustomerTypeId
 					
 			
 
@@ -6855,24 +2812,24 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_GetByEmployeeId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetByEmployeeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeId
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Select records from the EmployeeTerritories table through a foreign key
+-- Purpose: Select records from the CustomerCustomerDemo table through a foreign key
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeId
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerTypeId
 (
 
-	@EmployeeId int   
+	@CustomerTypeId nchar (10)  
 )
 AS
 
@@ -6880,12 +2837,12 @@ AS
 				SET ANSI_NULLS OFF
 				
 				SELECT
-					[EmployeeID],
-					[TerritoryID]
+					[CustomerID],
+					[CustomerTypeID]
 				FROM
-					[dbo].[EmployeeTerritories]
+					[dbo].[CustomerCustomerDemo]
 				WHERE
-					[EmployeeID] = @EmployeeId
+					[CustomerTypeID] = @CustomerTypeId
 				
 				SELECT @@ROWCOUNT
 				SET ANSI_NULLS ON
@@ -6901,24 +2858,24 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_GetByTerritoryId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetByTerritoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByTerritoryId
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Select records from the EmployeeTerritories table through a foreign key
+-- Purpose: Select records from the CustomerCustomerDemo table through a foreign key
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByTerritoryId
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerId
 (
 
-	@TerritoryId nvarchar (20)  
+	@CustomerId nchar (5)  
 )
 AS
 
@@ -6926,12 +2883,12 @@ AS
 				SET ANSI_NULLS OFF
 				
 				SELECT
-					[EmployeeID],
-					[TerritoryID]
+					[CustomerID],
+					[CustomerTypeID]
 				FROM
-					[dbo].[EmployeeTerritories]
+					[dbo].[CustomerCustomerDemo]
 				WHERE
-					[TerritoryID] = @TerritoryId
+					[CustomerID] = @CustomerId
 				
 				SELECT @@ROWCOUNT
 				SET ANSI_NULLS ON
@@ -6947,38 +2904,38 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Select records from the EmployeeTerritories table through an index
+-- Purpose: Select records from the CustomerCustomerDemo table through an index
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_GetByCustomerIdCustomerTypeId
 (
 
-	@EmployeeId int   ,
+	@CustomerId nchar (5)  ,
 
-	@TerritoryId nvarchar (20)  
+	@CustomerTypeId nchar (10)  
 )
 AS
 
 
 				SELECT
-					[EmployeeID],
-					[TerritoryID]
+					[CustomerID],
+					[CustomerTypeID]
 				FROM
-					[dbo].[EmployeeTerritories]
+					[dbo].[CustomerCustomerDemo]
 				WHERE
-					[EmployeeID] = @EmployeeId
-					AND [TerritoryID] = @TerritoryId
+					[CustomerID] = @CustomerId
+					AND [CustomerTypeID] = @CustomerTypeId
 				SELECT @@ROWCOUNT
 					
 			
@@ -6993,28 +2950,28 @@ GO
 
 	
 
--- Drop the dbo.sp_nt_EmployeeTerritories_Find procedure
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
-DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Find
+-- Drop the dbo.sp_nt_CustomerCustomerDemo_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerCustomerDemo_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Find
 GO
 
 /*
 ----------------------------------------------------------------------------------------------------
 
 -- Created By:  ()
--- Purpose: Finds records in the EmployeeTerritories table passing nullable parameters
+-- Purpose: Finds records in the CustomerCustomerDemo table passing nullable parameters
 ----------------------------------------------------------------------------------------------------
 */
 
 
-CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Find
+CREATE PROCEDURE dbo.sp_nt_CustomerCustomerDemo_Find
 (
 
 	@SearchUsingOR bit   = null ,
 
-	@EmployeeId int   = null ,
+	@CustomerId nchar (5)  = null ,
 
-	@TerritoryId nvarchar (20)  = null 
+	@CustomerTypeId nchar (10)  = null 
 )
 AS
 
@@ -7023,25 +2980,3635 @@ AS
   IF ISNULL(@SearchUsingOR, 0) <> 1
   BEGIN
     SELECT
-	  [EmployeeID]
-	, [TerritoryID]
+	  [CustomerID]
+	, [CustomerTypeID]
     FROM
-	[dbo].[EmployeeTerritories]
+	[dbo].[CustomerCustomerDemo]
     WHERE 
-	 ([EmployeeID] = @EmployeeId OR @EmployeeId IS NULL)
-	AND ([TerritoryID] = @TerritoryId OR @TerritoryId IS NULL)
+	 ([CustomerID] = @CustomerId OR @CustomerId IS NULL)
+	AND ([CustomerTypeID] = @CustomerTypeId OR @CustomerTypeId IS NULL)
 						
   END
   ELSE
   BEGIN
     SELECT
-	  [EmployeeID]
-	, [TerritoryID]
+	  [CustomerID]
+	, [CustomerTypeID]
     FROM
-	[dbo].[EmployeeTerritories]
+	[dbo].[CustomerCustomerDemo]
     WHERE 
-	 ([EmployeeID] = @EmployeeId AND @EmployeeId is not null)
-	OR ([TerritoryID] = @TerritoryId AND @TerritoryId is not null)
+	 ([CustomerID] = @CustomerId AND @CustomerId is not null)
+	OR ([CustomerTypeID] = @CustomerTypeId AND @CustomerTypeId is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Products table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_Get_List
+
+AS
+
+
+				
+				SELECT
+					[ProductID],
+					[ProductName],
+					[SupplierID],
+					[CategoryID],
+					[QuantityPerUnit],
+					[UnitPrice],
+					[UnitsInStock],
+					[UnitsOnOrder],
+					[ReorderLevel],
+					[Discontinued]
+				FROM
+					[dbo].[Products]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Products table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[ProductID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [ProductID]'
+				SET @SQL = @SQL + ', [ProductName]'
+				SET @SQL = @SQL + ', [SupplierID]'
+				SET @SQL = @SQL + ', [CategoryID]'
+				SET @SQL = @SQL + ', [QuantityPerUnit]'
+				SET @SQL = @SQL + ', [UnitPrice]'
+				SET @SQL = @SQL + ', [UnitsInStock]'
+				SET @SQL = @SQL + ', [UnitsOnOrder]'
+				SET @SQL = @SQL + ', [ReorderLevel]'
+				SET @SQL = @SQL + ', [Discontinued]'
+				SET @SQL = @SQL + ' FROM [dbo].[Products]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [ProductID],'
+				SET @SQL = @SQL + ' [ProductName],'
+				SET @SQL = @SQL + ' [SupplierID],'
+				SET @SQL = @SQL + ' [CategoryID],'
+				SET @SQL = @SQL + ' [QuantityPerUnit],'
+				SET @SQL = @SQL + ' [UnitPrice],'
+				SET @SQL = @SQL + ' [UnitsInStock],'
+				SET @SQL = @SQL + ' [UnitsOnOrder],'
+				SET @SQL = @SQL + ' [ReorderLevel],'
+				SET @SQL = @SQL + ' [Discontinued]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Products]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Products table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_Insert
+(
+
+	@ProductId int    OUTPUT,
+
+	@ProductName nvarchar (40)  ,
+
+	@SupplierId int   ,
+
+	@CategoryId int   ,
+
+	@QuantityPerUnit nvarchar (20)  ,
+
+	@UnitPrice money   ,
+
+	@UnitsInStock smallint   ,
+
+	@UnitsOnOrder smallint   ,
+
+	@ReorderLevel smallint   ,
+
+	@Discontinued bit   
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Products]
+					(
+					[ProductName]
+					,[SupplierID]
+					,[CategoryID]
+					,[QuantityPerUnit]
+					,[UnitPrice]
+					,[UnitsInStock]
+					,[UnitsOnOrder]
+					,[ReorderLevel]
+					,[Discontinued]
+					)
+				VALUES
+					(
+					@ProductName
+					,@SupplierId
+					,@CategoryId
+					,@QuantityPerUnit
+					,@UnitPrice
+					,@UnitsInStock
+					,@UnitsOnOrder
+					,@ReorderLevel
+					,@Discontinued
+					)
+				
+				-- Get the identity value
+				SET @ProductId = SCOPE_IDENTITY()
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Products table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_Update
+(
+
+	@ProductId int   ,
+
+	@ProductName nvarchar (40)  ,
+
+	@SupplierId int   ,
+
+	@CategoryId int   ,
+
+	@QuantityPerUnit nvarchar (20)  ,
+
+	@UnitPrice money   ,
+
+	@UnitsInStock smallint   ,
+
+	@UnitsOnOrder smallint   ,
+
+	@ReorderLevel smallint   ,
+
+	@Discontinued bit   
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Products]
+				SET
+					[ProductName] = @ProductName
+					,[SupplierID] = @SupplierId
+					,[CategoryID] = @CategoryId
+					,[QuantityPerUnit] = @QuantityPerUnit
+					,[UnitPrice] = @UnitPrice
+					,[UnitsInStock] = @UnitsInStock
+					,[UnitsOnOrder] = @UnitsOnOrder
+					,[ReorderLevel] = @ReorderLevel
+					,[Discontinued] = @Discontinued
+				WHERE
+[ProductID] = @ProductId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Products table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_Delete
+(
+
+	@ProductId int   
+)
+AS
+
+
+				DELETE FROM [dbo].[Products] WITH (ROWLOCK) 
+				WHERE
+					[ProductID] = @ProductId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_GetByCategoryId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByCategoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_GetByCategoryId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Products table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_GetByCategoryId
+(
+
+	@CategoryId int   
+)
+AS
+
+
+				SELECT
+					[ProductID],
+					[ProductName],
+					[SupplierID],
+					[CategoryID],
+					[QuantityPerUnit],
+					[UnitPrice],
+					[UnitsInStock],
+					[UnitsOnOrder],
+					[ReorderLevel],
+					[Discontinued]
+				FROM
+					[dbo].[Products]
+				WHERE
+					[CategoryID] = @CategoryId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_GetByProductId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByProductId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_GetByProductId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Products table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_GetByProductId
+(
+
+	@ProductId int   
+)
+AS
+
+
+				SELECT
+					[ProductID],
+					[ProductName],
+					[SupplierID],
+					[CategoryID],
+					[QuantityPerUnit],
+					[UnitPrice],
+					[UnitsInStock],
+					[UnitsOnOrder],
+					[ReorderLevel],
+					[Discontinued]
+				FROM
+					[dbo].[Products]
+				WHERE
+					[ProductID] = @ProductId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_GetByProductName procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByProductName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_GetByProductName
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Products table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_GetByProductName
+(
+
+	@ProductName nvarchar (40)  
+)
+AS
+
+
+				SELECT
+					[ProductID],
+					[ProductName],
+					[SupplierID],
+					[CategoryID],
+					[QuantityPerUnit],
+					[UnitPrice],
+					[UnitsInStock],
+					[UnitsOnOrder],
+					[ReorderLevel],
+					[Discontinued]
+				FROM
+					[dbo].[Products]
+				WHERE
+					[ProductName] = @ProductName
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_GetBySupplierId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetBySupplierId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_GetBySupplierId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Products table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_GetBySupplierId
+(
+
+	@SupplierId int   
+)
+AS
+
+
+				SELECT
+					[ProductID],
+					[ProductName],
+					[SupplierID],
+					[CategoryID],
+					[QuantityPerUnit],
+					[UnitPrice],
+					[UnitsInStock],
+					[UnitsOnOrder],
+					[ReorderLevel],
+					[Discontinued]
+				FROM
+					[dbo].[Products]
+				WHERE
+					[SupplierID] = @SupplierId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_GetByOrderIdFromOrderDetails procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_GetByOrderIdFromOrderDetails') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_GetByOrderIdFromOrderDetails
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records through a junction table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_GetByOrderIdFromOrderDetails
+(
+
+	@OrderId int   
+)
+AS
+
+
+SELECT dbo.[Products].[ProductID]
+       ,dbo.[Products].[ProductName]
+       ,dbo.[Products].[SupplierID]
+       ,dbo.[Products].[CategoryID]
+       ,dbo.[Products].[QuantityPerUnit]
+       ,dbo.[Products].[UnitPrice]
+       ,dbo.[Products].[UnitsInStock]
+       ,dbo.[Products].[UnitsOnOrder]
+       ,dbo.[Products].[ReorderLevel]
+       ,dbo.[Products].[Discontinued]
+  FROM dbo.[Products]
+ WHERE EXISTS (SELECT 1
+                 FROM dbo.[Order Details] 
+                WHERE dbo.[Order Details].[OrderID] = @OrderId
+                  AND dbo.[Order Details].[ProductID] = dbo.[Products].[ProductID]
+                  )
+				SELECT @@ROWCOUNT			
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Products_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Products_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Products_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Products table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Products_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@ProductId int   = null ,
+
+	@ProductName nvarchar (40)  = null ,
+
+	@SupplierId int   = null ,
+
+	@CategoryId int   = null ,
+
+	@QuantityPerUnit nvarchar (20)  = null ,
+
+	@UnitPrice money   = null ,
+
+	@UnitsInStock smallint   = null ,
+
+	@UnitsOnOrder smallint   = null ,
+
+	@ReorderLevel smallint   = null ,
+
+	@Discontinued bit   = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [ProductID]
+	, [ProductName]
+	, [SupplierID]
+	, [CategoryID]
+	, [QuantityPerUnit]
+	, [UnitPrice]
+	, [UnitsInStock]
+	, [UnitsOnOrder]
+	, [ReorderLevel]
+	, [Discontinued]
+    FROM
+	[dbo].[Products]
+    WHERE 
+	 ([ProductID] = @ProductId OR @ProductId IS NULL)
+	AND ([ProductName] = @ProductName OR @ProductName IS NULL)
+	AND ([SupplierID] = @SupplierId OR @SupplierId IS NULL)
+	AND ([CategoryID] = @CategoryId OR @CategoryId IS NULL)
+	AND ([QuantityPerUnit] = @QuantityPerUnit OR @QuantityPerUnit IS NULL)
+	AND ([UnitPrice] = @UnitPrice OR @UnitPrice IS NULL)
+	AND ([UnitsInStock] = @UnitsInStock OR @UnitsInStock IS NULL)
+	AND ([UnitsOnOrder] = @UnitsOnOrder OR @UnitsOnOrder IS NULL)
+	AND ([ReorderLevel] = @ReorderLevel OR @ReorderLevel IS NULL)
+	AND ([Discontinued] = @Discontinued OR @Discontinued IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [ProductID]
+	, [ProductName]
+	, [SupplierID]
+	, [CategoryID]
+	, [QuantityPerUnit]
+	, [UnitPrice]
+	, [UnitsInStock]
+	, [UnitsOnOrder]
+	, [ReorderLevel]
+	, [Discontinued]
+    FROM
+	[dbo].[Products]
+    WHERE 
+	 ([ProductID] = @ProductId AND @ProductId is not null)
+	OR ([ProductName] = @ProductName AND @ProductName is not null)
+	OR ([SupplierID] = @SupplierId AND @SupplierId is not null)
+	OR ([CategoryID] = @CategoryId AND @CategoryId is not null)
+	OR ([QuantityPerUnit] = @QuantityPerUnit AND @QuantityPerUnit is not null)
+	OR ([UnitPrice] = @UnitPrice AND @UnitPrice is not null)
+	OR ([UnitsInStock] = @UnitsInStock AND @UnitsInStock is not null)
+	OR ([UnitsOnOrder] = @UnitsOnOrder AND @UnitsOnOrder is not null)
+	OR ([ReorderLevel] = @ReorderLevel AND @ReorderLevel is not null)
+	OR ([Discontinued] = @Discontinued AND @Discontinued is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Region table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_Get_List
+
+AS
+
+
+				
+				SELECT
+					[RegionID],
+					[RegionDescription]
+				FROM
+					[dbo].[Region]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Region table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[RegionID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [RegionID]'
+				SET @SQL = @SQL + ', [RegionDescription]'
+				SET @SQL = @SQL + ' FROM [dbo].[Region]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [RegionID],'
+				SET @SQL = @SQL + ' [RegionDescription]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Region]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Region table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_Insert
+(
+
+	@RegionId int   ,
+
+	@RegionDescription nchar (50)  
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Region]
+					(
+					[RegionID]
+					,[RegionDescription]
+					)
+				VALUES
+					(
+					@RegionId
+					,@RegionDescription
+					)
+				
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Region table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_Update
+(
+
+	@RegionId int   ,
+
+	@OriginalRegionId int   ,
+
+	@RegionDescription nchar (50)  
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Region]
+				SET
+					[RegionID] = @RegionId
+					,[RegionDescription] = @RegionDescription
+				WHERE
+[RegionID] = @OriginalRegionId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Region table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_Delete
+(
+
+	@RegionId int   
+)
+AS
+
+
+				DELETE FROM [dbo].[Region] WITH (ROWLOCK) 
+				WHERE
+					[RegionID] = @RegionId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_GetByRegionId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_GetByRegionId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_GetByRegionId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Region table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_GetByRegionId
+(
+
+	@RegionId int   
+)
+AS
+
+
+				SELECT
+					[RegionID],
+					[RegionDescription]
+				FROM
+					[dbo].[Region]
+				WHERE
+					[RegionID] = @RegionId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Region_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Region_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Region_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Region table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Region_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@RegionId int   = null ,
+
+	@RegionDescription nchar (50)  = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [RegionID]
+	, [RegionDescription]
+    FROM
+	[dbo].[Region]
+    WHERE 
+	 ([RegionID] = @RegionId OR @RegionId IS NULL)
+	AND ([RegionDescription] = @RegionDescription OR @RegionDescription IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [RegionID]
+	, [RegionDescription]
+    FROM
+	[dbo].[Region]
+    WHERE 
+	 ([RegionID] = @RegionId AND @RegionId is not null)
+	OR ([RegionDescription] = @RegionDescription AND @RegionDescription is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Territories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_Get_List
+
+AS
+
+
+				
+				SELECT
+					[TerritoryID],
+					[TerritoryDescription],
+					[RegionID]
+				FROM
+					[dbo].[Territories]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Territories table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[TerritoryID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [TerritoryID]'
+				SET @SQL = @SQL + ', [TerritoryDescription]'
+				SET @SQL = @SQL + ', [RegionID]'
+				SET @SQL = @SQL + ' FROM [dbo].[Territories]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [TerritoryID],'
+				SET @SQL = @SQL + ' [TerritoryDescription],'
+				SET @SQL = @SQL + ' [RegionID]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Territories]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Territories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_Insert
+(
+
+	@TerritoryId nvarchar (20)  ,
+
+	@TerritoryDescription nchar (50)  ,
+
+	@RegionId int   
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Territories]
+					(
+					[TerritoryID]
+					,[TerritoryDescription]
+					,[RegionID]
+					)
+				VALUES
+					(
+					@TerritoryId
+					,@TerritoryDescription
+					,@RegionId
+					)
+				
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Territories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_Update
+(
+
+	@TerritoryId nvarchar (20)  ,
+
+	@OriginalTerritoryId nvarchar (20)  ,
+
+	@TerritoryDescription nchar (50)  ,
+
+	@RegionId int   
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Territories]
+				SET
+					[TerritoryID] = @TerritoryId
+					,[TerritoryDescription] = @TerritoryDescription
+					,[RegionID] = @RegionId
+				WHERE
+[TerritoryID] = @OriginalTerritoryId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Territories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_Delete
+(
+
+	@TerritoryId nvarchar (20)  
+)
+AS
+
+
+				DELETE FROM [dbo].[Territories] WITH (ROWLOCK) 
+				WHERE
+					[TerritoryID] = @TerritoryId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_GetByRegionId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetByRegionId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_GetByRegionId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Territories table through a foreign key
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_GetByRegionId
+(
+
+	@RegionId int   
+)
+AS
+
+
+				SET ANSI_NULLS OFF
+				
+				SELECT
+					[TerritoryID],
+					[TerritoryDescription],
+					[RegionID]
+				FROM
+					[dbo].[Territories]
+				WHERE
+					[RegionID] = @RegionId
+				
+				SELECT @@ROWCOUNT
+				SET ANSI_NULLS ON
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_GetByTerritoryId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetByTerritoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_GetByTerritoryId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Territories table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_GetByTerritoryId
+(
+
+	@TerritoryId nvarchar (20)  
+)
+AS
+
+
+				SELECT
+					[TerritoryID],
+					[TerritoryDescription],
+					[RegionID]
+				FROM
+					[dbo].[Territories]
+				WHERE
+					[TerritoryID] = @TerritoryId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records through a junction table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_GetByEmployeeIdFromEmployeeTerritories
+(
+
+	@EmployeeId int   
+)
+AS
+
+
+SELECT dbo.[Territories].[TerritoryID]
+       ,dbo.[Territories].[TerritoryDescription]
+       ,dbo.[Territories].[RegionID]
+  FROM dbo.[Territories]
+ WHERE EXISTS (SELECT 1
+                 FROM dbo.[EmployeeTerritories] 
+                WHERE dbo.[EmployeeTerritories].[EmployeeID] = @EmployeeId
+                  AND dbo.[EmployeeTerritories].[TerritoryID] = dbo.[Territories].[TerritoryID]
+                  )
+				SELECT @@ROWCOUNT			
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Territories_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Territories_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Territories_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Territories table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Territories_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@TerritoryId nvarchar (20)  = null ,
+
+	@TerritoryDescription nchar (50)  = null ,
+
+	@RegionId int   = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [TerritoryID]
+	, [TerritoryDescription]
+	, [RegionID]
+    FROM
+	[dbo].[Territories]
+    WHERE 
+	 ([TerritoryID] = @TerritoryId OR @TerritoryId IS NULL)
+	AND ([TerritoryDescription] = @TerritoryDescription OR @TerritoryDescription IS NULL)
+	AND ([RegionID] = @RegionId OR @RegionId IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [TerritoryID]
+	, [TerritoryDescription]
+	, [RegionID]
+    FROM
+	[dbo].[Territories]
+    WHERE 
+	 ([TerritoryID] = @TerritoryId AND @TerritoryId is not null)
+	OR ([TerritoryDescription] = @TerritoryDescription AND @TerritoryDescription is not null)
+	OR ([RegionID] = @RegionId AND @RegionId is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Categories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_Get_List
+
+AS
+
+
+				
+				SELECT
+					[CategoryID],
+					[CategoryName],
+					[Description],
+					[Picture]
+				FROM
+					[dbo].[Categories]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Categories table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[CategoryID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [CategoryID]'
+				SET @SQL = @SQL + ', [CategoryName]'
+				SET @SQL = @SQL + ', [Description]'
+				SET @SQL = @SQL + ', [Picture]'
+				SET @SQL = @SQL + ' FROM [dbo].[Categories]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [CategoryID],'
+				SET @SQL = @SQL + ' [CategoryName],'
+				SET @SQL = @SQL + ' [Description],'
+				SET @SQL = @SQL + ' [Picture]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Categories]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Categories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_Insert
+(
+
+	@CategoryId int    OUTPUT,
+
+	@CategoryName nvarchar (15)  ,
+
+	@Description ntext   ,
+
+	@Picture image   
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Categories]
+					(
+					[CategoryName]
+					,[Description]
+					,[Picture]
+					)
+				VALUES
+					(
+					@CategoryName
+					,@Description
+					,@Picture
+					)
+				
+				-- Get the identity value
+				SET @CategoryId = SCOPE_IDENTITY()
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Categories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_Update
+(
+
+	@CategoryId int   ,
+
+	@CategoryName nvarchar (15)  ,
+
+	@Description ntext   ,
+
+	@Picture image   
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Categories]
+				SET
+					[CategoryName] = @CategoryName
+					,[Description] = @Description
+					,[Picture] = @Picture
+				WHERE
+[CategoryID] = @CategoryId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Categories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_Delete
+(
+
+	@CategoryId int   
+)
+AS
+
+
+				DELETE FROM [dbo].[Categories] WITH (ROWLOCK) 
+				WHERE
+					[CategoryID] = @CategoryId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_GetByCategoryName procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_GetByCategoryName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_GetByCategoryName
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Categories table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_GetByCategoryName
+(
+
+	@CategoryName nvarchar (15)  
+)
+AS
+
+
+				SELECT
+					[CategoryID],
+					[CategoryName],
+					[Description],
+					[Picture]
+				FROM
+					[dbo].[Categories]
+				WHERE
+					[CategoryName] = @CategoryName
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_GetByCategoryId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_GetByCategoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_GetByCategoryId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Categories table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_GetByCategoryId
+(
+
+	@CategoryId int   
+)
+AS
+
+
+				SELECT
+					[CategoryID],
+					[CategoryName],
+					[Description],
+					[Picture]
+				FROM
+					[dbo].[Categories]
+				WHERE
+					[CategoryID] = @CategoryId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Categories_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Categories_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Categories_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Categories table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Categories_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@CategoryId int   = null ,
+
+	@CategoryName nvarchar (15)  = null ,
+
+	@Description ntext   = null ,
+
+	@Picture image   = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [CategoryID]
+	, [CategoryName]
+	, [Description]
+	, [Picture]
+    FROM
+	[dbo].[Categories]
+    WHERE 
+	 ([CategoryID] = @CategoryId OR @CategoryId IS NULL)
+	AND ([CategoryName] = @CategoryName OR @CategoryName IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [CategoryID]
+	, [CategoryName]
+	, [Description]
+	, [Picture]
+    FROM
+	[dbo].[Categories]
+    WHERE 
+	 ([CategoryID] = @CategoryId AND @CategoryId is not null)
+	OR ([CategoryName] = @CategoryName AND @CategoryName is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the CustomerDemographics table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Get_List
+
+AS
+
+
+				
+				SELECT
+					[CustomerTypeID],
+					[CustomerDesc]
+				FROM
+					[dbo].[CustomerDemographics]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the CustomerDemographics table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[CustomerTypeID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [CustomerTypeID]'
+				SET @SQL = @SQL + ', [CustomerDesc]'
+				SET @SQL = @SQL + ' FROM [dbo].[CustomerDemographics]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [CustomerTypeID],'
+				SET @SQL = @SQL + ' [CustomerDesc]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[CustomerDemographics]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the CustomerDemographics table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Insert
+(
+
+	@CustomerTypeId nchar (10)  ,
+
+	@CustomerDesc ntext   
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[CustomerDemographics]
+					(
+					[CustomerTypeID]
+					,[CustomerDesc]
+					)
+				VALUES
+					(
+					@CustomerTypeId
+					,@CustomerDesc
+					)
+				
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the CustomerDemographics table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Update
+(
+
+	@CustomerTypeId nchar (10)  ,
+
+	@OriginalCustomerTypeId nchar (10)  ,
+
+	@CustomerDesc ntext   
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[CustomerDemographics]
+				SET
+					[CustomerTypeID] = @CustomerTypeId
+					,[CustomerDesc] = @CustomerDesc
+				WHERE
+[CustomerTypeID] = @OriginalCustomerTypeId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the CustomerDemographics table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Delete
+(
+
+	@CustomerTypeId nchar (10)  
+)
+AS
+
+
+				DELETE FROM [dbo].[CustomerDemographics] WITH (ROWLOCK) 
+				WHERE
+					[CustomerTypeID] = @CustomerTypeId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the CustomerDemographics table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerTypeId
+(
+
+	@CustomerTypeId nchar (10)  
+)
+AS
+
+
+				SELECT
+					[CustomerTypeID],
+					[CustomerDesc]
+				FROM
+					[dbo].[CustomerDemographics]
+				WHERE
+					[CustomerTypeID] = @CustomerTypeId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records through a junction table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_GetByCustomerIdFromCustomerCustomerDemo
+(
+
+	@CustomerId nchar (5)  
+)
+AS
+
+
+SELECT dbo.[CustomerDemographics].[CustomerTypeID]
+       ,dbo.[CustomerDemographics].[CustomerDesc]
+  FROM dbo.[CustomerDemographics]
+ WHERE EXISTS (SELECT 1
+                 FROM dbo.[CustomerCustomerDemo] 
+                WHERE dbo.[CustomerCustomerDemo].[CustomerID] = @CustomerId
+                  AND dbo.[CustomerCustomerDemo].[CustomerTypeID] = dbo.[CustomerDemographics].[CustomerTypeID]
+                  )
+				SELECT @@ROWCOUNT			
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_CustomerDemographics_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_CustomerDemographics_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_CustomerDemographics_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the CustomerDemographics table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_CustomerDemographics_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@CustomerTypeId nchar (10)  = null ,
+
+	@CustomerDesc ntext   = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [CustomerTypeID]
+	, [CustomerDesc]
+    FROM
+	[dbo].[CustomerDemographics]
+    WHERE 
+	 ([CustomerTypeID] = @CustomerTypeId OR @CustomerTypeId IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [CustomerTypeID]
+	, [CustomerDesc]
+    FROM
+	[dbo].[CustomerDemographics]
+    WHERE 
+	 ([CustomerTypeID] = @CustomerTypeId AND @CustomerTypeId is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Customers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_Get_List
+
+AS
+
+
+				
+				SELECT
+					[CustomerID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax]
+				FROM
+					[dbo].[Customers]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Customers table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[CustomerID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [CustomerID]'
+				SET @SQL = @SQL + ', [CompanyName]'
+				SET @SQL = @SQL + ', [ContactName]'
+				SET @SQL = @SQL + ', [ContactTitle]'
+				SET @SQL = @SQL + ', [Address]'
+				SET @SQL = @SQL + ', [City]'
+				SET @SQL = @SQL + ', [Region]'
+				SET @SQL = @SQL + ', [PostalCode]'
+				SET @SQL = @SQL + ', [Country]'
+				SET @SQL = @SQL + ', [Phone]'
+				SET @SQL = @SQL + ', [Fax]'
+				SET @SQL = @SQL + ' FROM [dbo].[Customers]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [CustomerID],'
+				SET @SQL = @SQL + ' [CompanyName],'
+				SET @SQL = @SQL + ' [ContactName],'
+				SET @SQL = @SQL + ' [ContactTitle],'
+				SET @SQL = @SQL + ' [Address],'
+				SET @SQL = @SQL + ' [City],'
+				SET @SQL = @SQL + ' [Region],'
+				SET @SQL = @SQL + ' [PostalCode],'
+				SET @SQL = @SQL + ' [Country],'
+				SET @SQL = @SQL + ' [Phone],'
+				SET @SQL = @SQL + ' [Fax]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Customers]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Customers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_Insert
+(
+
+	@CustomerId nchar (5)  ,
+
+	@CompanyName nvarchar (40)  ,
+
+	@ContactName nvarchar (30)  ,
+
+	@ContactTitle nvarchar (30)  ,
+
+	@Address nvarchar (60)  ,
+
+	@City nvarchar (15)  ,
+
+	@Region nvarchar (15)  ,
+
+	@PostalCode nvarchar (10)  ,
+
+	@Country nvarchar (15)  ,
+
+	@Phone nvarchar (24)  ,
+
+	@Fax nvarchar (24)  
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Customers]
+					(
+					[CustomerID]
+					,[CompanyName]
+					,[ContactName]
+					,[ContactTitle]
+					,[Address]
+					,[City]
+					,[Region]
+					,[PostalCode]
+					,[Country]
+					,[Phone]
+					,[Fax]
+					)
+				VALUES
+					(
+					@CustomerId
+					,@CompanyName
+					,@ContactName
+					,@ContactTitle
+					,@Address
+					,@City
+					,@Region
+					,@PostalCode
+					,@Country
+					,@Phone
+					,@Fax
+					)
+				
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Customers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_Update
+(
+
+	@CustomerId nchar (5)  ,
+
+	@OriginalCustomerId nchar (5)  ,
+
+	@CompanyName nvarchar (40)  ,
+
+	@ContactName nvarchar (30)  ,
+
+	@ContactTitle nvarchar (30)  ,
+
+	@Address nvarchar (60)  ,
+
+	@City nvarchar (15)  ,
+
+	@Region nvarchar (15)  ,
+
+	@PostalCode nvarchar (10)  ,
+
+	@Country nvarchar (15)  ,
+
+	@Phone nvarchar (24)  ,
+
+	@Fax nvarchar (24)  
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Customers]
+				SET
+					[CustomerID] = @CustomerId
+					,[CompanyName] = @CompanyName
+					,[ContactName] = @ContactName
+					,[ContactTitle] = @ContactTitle
+					,[Address] = @Address
+					,[City] = @City
+					,[Region] = @Region
+					,[PostalCode] = @PostalCode
+					,[Country] = @Country
+					,[Phone] = @Phone
+					,[Fax] = @Fax
+				WHERE
+[CustomerID] = @OriginalCustomerId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Customers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_Delete
+(
+
+	@CustomerId nchar (5)  
+)
+AS
+
+
+				DELETE FROM [dbo].[Customers] WITH (ROWLOCK) 
+				WHERE
+					[CustomerID] = @CustomerId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetByCity procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCity') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetByCity
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Customers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetByCity
+(
+
+	@City nvarchar (15)  
+)
+AS
+
+
+				SELECT
+					[CustomerID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax]
+				FROM
+					[dbo].[Customers]
+				WHERE
+					[City] = @City
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetByCompanyName procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCompanyName') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetByCompanyName
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Customers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetByCompanyName
+(
+
+	@CompanyName nvarchar (40)  
+)
+AS
+
+
+				SELECT
+					[CustomerID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax]
+				FROM
+					[dbo].[Customers]
+				WHERE
+					[CompanyName] = @CompanyName
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetByCustomerId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCustomerId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetByCustomerId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Customers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetByCustomerId
+(
+
+	@CustomerId nchar (5)  
+)
+AS
+
+
+				SELECT
+					[CustomerID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax]
+				FROM
+					[dbo].[Customers]
+				WHERE
+					[CustomerID] = @CustomerId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetByPostalCode procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByPostalCode') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetByPostalCode
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Customers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetByPostalCode
+(
+
+	@PostalCode nvarchar (10)  
+)
+AS
+
+
+				SELECT
+					[CustomerID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax]
+				FROM
+					[dbo].[Customers]
+				WHERE
+					[PostalCode] = @PostalCode
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetByRegion procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByRegion') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetByRegion
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Customers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetByRegion
+(
+
+	@Region nvarchar (15)  
+)
+AS
+
+
+				SELECT
+					[CustomerID],
+					[CompanyName],
+					[ContactName],
+					[ContactTitle],
+					[Address],
+					[City],
+					[Region],
+					[PostalCode],
+					[Country],
+					[Phone],
+					[Fax]
+				FROM
+					[dbo].[Customers]
+				WHERE
+					[Region] = @Region
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records through a junction table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_GetByCustomerTypeIdFromCustomerCustomerDemo
+(
+
+	@CustomerTypeId nchar (10)  
+)
+AS
+
+
+SELECT dbo.[Customers].[CustomerID]
+       ,dbo.[Customers].[CompanyName]
+       ,dbo.[Customers].[ContactName]
+       ,dbo.[Customers].[ContactTitle]
+       ,dbo.[Customers].[Address]
+       ,dbo.[Customers].[City]
+       ,dbo.[Customers].[Region]
+       ,dbo.[Customers].[PostalCode]
+       ,dbo.[Customers].[Country]
+       ,dbo.[Customers].[Phone]
+       ,dbo.[Customers].[Fax]
+  FROM dbo.[Customers]
+ WHERE EXISTS (SELECT 1
+                 FROM dbo.[CustomerCustomerDemo] 
+                WHERE dbo.[CustomerCustomerDemo].[CustomerTypeID] = @CustomerTypeId
+                  AND dbo.[CustomerCustomerDemo].[CustomerID] = dbo.[Customers].[CustomerID]
+                  )
+				SELECT @@ROWCOUNT			
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Customers_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Customers_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Customers_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Customers table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Customers_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@CustomerId nchar (5)  = null ,
+
+	@CompanyName nvarchar (40)  = null ,
+
+	@ContactName nvarchar (30)  = null ,
+
+	@ContactTitle nvarchar (30)  = null ,
+
+	@Address nvarchar (60)  = null ,
+
+	@City nvarchar (15)  = null ,
+
+	@Region nvarchar (15)  = null ,
+
+	@PostalCode nvarchar (10)  = null ,
+
+	@Country nvarchar (15)  = null ,
+
+	@Phone nvarchar (24)  = null ,
+
+	@Fax nvarchar (24)  = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [CustomerID]
+	, [CompanyName]
+	, [ContactName]
+	, [ContactTitle]
+	, [Address]
+	, [City]
+	, [Region]
+	, [PostalCode]
+	, [Country]
+	, [Phone]
+	, [Fax]
+    FROM
+	[dbo].[Customers]
+    WHERE 
+	 ([CustomerID] = @CustomerId OR @CustomerId IS NULL)
+	AND ([CompanyName] = @CompanyName OR @CompanyName IS NULL)
+	AND ([ContactName] = @ContactName OR @ContactName IS NULL)
+	AND ([ContactTitle] = @ContactTitle OR @ContactTitle IS NULL)
+	AND ([Address] = @Address OR @Address IS NULL)
+	AND ([City] = @City OR @City IS NULL)
+	AND ([Region] = @Region OR @Region IS NULL)
+	AND ([PostalCode] = @PostalCode OR @PostalCode IS NULL)
+	AND ([Country] = @Country OR @Country IS NULL)
+	AND ([Phone] = @Phone OR @Phone IS NULL)
+	AND ([Fax] = @Fax OR @Fax IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [CustomerID]
+	, [CompanyName]
+	, [ContactName]
+	, [ContactTitle]
+	, [Address]
+	, [City]
+	, [Region]
+	, [PostalCode]
+	, [Country]
+	, [Phone]
+	, [Fax]
+    FROM
+	[dbo].[Customers]
+    WHERE 
+	 ([CustomerID] = @CustomerId AND @CustomerId is not null)
+	OR ([CompanyName] = @CompanyName AND @CompanyName is not null)
+	OR ([ContactName] = @ContactName AND @ContactName is not null)
+	OR ([ContactTitle] = @ContactTitle AND @ContactTitle is not null)
+	OR ([Address] = @Address AND @Address is not null)
+	OR ([City] = @City AND @City is not null)
+	OR ([Region] = @Region AND @Region is not null)
+	OR ([PostalCode] = @PostalCode AND @PostalCode is not null)
+	OR ([Country] = @Country AND @Country is not null)
+	OR ([Phone] = @Phone AND @Phone is not null)
+	OR ([Fax] = @Fax AND @Fax is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the Shippers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_Get_List
+
+AS
+
+
+				
+				SELECT
+					[ShipperID],
+					[CompanyName],
+					[Phone]
+				FROM
+					[dbo].[Shippers]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the Shippers table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[ShipperID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [ShipperID]'
+				SET @SQL = @SQL + ', [CompanyName]'
+				SET @SQL = @SQL + ', [Phone]'
+				SET @SQL = @SQL + ' FROM [dbo].[Shippers]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [ShipperID],'
+				SET @SQL = @SQL + ' [CompanyName],'
+				SET @SQL = @SQL + ' [Phone]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[Shippers]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the Shippers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_Insert
+(
+
+	@ShipperId int    OUTPUT,
+
+	@CompanyName nvarchar (40)  ,
+
+	@Phone nvarchar (24)  
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[Shippers]
+					(
+					[CompanyName]
+					,[Phone]
+					)
+				VALUES
+					(
+					@CompanyName
+					,@Phone
+					)
+				
+				-- Get the identity value
+				SET @ShipperId = SCOPE_IDENTITY()
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the Shippers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_Update
+(
+
+	@ShipperId int   ,
+
+	@CompanyName nvarchar (40)  ,
+
+	@Phone nvarchar (24)  
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[Shippers]
+				SET
+					[CompanyName] = @CompanyName
+					,[Phone] = @Phone
+				WHERE
+[ShipperID] = @ShipperId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the Shippers table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_Delete
+(
+
+	@ShipperId int   
+)
+AS
+
+
+				DELETE FROM [dbo].[Shippers] WITH (ROWLOCK) 
+				WHERE
+					[ShipperID] = @ShipperId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_GetByShipperId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_GetByShipperId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_GetByShipperId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the Shippers table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_GetByShipperId
+(
+
+	@ShipperId int   
+)
+AS
+
+
+				SELECT
+					[ShipperID],
+					[CompanyName],
+					[Phone]
+				FROM
+					[dbo].[Shippers]
+				WHERE
+					[ShipperID] = @ShipperId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_Shippers_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_Shippers_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_Shippers_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the Shippers table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_Shippers_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@ShipperId int   = null ,
+
+	@CompanyName nvarchar (40)  = null ,
+
+	@Phone nvarchar (24)  = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [ShipperID]
+	, [CompanyName]
+	, [Phone]
+    FROM
+	[dbo].[Shippers]
+    WHERE 
+	 ([ShipperID] = @ShipperId OR @ShipperId IS NULL)
+	AND ([CompanyName] = @CompanyName OR @CompanyName IS NULL)
+	AND ([Phone] = @Phone OR @Phone IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [ShipperID]
+	, [CompanyName]
+	, [Phone]
+    FROM
+	[dbo].[Shippers]
+    WHERE 
+	 ([ShipperID] = @ShipperId AND @ShipperId is not null)
+	OR ([CompanyName] = @CompanyName AND @CompanyName is not null)
+	OR ([Phone] = @Phone AND @Phone is not null)
 	SELECT @@ROWCOUNT			
   END
 				
@@ -7569,6 +7136,482 @@ AS
 	OR ([UnitPrice] = @UnitPrice AND @UnitPrice is not null)
 	OR ([Quantity] = @Quantity AND @Quantity is not null)
 	OR ([Discount] = @Discount AND @Discount is not null)
+	SELECT @@ROWCOUNT			
+  END
+				
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_Get_List procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Get_List') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Get_List
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets all records from the EmployeeTerritories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Get_List
+
+AS
+
+
+				
+				SELECT
+					[EmployeeID],
+					[TerritoryID]
+				FROM
+					[dbo].[EmployeeTerritories]
+					
+				SELECT @@ROWCOUNT
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_GetPaged procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetPaged') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetPaged
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Gets records from the EmployeeTerritories table passing page index and page count parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetPaged
+(
+
+	@WhereClause varchar (2000)  ,
+
+	@OrderBy varchar (2000)  ,
+
+	@PageIndex int   ,
+
+	@PageSize int   
+)
+AS
+
+
+				
+				BEGIN
+				DECLARE @PageLowerBound int
+				DECLARE @PageUpperBound int
+				
+				-- Set the page bounds
+				SET @PageLowerBound = @PageSize * @PageIndex
+				SET @PageUpperBound = @PageLowerBound + @PageSize
+
+				IF (@OrderBy IS NULL OR LEN(@OrderBy) < 1)
+				BEGIN
+					-- default order by to first column
+					SET @OrderBy = '[EmployeeID]'
+				END
+
+				-- SQL Server 2005 Paging
+				DECLARE @SQL AS nvarchar(MAX)
+				SET @SQL = 'WITH PageIndex AS ('
+				SET @SQL = @SQL + ' SELECT'
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' TOP ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') as RowIndex'
+				SET @SQL = @SQL + ', [EmployeeID]'
+				SET @SQL = @SQL + ', [TerritoryID]'
+				SET @SQL = @SQL + ' FROM [dbo].[EmployeeTerritories]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				SET @SQL = @SQL + ' ) SELECT'
+				SET @SQL = @SQL + ' [EmployeeID],'
+				SET @SQL = @SQL + ' [TerritoryID]'
+				SET @SQL = @SQL + ' FROM PageIndex'
+				SET @SQL = @SQL + ' WHERE RowIndex > ' + CONVERT(nvarchar, @PageLowerBound)
+				IF @PageSize > 0
+				BEGIN
+					SET @SQL = @SQL + ' AND RowIndex <= ' + CONVERT(nvarchar, @PageUpperBound)
+				END
+				SET @SQL = @SQL + ' ORDER BY ' + @OrderBy
+				EXEC sp_executesql @SQL
+				
+				-- get row count
+				SET @SQL = 'SELECT COUNT(*) AS TotalRowCount'
+				SET @SQL = @SQL + ' FROM [dbo].[EmployeeTerritories]'
+				IF LEN(@WhereClause) > 0
+				BEGIN
+					SET @SQL = @SQL + ' WHERE ' + @WhereClause
+				END
+				EXEC sp_executesql @SQL
+			
+				END
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_Insert procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Insert') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Insert
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Inserts a record into the EmployeeTerritories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Insert
+(
+
+	@EmployeeId int   ,
+
+	@TerritoryId nvarchar (20)  
+)
+AS
+
+
+				
+				INSERT INTO [dbo].[EmployeeTerritories]
+					(
+					[EmployeeID]
+					,[TerritoryID]
+					)
+				VALUES
+					(
+					@EmployeeId
+					,@TerritoryId
+					)
+				
+									
+							
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_Update procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Update') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Update
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Updates a record in the EmployeeTerritories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Update
+(
+
+	@EmployeeId int   ,
+
+	@OriginalEmployeeId int   ,
+
+	@TerritoryId nvarchar (20)  ,
+
+	@OriginalTerritoryId nvarchar (20)  
+)
+AS
+
+
+				
+				
+				-- Modify the updatable columns
+				UPDATE
+					[dbo].[EmployeeTerritories]
+				SET
+					[EmployeeID] = @EmployeeId
+					,[TerritoryID] = @TerritoryId
+				WHERE
+[EmployeeID] = @OriginalEmployeeId 
+AND [TerritoryID] = @OriginalTerritoryId 
+				
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_Delete procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Delete') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Delete
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Deletes a record in the EmployeeTerritories table
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Delete
+(
+
+	@EmployeeId int   ,
+
+	@TerritoryId nvarchar (20)  
+)
+AS
+
+
+				DELETE FROM [dbo].[EmployeeTerritories] WITH (ROWLOCK) 
+				WHERE
+					[EmployeeID] = @EmployeeId
+					AND [TerritoryID] = @TerritoryId
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_GetByEmployeeId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetByEmployeeId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the EmployeeTerritories table through a foreign key
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeId
+(
+
+	@EmployeeId int   
+)
+AS
+
+
+				SET ANSI_NULLS OFF
+				
+				SELECT
+					[EmployeeID],
+					[TerritoryID]
+				FROM
+					[dbo].[EmployeeTerritories]
+				WHERE
+					[EmployeeID] = @EmployeeId
+				
+				SELECT @@ROWCOUNT
+				SET ANSI_NULLS ON
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_GetByTerritoryId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetByTerritoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByTerritoryId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the EmployeeTerritories table through a foreign key
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByTerritoryId
+(
+
+	@TerritoryId nvarchar (20)  
+)
+AS
+
+
+				SET ANSI_NULLS OFF
+				
+				SELECT
+					[EmployeeID],
+					[TerritoryID]
+				FROM
+					[dbo].[EmployeeTerritories]
+				WHERE
+					[TerritoryID] = @TerritoryId
+				
+				SELECT @@ROWCOUNT
+				SET ANSI_NULLS ON
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Select records from the EmployeeTerritories table through an index
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_GetByEmployeeIdTerritoryId
+(
+
+	@EmployeeId int   ,
+
+	@TerritoryId nvarchar (20)  
+)
+AS
+
+
+				SELECT
+					[EmployeeID],
+					[TerritoryID]
+				FROM
+					[dbo].[EmployeeTerritories]
+				WHERE
+					[EmployeeID] = @EmployeeId
+					AND [TerritoryID] = @TerritoryId
+				SELECT @@ROWCOUNT
+					
+			
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET NOCOUNT ON
+GO
+SET ANSI_NULLS OFF 
+GO
+
+	
+
+-- Drop the dbo.sp_nt_EmployeeTerritories_Find procedure
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.sp_nt_EmployeeTerritories_Find') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE dbo.sp_nt_EmployeeTerritories_Find
+GO
+
+/*
+----------------------------------------------------------------------------------------------------
+
+-- Created By:  ()
+-- Purpose: Finds records in the EmployeeTerritories table passing nullable parameters
+----------------------------------------------------------------------------------------------------
+*/
+
+
+CREATE PROCEDURE dbo.sp_nt_EmployeeTerritories_Find
+(
+
+	@SearchUsingOR bit   = null ,
+
+	@EmployeeId int   = null ,
+
+	@TerritoryId nvarchar (20)  = null 
+)
+AS
+
+
+				
+  IF ISNULL(@SearchUsingOR, 0) <> 1
+  BEGIN
+    SELECT
+	  [EmployeeID]
+	, [TerritoryID]
+    FROM
+	[dbo].[EmployeeTerritories]
+    WHERE 
+	 ([EmployeeID] = @EmployeeId OR @EmployeeId IS NULL)
+	AND ([TerritoryID] = @TerritoryId OR @TerritoryId IS NULL)
+						
+  END
+  ELSE
+  BEGIN
+    SELECT
+	  [EmployeeID]
+	, [TerritoryID]
+    FROM
+	[dbo].[EmployeeTerritories]
+    WHERE 
+	 ([EmployeeID] = @EmployeeId AND @EmployeeId is not null)
+	OR ([TerritoryID] = @TerritoryId AND @TerritoryId is not null)
 	SELECT @@ROWCOUNT			
   END
 				

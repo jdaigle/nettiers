@@ -1,251 +1,251 @@
 <NetTiersReport DALNameSpace="Northwind.Data" SolutionLink="file:\\\C:\src\nettiers\Northwind.sln" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True" FactoryType="Northwind.Entities.EntityFactory">
-  <initialization startTime="129266320531907284" executionTime="00:00:02.1961256">
-    <Message level="0" startTime="129266320531917285" message="Validating parameters." />
-    <Message level="0" startTime="129266320535517490" message="Loading templates." executionTime="00:00:01.8311048" />
-    <Message level="0" startTime="129266320553828538" message="Creating folders and copying dependencies." />
+  <initialization startTime="129266565086679952" executionTime="00:00:00.4400251">
+    <Message level="0" startTime="129266565086679952" message="Validating parameters." />
+    <Message level="0" startTime="129266565087339989" message="Loading templates." executionTime="00:00:00.3710213" />
+    <Message level="0" startTime="129266565091050202" message="Creating folders and copying dependencies." />
   </initialization>
   <customStoredProcedures includeCustoms="true" />
-  <common startTime="129266320553868540" executionTime="00:00:01.4420825">
-    <File name="ListBase.cs" startTime="129266320553868540" />
-    <File name="TList.cs" startTime="129266320554198559" />
-    <File name="VList.cs" startTime="129266320554428572" />
-    <File name="WeakRefDictionary.cs" startTime="129266320554548579" />
-    <File name="TestUtility.cs" startTime="129266320554628584" />
-    <File name="IEntity.cs" startTime="129266320554688587" />
-    <File name="IEntityId.cs" startTime="129266320554778592" />
-    <File name="IEntityKey.cs" startTime="129266320554808594" />
-    <File name="EntityFactory.cs" startTime="129266320554838596" />
-    <File name="EntityFactoryBase.cs" startTime="129266320554858597" />
-    <File name="IEntityFactory.cs" startTime="129266320554968603" />
-    <File name="EntityLocator.cs" startTime="129266320555008605" />
-    <File name="EntityManager.cs" startTime="129266320555068609" />
-    <File name="BrokenRule.cs" startTime="129266320555208617" />
-    <File name="BrokenRulesList.cs" startTime="129266320555248619" />
-    <File name="CommonRules.cs" startTime="129266320555308622" />
-    <File name="ValidationRuleArgs.cs" startTime="129266320555568637" />
-    <File name="ValidationRuleHandler.cs" startTime="129266320555608640" />
-    <File name="ValidationRuleInfo.cs" startTime="129266320555638641" />
-    <File name="ValidationRules.cs" startTime="129266320555688644" />
-    <File name="EntityBaseCore.generated.cs" startTime="129266320555758648" />
-    <File name="EntityKeyBaseCore.generated.cs" startTime="129266320555898656" />
-    <File name="EntityFilter.cs" startTime="129266320555948659" />
-    <File name="EntityPropertyComparer.cs" startTime="129266320556188673" />
-    <File name="GenericTypeConverter.cs" startTime="129266320556208674" />
-    <File name="Procedures.xml" startTime="129266320556238676" />
-    <File name="Unit test configuration files" startTime="129266320562099011" />
-    <File name="Utility.cs" startTime="129266320562219018" />
-    <File name="ITransactionManager.cs" startTime="129266320562409029" />
-    <File name="TransactionManager.cs" startTime="129266320562439030" />
-    <File name="DataRepository.cs" startTime="129266320562509034" />
-    <File name="IEntityProvider.cs" startTime="129266320562759049" />
-    <File name="IEntityViewProvider.cs" startTime="129266320563079067" />
-    <File name="EntityProviderBaseCore.generated.cs" startTime="129266320563179073" />
-    <File name="EntityViewProviderBaseCore.generated.cs" startTime="129266320564019121" />
-    <File name="INetTiersProvider.cs" startTime="129266320564259134" />
-    <File name="NetTiersProvider.cs" startTime="129266320564379141" />
-    <File name="NetTiersProviderBase.cs" startTime="129266320564439145" />
-    <File name="NetTiersProviderCollection.cs" startTime="129266320564599154" />
-    <File name="NetTiersServiceSection.cs" startTime="129266320564639156" />
-    <File name="ExpressionParserBase.cs" startTime="129266320564659157" />
-    <File name="SqlExpressionParser.cs" startTime="129266320564729161" />
-    <File name="SqlStringBuilder.cs" startTime="129266320564869169" />
-    <File name="SqlUtil.cs" startTime="129266320565869226" />
-    <File name="StringTokenizer.cs" startTime="129266320566139242" />
-    <File name="SqlClient\SqlNetTiersProvider.cs" startTime="129266320566249248" />
-    <File name="StoredProcedureProvider.cs" startTime="129266320566499263" />
-    <File name="Northwind.Entities.csproj" startTime="129266320566709275" />
-    <File name="Northwind.Data.Data.csproj" startTime="129266320567659329" />
-    <File name="Northwind.Entities.Data.SqlClient.csproj" startTime="129266320567709332" />
-    <File name="Northwind.UnitTests.csproj" startTime="129266320567749334" />
-    <File name="EntityHelper.cs" startTime="129266320567799337" />
-    <File name="EntityUtil.cs" startTime="129266320567979347" />
+  <common startTime="129266565091080203" executionTime="00:00:00.8210470">
+    <File name="ListBase.cs" startTime="129266565091090204" />
+    <File name="TList.cs" startTime="129266565091120206" />
+    <File name="VList.cs" startTime="129266565091150207" />
+    <File name="WeakRefDictionary.cs" startTime="129266565091160208" />
+    <File name="TestUtility.cs" startTime="129266565091170209" />
+    <File name="IEntity.cs" startTime="129266565091180209" />
+    <File name="IEntityId.cs" startTime="129266565091190210" />
+    <File name="IEntityKey.cs" startTime="129266565091190210" />
+    <File name="EntityFactory.cs" startTime="129266565091200210" />
+    <File name="EntityFactoryBase.cs" startTime="129266565091200210" />
+    <File name="IEntityFactory.cs" startTime="129266565091220211" />
+    <File name="EntityLocator.cs" startTime="129266565091220211" />
+    <File name="EntityManager.cs" startTime="129266565091230212" />
+    <File name="BrokenRule.cs" startTime="129266565091250213" />
+    <File name="BrokenRulesList.cs" startTime="129266565091250213" />
+    <File name="CommonRules.cs" startTime="129266565091260214" />
+    <File name="ValidationRuleArgs.cs" startTime="129266565091290215" />
+    <File name="ValidationRuleHandler.cs" startTime="129266565091290215" />
+    <File name="ValidationRuleInfo.cs" startTime="129266565091300216" />
+    <File name="ValidationRules.cs" startTime="129266565091310217" />
+    <File name="EntityBaseCore.generated.cs" startTime="129266565091320217" />
+    <File name="EntityKeyBaseCore.generated.cs" startTime="129266565091390221" />
+    <File name="EntityFilter.cs" startTime="129266565091400222" />
+    <File name="EntityPropertyComparer.cs" startTime="129266565091430223" />
+    <File name="GenericTypeConverter.cs" startTime="129266565091430223" />
+    <File name="Procedures.xml" startTime="129266565091440224" />
+    <File name="Unit test configuration files" startTime="129266565098350619" />
+    <File name="Utility.cs" startTime="129266565098360620" />
+    <File name="ITransactionManager.cs" startTime="129266565098370620" />
+    <File name="TransactionManager.cs" startTime="129266565098390622" />
+    <File name="DataRepository.cs" startTime="129266565098400622" />
+    <File name="IEntityProvider.cs" startTime="129266565098530630" />
+    <File name="IEntityViewProvider.cs" startTime="129266565098550631" />
+    <File name="EntityProviderBaseCore.generated.cs" startTime="129266565098560631" />
+    <File name="EntityViewProviderBaseCore.generated.cs" startTime="129266565098620635" />
+    <File name="INetTiersProvider.cs" startTime="129266565098650636" />
+    <File name="NetTiersProvider.cs" startTime="129266565098660637" />
+    <File name="NetTiersProviderBase.cs" startTime="129266565098690639" />
+    <File name="NetTiersProviderCollection.cs" startTime="129266565098700639" />
+    <File name="NetTiersServiceSection.cs" startTime="129266565098710640" />
+    <File name="ExpressionParserBase.cs" startTime="129266565098710640" />
+    <File name="SqlExpressionParser.cs" startTime="129266565098730641" />
+    <File name="SqlStringBuilder.cs" startTime="129266565098740642" />
+    <File name="SqlUtil.cs" startTime="129266565098810646" />
+    <File name="StringTokenizer.cs" startTime="129266565098830647" />
+    <File name="SqlClient\SqlNetTiersProvider.cs" startTime="129266565098840647" />
+    <File name="StoredProcedureProvider.cs" startTime="129266565098910651" />
+    <File name="Northwind.Entities.csproj" startTime="129266565098930652" />
+    <File name="Northwind.Data.Data.csproj" startTime="129266565099100662" />
+    <File name="Northwind.Entities.Data.SqlClient.csproj" startTime="129266565099140664" />
+    <File name="Northwind.UnitTests.csproj" startTime="129266565099180667" />
+    <File name="EntityHelper.cs" startTime="129266565099220669" />
+    <File name="EntityUtil.cs" startTime="129266565099260671" />
   </common>
-  <Table name="Alphabetical list of products" startTime="129266320568289365" executionTime="00:00:00.0870050">
-    <File name="AlphabeticalListOfProductsBase.generated.cs" startTime="129266320568399371" />
-    <File name="AlphabeticalListOfProductsProviderBase.generatedCore.cs" startTime="129266320568689388" executionTime="00:00:00.0190011" />
-    <File name="SqlAlphabeticalListOfProductsProviderBase.generated.cs" startTime="129266320568889399" />
-    <File name="AlphabeticalListOfProductsTest.generated.cs" startTime="129266320569049408" executionTime="00:00:00.0110007" />
+  <Table name="Alphabetical list of products" startTime="129266565099300674" executionTime="00:00:00.0260014">
+    <File name="AlphabeticalListOfProductsBase.generated.cs" startTime="129266565099300674" />
+    <File name="AlphabeticalListOfProductsProviderBase.generatedCore.cs" startTime="129266565099470683" executionTime="00:00:00.0050003" />
+    <File name="SqlAlphabeticalListOfProductsProviderBase.generated.cs" startTime="129266565099520686" />
+    <File name="AlphabeticalListOfProductsTest.generated.cs" startTime="129266565099540687" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Category Sales for 1997" startTime="129266320569159415" executionTime="00:00:00.0080004">
-    <File name="CategorySalesFor1997Base.generated.cs" startTime="129266320569159415" />
-    <File name="CategorySalesFor1997ProviderBase.generatedCore.cs" startTime="129266320569189416" executionTime="00:00:00.0020002" />
-    <File name="SqlCategorySalesFor1997ProviderBase.generated.cs" startTime="129266320569209418" />
-    <File name="CategorySalesFor1997Test.generated.cs" startTime="129266320569229419" executionTime="00:00:00.0010000" />
+  <Table name="Category Sales for 1997" startTime="129266565099560688" executionTime="00:00:00.0120007">
+    <File name="CategorySalesFor1997Base.generated.cs" startTime="129266565099560688" />
+    <File name="CategorySalesFor1997ProviderBase.generatedCore.cs" startTime="129266565099620692" executionTime="00:00:00.0020001" />
+    <File name="SqlCategorySalesFor1997ProviderBase.generated.cs" startTime="129266565099640693" />
+    <File name="CategorySalesFor1997Test.generated.cs" startTime="129266565099660694" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Current Product List" startTime="129266320569239419" executionTime="00:00:00.0160009">
-    <File name="CurrentProductListBase.generated.cs" startTime="129266320569239419" />
-    <File name="CurrentProductListProviderBase.generatedCore.cs" startTime="129266320569359426" executionTime="00:00:00.0010001" />
-    <File name="SqlCurrentProductListProviderBase.generated.cs" startTime="129266320569369427" />
-    <File name="CurrentProductListTest.generated.cs" startTime="129266320569389428" executionTime="00:00:00.0010000" />
+  <Table name="Current Product List" startTime="129266565099680695" executionTime="00:00:00.0100006">
+    <File name="CurrentProductListBase.generated.cs" startTime="129266565099680695" />
+    <File name="CurrentProductListProviderBase.generatedCore.cs" startTime="129266565099720698" executionTime="00:00:00.0020001" />
+    <File name="SqlCurrentProductListProviderBase.generated.cs" startTime="129266565099740699" />
+    <File name="CurrentProductListTest.generated.cs" startTime="129266565099760700" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Customer and Suppliers by City" startTime="129266320569399428" executionTime="00:00:00.0120007">
-    <File name="CustomerAndSuppliersByCityBase.generated.cs" startTime="129266320569399428" />
-    <File name="CustomerAndSuppliersByCityProviderBase.generatedCore.cs" startTime="129266320569439431" executionTime="00:00:00.0030001" />
-    <File name="SqlCustomerAndSuppliersByCityProviderBase.generated.cs" startTime="129266320569469432" />
-    <File name="CustomerAndSuppliersByCityTest.generated.cs" startTime="129266320569489434" executionTime="00:00:00.0030001" />
+  <Table name="Customer and Suppliers by City" startTime="129266565099780701" executionTime="00:00:00.0240014">
+    <File name="CustomerAndSuppliersByCityBase.generated.cs" startTime="129266565099780701" />
+    <File name="CustomerAndSuppliersByCityProviderBase.generatedCore.cs" startTime="129266565099940710" executionTime="00:00:00.0040002" />
+    <File name="SqlCustomerAndSuppliersByCityProviderBase.generated.cs" startTime="129266565099990713" />
+    <File name="CustomerAndSuppliersByCityTest.generated.cs" startTime="129266565100010714" executionTime="00:00:00.0010001" />
   </Table>
-  <Table name="Invoices" startTime="129266320569519435" executionTime="00:00:00.0320019">
-    <File name="InvoicesBase.generated.cs" startTime="129266320569519435" />
-    <File name="InvoicesProviderBase.generatedCore.cs" startTime="129266320569719447" executionTime="00:00:00.0080004" />
-    <File name="SqlInvoicesProviderBase.generated.cs" startTime="129266320569799451" />
-    <File name="InvoicesTest.generated.cs" startTime="129266320569819452" executionTime="00:00:00.0020002" />
+  <Table name="Invoices" startTime="129266565100020715" executionTime="00:00:00.0640036">
+    <File name="InvoicesBase.generated.cs" startTime="129266565100020715" />
+    <File name="InvoicesProviderBase.generatedCore.cs" startTime="129266565100540745" executionTime="00:00:00.0080004" />
+    <File name="SqlInvoicesProviderBase.generated.cs" startTime="129266565100620749" />
+    <File name="InvoicesTest.generated.cs" startTime="129266565100640750" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Order Details Extended" startTime="129266320569839454" executionTime="00:00:00.0150008">
-    <File name="OrderDetailsExtendedBase.generated.cs" startTime="129266320569839454" />
-    <File name="OrderDetailsExtendedProviderBase.generatedCore.cs" startTime="129266320569909458" executionTime="00:00:00.0030001" />
-    <File name="SqlOrderDetailsExtendedProviderBase.generated.cs" startTime="129266320569939459" />
-    <File name="OrderDetailsExtendedTest.generated.cs" startTime="129266320569959460" executionTime="00:00:00.0030002" />
+  <Table name="Order Details Extended" startTime="129266565100660751" executionTime="00:00:00.0240014">
+    <File name="OrderDetailsExtendedBase.generated.cs" startTime="129266565100660751" />
+    <File name="OrderDetailsExtendedProviderBase.generatedCore.cs" startTime="129266565100830761" executionTime="00:00:00.0030002" />
+    <File name="SqlOrderDetailsExtendedProviderBase.generated.cs" startTime="129266565100860763" />
+    <File name="OrderDetailsExtendedTest.generated.cs" startTime="129266565100880764" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Order Subtotals" startTime="129266320569989462" executionTime="00:00:00.0080005">
-    <File name="OrderSubtotalsBase.generated.cs" startTime="129266320569989462" />
-    <File name="OrderSubtotalsProviderBase.generatedCore.cs" startTime="129266320570019464" executionTime="00:00:00.0020001" />
-    <File name="SqlOrderSubtotalsProviderBase.generated.cs" startTime="129266320570039465" />
-    <File name="OrderSubtotalsTest.generated.cs" startTime="129266320570049466" executionTime="00:00:00.0020001" />
+  <Table name="Order Subtotals" startTime="129266565100900765" executionTime="00:00:00.0140008">
+    <File name="OrderSubtotalsBase.generated.cs" startTime="129266565100900765" />
+    <File name="OrderSubtotalsProviderBase.generatedCore.cs" startTime="129266565100990770" executionTime="00:00:00.0020001" />
+    <File name="SqlOrderSubtotalsProviderBase.generated.cs" startTime="129266565101010771" />
+    <File name="OrderSubtotalsTest.generated.cs" startTime="129266565101030773" executionTime="00:00:00.0010000" />
   </Table>
-  <Table name="Orders Qry" startTime="129266320570069467" executionTime="00:00:00.0280016">
-    <File name="OrdersQryBase.generated.cs" startTime="129266320570069467" />
-    <File name="OrdersQryProviderBase.generatedCore.cs" startTime="129266320570229476" executionTime="00:00:00.0080004" />
-    <File name="SqlOrdersQryProviderBase.generated.cs" startTime="129266320570319481" />
-    <File name="OrdersQryTest.generated.cs" startTime="129266320570329482" executionTime="00:00:00.0020001" />
+  <Table name="Orders Qry" startTime="129266565101040773" executionTime="00:00:00.0750043">
+    <File name="OrdersQryBase.generated.cs" startTime="129266565101040773" />
+    <File name="OrdersQryProviderBase.generatedCore.cs" startTime="129266565101620806" executionTime="00:00:00.0090005" />
+    <File name="SqlOrdersQryProviderBase.generated.cs" startTime="129266565101710811" />
+    <File name="OrdersQryTest.generated.cs" startTime="129266565101770815" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Product Sales for 1997" startTime="129266320570349483" executionTime="00:00:00.0110006">
-    <File name="ProductSalesFor1997Base.generated.cs" startTime="129266320570349483" />
-    <File name="ProductSalesFor1997ProviderBase.generatedCore.cs" startTime="129266320570399486" executionTime="00:00:00.0020001" />
-    <File name="SqlProductSalesFor1997ProviderBase.generated.cs" startTime="129266320570419487" />
-    <File name="ProductSalesFor1997Test.generated.cs" startTime="129266320570449488" executionTime="00:00:00.0010001" />
+  <Table name="Product Sales for 1997" startTime="129266565101790816" executionTime="00:00:00.0170010">
+    <File name="ProductSalesFor1997Base.generated.cs" startTime="129266565101790816" />
+    <File name="ProductSalesFor1997ProviderBase.generatedCore.cs" startTime="129266565101900822" executionTime="00:00:00.0020001" />
+    <File name="SqlProductSalesFor1997ProviderBase.generated.cs" startTime="129266565101930824" />
+    <File name="ProductSalesFor1997Test.generated.cs" startTime="129266565101940825" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Products Above Average Price" startTime="129266320570459489" executionTime="00:00:00.0100006">
-    <File name="ProductsAboveAveragePriceBase.generated.cs" startTime="129266320570469490" />
-    <File name="ProductsAboveAveragePriceProviderBase.generatedCore.cs" startTime="129266320570489491" executionTime="00:00:00.0020001" />
-    <File name="SqlProductsAboveAveragePriceProviderBase.generated.cs" startTime="129266320570509492" />
-    <File name="ProductsAboveAveragePriceTest.generated.cs" startTime="129266320570539494" executionTime="00:00:00.0020001" />
+  <Table name="Products Above Average Price" startTime="129266565101960826" executionTime="00:00:00.0110006">
+    <File name="ProductsAboveAveragePriceBase.generated.cs" startTime="129266565101960826" />
+    <File name="ProductsAboveAveragePriceProviderBase.generatedCore.cs" startTime="129266565102020829" executionTime="00:00:00.0020001" />
+    <File name="SqlProductsAboveAveragePriceProviderBase.generated.cs" startTime="129266565102040830" />
+    <File name="ProductsAboveAveragePriceTest.generated.cs" startTime="129266565102060831" executionTime="00:00:00.0010001" />
   </Table>
-  <Table name="Products by Category" startTime="129266320570559495" executionTime="00:00:00.0120007">
-    <File name="ProductsByCategoryBase.generated.cs" startTime="129266320570559495" />
-    <File name="ProductsByCategoryProviderBase.generatedCore.cs" startTime="129266320570599497" executionTime="00:00:00.0030002" />
-    <File name="SqlProductsByCategoryProviderBase.generated.cs" startTime="129266320570629499" />
-    <File name="ProductsByCategoryTest.generated.cs" startTime="129266320570669501" executionTime="00:00:00.0010001" />
+  <Table name="Products by Category" startTime="129266565102070832" executionTime="00:00:00.0160009">
+    <File name="ProductsByCategoryBase.generated.cs" startTime="129266565102070832" />
+    <File name="ProductsByCategoryProviderBase.generatedCore.cs" startTime="129266565102160837" executionTime="00:00:00.0020001" />
+    <File name="SqlProductsByCategoryProviderBase.generated.cs" startTime="129266565102190839" />
+    <File name="ProductsByCategoryTest.generated.cs" startTime="129266565102210840" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Quarterly Orders" startTime="129266320570679502" executionTime="00:00:00.0090005">
-    <File name="QuarterlyOrdersBase.generated.cs" startTime="129266320570679502" />
-    <File name="QuarterlyOrdersProviderBase.generatedCore.cs" startTime="129266320570719504" executionTime="00:00:00.0020001" />
-    <File name="SqlQuarterlyOrdersProviderBase.generated.cs" startTime="129266320570749506" />
-    <File name="QuarterlyOrdersTest.generated.cs" startTime="129266320570759506" executionTime="00:00:00.0010001" />
+  <Table name="Quarterly Orders" startTime="129266565102230841" executionTime="00:00:00.0310018">
+    <File name="QuarterlyOrdersBase.generated.cs" startTime="129266565102230841" />
+    <File name="QuarterlyOrdersProviderBase.generatedCore.cs" startTime="129266565102480855" executionTime="00:00:00.0020002" />
+    <File name="SqlQuarterlyOrdersProviderBase.generated.cs" startTime="129266565102510857" />
+    <File name="QuarterlyOrdersTest.generated.cs" startTime="129266565102520858" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Sales by Category" startTime="129266320570779507" executionTime="00:00:00.0100006">
-    <File name="SalesByCategoryBase.generated.cs" startTime="129266320570779507" />
-    <File name="SalesByCategoryProviderBase.generatedCore.cs" startTime="129266320570829510" executionTime="00:00:00.0020001" />
-    <File name="SqlSalesByCategoryProviderBase.generated.cs" startTime="129266320570859512" />
-    <File name="SalesByCategoryTest.generated.cs" startTime="129266320570869512" executionTime="00:00:00.0010001" />
+  <Table name="Sales by Category" startTime="129266565102540859" executionTime="00:00:00.0190011">
+    <File name="SalesByCategoryBase.generated.cs" startTime="129266565102540859" />
+    <File name="SalesByCategoryProviderBase.generatedCore.cs" startTime="129266565102660866" executionTime="00:00:00.0020001" />
+    <File name="SqlSalesByCategoryProviderBase.generated.cs" startTime="129266565102690868" />
+    <File name="SalesByCategoryTest.generated.cs" startTime="129266565102700868" executionTime="00:00:00.0030002" />
   </Table>
-  <Table name="Sales Totals by Amount" startTime="129266320570879513" executionTime="00:00:00.0120007">
-    <File name="SalesTotalsByAmountBase.generated.cs" startTime="129266320570879513" />
-    <File name="SalesTotalsByAmountProviderBase.generatedCore.cs" startTime="129266320570939517" executionTime="00:00:00.0020001" />
-    <File name="SqlSalesTotalsByAmountProviderBase.generated.cs" startTime="129266320570969518" />
-    <File name="SalesTotalsByAmountTest.generated.cs" startTime="129266320570989519" executionTime="00:00:00.0010001" />
+  <Table name="Sales Totals by Amount" startTime="129266565102730870" executionTime="00:00:00.0220012">
+    <File name="SalesTotalsByAmountBase.generated.cs" startTime="129266565102730870" />
+    <File name="SalesTotalsByAmountProviderBase.generatedCore.cs" startTime="129266565102870878" executionTime="00:00:00.0040002" />
+    <File name="SqlSalesTotalsByAmountProviderBase.generated.cs" startTime="129266565102920881" />
+    <File name="SalesTotalsByAmountTest.generated.cs" startTime="129266565102940882" executionTime="00:00:00.0010000" />
   </Table>
-  <Table name="Summary of Sales by Quarter" startTime="129266320570999520" executionTime="00:00:00.0110006">
-    <File name="SummaryOfSalesByQuarterBase.generated.cs" startTime="129266320570999520" />
-    <File name="SummaryOfSalesByQuarterProviderBase.generatedCore.cs" startTime="129266320571039522" executionTime="00:00:00.0030002" />
-    <File name="SqlSummaryOfSalesByQuarterProviderBase.generated.cs" startTime="129266320571079525" />
-    <File name="SummaryOfSalesByQuarterTest.generated.cs" startTime="129266320571099526" executionTime="00:00:00.0010000" />
+  <Table name="Summary of Sales by Quarter" startTime="129266565102950882" executionTime="00:00:00.0150009">
+    <File name="SummaryOfSalesByQuarterBase.generated.cs" startTime="129266565102950882" />
+    <File name="SummaryOfSalesByQuarterProviderBase.generatedCore.cs" startTime="129266565103040888" executionTime="00:00:00.0020001" />
+    <File name="SqlSummaryOfSalesByQuarterProviderBase.generated.cs" startTime="129266565103060889" />
+    <File name="SummaryOfSalesByQuarterTest.generated.cs" startTime="129266565103080890" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Summary of Sales by Year" startTime="129266320571109526" executionTime="00:00:00.0100006">
-    <File name="SummaryOfSalesByYearBase.generated.cs" startTime="129266320571109526" />
-    <File name="SummaryOfSalesByYearProviderBase.generatedCore.cs" startTime="129266320571149529" executionTime="00:00:00.0020001" />
-    <File name="SqlSummaryOfSalesByYearProviderBase.generated.cs" startTime="129266320571169530" />
-    <File name="SummaryOfSalesByYearTest.generated.cs" startTime="129266320571199531" executionTime="00:00:00.0010001" />
+  <Table name="Summary of Sales by Year" startTime="129266565103100891" executionTime="00:00:00.0210012">
+    <File name="SummaryOfSalesByYearBase.generated.cs" startTime="129266565103100891" />
+    <File name="SummaryOfSalesByYearProviderBase.generatedCore.cs" startTime="129266565103240899" executionTime="00:00:00.0020001" />
+    <File name="SqlSummaryOfSalesByYearProviderBase.generated.cs" startTime="129266565103260900" />
+    <File name="SummaryOfSalesByYearTest.generated.cs" startTime="129266565103280901" executionTime="00:00:00.0030002" />
   </Table>
-  <Table name="Region" startTime="129266320571219533" executionTime="00:00:00.2500143">
-    <File name="Region.generated.cs" startTime="129266320571219533" executionTime="00:00:00.0770044" />
-    <File name="IRegion.cs" startTime="129266320571999577" executionTime="00:00:00.0080005" />
-    <File name="RegionProviderBase.generatedCore.cs" startTime="129266320572089582" executionTime="00:00:00.0810047" />
-    <File name="SqlClient\SqlRegionProviderBase.generated.cs" startTime="129266320572899629" executionTime="00:00:00.0590033" />
-    <File name="RegionTest.generated.cs" startTime="129266320573499663" executionTime="00:00:00.0220013" />
+  <Table name="Orders" startTime="129266565103310903" executionTime="00:00:00.0740042">
+    <File name="Orders.generated.cs" startTime="129266565103310903" executionTime="00:00:00.0300017" />
+    <File name="IOrders.cs" startTime="129266565103620921" executionTime="00:00:00.0020001" />
+    <File name="OrdersProviderBase.generatedCore.cs" startTime="129266565103640922" executionTime="00:00:00.0230013" />
+    <File name="SqlClient\SqlOrdersProviderBase.generated.cs" startTime="129266565103880936" executionTime="00:00:00.0120006" />
+    <File name="OrdersTest.generated.cs" startTime="129266565104000942" executionTime="00:00:00.0050003" />
   </Table>
-  <Table name="Territories" startTime="129266320573729676" executionTime="00:00:00.0350020">
-    <File name="Territories.generated.cs" startTime="129266320573729676" executionTime="00:00:00.0130008" />
-    <File name="ITerritories.cs" startTime="129266320573859684" executionTime="00:00:00.0020001" />
-    <File name="TerritoriesProviderBase.generatedCore.cs" startTime="129266320573879685" executionTime="00:00:00.0090005" />
-    <File name="SqlClient\SqlTerritoriesProviderBase.generated.cs" startTime="129266320573979690" executionTime="00:00:00.0070004" />
-    <File name="TerritoriesTest.generated.cs" startTime="129266320574049694" executionTime="00:00:00.0030002" />
+  <Table name="Suppliers" startTime="129266565104050945" executionTime="00:00:00.0440025">
+    <File name="Suppliers.generated.cs" startTime="129266565104050945" executionTime="00:00:00.0250015" />
+    <File name="ISuppliers.cs" startTime="129266565104300960" executionTime="00:00:00.0020001" />
+    <File name="SuppliersProviderBase.generatedCore.cs" startTime="129266565104320961" executionTime="00:00:00.0060003" />
+    <File name="SqlClient\SqlSuppliersProviderBase.generated.cs" startTime="129266565104390965" executionTime="00:00:00.0070004" />
+    <File name="SuppliersTest.generated.cs" startTime="129266565104460969" executionTime="00:00:00.0030001" />
   </Table>
-  <Table name="Employees" startTime="129266320574079696" executionTime="00:00:00.0750043">
-    <File name="Employees.generated.cs" startTime="129266320574079696" executionTime="00:00:00.0390022" />
-    <File name="IEmployees.cs" startTime="129266320574479719" executionTime="00:00:00.0040002" />
-    <File name="EmployeesProviderBase.generatedCore.cs" startTime="129266320574519721" executionTime="00:00:00.0140008" />
-    <File name="SqlClient\SqlEmployeesProviderBase.generated.cs" startTime="129266320574669730" executionTime="00:00:00.0090005" />
-    <File name="EmployeesTest.generated.cs" startTime="129266320574759735" executionTime="00:00:00.0070004" />
+  <Table name="Employees" startTime="129266565104490970" executionTime="00:00:00.0750043">
+    <File name="Employees.generated.cs" startTime="129266565104490970" executionTime="00:00:00.0370022" />
+    <File name="IEmployees.cs" startTime="129266565104870992" executionTime="00:00:00.0040002" />
+    <File name="EmployeesProviderBase.generatedCore.cs" startTime="129266565104910994" executionTime="00:00:00.0180011" />
+    <File name="SqlClient\SqlEmployeesProviderBase.generated.cs" startTime="129266565105101005" executionTime="00:00:00.0090006" />
+    <File name="EmployeesTest.generated.cs" startTime="129266565105201011" executionTime="00:00:00.0040002" />
   </Table>
-  <Table name="Suppliers" startTime="129266320574839740" executionTime="00:00:00.0430024">
-    <File name="Suppliers.generated.cs" startTime="129266320574839740" executionTime="00:00:00.0230013" />
-    <File name="ISuppliers.cs" startTime="129266320575079753" executionTime="00:00:00.0010001" />
-    <File name="SuppliersProviderBase.generatedCore.cs" startTime="129266320575089754" executionTime="00:00:00.0080004" />
-    <File name="SqlClient\SqlSuppliersProviderBase.generated.cs" startTime="129266320575179759" executionTime="00:00:00.0060003" />
-    <File name="SuppliersTest.generated.cs" startTime="129266320575239762" executionTime="00:00:00.0030002" />
+  <Table name="CustomerCustomerDemo" startTime="129266565105241013" executionTime="00:00:00.0350020">
+    <File name="CustomerCustomerDemo.generated.cs" startTime="129266565105241013" executionTime="00:00:00.0130008" />
+    <File name="ICustomerCustomerDemo.cs" startTime="129266565105371021" executionTime="00:00:00.0020001" />
+    <File name="CustomerCustomerDemoProviderBase.generatedCore.cs" startTime="129266565105391022" executionTime="00:00:00.0100006" />
+    <File name="SqlClient\SqlCustomerCustomerDemoProviderBase.generated.cs" startTime="129266565105491028" executionTime="00:00:00.0070004" />
+    <File name="CustomerCustomerDemoTest.generated.cs" startTime="129266565105571032" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Customers" startTime="129266320575269764" executionTime="00:00:00.0570033">
-    <File name="Customers.generated.cs" startTime="129266320575279765" executionTime="00:00:00.0270015" />
-    <File name="ICustomers.cs" startTime="129266320575549780" executionTime="00:00:00.0020001" />
-    <File name="CustomersProviderBase.generatedCore.cs" startTime="129266320575569781" executionTime="00:00:00.0140008" />
-    <File name="SqlClient\SqlCustomersProviderBase.generated.cs" startTime="129266320575709789" executionTime="00:00:00.0080005" />
-    <File name="CustomersTest.generated.cs" startTime="129266320575789794" executionTime="00:00:00.0050003" />
+  <Table name="Products" startTime="129266565105591033" executionTime="00:00:00.0590034">
+    <File name="Products.generated.cs" startTime="129266565105591033" executionTime="00:00:00.0250015" />
+    <File name="IProducts.cs" startTime="129266565105841048" executionTime="00:00:00.0020001" />
+    <File name="ProductsProviderBase.generatedCore.cs" startTime="129266565105861049" executionTime="00:00:00.0180010" />
+    <File name="SqlClient\SqlProductsProviderBase.generated.cs" startTime="129266565106041059" executionTime="00:00:00.0100006" />
+    <File name="ProductsTest.generated.cs" startTime="129266565106141065" executionTime="00:00:00.0040002" />
   </Table>
-  <Table name="Categories" startTime="129266320575839797" executionTime="00:00:00.0260015">
-    <File name="Categories.generated.cs" startTime="129266320575839797" executionTime="00:00:00.0120007" />
-    <File name="ICategories.cs" startTime="129266320575959804" executionTime="00:00:00.0010000" />
-    <File name="CategoriesProviderBase.generatedCore.cs" startTime="129266320575979805" executionTime="00:00:00.0050003" />
-    <File name="SqlClient\SqlCategoriesProviderBase.generated.cs" startTime="129266320576029808" executionTime="00:00:00.0050003" />
-    <File name="CategoriesTest.generated.cs" startTime="129266320576079811" executionTime="00:00:00.0020001" />
+  <Table name="Region" startTime="129266565106191068" executionTime="00:00:00.0290016">
+    <File name="Region.generated.cs" startTime="129266565106191068" executionTime="00:00:00.0110006" />
+    <File name="IRegion.cs" startTime="129266565106301074" executionTime="00:00:00.0020001" />
+    <File name="RegionProviderBase.generatedCore.cs" startTime="129266565106321075" executionTime="00:00:00.0040002" />
+    <File name="SqlClient\SqlRegionProviderBase.generated.cs" startTime="129266565106361077" executionTime="00:00:00.0090006" />
+    <File name="RegionTest.generated.cs" startTime="129266565106461083" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="CustomerDemographics" startTime="129266320576099812" executionTime="00:00:00.0330019">
-    <File name="CustomerDemographics.generated.cs" startTime="129266320576099812" executionTime="00:00:00.0130007" />
-    <File name="ICustomerDemographics.cs" startTime="129266320576229819" executionTime="00:00:00.0010001" />
-    <File name="CustomerDemographicsProviderBase.generatedCore.cs" startTime="129266320576249820" executionTime="00:00:00.0080005" />
-    <File name="SqlClient\SqlCustomerDemographicsProviderBase.generated.cs" startTime="129266320576339825" executionTime="00:00:00.0050003" />
-    <File name="CustomerDemographicsTest.generated.cs" startTime="129266320576409829" executionTime="00:00:00.0020002" />
+  <Table name="Territories" startTime="129266565106491085" executionTime="00:00:00.0500028">
+    <File name="Territories.generated.cs" startTime="129266565106491085" executionTime="00:00:00.0140008" />
+    <File name="ITerritories.cs" startTime="129266565106631093" executionTime="00:00:00.0020001" />
+    <File name="TerritoriesProviderBase.generatedCore.cs" startTime="129266565106651094" executionTime="00:00:00.0260015" />
+    <File name="SqlClient\SqlTerritoriesProviderBase.generated.cs" startTime="129266565106911109" executionTime="00:00:00.0050003" />
+    <File name="TerritoriesTest.generated.cs" startTime="129266565106971112" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="CustomerCustomerDemo" startTime="129266320576429831" executionTime="00:00:00.0330018">
-    <File name="CustomerCustomerDemo.generated.cs" startTime="129266320576429831" executionTime="00:00:00.0110006" />
-    <File name="ICustomerCustomerDemo.cs" startTime="129266320576539837" executionTime="00:00:00.0030002" />
-    <File name="CustomerCustomerDemoProviderBase.generatedCore.cs" startTime="129266320576569839" executionTime="00:00:00.0080004" />
-    <File name="SqlClient\SqlCustomerCustomerDemoProviderBase.generated.cs" startTime="129266320576659844" executionTime="00:00:00.0070004" />
-    <File name="CustomerCustomerDemoTest.generated.cs" startTime="129266320576729848" executionTime="00:00:00.0030001" />
+  <Table name="Categories" startTime="129266565106991113" executionTime="00:00:00.0290017">
+    <File name="Categories.generated.cs" startTime="129266565106991113" executionTime="00:00:00.0130008" />
+    <File name="ICategories.cs" startTime="129266565107121121" executionTime="00:00:00.0010000" />
+    <File name="CategoriesProviderBase.generatedCore.cs" startTime="129266565107141122" executionTime="00:00:00.0070004" />
+    <File name="SqlClient\SqlCategoriesProviderBase.generated.cs" startTime="129266565107211126" executionTime="00:00:00.0050003" />
+    <File name="CategoriesTest.generated.cs" startTime="129266565107261129" executionTime="00:00:00.0020001" />
   </Table>
-  <Table name="Shippers" startTime="129266320576759849" executionTime="00:00:00.0250015">
-    <File name="Shippers.generated.cs" startTime="129266320576759849" executionTime="00:00:00.0100006" />
-    <File name="IShippers.cs" startTime="129266320576859855" executionTime="00:00:00.0010001" />
-    <File name="ShippersProviderBase.generatedCore.cs" startTime="129266320576879856" executionTime="00:00:00.0050003" />
-    <File name="SqlClient\SqlShippersProviderBase.generated.cs" startTime="129266320576939860" executionTime="00:00:00.0040002" />
-    <File name="ShippersTest.generated.cs" startTime="129266320576989863" executionTime="00:00:00.0020001" />
+  <Table name="CustomerDemographics" startTime="129266565107281130" executionTime="00:00:00.0300017">
+    <File name="CustomerDemographics.generated.cs" startTime="129266565107281130" executionTime="00:00:00.0130007" />
+    <File name="ICustomerDemographics.cs" startTime="129266565107411137" executionTime="00:00:00.0020002" />
+    <File name="CustomerDemographicsProviderBase.generatedCore.cs" startTime="129266565107431139" executionTime="00:00:00.0060003" />
+    <File name="SqlClient\SqlCustomerDemographicsProviderBase.generated.cs" startTime="129266565107501143" executionTime="00:00:00.0040002" />
+    <File name="CustomerDemographicsTest.generated.cs" startTime="129266565107541145" executionTime="00:00:00.0040002" />
   </Table>
-  <Table name="Products" startTime="129266320577009864" executionTime="00:00:00.0520029">
-    <File name="Products.generated.cs" startTime="129266320577009864" executionTime="00:00:00.0240013" />
-    <File name="IProducts.cs" startTime="129266320577249877" executionTime="00:00:00.0030002" />
-    <File name="ProductsProviderBase.generatedCore.cs" startTime="129266320577279879" executionTime="00:00:00.0120007" />
-    <File name="SqlClient\SqlProductsProviderBase.generated.cs" startTime="129266320577399886" executionTime="00:00:00.0080005" />
-    <File name="ProductsTest.generated.cs" startTime="129266320577489891" executionTime="00:00:00.0040002" />
+  <Table name="Customers" startTime="129266565107581147" executionTime="00:00:00.0580033">
+    <File name="Customers.generated.cs" startTime="129266565107581147" executionTime="00:00:00.0250015" />
+    <File name="ICustomers.cs" startTime="129266565107831162" executionTime="00:00:00.0030001" />
+    <File name="CustomersProviderBase.generatedCore.cs" startTime="129266565107861163" executionTime="00:00:00.0130008" />
+    <File name="SqlClient\SqlCustomersProviderBase.generated.cs" startTime="129266565108001171" executionTime="00:00:00.0130008" />
+    <File name="CustomersTest.generated.cs" startTime="129266565108131179" executionTime="00:00:00.0030001" />
   </Table>
-  <Table name="Orders" startTime="129266320577529893" executionTime="00:00:00.0700040">
-    <File name="Orders.generated.cs" startTime="129266320577529893" executionTime="00:00:00.0300018" />
-    <File name="IOrders.cs" startTime="129266320577839911" executionTime="00:00:00.0010001" />
-    <File name="OrdersProviderBase.generatedCore.cs" startTime="129266320577859912" executionTime="00:00:00.0190011" />
-    <File name="SqlClient\SqlOrdersProviderBase.generated.cs" startTime="129266320578049923" executionTime="00:00:00.0110006" />
-    <File name="OrdersTest.generated.cs" startTime="129266320578169930" executionTime="00:00:00.0060003" />
+  <Table name="Shippers" startTime="129266565108171181" executionTime="00:00:00.0290017">
+    <File name="Shippers.generated.cs" startTime="129266565108171181" executionTime="00:00:00.0120007" />
+    <File name="IShippers.cs" startTime="129266565108291188" executionTime="00:00:00.0020001" />
+    <File name="ShippersProviderBase.generatedCore.cs" startTime="129266565108321190" executionTime="00:00:00.0040002" />
+    <File name="SqlClient\SqlShippersProviderBase.generated.cs" startTime="129266565108361192" executionTime="00:00:00.0070004" />
+    <File name="ShippersTest.generated.cs" startTime="129266565108431196" executionTime="00:00:00.0030002" />
   </Table>
-  <Table name="EmployeeTerritories" startTime="129266320578239934" executionTime="00:00:00.0290017">
-    <File name="EmployeeTerritories.generated.cs" startTime="129266320578239934" executionTime="00:00:00.0120007" />
-    <File name="IEmployeeTerritories.cs" startTime="129266320578359941" executionTime="00:00:00.0010000" />
-    <File name="EmployeeTerritoriesProviderBase.generatedCore.cs" startTime="129266320578369941" executionTime="00:00:00.0070005" />
-    <File name="SqlClient\SqlEmployeeTerritoriesProviderBase.generated.cs" startTime="129266320578449946" executionTime="00:00:00.0050003" />
-    <File name="EmployeeTerritoriesTest.generated.cs" startTime="129266320578509950" executionTime="00:00:00.0020001" />
+  <Table name="Order Details" startTime="129266565108461198" executionTime="00:00:00.0380021">
+    <File name="OrderDetails.generated.cs" startTime="129266565108461198" executionTime="00:00:00.0170009" />
+    <File name="IOrderDetails.cs" startTime="129266565108631207" executionTime="00:00:00.0010001" />
+    <File name="OrderDetailsProviderBase.generatedCore.cs" startTime="129266565108651208" executionTime="00:00:00.0090006" />
+    <File name="SqlClient\SqlOrderDetailsProviderBase.generated.cs" startTime="129266565108741214" executionTime="00:00:00.0070004" />
+    <File name="OrderDetailsTest.generated.cs" startTime="129266565108811218" executionTime="00:00:00.0030001" />
   </Table>
-  <Table name="Order Details" startTime="129266320578529951" executionTime="00:00:00.0370021">
-    <File name="OrderDetails.generated.cs" startTime="129266320578529951" executionTime="00:00:00.0150008" />
-    <File name="IOrderDetails.cs" startTime="129266320578679959" executionTime="00:00:00.0010001" />
-    <File name="OrderDetailsProviderBase.generatedCore.cs" startTime="129266320578689960" executionTime="00:00:00.0090005" />
-    <File name="SqlClient\SqlOrderDetailsProviderBase.generated.cs" startTime="129266320578779965" executionTime="00:00:00.0080005" />
-    <File name="OrderDetailsTest.generated.cs" startTime="129266320578869970" executionTime="00:00:00.0030002" />
+  <Table name="EmployeeTerritories" startTime="129266565108841219" executionTime="00:00:00.0410024">
+    <File name="EmployeeTerritories.generated.cs" startTime="129266565108841219" executionTime="00:00:00.0130008" />
+    <File name="IEmployeeTerritories.cs" startTime="129266565108971227" executionTime="00:00:00.0020001" />
+    <File name="EmployeeTerritoriesProviderBase.generatedCore.cs" startTime="129266565108991228" executionTime="00:00:00.0170010" />
+    <File name="SqlClient\SqlEmployeeTerritoriesProviderBase.generated.cs" startTime="129266565109171238" executionTime="00:00:00.0050003" />
+    <File name="EmployeeTerritoriesTest.generated.cs" startTime="129266565109221241" executionTime="00:00:00.0030002" />
   </Table>
   <summary>
     <objectCount>181</objectCount>

@@ -254,6 +254,71 @@
 			  <SubType>Code</SubType>
 			</Compile>
 						
+			<Compile Include="Orders.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="OrdersBase.generated.cs">
+			  <DependentUpon>Orders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IOrders.cs">
+			  <DependentUpon>Orders.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Suppliers.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SuppliersBase.generated.cs">
+			  <DependentUpon>Suppliers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ISuppliers.cs">
+			  <DependentUpon>Suppliers.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Employees.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="EmployeesBase.generated.cs">
+			  <DependentUpon>Employees.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IEmployees.cs">
+			  <DependentUpon>Employees.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="CustomerCustomerDemo.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="CustomerCustomerDemoBase.generated.cs">
+			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ICustomerCustomerDemo.cs">
+			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
+			<Compile Include="Products.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="ProductsBase.generated.cs">
+			  <DependentUpon>Products.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="IProducts.cs">
+			  <DependentUpon>Products.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+		
+		
 			<Compile Include="Region.cs">
 			  <SubType>Code</SubType>
 			</Compile>
@@ -276,45 +341,6 @@
 			</Compile>
 			<Compile Include="ITerritories.cs">
 			  <DependentUpon>Territories.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Employees.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="EmployeesBase.generated.cs">
-			  <DependentUpon>Employees.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IEmployees.cs">
-			  <DependentUpon>Employees.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Suppliers.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SuppliersBase.generated.cs">
-			  <DependentUpon>Suppliers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ISuppliers.cs">
-			  <DependentUpon>Suppliers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Customers.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="CustomersBase.generated.cs">
-			  <DependentUpon>Customers.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="ICustomers.cs">
-			  <DependentUpon>Customers.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -345,15 +371,15 @@
 			</Compile>
 		
 		
-			<Compile Include="CustomerCustomerDemo.cs">
+			<Compile Include="Customers.cs">
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="CustomerCustomerDemoBase.generated.cs">
-			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			<Compile Include="CustomersBase.generated.cs">
+			  <DependentUpon>Customers.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="ICustomerCustomerDemo.cs">
-			  <DependentUpon>CustomerCustomerDemo.cs</DependentUpon>
+			<Compile Include="ICustomers.cs">
+			  <DependentUpon>Customers.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -371,28 +397,15 @@
 			</Compile>
 		
 		
-			<Compile Include="Products.cs">
+			<Compile Include="OrderDetails.cs">
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="ProductsBase.generated.cs">
-			  <DependentUpon>Products.cs</DependentUpon>
+			<Compile Include="OrderDetailsBase.generated.cs">
+			  <DependentUpon>OrderDetails.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="IProducts.cs">
-			  <DependentUpon>Products.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="Orders.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="OrdersBase.generated.cs">
-			  <DependentUpon>Orders.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IOrders.cs">
-			  <DependentUpon>Orders.cs</DependentUpon>
+			<Compile Include="IOrderDetails.cs">
+			  <DependentUpon>OrderDetails.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		
@@ -406,19 +419,6 @@
 			</Compile>
 			<Compile Include="IEmployeeTerritories.cs">
 			  <DependentUpon>EmployeeTerritories.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-		
-		
-			<Compile Include="OrderDetails.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="OrderDetailsBase.generated.cs">
-			  <DependentUpon>OrderDetails.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="IOrderDetails.cs">
-			  <DependentUpon>OrderDetails.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		

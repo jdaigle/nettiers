@@ -1044,6 +1044,162 @@
             <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
             <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
         </member>
+        <member name="T:Northwind.Data.SqlClient.SqlRegionProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Region"/> entity.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlRegionProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlRegionProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Delete(Northwind.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_regionId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Find(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Find(Northwind.Data.TransactionManager,Northwind.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Northwind.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.GetAll(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.GetPaged(Northwind.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.GetByRegionId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Region index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_regionId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.BulkInsert(Northwind.Data.TransactionManager,Northwind.Entities.TList{Northwind.Entities.Region})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Northwind.Entities.Region object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Insert(Northwind.Data.TransactionManager,Northwind.Entities.Region)">
+            <summary>
+            	Inserts a Northwind.Entities.Region object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">Northwind.Entities.Region object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Northwind.Entities.Region object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Update(Northwind.Data.TransactionManager,Northwind.Entities.Region)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">Northwind.Entities.Region object to update.</param>
+            <remarks>
+            	After updating the datasource, the Northwind.Entities.Region object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlRegionProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlRegionProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlRegionProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
         <member name="T:Northwind.Data.SqlClient.SqlProductsProvider">
             <summary>
              This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Products"/> entity.
@@ -1272,162 +1428,6 @@
             <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
             <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
         </member>
-        <member name="T:Northwind.Data.SqlClient.SqlRegionProviderBase">
-            <summary>
-             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Region"/> entity.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.#ctor">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlRegionProviderBase"/> instance.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.#ctor(System.String,System.Boolean,System.String)">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlRegionProviderBase"/> instance.
-            Uses connection string to connect to datasource.
-            </summary>
-            <param name="connectionString">The connection string to the database.</param>
-            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
-            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Delete(Northwind.Data.TransactionManager,System.Int32)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="_regionId">. Primary Key.</param>	
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Find(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Returns rows meeting the whereClause condition from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <remarks>Operators must be capitalized (OR, AND).</remarks>
-            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Find(Northwind.Data.TransactionManager,Northwind.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Returns rows from the DataSource that meet the parameter conditions.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="parameters">A collection of <see cref="T:Northwind.Data.SqlFilterParameter"/> objects.</param>
-            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.GetAll(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets All rows from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <remarks></remarks>
-            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.GetPaged(Northwind.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Gets a page of rows from the DataSource.
-            </summary>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">Number of rows in the DataSource.</param>
-            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
-            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <remarks></remarks>
-            <returns>Returns a typed collection of Northwind.Entities.Region objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.GetByRegionId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Region index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_regionId"></param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out parameter to get total records for query.</param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-            <remarks></remarks>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.BulkInsert(Northwind.Data.TransactionManager,Northwind.Entities.TList{Northwind.Entities.Region})">
-            <summary>
-            Lets you efficiently bulk insert many entities to the database.
-            </summary>
-            <param name="transactionManager">The transaction manager.</param>
-            <param name="entities">The entities.</param>
-            <remarks>
-            	After inserting into the datasource, the Northwind.Entities.Region object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>	
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Insert(Northwind.Data.TransactionManager,Northwind.Entities.Region)">
-            <summary>
-            	Inserts a Northwind.Entities.Region object into the datasource using a transaction.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">Northwind.Entities.Region object to insert.</param>
-            <remarks>
-            	After inserting into the datasource, the Northwind.Entities.Region object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>	
-            <returns>Returns true if operation is successful.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProviderBase.Update(Northwind.Data.TransactionManager,Northwind.Entities.Region)">
-            <summary>
-            	Update an existing row in the datasource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">Northwind.Entities.Region object to update.</param>
-            <remarks>
-            	After updating the datasource, the Northwind.Entities.Region object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>
-            <returns>Returns true if operation is successful.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlRegionProviderBase.ConnectionString">
-            <summary>
-            Gets or sets the connection string.
-            </summary>
-            <value>The connection string.</value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlRegionProviderBase.UseStoredProcedure">
-            <summary>
-            Gets or sets a value indicating whether to use stored procedures.
-            </summary>
-            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlRegionProviderBase.ProviderInvariantName">
-            <summary>
-            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
-            </summary>
-            <value>The name of the provider invariant.</value>
-        </member>
         <member name="T:Northwind.Data.SqlClient.SqlOrderSubtotalsProviderBase">
             <summary>
             This class is the base repository for the CRUD operations on the OrderSubtotals objects.
@@ -1575,6 +1575,20 @@
             Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
             </summary>
             <value>The name of the provider invariant.</value>
+        </member>
+        <member name="T:Northwind.Data.SqlClient.SqlRegionProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Region"/> entity.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlRegionProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlRegionProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
         </member>
         <member name="T:Northwind.Data.SqlClient.SqlCustomerCustomerDemoProviderBase">
             <summary>
@@ -1989,20 +2003,6 @@
         <member name="M:Northwind.Data.SqlClient.SqlEmployeesProvider.#ctor(System.String,System.Boolean,System.String)">
             <summary>
             Creates a new <see cref="T:Northwind.Data.SqlClient.SqlEmployeesProvider"/> instance.
-            Uses connection string to connect to datasource.
-            </summary>
-            <param name="connectionString">The connection string to the database.</param>
-            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
-            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
-        </member>
-        <member name="T:Northwind.Data.SqlClient.SqlRegionProvider">
-            <summary>
-             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Region"/> entity.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlRegionProvider.#ctor(System.String,System.Boolean,System.String)">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlRegionProvider"/> instance.
             Uses connection string to connect to datasource.
             </summary>
             <param name="connectionString">The connection string to the database.</param>
@@ -2546,19 +2546,6 @@
              Indicates if the current <see cref="T:Northwind.Data.Bases.NetTiersProvider"/> implementation supports Transacton.
             </summary>
         </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.RegionProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Region"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlRegionProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlRegionProvider"/>.
-            </summary>
-            <value></value>
-        </member>
         <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.TerritoriesProvider">
             <summary>
              This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Territories"/> business entity.
@@ -2569,97 +2556,6 @@
         <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlTerritoriesProvider">
             <summary>
             Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlTerritoriesProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.EmployeesProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Employees"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlEmployeesProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlEmployeesProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SuppliersProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Suppliers"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlSuppliersProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlSuppliersProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CustomersProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Customers"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomersProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomersProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CategoriesProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Categories"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCategoriesProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCategoriesProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CustomerDemographicsProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerDemographics"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerDemographicsProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerDemographicsProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CustomerCustomerDemoProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerCustomerDemoProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerCustomerDemoProvider"/>.
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.ShippersProvider">
-            <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Shippers"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-             <value></value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlShippersProvider">
-            <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlShippersProvider"/>.
             </summary>
             <value></value>
         </member>
@@ -2676,16 +2572,120 @@
             </summary>
             <value></value>
         </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.OrdersProvider">
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CustomerDemographicsProvider">
             <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Orders"/> business entity.
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerDemographics"/> business entity.
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
              <value></value>
         </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrdersProvider">
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerDemographicsProvider">
             <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrdersProvider"/>.
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerDemographicsProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.EmployeesProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Employees"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlEmployeesProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlEmployeesProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CustomersProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Customers"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomersProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomersProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.OrderDetailsProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.OrderDetails"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrderDetailsProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrderDetailsProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CustomerCustomerDemoProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerCustomerDemoProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCustomerCustomerDemoProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SuppliersProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Suppliers"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlSuppliersProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlSuppliersProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.RegionProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Region"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlRegionProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlRegionProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.CategoriesProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Categories"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCategoriesProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlCategoriesProvider"/>.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.ShippersProvider">
+            <summary>
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Shippers"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+             <value></value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlShippersProvider">
+            <summary>
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlShippersProvider"/>.
             </summary>
             <value></value>
         </member>
@@ -2702,16 +2702,16 @@
             </summary>
             <value></value>
         </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.OrderDetailsProvider">
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.OrdersProvider">
             <summary>
-             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.OrderDetails"/> business entity.
+             This class is the Data Access Logic Component for the <see cref="T:Northwind.Entities.Orders"/> business entity.
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
              <value></value>
         </member>
-        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrderDetailsProvider">
+        <member name="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrdersProvider">
             <summary>
-            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrderDetailsProvider"/>.
+            Gets the current <see cref="P:Northwind.Data.SqlClient.SqlNetTiersProvider.SqlOrdersProvider"/>.
             </summary>
             <value></value>
         </member>
@@ -2923,189 +2923,6 @@
             </summary>
             <value></value>
         </member>
-        <member name="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase">
-            <summary>
-             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.CustomerDemographics"/> entity.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.#ctor">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase"/> instance.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.#ctor(System.String,System.Boolean,System.String)">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase"/> instance.
-            Uses connection string to connect to datasource.
-            </summary>
-            <param name="connectionString">The connection string to the database.</param>
-            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
-            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetByCustomerIdFromCustomerCustomerDemo(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets CustomerDemographics objects from the datasource by CustomerID in the
-            	CustomerCustomerDemo table. Table CustomerDemographics is related to table Customers
-            	through the (M:N) relationship defined in the CustomerCustomerDemo table.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_customerId"></param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out parameter to get total records for query.</param>
-            <returns>Returns a <c>TList</c> of CustomerDemographics objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Delete(Northwind.Data.TransactionManager,System.String)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="_customerTypeId">. Primary Key.</param>	
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Find(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Returns rows meeting the whereClause condition from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <remarks>Operators must be capitalized (OR, AND).</remarks>
-            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Find(Northwind.Data.TransactionManager,Northwind.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Returns rows from the DataSource that meet the parameter conditions.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="parameters">A collection of <see cref="T:Northwind.Data.SqlFilterParameter"/> objects.</param>
-            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetAll(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets All rows from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <remarks></remarks>
-            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetPaged(Northwind.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Gets a page of rows from the DataSource.
-            </summary>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">Number of rows in the DataSource.</param>
-            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
-            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <remarks></remarks>
-            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetByCustomerTypeId(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_CustomerDemographics index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_customerTypeId"></param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out parameter to get total records for query.</param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.CustomerDemographics"/> class.</returns>
-            <remarks></remarks>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.BulkInsert(Northwind.Data.TransactionManager,Northwind.Entities.TList{Northwind.Entities.CustomerDemographics})">
-            <summary>
-            Lets you efficiently bulk insert many entities to the database.
-            </summary>
-            <param name="transactionManager">The transaction manager.</param>
-            <param name="entities">The entities.</param>
-            <remarks>
-            	After inserting into the datasource, the Northwind.Entities.CustomerDemographics object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>	
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Insert(Northwind.Data.TransactionManager,Northwind.Entities.CustomerDemographics)">
-            <summary>
-            	Inserts a Northwind.Entities.CustomerDemographics object into the datasource using a transaction.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">Northwind.Entities.CustomerDemographics object to insert.</param>
-            <remarks>
-            	After inserting into the datasource, the Northwind.Entities.CustomerDemographics object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>	
-            <returns>Returns true if operation is successful.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Update(Northwind.Data.TransactionManager,Northwind.Entities.CustomerDemographics)">
-            <summary>
-            	Update an existing row in the datasource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">Northwind.Entities.CustomerDemographics object to update.</param>
-            <remarks>
-            	After updating the datasource, the Northwind.Entities.CustomerDemographics object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>
-            <returns>Returns true if operation is successful.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.ConnectionString">
-            <summary>
-            Gets or sets the connection string.
-            </summary>
-            <value>The connection string.</value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.UseStoredProcedure">
-            <summary>
-            Gets or sets a value indicating whether to use stored procedures.
-            </summary>
-            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.ProviderInvariantName">
-            <summary>
-            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
-            </summary>
-            <value>The name of the provider invariant.</value>
-        </member>
-        <member name="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProvider">
-            <summary>
-             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.CustomerDemographics"/> entity.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProvider.#ctor(System.String,System.Boolean,System.String)">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProvider"/> instance.
-            Uses connection string to connect to datasource.
-            </summary>
-            <param name="connectionString">The connection string to the database.</param>
-            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
-            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
-        </member>
         <member name="T:Northwind.Data.SqlClient.SqlCategoriesProvider">
             <summary>
              This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Categories"/> entity.
@@ -3285,6 +3102,189 @@
         <member name="M:Northwind.Data.SqlClient.SqlCategoriesProvider.#ctor(System.String,System.Boolean,System.String)">
             <summary>
             Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCategoriesProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.CustomerDemographics"/> entity.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetByCustomerIdFromCustomerCustomerDemo(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets CustomerDemographics objects from the datasource by CustomerID in the
+            	CustomerCustomerDemo table. Table CustomerDemographics is related to table Customers
+            	through the (M:N) relationship defined in the CustomerCustomerDemo table.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_customerId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns a <c>TList</c> of CustomerDemographics objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Delete(Northwind.Data.TransactionManager,System.String)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_customerTypeId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Find(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Find(Northwind.Data.TransactionManager,Northwind.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Northwind.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetAll(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetPaged(Northwind.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Northwind.Entities.CustomerDemographics objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.GetByCustomerTypeId(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_CustomerDemographics index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_customerTypeId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.CustomerDemographics"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.BulkInsert(Northwind.Data.TransactionManager,Northwind.Entities.TList{Northwind.Entities.CustomerDemographics})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Northwind.Entities.CustomerDemographics object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Insert(Northwind.Data.TransactionManager,Northwind.Entities.CustomerDemographics)">
+            <summary>
+            	Inserts a Northwind.Entities.CustomerDemographics object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">Northwind.Entities.CustomerDemographics object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Northwind.Entities.CustomerDemographics object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.Update(Northwind.Data.TransactionManager,Northwind.Entities.CustomerDemographics)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">Northwind.Entities.CustomerDemographics object to update.</param>
+            <remarks>
+            	After updating the datasource, the Northwind.Entities.CustomerDemographics object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlCustomerDemographicsProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
+        <member name="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.CustomerDemographics"/> entity.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlCustomerDemographicsProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerDemographicsProvider"/> instance.
             Uses connection string to connect to datasource.
             </summary>
             <param name="connectionString">The connection string to the database.</param>
@@ -3800,6 +3800,162 @@
             </summary>
             <value>The name of the provider invariant.</value>
         </member>
+        <member name="T:Northwind.Data.SqlClient.SqlShippersProviderBase">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Shippers"/> entity.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.#ctor">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlShippersProviderBase"/> instance.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlShippersProviderBase"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Delete(Northwind.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_shipperId">. Primary Key.</param>	
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Find(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows meeting the whereClause condition from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks>Operators must be capitalized (OR, AND).</remarks>
+            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Find(Northwind.Data.TransactionManager,Northwind.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Returns rows from the DataSource that meet the parameter conditions.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="parameters">A collection of <see cref="T:Northwind.Data.SqlFilterParameter"/> objects.</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.GetAll(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets All rows from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out. The number of rows that match this query.</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.GetPaged(Northwind.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets a page of rows from the DataSource.
+            </summary>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">Number of rows in the DataSource.</param>
+            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
+            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <remarks></remarks>
+            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.GetByShipperId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Shippers index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_shipperId"></param>
+            <param name="start">Row number at which to start reading.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query.</param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+            <remarks></remarks>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.BulkInsert(Northwind.Data.TransactionManager,Northwind.Entities.TList{Northwind.Entities.Shippers})">
+            <summary>
+            Lets you efficiently bulk insert many entities to the database.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entities">The entities.</param>
+            <remarks>
+            	After inserting into the datasource, the Northwind.Entities.Shippers object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Insert(Northwind.Data.TransactionManager,Northwind.Entities.Shippers)">
+            <summary>
+            	Inserts a Northwind.Entities.Shippers object into the datasource using a transaction.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">Northwind.Entities.Shippers object to insert.</param>
+            <remarks>
+            	After inserting into the datasource, the Northwind.Entities.Shippers object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>	
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Update(Northwind.Data.TransactionManager,Northwind.Entities.Shippers)">
+            <summary>
+            	Update an existing row in the datasource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">Northwind.Entities.Shippers object to update.</param>
+            <remarks>
+            	After updating the datasource, the Northwind.Entities.Shippers object will be updated
+            	to refelect any changes made by the datasource. (ie: identity or computed columns)
+            </remarks>
+            <returns>Returns true if operation is successful.</returns>
+            <exception cref="T:System.Exception">The command could not be executed.</exception>
+            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
+            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlShippersProviderBase.ConnectionString">
+            <summary>
+            Gets or sets the connection string.
+            </summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlShippersProviderBase.UseStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether to use stored procedures.
+            </summary>
+            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Northwind.Data.SqlClient.SqlShippersProviderBase.ProviderInvariantName">
+            <summary>
+            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
+            </summary>
+            <value>The name of the provider invariant.</value>
+        </member>
         <member name="T:Northwind.Data.SqlClient.SqlOrderDetailsProviderBase">
             <summary>
              This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.OrderDetails"/> entity.
@@ -3983,162 +4139,6 @@
             <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:Northwind.Data.SqlClient.SqlOrderDetailsProviderBase.ProviderInvariantName">
-            <summary>
-            Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
-            </summary>
-            <value>The name of the provider invariant.</value>
-        </member>
-        <member name="T:Northwind.Data.SqlClient.SqlShippersProviderBase">
-            <summary>
-             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.Shippers"/> entity.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.#ctor">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlShippersProviderBase"/> instance.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.#ctor(System.String,System.Boolean,System.String)">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlShippersProviderBase"/> instance.
-            Uses connection string to connect to datasource.
-            </summary>
-            <param name="connectionString">The connection string to the database.</param>
-            <param name="useStoredProcedure">A boolean value that indicates if we should use stored procedures or embedded queries.</param>
-            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Delete(Northwind.Data.TransactionManager,System.Int32)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="_shipperId">. Primary Key.</param>	
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Find(Northwind.Data.TransactionManager,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Returns rows meeting the whereClause condition from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <remarks>Operators must be capitalized (OR, AND).</remarks>
-            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Find(Northwind.Data.TransactionManager,Northwind.Data.IFilterParameterCollection,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Returns rows from the DataSource that meet the parameter conditions.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="parameters">A collection of <see cref="T:Northwind.Data.SqlFilterParameter"/> objects.</param>
-            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.GetAll(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets All rows from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out. The number of rows that match this query.</param>
-            <remarks></remarks>
-            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.GetPaged(Northwind.Data.TransactionManager,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            Gets a page of rows from the DataSource.
-            </summary>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">Number of rows in the DataSource.</param>
-            <param name="whereClause">Specifies the condition for the rows returned by a query (Name='John Doe', Name='John Doe' AND Id='1', Name='John Doe' OR Id='1').</param>
-            <param name="orderBy">Specifies the sort criteria for the rows in the DataSource (Name ASC; BirthDay DESC, Name ASC);</param>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <remarks></remarks>
-            <returns>Returns a typed collection of Northwind.Entities.Shippers objects.</returns>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.GetByShipperId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Shippers index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_shipperId"></param>
-            <param name="start">Row number at which to start reading.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out parameter to get total records for query.</param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-            <remarks></remarks>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.BulkInsert(Northwind.Data.TransactionManager,Northwind.Entities.TList{Northwind.Entities.Shippers})">
-            <summary>
-            Lets you efficiently bulk insert many entities to the database.
-            </summary>
-            <param name="transactionManager">The transaction manager.</param>
-            <param name="entities">The entities.</param>
-            <remarks>
-            	After inserting into the datasource, the Northwind.Entities.Shippers object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>	
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Insert(Northwind.Data.TransactionManager,Northwind.Entities.Shippers)">
-            <summary>
-            	Inserts a Northwind.Entities.Shippers object into the datasource using a transaction.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">Northwind.Entities.Shippers object to insert.</param>
-            <remarks>
-            	After inserting into the datasource, the Northwind.Entities.Shippers object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>	
-            <returns>Returns true if operation is successful.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlShippersProviderBase.Update(Northwind.Data.TransactionManager,Northwind.Entities.Shippers)">
-            <summary>
-            	Update an existing row in the datasource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">Northwind.Entities.Shippers object to update.</param>
-            <remarks>
-            	After updating the datasource, the Northwind.Entities.Shippers object will be updated
-            	to refelect any changes made by the datasource. (ie: identity or computed columns)
-            </remarks>
-            <returns>Returns true if operation is successful.</returns>
-            <exception cref="T:System.Exception">The command could not be executed.</exception>
-            <exception cref="T:System.Data.DataException">The <paramref name="transactionManager"/> is not open.</exception>
-            <exception cref="T:System.Data.Common.DbException">The command could not be executed.</exception>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlShippersProviderBase.ConnectionString">
-            <summary>
-            Gets or sets the connection string.
-            </summary>
-            <value>The connection string.</value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlShippersProviderBase.UseStoredProcedure">
-            <summary>
-            Gets or sets a value indicating whether to use stored procedures.
-            </summary>
-            <value><c>true</c> if we choose to use use stored procedures; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:Northwind.Data.SqlClient.SqlShippersProviderBase.ProviderInvariantName">
             <summary>
             Gets or sets the invariant provider name listed in the DbProviderFactories machine.config section.
             </summary>
@@ -4413,20 +4413,6 @@
             </summary>
             <value></value>
         </member>
-        <member name="T:Northwind.Data.SqlClient.SqlOrderDetailsProvider">
-            <summary>
-             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.OrderDetails"/> entity.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SqlClient.SqlOrderDetailsProvider.#ctor(System.String,System.Boolean,System.String)">
-            <summary>
-            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlOrderDetailsProvider"/> instance.
-            Uses connection string to connect to datasource.
-            </summary>
-            <param name="connectionString">The connection string to the database.</param>
-            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
-            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
-        </member>
         <member name="T:Northwind.Data.SqlClient.SqlCustomerCustomerDemoProvider">
             <summary>
              This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> entity.
@@ -4435,6 +4421,20 @@
         <member name="M:Northwind.Data.SqlClient.SqlCustomerCustomerDemoProvider.#ctor(System.String,System.Boolean,System.String)">
             <summary>
             Creates a new <see cref="T:Northwind.Data.SqlClient.SqlCustomerCustomerDemoProvider"/> instance.
+            Uses connection string to connect to datasource.
+            </summary>
+            <param name="connectionString">The connection string to the database.</param>
+            <param name="useStoredProcedure">A boolean value that indicates if we use the stored procedures or embedded queries.</param>
+            <param name="providerInvariantName">Name of the invariant provider use by the DbProviderFactory.</param>
+        </member>
+        <member name="T:Northwind.Data.SqlClient.SqlOrderDetailsProvider">
+            <summary>
+             This class is the SqlClient Data Access Logic Component implementation for the <see cref="T:Northwind.Entities.OrderDetails"/> entity.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SqlClient.SqlOrderDetailsProvider.#ctor(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a new <see cref="T:Northwind.Data.SqlClient.SqlOrderDetailsProvider"/> instance.
             Uses connection string to connect to datasource.
             </summary>
             <param name="connectionString">The connection string to the database.</param>

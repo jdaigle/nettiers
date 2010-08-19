@@ -105,7 +105,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
-    
      
 	<ProjectReference Include="..\Northwind.Entities\Northwind.Entities.csproj">
       <Name>Northwind.Entities</Name>
@@ -252,6 +251,46 @@
 				<DependentUpon>SummaryOfSalesByYearProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
+			<Compile Include="Bases\OrdersProviderBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="Bases\OrdersProviderBase.generatedCore.cs">
+			  <DependentUpon>OrdersProviderBase.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Bases\SuppliersProviderBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="Bases\SuppliersProviderBase.generatedCore.cs">
+			  <DependentUpon>SuppliersProviderBase.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Bases\EmployeesProviderBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="Bases\EmployeesProviderBase.generatedCore.cs">
+			  <DependentUpon>EmployeesProviderBase.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Bases\CustomerCustomerDemoProviderBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="Bases\CustomerCustomerDemoProviderBase.generatedCore.cs">
+			  <DependentUpon>CustomerCustomerDemoProviderBase.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="Bases\ProductsProviderBase.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="Bases\ProductsProviderBase.generatedCore.cs">
+			  <DependentUpon>ProductsProviderBase.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
 			<Compile Include="Bases\RegionProviderBase.cs">
 			  <SubType>Code</SubType>
 			</Compile>
@@ -266,30 +305,6 @@
 			
 			<Compile Include="Bases\TerritoriesProviderBase.generatedCore.cs">
 			  <DependentUpon>TerritoriesProviderBase.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Bases\EmployeesProviderBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="Bases\EmployeesProviderBase.generatedCore.cs">
-			  <DependentUpon>EmployeesProviderBase.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Bases\SuppliersProviderBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="Bases\SuppliersProviderBase.generatedCore.cs">
-			  <DependentUpon>SuppliersProviderBase.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Bases\CustomersProviderBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="Bases\CustomersProviderBase.generatedCore.cs">
-			  <DependentUpon>CustomersProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 			<Compile Include="Bases\CategoriesProviderBase.cs">
@@ -308,12 +323,12 @@
 			  <DependentUpon>CustomerDemographicsProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="Bases\CustomerCustomerDemoProviderBase.cs">
+			<Compile Include="Bases\CustomersProviderBase.cs">
 			  <SubType>Code</SubType>
 			</Compile>
 			
-			<Compile Include="Bases\CustomerCustomerDemoProviderBase.generatedCore.cs">
-			  <DependentUpon>CustomerCustomerDemoProviderBase.cs</DependentUpon>
+			<Compile Include="Bases\CustomersProviderBase.generatedCore.cs">
+			  <DependentUpon>CustomersProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 			<Compile Include="Bases\ShippersProviderBase.cs">
@@ -324,20 +339,12 @@
 			  <DependentUpon>ShippersProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="Bases\ProductsProviderBase.cs">
+			<Compile Include="Bases\OrderDetailsProviderBase.cs">
 			  <SubType>Code</SubType>
 			</Compile>
 			
-			<Compile Include="Bases\ProductsProviderBase.generatedCore.cs">
-			  <DependentUpon>ProductsProviderBase.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Bases\OrdersProviderBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="Bases\OrdersProviderBase.generatedCore.cs">
-			  <DependentUpon>OrdersProviderBase.cs</DependentUpon>
+			<Compile Include="Bases\OrderDetailsProviderBase.generatedCore.cs">
+			  <DependentUpon>OrderDetailsProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 			<Compile Include="Bases\EmployeeTerritoriesProviderBase.cs">
@@ -346,14 +353,6 @@
 			
 			<Compile Include="Bases\EmployeeTerritoriesProviderBase.generatedCore.cs">
 			  <DependentUpon>EmployeeTerritoriesProviderBase.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="Bases\OrderDetailsProviderBase.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="Bases\OrderDetailsProviderBase.generatedCore.cs">
-			  <DependentUpon>OrderDetailsProviderBase.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		<Compile Include="..\AssemblyInfo.cs">

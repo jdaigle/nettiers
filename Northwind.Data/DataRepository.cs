@@ -304,6 +304,91 @@ namespace Northwind.Data
 
 		#region Static properties
 		
+		#region OrdersProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="Orders"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static OrdersProviderBase OrdersProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.OrdersProvider;
+			}
+		}
+		
+		#endregion
+		
+		#region SuppliersProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="Suppliers"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static SuppliersProviderBase SuppliersProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.SuppliersProvider;
+			}
+		}
+		
+		#endregion
+		
+		#region EmployeesProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="Employees"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static EmployeesProviderBase EmployeesProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.EmployeesProvider;
+			}
+		}
+		
+		#endregion
+		
+		#region CustomerCustomerDemoProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="CustomerCustomerDemo"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static CustomerCustomerDemoProviderBase CustomerCustomerDemoProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.CustomerCustomerDemoProvider;
+			}
+		}
+		
+		#endregion
+		
+		#region ProductsProvider
+
+		///<summary>
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="Products"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		public static ProductsProviderBase ProductsProvider
+		{
+			get 
+			{
+				LoadProviders();
+				return _provider.ProductsProvider;
+			}
+		}
+		
+		#endregion
+		
 		#region RegionProvider
 
 		///<summary>
@@ -333,57 +418,6 @@ namespace Northwind.Data
 			{
 				LoadProviders();
 				return _provider.TerritoriesProvider;
-			}
-		}
-		
-		#endregion
-		
-		#region EmployeesProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="Employees"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static EmployeesProviderBase EmployeesProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.EmployeesProvider;
-			}
-		}
-		
-		#endregion
-		
-		#region SuppliersProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="Suppliers"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static SuppliersProviderBase SuppliersProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.SuppliersProvider;
-			}
-		}
-		
-		#endregion
-		
-		#region CustomersProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="Customers"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static CustomersProviderBase CustomersProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.CustomersProvider;
 			}
 		}
 		
@@ -423,18 +457,18 @@ namespace Northwind.Data
 		
 		#endregion
 		
-		#region CustomerCustomerDemoProvider
+		#region CustomersProvider
 
 		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="CustomerCustomerDemo"/> business entity.
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="Customers"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
-		public static CustomerCustomerDemoProviderBase CustomerCustomerDemoProvider
+		public static CustomersProviderBase CustomersProvider
 		{
 			get 
 			{
 				LoadProviders();
-				return _provider.CustomerCustomerDemoProvider;
+				return _provider.CustomersProvider;
 			}
 		}
 		
@@ -457,35 +491,18 @@ namespace Northwind.Data
 		
 		#endregion
 		
-		#region ProductsProvider
+		#region OrderDetailsProvider
 
 		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="Products"/> business entity.
+		/// Gets the current instance of the Data Access Logic Component for the <see cref="OrderDetails"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
-		public static ProductsProviderBase ProductsProvider
+		public static OrderDetailsProviderBase OrderDetailsProvider
 		{
 			get 
 			{
 				LoadProviders();
-				return _provider.ProductsProvider;
-			}
-		}
-		
-		#endregion
-		
-		#region OrdersProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="Orders"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static OrdersProviderBase OrdersProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.OrdersProvider;
+				return _provider.OrderDetailsProvider;
 			}
 		}
 		
@@ -503,23 +520,6 @@ namespace Northwind.Data
 			{
 				LoadProviders();
 				return _provider.EmployeeTerritoriesProvider;
-			}
-		}
-		
-		#endregion
-		
-		#region OrderDetailsProvider
-
-		///<summary>
-		/// Gets the current instance of the Data Access Logic Component for the <see cref="OrderDetails"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		public static OrderDetailsProviderBase OrderDetailsProvider
-		{
-			get 
-			{
-				LoadProviders();
-				return _provider.OrderDetailsProvider;
 			}
 		}
 		
@@ -803,6 +803,346 @@ namespace Northwind.Data
 	
 	#region Query/Filters
 		
+	#region OrdersFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="Orders"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class OrdersFilters : OrdersFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the OrdersFilters class.
+		/// </summary>
+		public OrdersFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the OrdersFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public OrdersFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the OrdersFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public OrdersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion OrdersFilters
+	
+	#region OrdersQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="OrdersParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="Orders"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class OrdersQuery : OrdersParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the OrdersQuery class.
+		/// </summary>
+		public OrdersQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the OrdersQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public OrdersQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the OrdersQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public OrdersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion OrdersQuery
+		
+	#region SuppliersFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="Suppliers"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class SuppliersFilters : SuppliersFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the SuppliersFilters class.
+		/// </summary>
+		public SuppliersFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the SuppliersFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public SuppliersFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the SuppliersFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public SuppliersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion SuppliersFilters
+	
+	#region SuppliersQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SuppliersParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="Suppliers"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class SuppliersQuery : SuppliersParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the SuppliersQuery class.
+		/// </summary>
+		public SuppliersQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the SuppliersQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public SuppliersQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the SuppliersQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public SuppliersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion SuppliersQuery
+		
+	#region EmployeesFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="Employees"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class EmployeesFilters : EmployeesFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the EmployeesFilters class.
+		/// </summary>
+		public EmployeesFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the EmployeesFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public EmployeesFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the EmployeesFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public EmployeesFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion EmployeesFilters
+	
+	#region EmployeesQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="EmployeesParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="Employees"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class EmployeesQuery : EmployeesParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the EmployeesQuery class.
+		/// </summary>
+		public EmployeesQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the EmployeesQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public EmployeesQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the EmployeesQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public EmployeesQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion EmployeesQuery
+		
+	#region CustomerCustomerDemoFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="CustomerCustomerDemo"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class CustomerCustomerDemoFilters : CustomerCustomerDemoFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the CustomerCustomerDemoFilters class.
+		/// </summary>
+		public CustomerCustomerDemoFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the CustomerCustomerDemoFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public CustomerCustomerDemoFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the CustomerCustomerDemoFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public CustomerCustomerDemoFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion CustomerCustomerDemoFilters
+	
+	#region CustomerCustomerDemoQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="CustomerCustomerDemoParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="CustomerCustomerDemo"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class CustomerCustomerDemoQuery : CustomerCustomerDemoParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the CustomerCustomerDemoQuery class.
+		/// </summary>
+		public CustomerCustomerDemoQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the CustomerCustomerDemoQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public CustomerCustomerDemoQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the CustomerCustomerDemoQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public CustomerCustomerDemoQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion CustomerCustomerDemoQuery
+		
+	#region ProductsFilters
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
+	/// that is used exclusively with a <see cref="Products"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class ProductsFilters : ProductsFilterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the ProductsFilters class.
+		/// </summary>
+		public ProductsFilters() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the ProductsFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public ProductsFilters(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the ProductsFilters class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public ProductsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion ProductsFilters
+	
+	#region ProductsQuery
+	
+	/// <summary>
+	/// A strongly-typed instance of the <see cref="ProductsParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="Products"/> object.
+	/// </summary>
+	[CLSCompliant(true)]
+	public class ProductsQuery : ProductsParameterBuilder
+	{
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the ProductsQuery class.
+		/// </summary>
+		public ProductsQuery() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the ProductsQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		public ProductsQuery(bool ignoreCase) : base(ignoreCase) { }
+
+		/// <summary>
+		/// Initializes a new instance of the ProductsQuery class.
+		/// </summary>
+		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+		public ProductsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+
+		#endregion Constructors
+	}
+
+	#endregion ProductsQuery
+		
 	#region RegionFilters
 	
 	/// <summary>
@@ -938,210 +1278,6 @@ namespace Northwind.Data
 	}
 
 	#endregion TerritoriesQuery
-		
-	#region EmployeesFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="Employees"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class EmployeesFilters : EmployeesFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the EmployeesFilters class.
-		/// </summary>
-		public EmployeesFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the EmployeesFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public EmployeesFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the EmployeesFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public EmployeesFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion EmployeesFilters
-	
-	#region EmployeesQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="EmployeesParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="Employees"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class EmployeesQuery : EmployeesParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the EmployeesQuery class.
-		/// </summary>
-		public EmployeesQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the EmployeesQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public EmployeesQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the EmployeesQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public EmployeesQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion EmployeesQuery
-		
-	#region SuppliersFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="Suppliers"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class SuppliersFilters : SuppliersFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the SuppliersFilters class.
-		/// </summary>
-		public SuppliersFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the SuppliersFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public SuppliersFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the SuppliersFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public SuppliersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion SuppliersFilters
-	
-	#region SuppliersQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SuppliersParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="Suppliers"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class SuppliersQuery : SuppliersParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the SuppliersQuery class.
-		/// </summary>
-		public SuppliersQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the SuppliersQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public SuppliersQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the SuppliersQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public SuppliersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion SuppliersQuery
-		
-	#region CustomersFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="Customers"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class CustomersFilters : CustomersFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the CustomersFilters class.
-		/// </summary>
-		public CustomersFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the CustomersFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public CustomersFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the CustomersFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public CustomersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion CustomersFilters
-	
-	#region CustomersQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="CustomersParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="Customers"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class CustomersQuery : CustomersParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the CustomersQuery class.
-		/// </summary>
-		public CustomersQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the CustomersQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public CustomersQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the CustomersQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public CustomersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion CustomersQuery
 		
 	#region CategoriesFilters
 	
@@ -1279,73 +1415,73 @@ namespace Northwind.Data
 
 	#endregion CustomerDemographicsQuery
 		
-	#region CustomerCustomerDemoFilters
+	#region CustomersFilters
 	
 	/// <summary>
 	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="CustomerCustomerDemo"/> object.
+	/// that is used exclusively with a <see cref="Customers"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class CustomerCustomerDemoFilters : CustomerCustomerDemoFilterBuilder
+	public class CustomersFilters : CustomersFilterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the CustomerCustomerDemoFilters class.
+		/// Initializes a new instance of the CustomersFilters class.
 		/// </summary>
-		public CustomerCustomerDemoFilters() : base() { }
+		public CustomersFilters() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the CustomerCustomerDemoFilters class.
+		/// Initializes a new instance of the CustomersFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public CustomerCustomerDemoFilters(bool ignoreCase) : base(ignoreCase) { }
+		public CustomersFilters(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the CustomerCustomerDemoFilters class.
+		/// Initializes a new instance of the CustomersFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public CustomerCustomerDemoFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public CustomersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion CustomerCustomerDemoFilters
+	#endregion CustomersFilters
 	
-	#region CustomerCustomerDemoQuery
+	#region CustomersQuery
 	
 	/// <summary>
-	/// A strongly-typed instance of the <see cref="CustomerCustomerDemoParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="CustomerCustomerDemo"/> object.
+	/// A strongly-typed instance of the <see cref="CustomersParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="Customers"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class CustomerCustomerDemoQuery : CustomerCustomerDemoParameterBuilder
+	public class CustomersQuery : CustomersParameterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the CustomerCustomerDemoQuery class.
+		/// Initializes a new instance of the CustomersQuery class.
 		/// </summary>
-		public CustomerCustomerDemoQuery() : base() { }
+		public CustomersQuery() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the CustomerCustomerDemoQuery class.
+		/// Initializes a new instance of the CustomersQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public CustomerCustomerDemoQuery(bool ignoreCase) : base(ignoreCase) { }
+		public CustomersQuery(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the CustomerCustomerDemoQuery class.
+		/// Initializes a new instance of the CustomersQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public CustomerCustomerDemoQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public CustomersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion CustomerCustomerDemoQuery
+	#endregion CustomersQuery
 		
 	#region ShippersFilters
 	
@@ -1415,141 +1551,73 @@ namespace Northwind.Data
 
 	#endregion ShippersQuery
 		
-	#region ProductsFilters
+	#region OrderDetailsFilters
 	
 	/// <summary>
 	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="Products"/> object.
+	/// that is used exclusively with a <see cref="OrderDetails"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class ProductsFilters : ProductsFilterBuilder
+	public class OrderDetailsFilters : OrderDetailsFilterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the ProductsFilters class.
+		/// Initializes a new instance of the OrderDetailsFilters class.
 		/// </summary>
-		public ProductsFilters() : base() { }
+		public OrderDetailsFilters() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the ProductsFilters class.
+		/// Initializes a new instance of the OrderDetailsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public ProductsFilters(bool ignoreCase) : base(ignoreCase) { }
+		public OrderDetailsFilters(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the ProductsFilters class.
+		/// Initializes a new instance of the OrderDetailsFilters class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public ProductsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public OrderDetailsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion ProductsFilters
+	#endregion OrderDetailsFilters
 	
-	#region ProductsQuery
+	#region OrderDetailsQuery
 	
 	/// <summary>
-	/// A strongly-typed instance of the <see cref="ProductsParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="Products"/> object.
+	/// A strongly-typed instance of the <see cref="OrderDetailsParameterBuilder"/> class
+	/// that is used exclusively with a <see cref="OrderDetails"/> object.
 	/// </summary>
 	[CLSCompliant(true)]
-	public class ProductsQuery : ProductsParameterBuilder
+	public class OrderDetailsQuery : OrderDetailsParameterBuilder
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the ProductsQuery class.
+		/// Initializes a new instance of the OrderDetailsQuery class.
 		/// </summary>
-		public ProductsQuery() : base() { }
+		public OrderDetailsQuery() : base() { }
 
 		/// <summary>
-		/// Initializes a new instance of the ProductsQuery class.
+		/// Initializes a new instance of the OrderDetailsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public ProductsQuery(bool ignoreCase) : base(ignoreCase) { }
+		public OrderDetailsQuery(bool ignoreCase) : base(ignoreCase) { }
 
 		/// <summary>
-		/// Initializes a new instance of the ProductsQuery class.
+		/// Initializes a new instance of the OrderDetailsQuery class.
 		/// </summary>
 		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
 		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public ProductsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
+		public OrderDetailsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
 
 		#endregion Constructors
 	}
 
-	#endregion ProductsQuery
-		
-	#region OrdersFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="Orders"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class OrdersFilters : OrdersFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the OrdersFilters class.
-		/// </summary>
-		public OrdersFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrdersFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public OrdersFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrdersFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public OrdersFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion OrdersFilters
-	
-	#region OrdersQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="OrdersParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="Orders"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class OrdersQuery : OrdersParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the OrdersQuery class.
-		/// </summary>
-		public OrdersQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrdersQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public OrdersQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrdersQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public OrdersQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion OrdersQuery
+	#endregion OrderDetailsQuery
 		
 	#region EmployeeTerritoriesFilters
 	
@@ -1618,74 +1686,6 @@ namespace Northwind.Data
 	}
 
 	#endregion EmployeeTerritoriesQuery
-		
-	#region OrderDetailsFilters
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="SqlFilterBuilder&lt;EntityColumn&gt;"/> class
-	/// that is used exclusively with a <see cref="OrderDetails"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class OrderDetailsFilters : OrderDetailsFilterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the OrderDetailsFilters class.
-		/// </summary>
-		public OrderDetailsFilters() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrderDetailsFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public OrderDetailsFilters(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrderDetailsFilters class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public OrderDetailsFilters(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion OrderDetailsFilters
-	
-	#region OrderDetailsQuery
-	
-	/// <summary>
-	/// A strongly-typed instance of the <see cref="OrderDetailsParameterBuilder"/> class
-	/// that is used exclusively with a <see cref="OrderDetails"/> object.
-	/// </summary>
-	[CLSCompliant(true)]
-	public class OrderDetailsQuery : OrderDetailsParameterBuilder
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializes a new instance of the OrderDetailsQuery class.
-		/// </summary>
-		public OrderDetailsQuery() : base() { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrderDetailsQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		public OrderDetailsQuery(bool ignoreCase) : base(ignoreCase) { }
-
-		/// <summary>
-		/// Initializes a new instance of the OrderDetailsQuery class.
-		/// </summary>
-		/// <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-		/// <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-		public OrderDetailsQuery(bool ignoreCase, bool useAnd) : base(ignoreCase, useAnd) { }
-
-		#endregion Constructors
-	}
-
-	#endregion OrderDetailsQuery
 		
 	#region AlphabeticalListOfProductsFilters
 	

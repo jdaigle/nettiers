@@ -430,7 +430,7 @@ namespace Northwind.Entities
 		/// <value>This type is money.</value>
 		/// <remarks>
 		/// This property can be set to null. 
-		/// If this column is null, this property will return 0. It is up to the developer
+		/// If this column is null, this property will return 0m. It is up to the developer
 		/// to check the value of IsFreightNull() and perform business logic appropriately.
 		/// </remarks>
 
@@ -1722,7 +1722,7 @@ namespace Northwind.Entities
 		/// <summary>
 		/// Freight : 
 		/// </summary>
-		public System.Decimal? Freight = null;
+		public System.Decimal? Freight = 0m;
 		
 		/// <summary>
 		/// ShipName : 

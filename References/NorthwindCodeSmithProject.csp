@@ -4,14 +4,14 @@
     <add key="ConnectionString1" value="Data Source=.\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True" />
   </variables>
   <propertySets>
-    <propertySet name="NetTiers.txt" output="NetTiers.txt" template="C:\src\nettiers-poc\tools\NetTiers.cst">
+    <propertySet name="NetTiers.txt" output="NetTiers.txt" template="C:\src\nettiers\tools\NetTiers.cst">
       <property name="ExecuteSql">False</property>
       <property name="SQLFolderName">SQL</property>
-      <property name="ViewReport">True</property>
+      <property name="ViewReport">False</property>
       <property name="AutoIncrementBuildVersion">True</property>
       <property name="LaunchVisualStudio">False</property>
       <property name="IncludeUnitTest">NUnit</property>
-      <property name="IncludeComponentLayer">DomainModel</property>
+      <property name="IncludeComponentLayer">None</property>
       <property name="IncludeWCFDataAttributes">False</property>
       <property name="SerializeEntityState">False</property>
       <property name="EntLibVersion">v5_0</property>
@@ -45,7 +45,7 @@
       <property name="IncludeCustoms">True</property>
       <property name="CustomNonMatchingReturnType">DataSet</property>
       <property name="IncludeDrop">True</property>
-      <property name="DropStyle">Entity</property>
+      <property name="DropStyle">All</property>
       <property name="IncludeInsert">True</property>
       <property name="IncludeUpdate">True</property>
       <property name="IncludeSave">True</property>
@@ -67,9 +67,9 @@
       <property name="FindSuffix">_Find</property>
       <property name="GenerateWinLibrary">False</property>
       <property name="RootNameSpace">Northwind</property>
-      <property name="OutputDirectory">C:\src\nettiers-poc</property>
-      <property name="MappingFile">C:\src\nettiers-poc\NorthwindMapping.config</property>
-      <property name="ComponentLayerNameSpace">Domain</property>
+      <property name="OutputDirectory">C:\src\nettiers</property>
+      <property name="MappingFile">C:\src\nettiers\NorthwindMapping.config</property>
+      <property name="ComponentLayerNameSpace" />
       <property name="SourceTables">
         <connectionString>$(ConnectionString1)</connectionString>
         <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>
@@ -84,27 +84,27 @@
       </table>
       <table>
         <owner>dbo</owner>
-        <name>Region</name>
-      </table>
-      <table>
-        <owner>dbo</owner>
-        <name>Categories</name>
-      </table>
-      <table>
-        <owner>dbo</owner>
-        <name>Shippers</name>
-      </table>
-      <table>
-        <owner>dbo</owner>
-        <name>EmployeeTerritories</name>
-      </table>
-      <table>
-        <owner>dbo</owner>
         <name>Employees</name>
       </table>
       <table>
         <owner>dbo</owner>
+        <name>CustomerCustomerDemo</name>
+      </table>
+      <table>
+        <owner>dbo</owner>
+        <name>Products</name>
+      </table>
+      <table>
+        <owner>dbo</owner>
+        <name>Region</name>
+      </table>
+      <table>
+        <owner>dbo</owner>
         <name>Territories</name>
+      </table>
+      <table>
+        <owner>dbo</owner>
+        <name>Categories</name>
       </table>
       <table>
         <owner>dbo</owner>
@@ -116,7 +116,7 @@
       </table>
       <table>
         <owner>dbo</owner>
-        <name>Products</name>
+        <name>Shippers</name>
       </table>
       <table>
         <owner>dbo</owner>
@@ -124,7 +124,7 @@
       </table>
       <table>
         <owner>dbo</owner>
-        <name>CustomerCustomerDemo</name>
+        <name>EmployeeTerritories</name>
       </table>
     </tableList>
       </property>
@@ -198,7 +198,7 @@
       </view>
     </viewList>
       </property>
-      <property name="WebServiceOutputPath">c:\NetTiers\Northwind\WebServices</property>
+      <property name="WebServiceOutputPath">c:\NetTiers\Output\WebServices</property>
       <property name="WebServiceUrl">http://localhost/</property>
       <property name="WebAdminSiteName">Northwind Application</property>
       <property name="ValidationType">NetTiers</property>
@@ -246,15 +246,15 @@
       <property name="ComparerClassNameFormat">{0}Comparer</property>
       <property name="EventHandlerClassNameFormat">{0}EventHandler</property>
       <property name="EventArgsClassNameFormat">{0}EventArgs</property>
-      <property name="ParseDbColDefaultVal">False</property>
+      <property name="ParseDbColDefaultVal">True</property>
       <property name="ChangeUnderscoreToPascalCase">True</property>
       <property name="SafeNamePrefix">SafeName_</property>
       <property name="UsePascalCasing">Style2</property>
       <property name="AliasFilePath" />
-      <property name="ProcedurePrefix" />
+      <property name="ProcedurePrefix">sp_nt_</property>
       <property name="CustomProcedureStartsWith">_{0}_</property>
       <property name="CSPUseDefaultValForNonNullableTypes">False</property>
-      <property name="AllowCustomProcMultipleResults">False</property>
+      <property name="AllowCustomProcMultipleResults">True</property>
     </propertySet>
   </propertySets>
 </codeSmith>

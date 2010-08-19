@@ -865,49 +865,9 @@
              Indicates if the current <see cref="T:Northwind.Data.Bases.NetTiersProvider"/> implementation is supporting Transactions.
             </summary>
         </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.RegionProvider">
-            <summary>
-             Current RegionProviderBase instance.
-            </summary>
-        </member>
         <member name="P:Northwind.Data.Bases.NetTiersProvider.TerritoriesProvider">
             <summary>
              Current TerritoriesProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.EmployeesProvider">
-            <summary>
-             Current EmployeesProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.SuppliersProvider">
-            <summary>
-             Current SuppliersProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.CustomersProvider">
-            <summary>
-             Current CustomersProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.CategoriesProvider">
-            <summary>
-             Current CategoriesProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.CustomerDemographicsProvider">
-            <summary>
-             Current CustomerDemographicsProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.CustomerCustomerDemoProvider">
-            <summary>
-             Current CustomerCustomerDemoProviderBase instance.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.ShippersProvider">
-            <summary>
-             Current ShippersProviderBase instance.
             </summary>
         </member>
         <member name="P:Northwind.Data.Bases.NetTiersProvider.ProductsProvider">
@@ -915,9 +875,49 @@
              Current ProductsProviderBase instance.
             </summary>
         </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.OrdersProvider">
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.CustomerDemographicsProvider">
             <summary>
-             Current OrdersProviderBase instance.
+             Current CustomerDemographicsProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.EmployeesProvider">
+            <summary>
+             Current EmployeesProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.CustomersProvider">
+            <summary>
+             Current CustomersProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.OrderDetailsProvider">
+            <summary>
+             Current OrderDetailsProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.CustomerCustomerDemoProvider">
+            <summary>
+             Current CustomerCustomerDemoProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.SuppliersProvider">
+            <summary>
+             Current SuppliersProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.RegionProvider">
+            <summary>
+             Current RegionProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.CategoriesProvider">
+            <summary>
+             Current CategoriesProviderBase instance.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.ShippersProvider">
+            <summary>
+             Current ShippersProviderBase instance.
             </summary>
         </member>
         <member name="P:Northwind.Data.Bases.NetTiersProvider.EmployeeTerritoriesProvider">
@@ -925,9 +925,9 @@
              Current EmployeeTerritoriesProviderBase instance.
             </summary>
         </member>
-        <member name="P:Northwind.Data.Bases.NetTiersProvider.OrderDetailsProvider">
+        <member name="P:Northwind.Data.Bases.NetTiersProvider.OrdersProvider">
             <summary>
-             Current OrderDetailsProviderBase instance.
+             Current OrdersProviderBase instance.
             </summary>
         </member>
         <member name="P:Northwind.Data.Bases.NetTiersProvider.AlphabeticalListOfProductsProvider">
@@ -4997,6 +4997,164 @@
             <param name="reader">The <see cref="T:System.Data.IDataReader"/> to read from.</param>
             <param name="entity">The <see cref="T:Northwind.Entities.CurrentProductList"/> object to refresh.</param>
         </member>
+        <member name="T:Northwind.Data.Bases.RegionProviderBase">
+            <summary>
+             This class is the base class for any <see cref="T:Northwind.Data.Bases.RegionProviderBase"/> implementation.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.RegionProviderBaseCore">
+            <summary>
+             This class is the base class for any <see cref="T:Northwind.Data.Bases.RegionProviderBase"/> implementation.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Delete(Northwind.Data.TransactionManager,Northwind.Entities.RegionKey)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
+            <param name="key">The unique identifier of the row to delete.</param>
+            <returns>Returns true if operation suceeded.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Delete(System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_regionId">. Primary Key.</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Delete(Northwind.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_regionId">. Primary Key.</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Get(Northwind.Data.TransactionManager,Northwind.Entities.RegionKey,System.Int32,System.Int32)">
+            <summary>
+            	Gets a row from the DataSource based on its primary key.
+            </summary>
+            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
+            <param name="key">The unique identifier of the row to retrieve.</param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <returns>Returns an instance of the Entity class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the primary key PK_Region index.
+            </summary>
+            <param name="_regionId"></param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Region index.
+            </summary>
+            <param name="_regionId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(Northwind.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Region index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_regionId"></param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Region index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_regionId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Region index.
+            </summary>
+            <param name="_regionId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Region index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_regionId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">The total number of records.</param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Fill(System.Data.IDataReader,Northwind.Entities.TList{Northwind.Entities.Region},System.Int32,System.Int32)">
+            <summary>
+            Fill a TList&lt;Region&gt; From a DataReader.
+            </summary>
+            <param name="reader">Datareader</param>
+            <param name="rows">The collection to fill</param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">number of rows.</param>
+            <returns>a <see cref="T:Northwind.Entities.TList`1"/></returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.RefreshEntity(System.Data.IDataReader,Northwind.Entities.Region)">
+            <summary>
+            Refreshes the <see cref="T:Northwind.Entities.Region"/> object from the <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Data.IDataReader"/> to read from.</param>
+            <param name="entity">The <see cref="T:Northwind.Entities.Region"/> object to refresh.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.RefreshEntity(System.Data.DataSet,Northwind.Entities.Region)">
+            <summary>
+            Refreshes the <see cref="T:Northwind.Entities.Region"/> object from the <see cref="T:System.Data.DataSet"/>.
+            </summary>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> to read from.</param>
+            <param name="entity">The <see cref="T:Northwind.Entities.Region"/> object.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.DeepLoad(Northwind.Data.TransactionManager,Northwind.Entities.Region,System.Boolean,Northwind.Data.DeepLoadType,System.Type[],Northwind.Data.Bases.DeepSession)">
+            <summary>
+            Deep Loads the <see cref="T:Northwind.Entities.IEntity"/> object with criteria based of the child 
+            property collections only N Levels Deep based on the <see cref="T:Northwind.Data.DeepLoadType"/>.
+            </summary>
+            <remarks>
+            Use this method with caution as it is possible to DeepLoad with Recursion and traverse an entire object graph.
+            </remarks>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">The <see cref="T:Northwind.Entities.Region"/> object to load.</param>
+            <param name="deep">Boolean. A flag that indicates whether to recursively save all Property Collection that are descendants of this instance. If True, saves the complete object graph below this object. If False, saves this object only. </param>
+            <param name="deepLoadType">DeepLoadType Enumeration to Include/Exclude object property collections from Load.</param>
+            <param name="childTypes">Northwind.Entities.Region Property Collection Type Array To Include or Exclude from Load</param>
+            <param name="innerList">A collection of child types for easy access.</param>
+            <exception cref="T:System.ArgumentNullException">entity or childTypes is null.</exception>
+            <exception cref="T:System.ArgumentException">deepLoadType has invalid value.</exception>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.DeepSave(Northwind.Data.TransactionManager,Northwind.Entities.Region,Northwind.Data.DeepSaveType,System.Type[],Northwind.Data.Bases.DeepSession)">
+            <summary>
+            Deep Save the entire object graph of the Northwind.Entities.Region object with criteria based of the child 
+            Type property array and DeepSaveType.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entity">Northwind.Entities.Region instance</param>
+            <param name="deepSaveType">DeepSaveType Enumeration to Include/Exclude object property collections from Save.</param>
+            <param name="childTypes">Northwind.Entities.Region Property Collection Type Array To Include or Exclude from Save</param>
+            <param name="innerList">A Hashtable of child types for easy access.</param>
+        </member>
         <member name="T:Northwind.Data.Bases.TerritoriesProviderBaseCore">
             <summary>
              This class is the base class for any <see cref="T:Northwind.Data.Bases.TerritoriesProviderBase"/> implementation.
@@ -5365,164 +5523,6 @@
             <summary>
             Initializes a new instance of the TerritoriesSqlSortBuilder class.
             </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.RegionProviderBase">
-            <summary>
-             This class is the base class for any <see cref="T:Northwind.Data.Bases.RegionProviderBase"/> implementation.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.RegionProviderBaseCore">
-            <summary>
-             This class is the base class for any <see cref="T:Northwind.Data.Bases.RegionProviderBase"/> implementation.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Delete(Northwind.Data.TransactionManager,Northwind.Entities.RegionKey)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
-            <param name="key">The unique identifier of the row to delete.</param>
-            <returns>Returns true if operation suceeded.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Delete(System.Int32)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="_regionId">. Primary Key.</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Delete(Northwind.Data.TransactionManager,System.Int32)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_regionId">. Primary Key.</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Get(Northwind.Data.TransactionManager,Northwind.Entities.RegionKey,System.Int32,System.Int32)">
-            <summary>
-            	Gets a row from the DataSource based on its primary key.
-            </summary>
-            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
-            <param name="key">The unique identifier of the row to retrieve.</param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <returns>Returns an instance of the Entity class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the primary key PK_Region index.
-            </summary>
-            <param name="_regionId"></param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Region index.
-            </summary>
-            <param name="_regionId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(Northwind.Data.TransactionManager,System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Region index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_regionId"></param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Region index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_regionId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(System.Int32,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Region index.
-            </summary>
-            <param name="_regionId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out parameter to get total records for query</param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.GetByRegionId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Region index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_regionId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">The total number of records.</param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Region"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.Fill(System.Data.IDataReader,Northwind.Entities.TList{Northwind.Entities.Region},System.Int32,System.Int32)">
-            <summary>
-            Fill a TList&lt;Region&gt; From a DataReader.
-            </summary>
-            <param name="reader">Datareader</param>
-            <param name="rows">The collection to fill</param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">number of rows.</param>
-            <returns>a <see cref="T:Northwind.Entities.TList`1"/></returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.RefreshEntity(System.Data.IDataReader,Northwind.Entities.Region)">
-            <summary>
-            Refreshes the <see cref="T:Northwind.Entities.Region"/> object from the <see cref="T:System.Data.IDataReader"/>.
-            </summary>
-            <param name="reader">The <see cref="T:System.Data.IDataReader"/> to read from.</param>
-            <param name="entity">The <see cref="T:Northwind.Entities.Region"/> object to refresh.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.RefreshEntity(System.Data.DataSet,Northwind.Entities.Region)">
-            <summary>
-            Refreshes the <see cref="T:Northwind.Entities.Region"/> object from the <see cref="T:System.Data.DataSet"/>.
-            </summary>
-            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> to read from.</param>
-            <param name="entity">The <see cref="T:Northwind.Entities.Region"/> object.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.DeepLoad(Northwind.Data.TransactionManager,Northwind.Entities.Region,System.Boolean,Northwind.Data.DeepLoadType,System.Type[],Northwind.Data.Bases.DeepSession)">
-            <summary>
-            Deep Loads the <see cref="T:Northwind.Entities.IEntity"/> object with criteria based of the child 
-            property collections only N Levels Deep based on the <see cref="T:Northwind.Data.DeepLoadType"/>.
-            </summary>
-            <remarks>
-            Use this method with caution as it is possible to DeepLoad with Recursion and traverse an entire object graph.
-            </remarks>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">The <see cref="T:Northwind.Entities.Region"/> object to load.</param>
-            <param name="deep">Boolean. A flag that indicates whether to recursively save all Property Collection that are descendants of this instance. If True, saves the complete object graph below this object. If False, saves this object only. </param>
-            <param name="deepLoadType">DeepLoadType Enumeration to Include/Exclude object property collections from Load.</param>
-            <param name="childTypes">Northwind.Entities.Region Property Collection Type Array To Include or Exclude from Load</param>
-            <param name="innerList">A collection of child types for easy access.</param>
-            <exception cref="T:System.ArgumentNullException">entity or childTypes is null.</exception>
-            <exception cref="T:System.ArgumentException">deepLoadType has invalid value.</exception>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionProviderBaseCore.DeepSave(Northwind.Data.TransactionManager,Northwind.Entities.Region,Northwind.Data.DeepSaveType,System.Type[],Northwind.Data.Bases.DeepSession)">
-            <summary>
-            Deep Save the entire object graph of the Northwind.Entities.Region object with criteria based of the child 
-            Type property array and DeepSaveType.
-            </summary>
-            <param name="transactionManager">The transaction manager.</param>
-            <param name="entity">Northwind.Entities.Region instance</param>
-            <param name="deepSaveType">DeepSaveType Enumeration to Include/Exclude object property collections from Save.</param>
-            <param name="childTypes">Northwind.Entities.Region Property Collection Type Array To Include or Exclude from Save</param>
-            <param name="innerList">A Hashtable of child types for easy access.</param>
         </member>
         <member name="T:Northwind.Data.Bases.SummaryOfSalesByYearProviderBase">
             <summary>
@@ -7725,6 +7725,228 @@
             Initializes a new instance of the SalesByCategorySqlSortBuilder class.
             </summary>
         </member>
+        <member name="T:Northwind.Data.Bases.ShippersProviderBaseCore">
+            <summary>
+             This class is the base class for any <see cref="T:Northwind.Data.Bases.ShippersProviderBase"/> implementation.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Delete(Northwind.Data.TransactionManager,Northwind.Entities.ShippersKey)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
+            <param name="key">The unique identifier of the row to delete.</param>
+            <returns>Returns true if operation suceeded.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Delete(System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="_shipperId">. Primary Key.</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Delete(Northwind.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Deletes a row from the DataSource.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_shipperId">. Primary Key.</param>
+            <remarks>Deletes based on primary key(s).</remarks>
+            <returns>Returns true if operation suceeded.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Get(Northwind.Data.TransactionManager,Northwind.Entities.ShippersKey,System.Int32,System.Int32)">
+            <summary>
+            	Gets a row from the DataSource based on its primary key.
+            </summary>
+            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
+            <param name="key">The unique identifier of the row to retrieve.</param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <returns>Returns an instance of the Entity class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the primary key PK_Shippers index.
+            </summary>
+            <param name="_shipperId"></param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Shippers index.
+            </summary>
+            <param name="_shipperId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(Northwind.Data.TransactionManager,System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Shippers index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_shipperId"></param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Shippers index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_shipperId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Shippers index.
+            </summary>
+            <param name="_shipperId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">out parameter to get total records for query</param>
+            <remarks></remarks>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            	Gets rows from the datasource based on the PK_Shippers index.
+            </summary>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="_shipperId"></param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">Number of rows to return.</param>
+            <param name="count">The total number of records.</param>
+            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Fill(System.Data.IDataReader,Northwind.Entities.TList{Northwind.Entities.Shippers},System.Int32,System.Int32)">
+            <summary>
+            Fill a TList&lt;Shippers&gt; From a DataReader.
+            </summary>
+            <param name="reader">Datareader</param>
+            <param name="rows">The collection to fill</param>
+            <param name="start">Row number at which to start reading, the first row is 0.</param>
+            <param name="pageLength">number of rows.</param>
+            <returns>a <see cref="T:Northwind.Entities.TList`1"/></returns>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.RefreshEntity(System.Data.IDataReader,Northwind.Entities.Shippers)">
+            <summary>
+            Refreshes the <see cref="T:Northwind.Entities.Shippers"/> object from the <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <param name="reader">The <see cref="T:System.Data.IDataReader"/> to read from.</param>
+            <param name="entity">The <see cref="T:Northwind.Entities.Shippers"/> object to refresh.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.RefreshEntity(System.Data.DataSet,Northwind.Entities.Shippers)">
+            <summary>
+            Refreshes the <see cref="T:Northwind.Entities.Shippers"/> object from the <see cref="T:System.Data.DataSet"/>.
+            </summary>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> to read from.</param>
+            <param name="entity">The <see cref="T:Northwind.Entities.Shippers"/> object.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.DeepLoad(Northwind.Data.TransactionManager,Northwind.Entities.Shippers,System.Boolean,Northwind.Data.DeepLoadType,System.Type[],Northwind.Data.Bases.DeepSession)">
+            <summary>
+            Deep Loads the <see cref="T:Northwind.Entities.IEntity"/> object with criteria based of the child 
+            property collections only N Levels Deep based on the <see cref="T:Northwind.Data.DeepLoadType"/>.
+            </summary>
+            <remarks>
+            Use this method with caution as it is possible to DeepLoad with Recursion and traverse an entire object graph.
+            </remarks>
+            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
+            <param name="entity">The <see cref="T:Northwind.Entities.Shippers"/> object to load.</param>
+            <param name="deep">Boolean. A flag that indicates whether to recursively save all Property Collection that are descendants of this instance. If True, saves the complete object graph below this object. If False, saves this object only. </param>
+            <param name="deepLoadType">DeepLoadType Enumeration to Include/Exclude object property collections from Load.</param>
+            <param name="childTypes">Northwind.Entities.Shippers Property Collection Type Array To Include or Exclude from Load</param>
+            <param name="innerList">A collection of child types for easy access.</param>
+            <exception cref="T:System.ArgumentNullException">entity or childTypes is null.</exception>
+            <exception cref="T:System.ArgumentException">deepLoadType has invalid value.</exception>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.DeepSave(Northwind.Data.TransactionManager,Northwind.Entities.Shippers,Northwind.Data.DeepSaveType,System.Type[],Northwind.Data.Bases.DeepSession)">
+            <summary>
+            Deep Save the entire object graph of the Northwind.Entities.Shippers object with criteria based of the child 
+            Type property array and DeepSaveType.
+            </summary>
+            <param name="transactionManager">The transaction manager.</param>
+            <param name="entity">Northwind.Entities.Shippers instance</param>
+            <param name="deepSaveType">DeepSaveType Enumeration to Include/Exclude object property collections from Save.</param>
+            <param name="childTypes">Northwind.Entities.Shippers Property Collection Type Array To Include or Exclude from Save</param>
+            <param name="innerList">A Hashtable of child types for easy access.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.ShippersChildEntityTypes">
+            <summary>
+             Enumeration used to expose the different child entity types 
+             for child properties in <c>Northwind.Entities.Shippers</c>
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.ShippersChildEntityTypes.OrdersCollection">
+            <summary>
+             Collection of <c>Shippers</c> as OneToMany for OrdersCollection
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.ShippersFilterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersFilterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the ShippersFilterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersFilterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersFilterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.ShippersParameterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersParameterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the ShippersParameterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersParameterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersParameterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.ShippersSortBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.ShippersSortBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the ShippersSqlSortBuilder class.
+            </summary>
+        </member>
         <member name="T:Northwind.Data.Bases.OrderDetailsProviderBase">
             <summary>
              This class is the base class for any <see cref="T:Northwind.Data.Bases.OrderDetailsProviderBase"/> implementation.
@@ -8008,6 +8230,86 @@
             <param name="deepSaveType">DeepSaveType Enumeration to Include/Exclude object property collections from Save.</param>
             <param name="childTypes">Northwind.Entities.OrderDetails Property Collection Type Array To Include or Exclude from Save</param>
             <param name="innerList">A Hashtable of child types for easy access.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomersChildEntityTypes">
+            <summary>
+             Enumeration used to expose the different child entity types 
+             for child properties in <c>Northwind.Entities.Customers</c>
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.CustomersChildEntityTypes.OrdersCollection">
+            <summary>
+             Collection of <c>Customers</c> as OneToMany for OrdersCollection
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.CustomersChildEntityTypes.CustomerTypeIdCustomerDemographicsCollection_From_CustomerCustomerDemo">
+            <summary>
+             Collection of <c>Customers</c> as ManyToMany for CustomerDemographicsCollection_From_CustomerCustomerDemo
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.CustomersChildEntityTypes.CustomerCustomerDemoCollection">
+            <summary>
+             Collection of <c>Customers</c> as OneToMany for CustomerCustomerDemoCollection
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomersFilterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersFilterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the CustomersFilterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersFilterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomersFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersFilterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomersFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomersParameterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersParameterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the CustomersParameterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersParameterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomersParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersParameterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomersParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomersSortBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomersSortBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the CustomersSqlSortBuilder class.
+            </summary>
         </member>
         <member name="T:Northwind.Data.Bases.ProductsProviderBaseCore">
             <summary>
@@ -8493,308 +8795,6 @@
         <member name="M:Northwind.Data.Bases.ProductsSortBuilder.#ctor">
             <summary>
             Initializes a new instance of the ProductsSqlSortBuilder class.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.ShippersProviderBaseCore">
-            <summary>
-             This class is the base class for any <see cref="T:Northwind.Data.Bases.ShippersProviderBase"/> implementation.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Delete(Northwind.Data.TransactionManager,Northwind.Entities.ShippersKey)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
-            <param name="key">The unique identifier of the row to delete.</param>
-            <returns>Returns true if operation suceeded.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Delete(System.Int32)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="_shipperId">. Primary Key.</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Delete(Northwind.Data.TransactionManager,System.Int32)">
-            <summary>
-            	Deletes a row from the DataSource.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_shipperId">. Primary Key.</param>
-            <remarks>Deletes based on primary key(s).</remarks>
-            <returns>Returns true if operation suceeded.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Get(Northwind.Data.TransactionManager,Northwind.Entities.ShippersKey,System.Int32,System.Int32)">
-            <summary>
-            	Gets a row from the DataSource based on its primary key.
-            </summary>
-            <param name="transactionManager">A <see cref="T:Northwind.Data.TransactionManager"/> object.</param>
-            <param name="key">The unique identifier of the row to retrieve.</param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <returns>Returns an instance of the Entity class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the primary key PK_Shippers index.
-            </summary>
-            <param name="_shipperId"></param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Shippers index.
-            </summary>
-            <param name="_shipperId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(Northwind.Data.TransactionManager,System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Shippers index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_shipperId"></param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Shippers index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_shipperId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(System.Int32,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Shippers index.
-            </summary>
-            <param name="_shipperId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">out parameter to get total records for query</param>
-            <remarks></remarks>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.GetByShipperId(Northwind.Data.TransactionManager,System.Int32,System.Int32,System.Int32,System.Int32@)">
-            <summary>
-            	Gets rows from the datasource based on the PK_Shippers index.
-            </summary>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="_shipperId"></param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">Number of rows to return.</param>
-            <param name="count">The total number of records.</param>
-            <returns>Returns an instance of the <see cref="T:Northwind.Entities.Shippers"/> class.</returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.Fill(System.Data.IDataReader,Northwind.Entities.TList{Northwind.Entities.Shippers},System.Int32,System.Int32)">
-            <summary>
-            Fill a TList&lt;Shippers&gt; From a DataReader.
-            </summary>
-            <param name="reader">Datareader</param>
-            <param name="rows">The collection to fill</param>
-            <param name="start">Row number at which to start reading, the first row is 0.</param>
-            <param name="pageLength">number of rows.</param>
-            <returns>a <see cref="T:Northwind.Entities.TList`1"/></returns>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.RefreshEntity(System.Data.IDataReader,Northwind.Entities.Shippers)">
-            <summary>
-            Refreshes the <see cref="T:Northwind.Entities.Shippers"/> object from the <see cref="T:System.Data.IDataReader"/>.
-            </summary>
-            <param name="reader">The <see cref="T:System.Data.IDataReader"/> to read from.</param>
-            <param name="entity">The <see cref="T:Northwind.Entities.Shippers"/> object to refresh.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.RefreshEntity(System.Data.DataSet,Northwind.Entities.Shippers)">
-            <summary>
-            Refreshes the <see cref="T:Northwind.Entities.Shippers"/> object from the <see cref="T:System.Data.DataSet"/>.
-            </summary>
-            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> to read from.</param>
-            <param name="entity">The <see cref="T:Northwind.Entities.Shippers"/> object.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.DeepLoad(Northwind.Data.TransactionManager,Northwind.Entities.Shippers,System.Boolean,Northwind.Data.DeepLoadType,System.Type[],Northwind.Data.Bases.DeepSession)">
-            <summary>
-            Deep Loads the <see cref="T:Northwind.Entities.IEntity"/> object with criteria based of the child 
-            property collections only N Levels Deep based on the <see cref="T:Northwind.Data.DeepLoadType"/>.
-            </summary>
-            <remarks>
-            Use this method with caution as it is possible to DeepLoad with Recursion and traverse an entire object graph.
-            </remarks>
-            <param name="transactionManager"><see cref="T:Northwind.Data.TransactionManager"/> object</param>
-            <param name="entity">The <see cref="T:Northwind.Entities.Shippers"/> object to load.</param>
-            <param name="deep">Boolean. A flag that indicates whether to recursively save all Property Collection that are descendants of this instance. If True, saves the complete object graph below this object. If False, saves this object only. </param>
-            <param name="deepLoadType">DeepLoadType Enumeration to Include/Exclude object property collections from Load.</param>
-            <param name="childTypes">Northwind.Entities.Shippers Property Collection Type Array To Include or Exclude from Load</param>
-            <param name="innerList">A collection of child types for easy access.</param>
-            <exception cref="T:System.ArgumentNullException">entity or childTypes is null.</exception>
-            <exception cref="T:System.ArgumentException">deepLoadType has invalid value.</exception>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersProviderBaseCore.DeepSave(Northwind.Data.TransactionManager,Northwind.Entities.Shippers,Northwind.Data.DeepSaveType,System.Type[],Northwind.Data.Bases.DeepSession)">
-            <summary>
-            Deep Save the entire object graph of the Northwind.Entities.Shippers object with criteria based of the child 
-            Type property array and DeepSaveType.
-            </summary>
-            <param name="transactionManager">The transaction manager.</param>
-            <param name="entity">Northwind.Entities.Shippers instance</param>
-            <param name="deepSaveType">DeepSaveType Enumeration to Include/Exclude object property collections from Save.</param>
-            <param name="childTypes">Northwind.Entities.Shippers Property Collection Type Array To Include or Exclude from Save</param>
-            <param name="innerList">A Hashtable of child types for easy access.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.ShippersChildEntityTypes">
-            <summary>
-             Enumeration used to expose the different child entity types 
-             for child properties in <c>Northwind.Entities.Shippers</c>
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.ShippersChildEntityTypes.OrdersCollection">
-            <summary>
-             Collection of <c>Shippers</c> as OneToMany for OrdersCollection
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.ShippersFilterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersFilterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the ShippersFilterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersFilterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the ShippersFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersFilterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the ShippersFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.ShippersParameterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersParameterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the ShippersParameterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersParameterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the ShippersParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersParameterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the ShippersParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.ShippersSortBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.ShippersSortBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the ShippersSqlSortBuilder class.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomersChildEntityTypes">
-            <summary>
-             Enumeration used to expose the different child entity types 
-             for child properties in <c>Northwind.Entities.Customers</c>
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.CustomersChildEntityTypes.OrdersCollection">
-            <summary>
-             Collection of <c>Customers</c> as OneToMany for OrdersCollection
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.CustomersChildEntityTypes.CustomerTypeIdCustomerDemographicsCollection_From_CustomerCustomerDemo">
-            <summary>
-             Collection of <c>Customers</c> as ManyToMany for CustomerDemographicsCollection_From_CustomerCustomerDemo
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.CustomersChildEntityTypes.CustomerCustomerDemoCollection">
-            <summary>
-             Collection of <c>Customers</c> as OneToMany for CustomerCustomerDemoCollection
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomersFilterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersFilterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the CustomersFilterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersFilterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersFilterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomersParameterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersParameterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the CustomersParameterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersParameterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersParameterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomersSortBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomersSortBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the CustomersSqlSortBuilder class.
             </summary>
         </member>
         <member name="T:Northwind.Data.Bases.SummaryOfSalesByYearFilterBuilder">
@@ -9448,81 +9448,6 @@
             <remarks>Default is <c>System.String.Empty</c></remarks>
             <value>The empty token string.</value>
         </member>
-        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoChildEntityTypes">
-            <summary>
-             Enumeration used to expose the different child entity types 
-             for child properties in <c>Northwind.Entities.CustomerCustomerDemo</c>
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.CustomerCustomerDemoChildEntityTypes.CustomerDemographics">
-            <summary>
-             Composite Property for <c>CustomerDemographics</c> at CustomerTypeIdSource
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.CustomerCustomerDemoChildEntityTypes.Customers">
-            <summary>
-             Composite Property for <c>Customers</c> at CustomerIdSource
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoFilterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoParameterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoSortBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoSortBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoSqlSortBuilder class.
-            </summary>
-        </member>
         <member name="T:Northwind.Data.Bases.CategoriesProviderBaseCore">
             <summary>
              This class is the base class for any <see cref="T:Northwind.Data.Bases.CategoriesProviderBase"/> implementation.
@@ -10148,6 +10073,81 @@
         <member name="M:Northwind.Data.Bases.SuppliersSortBuilder.#ctor">
             <summary>
             Initializes a new instance of the SuppliersSqlSortBuilder class.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoChildEntityTypes">
+            <summary>
+             Enumeration used to expose the different child entity types 
+             for child properties in <c>Northwind.Entities.CustomerCustomerDemo</c>
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.CustomerCustomerDemoChildEntityTypes.CustomerDemographics">
+            <summary>
+             Composite Property for <c>CustomerDemographics</c> at CustomerTypeIdSource
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.CustomerCustomerDemoChildEntityTypes.Customers">
+            <summary>
+             Composite Property for <c>Customers</c> at CustomerIdSource
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoFilterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoFilterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoParameterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.Bases.CustomerCustomerDemoSortBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.CustomerCustomerDemoSortBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoSqlSortBuilder class.
             </summary>
         </member>
         <member name="T:Northwind.Data.Bases.EmployeesChildEntityTypes">
@@ -10793,57 +10793,9 @@
             Gets the dictionary of connection providers.
             </summary>
         </member>
-        <member name="P:Northwind.Data.DataRepository.RegionProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Region"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
         <member name="P:Northwind.Data.DataRepository.TerritoriesProvider">
             <summary>
              Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Territories"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.EmployeesProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Employees"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.SuppliersProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Suppliers"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.CustomersProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Customers"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.CategoriesProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Categories"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.CustomerDemographicsProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerDemographics"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.CustomerCustomerDemoProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> business entity.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
-        <member name="P:Northwind.Data.DataRepository.ShippersProvider">
-            <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Shippers"/> business entity.
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
@@ -10853,9 +10805,57 @@
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
-        <member name="P:Northwind.Data.DataRepository.OrdersProvider">
+        <member name="P:Northwind.Data.DataRepository.CustomerDemographicsProvider">
             <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Orders"/> business entity.
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerDemographics"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.EmployeesProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Employees"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.CustomersProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Customers"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.OrderDetailsProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.OrderDetails"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.CustomerCustomerDemoProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.SuppliersProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Suppliers"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.RegionProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Region"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.CategoriesProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Categories"/> business entity.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+            </summary>
+        </member>
+        <member name="P:Northwind.Data.DataRepository.ShippersProvider">
+            <summary>
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Shippers"/> business entity.
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
@@ -10865,9 +10865,9 @@
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
-        <member name="P:Northwind.Data.DataRepository.OrderDetailsProvider">
+        <member name="P:Northwind.Data.DataRepository.OrdersProvider">
             <summary>
-             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.OrderDetails"/> business entity.
+             Gets the current instance of the Data Access Logic Component for the <see cref="T:Northwind.Entities.Orders"/> business entity.
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
@@ -10994,102 +10994,6 @@
             Gets the provider collection.
             </summary>
         </member>
-        <member name="T:Northwind.Data.RegionFilters">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.RegionFilterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionFilterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the RegionFilterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionFilterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionFilterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="M:Northwind.Data.RegionFilters.#ctor">
-            <summary>
-            Initializes a new instance of the RegionFilters class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.RegionFilters.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.RegionFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.RegionQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.RegionParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.RegionParameterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionParameterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the RegionParameterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionParameterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.RegionParameterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="M:Northwind.Data.RegionQuery.#ctor">
-            <summary>
-            Initializes a new instance of the RegionQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.RegionQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.RegionQuery.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the RegionQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
         <member name="T:Northwind.Data.TerritoriesFilters">
             <summary>
             A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
@@ -11138,194 +11042,50 @@
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
         </member>
-        <member name="T:Northwind.Data.EmployeesFilters">
+        <member name="T:Northwind.Data.ProductsFilters">
             <summary>
             A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Employees"/> object.
+            that is used exclusively with a <see cref="T:Northwind.Entities.Products"/> object.
             </summary>
         </member>
-        <member name="M:Northwind.Data.EmployeesFilters.#ctor">
+        <member name="M:Northwind.Data.ProductsFilters.#ctor">
             <summary>
-            Initializes a new instance of the EmployeesFilters class.
+            Initializes a new instance of the ProductsFilters class.
             </summary>
         </member>
-        <member name="M:Northwind.Data.EmployeesFilters.#ctor(System.Boolean)">
+        <member name="M:Northwind.Data.ProductsFilters.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the EmployeesFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.EmployeesFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the EmployeesFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.EmployeesQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.EmployeesParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Employees"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.EmployeesQuery.#ctor">
-            <summary>
-            Initializes a new instance of the EmployeesQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.EmployeesQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the EmployeesQuery class.
+            Initializes a new instance of the ProductsFilters class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
         </member>
-        <member name="M:Northwind.Data.EmployeesQuery.#ctor(System.Boolean,System.Boolean)">
+        <member name="M:Northwind.Data.ProductsFilters.#ctor(System.Boolean,System.Boolean)">
             <summary>
-            Initializes a new instance of the EmployeesQuery class.
+            Initializes a new instance of the ProductsFilters class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
         </member>
-        <member name="T:Northwind.Data.SuppliersFilters">
+        <member name="T:Northwind.Data.ProductsQuery">
             <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Suppliers"/> object.
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.ProductsParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Products"/> object.
             </summary>
         </member>
-        <member name="M:Northwind.Data.SuppliersFilters.#ctor">
+        <member name="M:Northwind.Data.ProductsQuery.#ctor">
             <summary>
-            Initializes a new instance of the SuppliersFilters class.
+            Initializes a new instance of the ProductsQuery class.
             </summary>
         </member>
-        <member name="M:Northwind.Data.SuppliersFilters.#ctor(System.Boolean)">
+        <member name="M:Northwind.Data.ProductsQuery.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the SuppliersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.SuppliersFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the SuppliersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.SuppliersQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.SuppliersParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Suppliers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SuppliersQuery.#ctor">
-            <summary>
-            Initializes a new instance of the SuppliersQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.SuppliersQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the SuppliersQuery class.
+            Initializes a new instance of the ProductsQuery class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
         </member>
-        <member name="M:Northwind.Data.SuppliersQuery.#ctor(System.Boolean,System.Boolean)">
+        <member name="M:Northwind.Data.ProductsQuery.#ctor(System.Boolean,System.Boolean)">
             <summary>
-            Initializes a new instance of the SuppliersQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.CustomersFilters">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CustomersFilters.#ctor">
-            <summary>
-            Initializes a new instance of the CustomersFilters class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CustomersFilters.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.CustomersFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.CustomersQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.CustomersParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CustomersQuery.#ctor">
-            <summary>
-            Initializes a new instance of the CustomersQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CustomersQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.CustomersQuery.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomersQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.CategoriesFilters">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Categories"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CategoriesFilters.#ctor">
-            <summary>
-            Initializes a new instance of the CategoriesFilters class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CategoriesFilters.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CategoriesFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.CategoriesFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CategoriesFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.CategoriesQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.CategoriesParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Categories"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CategoriesQuery.#ctor">
-            <summary>
-            Initializes a new instance of the CategoriesQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CategoriesQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CategoriesQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.CategoriesQuery.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CategoriesQuery class.
+            Initializes a new instance of the ProductsQuery class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
@@ -11426,290 +11186,98 @@
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
         </member>
-        <member name="T:Northwind.Data.CustomerCustomerDemoFilters">
+        <member name="T:Northwind.Data.EmployeesFilters">
             <summary>
             A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
+            that is used exclusively with a <see cref="T:Northwind.Entities.Employees"/> object.
             </summary>
         </member>
-        <member name="M:Northwind.Data.CustomerCustomerDemoFilters.#ctor">
+        <member name="M:Northwind.Data.EmployeesFilters.#ctor">
             <summary>
-            Initializes a new instance of the CustomerCustomerDemoFilters class.
+            Initializes a new instance of the EmployeesFilters class.
             </summary>
         </member>
-        <member name="M:Northwind.Data.CustomerCustomerDemoFilters.#ctor(System.Boolean)">
+        <member name="M:Northwind.Data.EmployeesFilters.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the CustomerCustomerDemoFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.CustomerCustomerDemoFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.CustomerCustomerDemoQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CustomerCustomerDemoQuery.#ctor">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.CustomerCustomerDemoQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the CustomerCustomerDemoQuery class.
+            Initializes a new instance of the EmployeesFilters class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
         </member>
-        <member name="M:Northwind.Data.CustomerCustomerDemoQuery.#ctor(System.Boolean,System.Boolean)">
+        <member name="M:Northwind.Data.EmployeesFilters.#ctor(System.Boolean,System.Boolean)">
             <summary>
-            Initializes a new instance of the CustomerCustomerDemoQuery class.
+            Initializes a new instance of the EmployeesFilters class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
         </member>
-        <member name="T:Northwind.Data.ShippersFilters">
+        <member name="T:Northwind.Data.EmployeesQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.EmployeesParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Employees"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.EmployeesQuery.#ctor">
+            <summary>
+            Initializes a new instance of the EmployeesQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.EmployeesQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the EmployeesQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.EmployeesQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the EmployeesQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.CustomersFilters">
             <summary>
             A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
+            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
             </summary>
         </member>
-        <member name="M:Northwind.Data.ShippersFilters.#ctor">
+        <member name="M:Northwind.Data.CustomersFilters.#ctor">
             <summary>
-            Initializes a new instance of the ShippersFilters class.
+            Initializes a new instance of the CustomersFilters class.
             </summary>
         </member>
-        <member name="M:Northwind.Data.ShippersFilters.#ctor(System.Boolean)">
+        <member name="M:Northwind.Data.CustomersFilters.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the ShippersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.ShippersFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the ShippersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.ShippersQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.ShippersParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.ShippersQuery.#ctor">
-            <summary>
-            Initializes a new instance of the ShippersQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.ShippersQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the ShippersQuery class.
+            Initializes a new instance of the CustomersFilters class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
         </member>
-        <member name="M:Northwind.Data.ShippersQuery.#ctor(System.Boolean,System.Boolean)">
+        <member name="M:Northwind.Data.CustomersFilters.#ctor(System.Boolean,System.Boolean)">
             <summary>
-            Initializes a new instance of the ShippersQuery class.
+            Initializes a new instance of the CustomersFilters class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
         </member>
-        <member name="T:Northwind.Data.ProductsFilters">
+        <member name="T:Northwind.Data.CustomersQuery">
             <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Products"/> object.
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.CustomersParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Customers"/> object.
             </summary>
         </member>
-        <member name="M:Northwind.Data.ProductsFilters.#ctor">
+        <member name="M:Northwind.Data.CustomersQuery.#ctor">
             <summary>
-            Initializes a new instance of the ProductsFilters class.
+            Initializes a new instance of the CustomersQuery class.
             </summary>
         </member>
-        <member name="M:Northwind.Data.ProductsFilters.#ctor(System.Boolean)">
+        <member name="M:Northwind.Data.CustomersQuery.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the ProductsFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.ProductsFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the ProductsFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.ProductsQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.ProductsParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Products"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.ProductsQuery.#ctor">
-            <summary>
-            Initializes a new instance of the ProductsQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.ProductsQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the ProductsQuery class.
+            Initializes a new instance of the CustomersQuery class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
         </member>
-        <member name="M:Northwind.Data.ProductsQuery.#ctor(System.Boolean,System.Boolean)">
+        <member name="M:Northwind.Data.CustomersQuery.#ctor(System.Boolean,System.Boolean)">
             <summary>
-            Initializes a new instance of the ProductsQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.OrdersFilters">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.OrdersFilterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrdersFilterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the OrdersFilterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrdersFilterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrdersFilterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersFilterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="M:Northwind.Data.OrdersFilters.#ctor">
-            <summary>
-            Initializes a new instance of the OrdersFilters class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.OrdersFilters.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.OrdersFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.OrdersQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.OrdersParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.OrdersParameterBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrdersParameterBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the OrdersParameterBuilder class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrdersParameterBuilder.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrdersParameterBuilder.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersParameterBuilder class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="M:Northwind.Data.OrdersQuery.#ctor">
-            <summary>
-            Initializes a new instance of the OrdersQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.OrdersQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.OrdersQuery.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the OrdersQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.EmployeeTerritoriesFilters">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.EmployeeTerritories"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.EmployeeTerritoriesFilters.#ctor">
-            <summary>
-            Initializes a new instance of the EmployeeTerritoriesFilters class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.EmployeeTerritoriesFilters.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the EmployeeTerritoriesFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.EmployeeTerritoriesFilters.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the EmployeeTerritoriesFilters class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
-        </member>
-        <member name="T:Northwind.Data.EmployeeTerritoriesQuery">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.EmployeeTerritoriesParameterBuilder"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.EmployeeTerritories"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.EmployeeTerritoriesQuery.#ctor">
-            <summary>
-            Initializes a new instance of the EmployeeTerritoriesQuery class.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.EmployeeTerritoriesQuery.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the EmployeeTerritoriesQuery class.
-            </summary>
-            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
-        </member>
-        <member name="M:Northwind.Data.EmployeeTerritoriesQuery.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the EmployeeTerritoriesQuery class.
+            Initializes a new instance of the CustomersQuery class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
@@ -11806,6 +11374,438 @@
         <member name="M:Northwind.Data.OrderDetailsQuery.#ctor(System.Boolean,System.Boolean)">
             <summary>
             Initializes a new instance of the OrderDetailsQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.CustomerCustomerDemoFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CustomerCustomerDemoFilters.#ctor">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CustomerCustomerDemoFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.CustomerCustomerDemoFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.CustomerCustomerDemoQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.CustomerCustomerDemoParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.CustomerCustomerDemo"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CustomerCustomerDemoQuery.#ctor">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CustomerCustomerDemoQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.CustomerCustomerDemoQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CustomerCustomerDemoQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.SuppliersFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Suppliers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SuppliersFilters.#ctor">
+            <summary>
+            Initializes a new instance of the SuppliersFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SuppliersFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the SuppliersFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.SuppliersFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the SuppliersFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.SuppliersQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.SuppliersParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Suppliers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SuppliersQuery.#ctor">
+            <summary>
+            Initializes a new instance of the SuppliersQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.SuppliersQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the SuppliersQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.SuppliersQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the SuppliersQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.RegionFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.RegionFilterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionFilterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the RegionFilterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionFilterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionFilterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="M:Northwind.Data.RegionFilters.#ctor">
+            <summary>
+            Initializes a new instance of the RegionFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.RegionFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.RegionFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.RegionQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.RegionParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.RegionParameterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Region"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionParameterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the RegionParameterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionParameterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.RegionParameterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="M:Northwind.Data.RegionQuery.#ctor">
+            <summary>
+            Initializes a new instance of the RegionQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.RegionQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.RegionQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the RegionQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.CategoriesFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Categories"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CategoriesFilters.#ctor">
+            <summary>
+            Initializes a new instance of the CategoriesFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CategoriesFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CategoriesFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.CategoriesFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CategoriesFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.CategoriesQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.CategoriesParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Categories"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CategoriesQuery.#ctor">
+            <summary>
+            Initializes a new instance of the CategoriesQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.CategoriesQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the CategoriesQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.CategoriesQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the CategoriesQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.ShippersFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.ShippersFilters.#ctor">
+            <summary>
+            Initializes a new instance of the ShippersFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.ShippersFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.ShippersFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.ShippersQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.ShippersParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Shippers"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.ShippersQuery.#ctor">
+            <summary>
+            Initializes a new instance of the ShippersQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.ShippersQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.ShippersQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ShippersQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.EmployeeTerritoriesFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.EmployeeTerritories"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.EmployeeTerritoriesFilters.#ctor">
+            <summary>
+            Initializes a new instance of the EmployeeTerritoriesFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.EmployeeTerritoriesFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the EmployeeTerritoriesFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.EmployeeTerritoriesFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the EmployeeTerritoriesFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.EmployeeTerritoriesQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.EmployeeTerritoriesParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.EmployeeTerritories"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.EmployeeTerritoriesQuery.#ctor">
+            <summary>
+            Initializes a new instance of the EmployeeTerritoriesQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.EmployeeTerritoriesQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the EmployeeTerritoriesQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.EmployeeTerritoriesQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the EmployeeTerritoriesQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.OrdersFilters">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.OrdersFilterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrdersFilterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the OrdersFilterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrdersFilterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrdersFilterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersFilterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="M:Northwind.Data.OrdersFilters.#ctor">
+            <summary>
+            Initializes a new instance of the OrdersFilters class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.OrdersFilters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.OrdersFilters.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersFilters class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="T:Northwind.Data.OrdersQuery">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.Bases.OrdersParameterBuilder"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.OrdersParameterBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.ParameterizedSqlFilterBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.Orders"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrdersParameterBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the OrdersParameterBuilder class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrdersParameterBuilder.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrdersParameterBuilder.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersParameterBuilder class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+            <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
+        </member>
+        <member name="M:Northwind.Data.OrdersQuery.#ctor">
+            <summary>
+            Initializes a new instance of the OrdersQuery class.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.OrdersQuery.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersQuery class.
+            </summary>
+            <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
+        </member>
+        <member name="M:Northwind.Data.OrdersQuery.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the OrdersQuery class.
             </summary>
             <param name="ignoreCase">Specifies whether to create case-insensitive statements.</param>
             <param name="useAnd">Specifies whether to combine statements using AND or OR.</param>
@@ -13305,12 +13305,6 @@
              It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
-        <member name="T:Northwind.Data.Bases.SuppliersProviderBase">
-            <summary>
-             This class is the base class for any <see cref="T:Northwind.Data.Bases.SuppliersProviderBase"/> implementation.
-             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-            </summary>
-        </member>
         <member name="T:Northwind.Data.Bases.RegionChildEntityTypes">
             <summary>
              Enumeration used to expose the different child entity types 
@@ -13333,31 +13327,10 @@
             Initializes a new instance of the RegionSqlSortBuilder class.
             </summary>
         </member>
-        <member name="T:Northwind.Data.Bases.OrderDetailsChildEntityTypes">
+        <member name="T:Northwind.Data.Bases.SuppliersProviderBase">
             <summary>
-             Enumeration used to expose the different child entity types 
-             for child properties in <c>Northwind.Entities.OrderDetails</c>
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.OrderDetailsChildEntityTypes.Orders">
-            <summary>
-             Composite Property for <c>Orders</c> at OrderIdSource
-            </summary>
-        </member>
-        <member name="F:Northwind.Data.Bases.OrderDetailsChildEntityTypes.Products">
-            <summary>
-             Composite Property for <c>Products</c> at ProductIdSource
-            </summary>
-        </member>
-        <member name="T:Northwind.Data.Bases.OrderDetailsSortBuilder">
-            <summary>
-            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
-            that is used exclusively with a <see cref="T:Northwind.Entities.OrderDetails"/> object.
-            </summary>
-        </member>
-        <member name="M:Northwind.Data.Bases.OrderDetailsSortBuilder.#ctor">
-            <summary>
-            Initializes a new instance of the OrderDetailsSqlSortBuilder class.
+             This class is the base class for any <see cref="T:Northwind.Data.Bases.SuppliersProviderBase"/> implementation.
+             It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
             </summary>
         </member>
         <member name="T:Northwind.Data.Bases.OrdersChildEntityTypes">
@@ -13400,6 +13373,33 @@
         <member name="M:Northwind.Data.Bases.OrdersSortBuilder.#ctor">
             <summary>
             Initializes a new instance of the OrdersSqlSortBuilder class.
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.OrderDetailsChildEntityTypes">
+            <summary>
+             Enumeration used to expose the different child entity types 
+             for child properties in <c>Northwind.Entities.OrderDetails</c>
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.OrderDetailsChildEntityTypes.Orders">
+            <summary>
+             Composite Property for <c>Orders</c> at OrderIdSource
+            </summary>
+        </member>
+        <member name="F:Northwind.Data.Bases.OrderDetailsChildEntityTypes.Products">
+            <summary>
+             Composite Property for <c>Products</c> at ProductIdSource
+            </summary>
+        </member>
+        <member name="T:Northwind.Data.Bases.OrderDetailsSortBuilder">
+            <summary>
+            A strongly-typed instance of the <see cref="T:Northwind.Data.SqlSortBuilder`1"/> class
+            that is used exclusively with a <see cref="T:Northwind.Entities.OrderDetails"/> object.
+            </summary>
+        </member>
+        <member name="M:Northwind.Data.Bases.OrderDetailsSortBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the OrderDetailsSqlSortBuilder class.
             </summary>
         </member>
         <member name="T:Northwind.Data.Bases.SalesTotalsByAmountProviderBase">

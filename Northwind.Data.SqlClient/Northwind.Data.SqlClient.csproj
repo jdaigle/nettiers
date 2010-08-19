@@ -105,7 +105,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
-    
      
 	<ProjectReference Include="..\Northwind.Entities\Northwind.Entities.csproj">
       <Name>Northwind.Entities</Name>
@@ -257,6 +256,46 @@
 			   <DependentUpon>SqlSummaryOfSalesByYearProvider.cs</DependentUpon>
 			   <SubType>Code</SubType>
 			</Compile>
+			<Compile Include="SqlOrdersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlOrdersProviderBase.generated.cs">
+			  <DependentUpon>SqlOrdersProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlSuppliersProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlSuppliersProviderBase.generated.cs">
+			  <DependentUpon>SqlSuppliersProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlEmployeesProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlEmployeesProviderBase.generated.cs">
+			  <DependentUpon>SqlEmployeesProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlCustomerCustomerDemoProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlCustomerCustomerDemoProviderBase.generated.cs">
+			  <DependentUpon>SqlCustomerCustomerDemoProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
+			<Compile Include="SqlProductsProvider.cs">
+			  <SubType>Code</SubType>
+			</Compile>
+			
+			<Compile Include="SqlProductsProviderBase.generated.cs">
+			  <DependentUpon>SqlProductsProvider.cs</DependentUpon>
+			  <SubType>Code</SubType>
+			</Compile>
 			<Compile Include="SqlRegionProvider.cs">
 			  <SubType>Code</SubType>
 			</Compile>
@@ -271,30 +310,6 @@
 			
 			<Compile Include="SqlTerritoriesProviderBase.generated.cs">
 			  <DependentUpon>SqlTerritoriesProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlEmployeesProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlEmployeesProviderBase.generated.cs">
-			  <DependentUpon>SqlEmployeesProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlSuppliersProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlSuppliersProviderBase.generated.cs">
-			  <DependentUpon>SqlSuppliersProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlCustomersProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlCustomersProviderBase.generated.cs">
-			  <DependentUpon>SqlCustomersProvider.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 			<Compile Include="SqlCategoriesProvider.cs">
@@ -313,12 +328,12 @@
 			  <DependentUpon>SqlCustomerDemographicsProvider.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="SqlCustomerCustomerDemoProvider.cs">
+			<Compile Include="SqlCustomersProvider.cs">
 			  <SubType>Code</SubType>
 			</Compile>
 			
-			<Compile Include="SqlCustomerCustomerDemoProviderBase.generated.cs">
-			  <DependentUpon>SqlCustomerCustomerDemoProvider.cs</DependentUpon>
+			<Compile Include="SqlCustomersProviderBase.generated.cs">
+			  <DependentUpon>SqlCustomersProvider.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 			<Compile Include="SqlShippersProvider.cs">
@@ -329,20 +344,12 @@
 			  <DependentUpon>SqlShippersProvider.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
-			<Compile Include="SqlProductsProvider.cs">
+			<Compile Include="SqlOrderDetailsProvider.cs">
 			  <SubType>Code</SubType>
 			</Compile>
 			
-			<Compile Include="SqlProductsProviderBase.generated.cs">
-			  <DependentUpon>SqlProductsProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlOrdersProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlOrdersProviderBase.generated.cs">
-			  <DependentUpon>SqlOrdersProvider.cs</DependentUpon>
+			<Compile Include="SqlOrderDetailsProviderBase.generated.cs">
+			  <DependentUpon>SqlOrderDetailsProvider.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 			<Compile Include="SqlEmployeeTerritoriesProvider.cs">
@@ -351,14 +358,6 @@
 			
 			<Compile Include="SqlEmployeeTerritoriesProviderBase.generated.cs">
 			  <DependentUpon>SqlEmployeeTerritoriesProvider.cs</DependentUpon>
-			  <SubType>Code</SubType>
-			</Compile>
-			<Compile Include="SqlOrderDetailsProvider.cs">
-			  <SubType>Code</SubType>
-			</Compile>
-			
-			<Compile Include="SqlOrderDetailsProviderBase.generated.cs">
-			  <DependentUpon>SqlOrderDetailsProvider.cs</DependentUpon>
 			  <SubType>Code</SubType>
 			</Compile>
 		<Compile Include="..\AssemblyInfo.cs">

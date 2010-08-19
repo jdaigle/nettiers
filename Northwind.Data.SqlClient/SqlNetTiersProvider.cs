@@ -192,6 +192,211 @@ namespace Northwind.Data.SqlClient
 		}
 
 		
+		#region "OrdersProvider"
+			
+		private SqlOrdersProvider innerSqlOrdersProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="Orders"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override OrdersProviderBase OrdersProvider
+		{
+			get
+			{
+				if (innerSqlOrdersProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlOrdersProvider == null)
+						{
+							this.innerSqlOrdersProvider = new SqlOrdersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlOrdersProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlOrdersProvider.DataRequesting += HandlerStatisticsDataRequesting;
+						}
+					}
+				}
+				return innerSqlOrdersProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <see cref="SqlOrdersProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlOrdersProvider SqlOrdersProvider
+		{
+			get {return OrdersProvider as SqlOrdersProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "SuppliersProvider"
+			
+		private SqlSuppliersProvider innerSqlSuppliersProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="Suppliers"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override SuppliersProviderBase SuppliersProvider
+		{
+			get
+			{
+				if (innerSqlSuppliersProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlSuppliersProvider == null)
+						{
+							this.innerSqlSuppliersProvider = new SqlSuppliersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlSuppliersProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlSuppliersProvider.DataRequesting += HandlerStatisticsDataRequesting;
+						}
+					}
+				}
+				return innerSqlSuppliersProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <see cref="SqlSuppliersProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlSuppliersProvider SqlSuppliersProvider
+		{
+			get {return SuppliersProvider as SqlSuppliersProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "EmployeesProvider"
+			
+		private SqlEmployeesProvider innerSqlEmployeesProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="Employees"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override EmployeesProviderBase EmployeesProvider
+		{
+			get
+			{
+				if (innerSqlEmployeesProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlEmployeesProvider == null)
+						{
+							this.innerSqlEmployeesProvider = new SqlEmployeesProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlEmployeesProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlEmployeesProvider.DataRequesting += HandlerStatisticsDataRequesting;
+						}
+					}
+				}
+				return innerSqlEmployeesProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <see cref="SqlEmployeesProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlEmployeesProvider SqlEmployeesProvider
+		{
+			get {return EmployeesProvider as SqlEmployeesProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "CustomerCustomerDemoProvider"
+			
+		private SqlCustomerCustomerDemoProvider innerSqlCustomerCustomerDemoProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="CustomerCustomerDemo"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override CustomerCustomerDemoProviderBase CustomerCustomerDemoProvider
+		{
+			get
+			{
+				if (innerSqlCustomerCustomerDemoProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlCustomerCustomerDemoProvider == null)
+						{
+							this.innerSqlCustomerCustomerDemoProvider = new SqlCustomerCustomerDemoProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlCustomerCustomerDemoProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlCustomerCustomerDemoProvider.DataRequesting += HandlerStatisticsDataRequesting;
+						}
+					}
+				}
+				return innerSqlCustomerCustomerDemoProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <see cref="SqlCustomerCustomerDemoProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlCustomerCustomerDemoProvider SqlCustomerCustomerDemoProvider
+		{
+			get {return CustomerCustomerDemoProvider as SqlCustomerCustomerDemoProvider;}
+		}
+		
+		#endregion
+		
+		
+		#region "ProductsProvider"
+			
+		private SqlProductsProvider innerSqlProductsProvider;
+
+		///<summary>
+		/// This class is the Data Access Logic Component for the <see cref="Products"/> business entity.
+		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
+		///</summary>
+		/// <value></value>
+		public override ProductsProviderBase ProductsProvider
+		{
+			get
+			{
+				if (innerSqlProductsProvider == null) 
+				{
+					lock (syncRoot) 
+					{
+						if (innerSqlProductsProvider == null)
+						{
+							this.innerSqlProductsProvider = new SqlProductsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlProductsProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlProductsProvider.DataRequesting += HandlerStatisticsDataRequesting;
+						}
+					}
+				}
+				return innerSqlProductsProvider;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the current <see cref="SqlProductsProvider"/>.
+		/// </summary>
+		/// <value></value>
+		public SqlProductsProvider SqlProductsProvider
+		{
+			get {return ProductsProvider as SqlProductsProvider;}
+		}
+		
+		#endregion
+		
+		
 		#region "RegionProvider"
 			
 		private SqlRegionProvider innerSqlRegionProvider;
@@ -269,129 +474,6 @@ namespace Northwind.Data.SqlClient
 		public SqlTerritoriesProvider SqlTerritoriesProvider
 		{
 			get {return TerritoriesProvider as SqlTerritoriesProvider;}
-		}
-		
-		#endregion
-		
-		
-		#region "EmployeesProvider"
-			
-		private SqlEmployeesProvider innerSqlEmployeesProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="Employees"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override EmployeesProviderBase EmployeesProvider
-		{
-			get
-			{
-				if (innerSqlEmployeesProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlEmployeesProvider == null)
-						{
-							this.innerSqlEmployeesProvider = new SqlEmployeesProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlEmployeesProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlEmployeesProvider.DataRequesting += HandlerStatisticsDataRequesting;
-						}
-					}
-				}
-				return innerSqlEmployeesProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <see cref="SqlEmployeesProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlEmployeesProvider SqlEmployeesProvider
-		{
-			get {return EmployeesProvider as SqlEmployeesProvider;}
-		}
-		
-		#endregion
-		
-		
-		#region "SuppliersProvider"
-			
-		private SqlSuppliersProvider innerSqlSuppliersProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="Suppliers"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override SuppliersProviderBase SuppliersProvider
-		{
-			get
-			{
-				if (innerSqlSuppliersProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlSuppliersProvider == null)
-						{
-							this.innerSqlSuppliersProvider = new SqlSuppliersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlSuppliersProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlSuppliersProvider.DataRequesting += HandlerStatisticsDataRequesting;
-						}
-					}
-				}
-				return innerSqlSuppliersProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <see cref="SqlSuppliersProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlSuppliersProvider SqlSuppliersProvider
-		{
-			get {return SuppliersProvider as SqlSuppliersProvider;}
-		}
-		
-		#endregion
-		
-		
-		#region "CustomersProvider"
-			
-		private SqlCustomersProvider innerSqlCustomersProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="Customers"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override CustomersProviderBase CustomersProvider
-		{
-			get
-			{
-				if (innerSqlCustomersProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlCustomersProvider == null)
-						{
-							this.innerSqlCustomersProvider = new SqlCustomersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlCustomersProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlCustomersProvider.DataRequesting += HandlerStatisticsDataRequesting;
-						}
-					}
-				}
-				return innerSqlCustomersProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <see cref="SqlCustomersProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlCustomersProvider SqlCustomersProvider
-		{
-			get {return CustomersProvider as SqlCustomersProvider;}
 		}
 		
 		#endregion
@@ -479,42 +561,42 @@ namespace Northwind.Data.SqlClient
 		#endregion
 		
 		
-		#region "CustomerCustomerDemoProvider"
+		#region "CustomersProvider"
 			
-		private SqlCustomerCustomerDemoProvider innerSqlCustomerCustomerDemoProvider;
+		private SqlCustomersProvider innerSqlCustomersProvider;
 
 		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="CustomerCustomerDemo"/> business entity.
+		/// This class is the Data Access Logic Component for the <see cref="Customers"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
 		/// <value></value>
-		public override CustomerCustomerDemoProviderBase CustomerCustomerDemoProvider
+		public override CustomersProviderBase CustomersProvider
 		{
 			get
 			{
-				if (innerSqlCustomerCustomerDemoProvider == null) 
+				if (innerSqlCustomersProvider == null) 
 				{
 					lock (syncRoot) 
 					{
-						if (innerSqlCustomerCustomerDemoProvider == null)
+						if (innerSqlCustomersProvider == null)
 						{
-							this.innerSqlCustomerCustomerDemoProvider = new SqlCustomerCustomerDemoProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlCustomerCustomerDemoProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlCustomerCustomerDemoProvider.DataRequesting += HandlerStatisticsDataRequesting;
+							this.innerSqlCustomersProvider = new SqlCustomersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlCustomersProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlCustomersProvider.DataRequesting += HandlerStatisticsDataRequesting;
 						}
 					}
 				}
-				return innerSqlCustomerCustomerDemoProvider;
+				return innerSqlCustomersProvider;
 			}
 		}
 		
 		/// <summary>
-		/// Gets the current <see cref="SqlCustomerCustomerDemoProvider"/>.
+		/// Gets the current <see cref="SqlCustomersProvider"/>.
 		/// </summary>
 		/// <value></value>
-		public SqlCustomerCustomerDemoProvider SqlCustomerCustomerDemoProvider
+		public SqlCustomersProvider SqlCustomersProvider
 		{
-			get {return CustomerCustomerDemoProvider as SqlCustomerCustomerDemoProvider;}
+			get {return CustomersProvider as SqlCustomersProvider;}
 		}
 		
 		#endregion
@@ -561,83 +643,42 @@ namespace Northwind.Data.SqlClient
 		#endregion
 		
 		
-		#region "ProductsProvider"
+		#region "OrderDetailsProvider"
 			
-		private SqlProductsProvider innerSqlProductsProvider;
+		private SqlOrderDetailsProvider innerSqlOrderDetailsProvider;
 
 		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="Products"/> business entity.
+		/// This class is the Data Access Logic Component for the <see cref="OrderDetails"/> business entity.
 		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
 		///</summary>
 		/// <value></value>
-		public override ProductsProviderBase ProductsProvider
+		public override OrderDetailsProviderBase OrderDetailsProvider
 		{
 			get
 			{
-				if (innerSqlProductsProvider == null) 
+				if (innerSqlOrderDetailsProvider == null) 
 				{
 					lock (syncRoot) 
 					{
-						if (innerSqlProductsProvider == null)
+						if (innerSqlOrderDetailsProvider == null)
 						{
-							this.innerSqlProductsProvider = new SqlProductsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlProductsProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlProductsProvider.DataRequesting += HandlerStatisticsDataRequesting;
+							this.innerSqlOrderDetailsProvider = new SqlOrderDetailsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
+                            this.innerSqlOrderDetailsProvider.DataRequested += HandlerStatisticsDataRequested;
+                            this.innerSqlOrderDetailsProvider.DataRequesting += HandlerStatisticsDataRequesting;
 						}
 					}
 				}
-				return innerSqlProductsProvider;
+				return innerSqlOrderDetailsProvider;
 			}
 		}
 		
 		/// <summary>
-		/// Gets the current <see cref="SqlProductsProvider"/>.
+		/// Gets the current <see cref="SqlOrderDetailsProvider"/>.
 		/// </summary>
 		/// <value></value>
-		public SqlProductsProvider SqlProductsProvider
+		public SqlOrderDetailsProvider SqlOrderDetailsProvider
 		{
-			get {return ProductsProvider as SqlProductsProvider;}
-		}
-		
-		#endregion
-		
-		
-		#region "OrdersProvider"
-			
-		private SqlOrdersProvider innerSqlOrdersProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="Orders"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override OrdersProviderBase OrdersProvider
-		{
-			get
-			{
-				if (innerSqlOrdersProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlOrdersProvider == null)
-						{
-							this.innerSqlOrdersProvider = new SqlOrdersProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlOrdersProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlOrdersProvider.DataRequesting += HandlerStatisticsDataRequesting;
-						}
-					}
-				}
-				return innerSqlOrdersProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <see cref="SqlOrdersProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlOrdersProvider SqlOrdersProvider
-		{
-			get {return OrdersProvider as SqlOrdersProvider;}
+			get {return OrderDetailsProvider as SqlOrderDetailsProvider;}
 		}
 		
 		#endregion
@@ -679,47 +720,6 @@ namespace Northwind.Data.SqlClient
 		public SqlEmployeeTerritoriesProvider SqlEmployeeTerritoriesProvider
 		{
 			get {return EmployeeTerritoriesProvider as SqlEmployeeTerritoriesProvider;}
-		}
-		
-		#endregion
-		
-		
-		#region "OrderDetailsProvider"
-			
-		private SqlOrderDetailsProvider innerSqlOrderDetailsProvider;
-
-		///<summary>
-		/// This class is the Data Access Logic Component for the <see cref="OrderDetails"/> business entity.
-		/// It exposes CRUD methods as well as selecting on index, foreign keys and custom stored procedures.
-		///</summary>
-		/// <value></value>
-		public override OrderDetailsProviderBase OrderDetailsProvider
-		{
-			get
-			{
-				if (innerSqlOrderDetailsProvider == null) 
-				{
-					lock (syncRoot) 
-					{
-						if (innerSqlOrderDetailsProvider == null)
-						{
-							this.innerSqlOrderDetailsProvider = new SqlOrderDetailsProvider(_connectionString, _useStoredProcedure, _providerInvariantName);
-                            this.innerSqlOrderDetailsProvider.DataRequested += HandlerStatisticsDataRequested;
-                            this.innerSqlOrderDetailsProvider.DataRequesting += HandlerStatisticsDataRequesting;
-						}
-					}
-				}
-				return innerSqlOrderDetailsProvider;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the current <see cref="SqlOrderDetailsProvider"/>.
-		/// </summary>
-		/// <value></value>
-		public SqlOrderDetailsProvider SqlOrderDetailsProvider
-		{
-			get {return OrderDetailsProvider as SqlOrderDetailsProvider;}
 		}
 		
 		#endregion
