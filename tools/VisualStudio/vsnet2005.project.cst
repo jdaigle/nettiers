@@ -373,7 +373,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath><%= LibraryPath %>\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
-    
+     <% if(includeObjectBuilder) { %>
+    <Reference Include="Microsoft.Practices.Unity, <%= unityVersionText %>"> 	
+      <SpecificVersion>False</SpecificVersion> 	
+      <HintPath><%= LibraryPath %>\Microsoft.Practices.Unity.dll</HintPath>	 	
+    </Reference>
+    <% } %>
 		<% if (SourceDatabase.Provider.Name == "OracleSchemaProvider") {%>
 	<Reference Include="System.Data.OracleClient" />
 		<%}%>

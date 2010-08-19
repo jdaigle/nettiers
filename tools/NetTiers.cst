@@ -1301,7 +1301,7 @@
 		SafeCopyFile(this.CodeTemplateInfo.DirectoryName + "\\References\\" + entLibSubDir + "\\Microsoft.Practices.EnterpriseLibrary.Data.dll", libPath+ "\\Microsoft.Practices.EnterpriseLibrary.Data.dll");
 		
     //    if(EntLibVersion == MoM.Templates.EntLibVersion.v5_0)
-		//    SafeCopyFile(this.CodeTemplateInfo.DirectoryName + "\\References\\" + entLibSubDir + "\\Microsoft.Practices.Unity.dll", libPath +  "\\Microsoft.Practices.Unity.dll");
+		SafeCopyFile(this.CodeTemplateInfo.DirectoryName + "\\References\\" + entLibSubDir + "\\Microsoft.Practices.Unity.dll", libPath +  "\\Microsoft.Practices.Unity.dll");
 		//else
     //        SafeCopyFile(this.CodeTemplateInfo.DirectoryName + "\\References\\" + entLibSubDir + "\\Microsoft.Practices." + GetEntLibOBClassName(EntLibVersion) + ".dll", libPath +  "\\Microsoft.Practices." + GetEntLibOBClassName(EntLibVersion) + ".dll");
             
